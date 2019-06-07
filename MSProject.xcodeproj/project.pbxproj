@@ -20,8 +20,8 @@
 		9D1575071CB1B27500EA395E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575061CB1B27500EA395E /* ViewController.swift */; };
 		9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
 		9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
-		9D15751A1CB1B27500EA395E /* BaseProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575191CB1B27500EA395E /* BaseProjectTests.swift */; };
-		9D1575251CB1B27500EA395E /* BaseProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575241CB1B27500EA395E /* BaseProjectUITests.swift */; };
+		9D15751A1CB1B27500EA395E /* MSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575191CB1B27500EA395E /* MSProjectTests.swift */; };
+		9D1575251CB1B27500EA395E /* MSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575241CB1B27500EA395E /* MSProjectUITests.swift */; };
 		9D6E405A1CB1B93A008CE558 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6E40551CB1B939008CE558 /* ReactiveCocoa.framework */; };
 		9D6E405B1CB1B93A008CE558 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6E40561CB1B93A008CE558 /* Result.framework */; };
 		B83388D721E93AAC00085E26 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83388CF21E93AAC00085E26 /* AlamofireNetworkActivityIndicator.framework */; };
@@ -39,14 +39,14 @@
 			containerPortal = 9D1574F91CB1B27500EA395E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9D1575001CB1B27500EA395E;
-			remoteInfo = BaseProject;
+			remoteInfo = MSProject;
 		};
 		9D1575211CB1B27500EA395E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9D1574F91CB1B27500EA395E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9D1575001CB1B27500EA395E;
-			remoteInfo = BaseProject;
+			remoteInfo = MSProject;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -73,17 +73,17 @@
 		00A73F8922AAB43000FC6410 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
-		9D1575011CB1B27500EA395E /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1575041CB1B27500EA395E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D1575061CB1B27500EA395E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9D15750B1CB1B27500EA395E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D15750E1CB1B27500EA395E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D1575101CB1B27500EA395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D1575151CB1B27500EA395E /* BaseProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D1575191CB1B27500EA395E /* BaseProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProjectTests.swift; sourceTree = "<group>"; };
+		9D1575151CB1B27500EA395E /* MSProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1575191CB1B27500EA395E /* MSProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProjectTests.swift; sourceTree = "<group>"; };
 		9D15751B1CB1B27500EA395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D1575201CB1B27500EA395E /* BaseProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D1575241CB1B27500EA395E /* BaseProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProjectUITests.swift; sourceTree = "<group>"; };
+		9D1575201CB1B27500EA395E /* MSProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1575241CB1B27500EA395E /* MSProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSProjectUITests.swift; sourceTree = "<group>"; };
 		9D1575261CB1B27500EA395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D6E40551CB1B939008CE558 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		9D6E40561CB1B93A008CE558 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -157,9 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				9D6E405F1CB1BA21008CE558 /* Frameworks */,
-				9D1575031CB1B27500EA395E /* BaseProject */,
-				9D1575181CB1B27500EA395E /* BaseProjectTests */,
-				9D1575231CB1B27500EA395E /* BaseProjectUITests */,
+				9D1575031CB1B27500EA395E /* MSProject */,
+				9D1575181CB1B27500EA395E /* MSProjectTests */,
+				9D1575231CB1B27500EA395E /* MSProjectUITests */,
 				9D1575021CB1B27500EA395E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -167,14 +167,14 @@
 		9D1575021CB1B27500EA395E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D1575011CB1B27500EA395E /* BaseProject.app */,
-				9D1575151CB1B27500EA395E /* BaseProjectTests.xctest */,
-				9D1575201CB1B27500EA395E /* BaseProjectUITests.xctest */,
+				9D1575011CB1B27500EA395E /* MSProject.app */,
+				9D1575151CB1B27500EA395E /* MSProjectTests.xctest */,
+				9D1575201CB1B27500EA395E /* MSProjectUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9D1575031CB1B27500EA395E /* BaseProject */ = {
+		9D1575031CB1B27500EA395E /* MSProject */ = {
 			isa = PBXGroup;
 			children = (
 				0097C7B622AAA38D0001509F /* Extensions */,
@@ -189,25 +189,25 @@
 				0097C7B922AAA6C40001509F /* Main.storyboard */,
 				0097C7BB22AAA6D50001509F /* Login */,
 			);
-			path = BaseProject;
+			path = MSProject;
 			sourceTree = "<group>";
 		};
-		9D1575181CB1B27500EA395E /* BaseProjectTests */ = {
+		9D1575181CB1B27500EA395E /* MSProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				9D1575191CB1B27500EA395E /* BaseProjectTests.swift */,
+				9D1575191CB1B27500EA395E /* MSProjectTests.swift */,
 				9D15751B1CB1B27500EA395E /* Info.plist */,
 			);
-			path = BaseProjectTests;
+			path = MSProjectTests;
 			sourceTree = "<group>";
 		};
-		9D1575231CB1B27500EA395E /* BaseProjectUITests */ = {
+		9D1575231CB1B27500EA395E /* MSProjectUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9D1575241CB1B27500EA395E /* BaseProjectUITests.swift */,
+				9D1575241CB1B27500EA395E /* MSProjectUITests.swift */,
 				9D1575261CB1B27500EA395E /* Info.plist */,
 			);
-			path = BaseProjectUITests;
+			path = MSProjectUITests;
 			sourceTree = "<group>";
 		};
 		9D6E405F1CB1BA21008CE558 /* Frameworks */ = {
@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9D1575001CB1B27500EA395E /* BaseProject */ = {
+		9D1575001CB1B27500EA395E /* MSProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D1575291CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProject" */;
+			buildConfigurationList = 9D1575291CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProject" */;
 			buildPhases = (
 				9D1574FD1CB1B27500EA395E /* Sources */,
 				9D1574FE1CB1B27500EA395E /* Frameworks */,
@@ -265,14 +265,14 @@
 			);
 			dependencies = (
 			);
-			name = BaseProject;
-			productName = BaseProject;
-			productReference = 9D1575011CB1B27500EA395E /* BaseProject.app */;
+			name = MSProject;
+			productName = MSProject;
+			productReference = 9D1575011CB1B27500EA395E /* MSProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9D1575141CB1B27500EA395E /* BaseProjectTests */ = {
+		9D1575141CB1B27500EA395E /* MSProjectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D15752C1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProjectTests" */;
+			buildConfigurationList = 9D15752C1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProjectTests" */;
 			buildPhases = (
 				9D1575111CB1B27500EA395E /* Sources */,
 				9D1575121CB1B27500EA395E /* Frameworks */,
@@ -284,14 +284,14 @@
 			dependencies = (
 				9D1575171CB1B27500EA395E /* PBXTargetDependency */,
 			);
-			name = BaseProjectTests;
-			productName = BaseProjectTests;
-			productReference = 9D1575151CB1B27500EA395E /* BaseProjectTests.xctest */;
+			name = MSProjectTests;
+			productName = MSProjectTests;
+			productReference = 9D1575151CB1B27500EA395E /* MSProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9D15751F1CB1B27500EA395E /* BaseProjectUITests */ = {
+		9D15751F1CB1B27500EA395E /* MSProjectUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D15752F1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProjectUITests" */;
+			buildConfigurationList = 9D15752F1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProjectUITests" */;
 			buildPhases = (
 				9D15751C1CB1B27500EA395E /* Sources */,
 				9D15751D1CB1B27500EA395E /* Frameworks */,
@@ -302,9 +302,9 @@
 			dependencies = (
 				9D1575221CB1B27500EA395E /* PBXTargetDependency */,
 			);
-			name = BaseProjectUITests;
-			productName = BaseProjectUITests;
-			productReference = 9D1575201CB1B27500EA395E /* BaseProjectUITests.xctest */;
+			name = MSProjectUITests;
+			productName = MSProjectUITests;
+			productReference = 9D1575201CB1B27500EA395E /* MSProjectUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -349,9 +349,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9D1575001CB1B27500EA395E /* BaseProject */,
-				9D1575141CB1B27500EA395E /* BaseProjectTests */,
-				9D15751F1CB1B27500EA395E /* BaseProjectUITests */,
+				9D1575001CB1B27500EA395E /* MSProject */,
+				9D1575141CB1B27500EA395E /* MSProjectTests */,
+				9D15751F1CB1B27500EA395E /* MSProjectUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -442,7 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D15751A1CB1B27500EA395E /* BaseProjectTests.swift in Sources */,
+				9D15751A1CB1B27500EA395E /* MSProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D1575251CB1B27500EA395E /* BaseProjectUITests.swift in Sources */,
+				9D1575251CB1B27500EA395E /* MSProjectUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,12 +459,12 @@
 /* Begin PBXTargetDependency section */
 		9D1575171CB1B27500EA395E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9D1575001CB1B27500EA395E /* BaseProject */;
+			target = 9D1575001CB1B27500EA395E /* MSProject */;
 			targetProxy = 9D1575161CB1B27500EA395E /* PBXContainerItemProxy */;
 		};
 		9D1575221CB1B27500EA395E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9D1575001CB1B27500EA395E /* BaseProject */;
+			target = 9D1575001CB1B27500EA395E /* MSProject */;
 			targetProxy = 9D1575211CB1B27500EA395E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -548,7 +548,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProject/Info.plist;
+				INFOPLIST_FILE = MSProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -570,12 +570,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectTests/Info.plist;
+				INFOPLIST_FILE = MSProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseProject.app/BaseProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Debug;
 		};
@@ -587,12 +587,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
+				INFOPLIST_FILE = MSProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BaseProject;
+				TEST_TARGET_NAME = MSProject;
 			};
 			name = Debug;
 		};
@@ -662,7 +662,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProject/Info.plist;
+				INFOPLIST_FILE = MSProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-D ALPHA";
@@ -684,12 +684,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectTests/Info.plist;
+				INFOPLIST_FILE = MSProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseProject.app/BaseProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Alpha;
 		};
@@ -701,12 +701,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
+				INFOPLIST_FILE = MSProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BaseProject;
+				TEST_TARGET_NAME = MSProject;
 			};
 			name = Alpha;
 		};
@@ -776,7 +776,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProject/Info.plist;
+				INFOPLIST_FILE = MSProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSWolox.MSProject.debug;
@@ -797,12 +797,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectTests/Info.plist;
+				INFOPLIST_FILE = MSProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseProject.app/BaseProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Release;
 		};
@@ -814,12 +814,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
+				INFOPLIST_FILE = MSProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BaseProject;
+				TEST_TARGET_NAME = MSProject;
 			};
 			name = Release;
 		};
@@ -888,7 +888,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProject/Info.plist;
+				INFOPLIST_FILE = MSProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D PRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSWolox.MSProject.debug;
@@ -909,12 +909,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectTests/Info.plist;
+				INFOPLIST_FILE = MSProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseProject.app/BaseProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Production;
 		};
@@ -926,12 +926,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
+				INFOPLIST_FILE = MSProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BaseProject;
+				TEST_TARGET_NAME = MSProject;
 			};
 			name = Production;
 		};
@@ -949,7 +949,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		9D1575291CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProject" */ = {
+		9D1575291CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE39E8761D1DAED00004FE95 /* Debug */,
@@ -960,7 +960,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		9D15752C1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProjectTests" */ = {
+		9D15752C1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProjectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE39E8771D1DAED00004FE95 /* Debug */,
@@ -971,7 +971,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		9D15752F1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "BaseProjectUITests" */ = {
+		9D15752F1CB1B27500EA395E /* Build configuration list for PBXNativeTarget "MSProjectUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE39E8781D1DAED00004FE95 /* Debug */,

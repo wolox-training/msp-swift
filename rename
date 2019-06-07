@@ -1,12 +1,12 @@
 #!/bin/bash
 
 echo ""
-echo "Enter the project old name: [BaseProject]"
+echo "Enter the project old name: [MSProject]"
 read old_name
 
 if [ -z "$old_name" ]
 then
-    old_name="BaseProject"
+    old_name="MSProject"
 fi
 
 echo ""

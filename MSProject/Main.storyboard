@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="Kvk-nG-kup">
             <objects>
-                <viewController id="1L9-pN-p6q" customClass="LoginViewController" customModule="BaseProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1L9-pN-p6q" customClass="LoginViewController" customModule="MSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vmI-Wj-Sw6" customClass="LoginViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

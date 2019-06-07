@@ -10,6 +10,10 @@
 		0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */; };
 		0097C7BA22AAA6C40001509F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0097C7B922AAA6C40001509F /* Main.storyboard */; };
 		0097C7BD22AAA6E90001509F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* LoginViewController.swift */; };
+		00A73F8C22AAB4F200FC6410 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; };
+		00A73F8E22AAB4F500FC6410 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; };
+		00A73F9022AAB51200FC6410 /* Nimble.framework in Carthage */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		00A73F9122AAB51200FC6410 /* Quick.framework in Carthage */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -53,6 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				00A73F9022AAB51200FC6410 /* Nimble.framework in Carthage */,
+				00A73F9122AAB51200FC6410 /* Quick.framework in Carthage */,
 			);
 			name = Carthage;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,8 @@
 		0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Wolox.swift"; sourceTree = "<group>"; };
 		0097C7B922AAA6C40001509F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0097C7BC22AAA6E90001509F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		00A73F8822AAB42F00FC6410 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		00A73F8922AAB43000FC6410 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A73F8C22AAB4F200FC6410 /* Quick.framework in Frameworks */,
+				00A73F8E22AAB4F500FC6410 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +213,8 @@
 		9D6E405F1CB1BA21008CE558 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00A73F8922AAB43000FC6410 /* Nimble.framework */,
+				00A73F8822AAB42F00FC6410 /* Quick.framework */,
 				B83388D021E93AAC00085E26 /* Alamofire.framework */,
 				B83388CF21E93AAC00085E26 /* AlamofireNetworkActivityIndicator.framework */,
 				0CCF002D219208180061050C /* WolmoCore.framework */,
@@ -386,6 +398,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WolmoReactiveCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -406,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ! -z \"$RUNNING_ON_CI\" ]\nthen\n    echo \"SwiftLint run script has been disabled\"\n    exit 0\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if [ ! -z \"$RUNNING_ON_CI\" ]\nthen\n    echo \"SwiftLint run script has been disabled\"\n    exit 0\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -569,6 +583,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E17065121F75B6A10042755C /* Debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
@@ -679,6 +697,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CEB934E11D21A49A00DF75C2 /* Alpha.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
@@ -788,6 +810,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E17065131F75B6A10042755C /* Release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;
@@ -896,6 +922,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E12DE1621F772A370072C2FF /* Production.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BaseProjectUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.BaseProjectUITests;

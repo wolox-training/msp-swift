@@ -1,3 +1,7 @@
+github "Alamofire/Alamofire" "4.8.2"
+github "Alamofire/AlamofireNetworkActivityIndicator" "2.4.0"
+github "Quick/Nimble" "v8.0.1"
+github "Quick/Quick" "v2.1.0"
 github "ReactiveCocoa/ReactiveCocoa" "8.0.2"
 github "ReactiveCocoa/ReactiveSwift" "4.0.0"
 github "Wolox/wolmo-core-ios" "5.3.0"

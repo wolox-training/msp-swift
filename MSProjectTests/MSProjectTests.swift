@@ -1,6 +1,6 @@
 //
-//  BaseProjectTests.swift
-//  BaseProjectTests
+//  MSProjectTests.swift
+//  MSProjectTests
 //
 //  Created by Guido Marucci Blas on 4/3/16.
 //  Copyright © 2016 Wolox. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Quick
 import Nimble
-import BaseProject
+import MSProject
 
-final class BaseProjectSpec: QuickSpec {
+final class MSProjectSpec: QuickSpec {
     
     override func spec() {
         

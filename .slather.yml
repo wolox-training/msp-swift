@@ -1,0 +1,8 @@
+xcodeproj: ./MSProject.xcodeproj
+scheme: MSProject
+ignore:
+  - MSProject/AppDelegate.swift
+  - MSProject/Environment.swift
+  - MSProject/Services/RollbarService.swift
+  - MSProjectTests/*
+  - MSProjectUITests/*

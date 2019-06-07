@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="WBg-On-Hur">
             <objects>
-                <viewController id="N4g-Is-10W" customClass="WBLoginViewController" customModule="BaseProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="N4g-Is-10W" customClass="WBLoginViewController" customModule="MSProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dgr-GV-coc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc-logo" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-jv-DV0">
-                                <rect key="frame" x="104.33333333333331" y="234" width="166.33333333333334" height="122"/>
+                                <rect key="frame" x="176.66666666666666" y="234" width="21.666666666666657" height="16"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed, developed and used by woloxers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-HL-K5d">
                                 <rect key="frame" x="22" y="727" width="331" height="21"/>
@@ -30,8 +30,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-nW-tNe" customClass="WBButton" customModule="BaseProject" customModuleProvider="target">
-                                <rect key="frame" x="62.666666666666657" y="439" width="249.99999999999997" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-nW-tNe" customClass="WBButton" customModule="MSProject" customModuleProvider="target">
+                                <rect key="frame" x="62.666666666666657" y="333" width="249.99999999999997" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="CbR-RJ-Rld"/>
                                     <constraint firstAttribute="height" constant="44" id="dem-yA-D2y"/>

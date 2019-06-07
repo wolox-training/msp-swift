@@ -1,11 +1,6 @@
 //
-<<<<<<< HEAD:MSProject/Login/WBLoginViewController.swift
 //  WBLoginViewController.swift
-//  BaseProject
-=======
-//  LoginViewController.swift
 //  MSProject
->>>>>>> bf9738204055f0fac127d76c25fe046149273883:MSProject/Login/LoginViewController.swift
 //
 //  Created by Matias Spinelli on 07/06/2019.
 //  Copyright © 2019 Wolox. All rights reserved.

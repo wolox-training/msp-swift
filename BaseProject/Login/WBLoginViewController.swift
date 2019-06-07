@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  WBLoginViewController.swift
 //  BaseProject
 //
 //  Created by Matias Spinelli on 07/06/2019.
@@ -8,21 +8,18 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class WBLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("LALALALA")
 
-        print("LALALALLAA")
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -32,5 +29,10 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // MARK: - Actions
+    @IBAction func loginWithGoogle(_ sender: Any) {
+        print("LOGIN WITH GOOGLE")
+    }
 
 }

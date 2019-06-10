@@ -43,17 +43,14 @@
 		00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7625722AEE29B00640078 /* WBAddNewView.swift */; };
 		00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7625922AEE2AC00640078 /* WBAddNewView.xib */; };
 		00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */; };
-		00B7626122AEECC400640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
-		00B7626222AEECC600640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
-		00B7626322AEECC600640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
 		00B7626422AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		00B7626522AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
+		00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
+		00B7626C22AEF23400640078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
 		9D1575071CB1B27500EA395E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575061CB1B27500EA395E /* ViewController.swift */; };
-		9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
-		9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
 		9D15751A1CB1B27500EA395E /* MSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575191CB1B27500EA395E /* MSProjectTests.swift */; };
 		9D1575251CB1B27500EA395E /* MSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575241CB1B27500EA395E /* MSProjectUITests.swift */; };
 		9D6E405A1CB1B93A008CE558 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6E40551CB1B939008CE558 /* ReactiveCocoa.framework */; };
@@ -518,7 +515,7 @@
 			attributes = {
 				CLASSPREFIX = WB;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Wolox;
 				TargetAttributes = {
 					9D1575001CB1B27500EA395E = {
@@ -565,21 +562,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B7626122AEECC400640078 /* Info.plist in Resources */,
 				00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */,
 				00B761E722AAF55800640078 /* Colors.xcassets in Resources */,
 				00B7624C22AEE1C700640078 /* WBRentalsView.xib in Resources */,
-				9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */,
+				00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */,
 				00B7625322AEE23E00640078 /* WBSettingsView.xib in Resources */,
 				00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */,
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
-				9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */,
+				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
 				00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */,
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
-				9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */,
-				9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,7 +583,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B7626422AEECCE00640078 /* Localizable.strings in Resources */,
-				00B7626222AEECC600640078 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +591,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B7626522AEECCE00640078 /* Localizable.strings in Resources */,
-				00B7626322AEECC600640078 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,7 +803,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MSProject/Base.lproj/Info.plist;
+				INFOPLIST_FILE = MSProject/Resources/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -927,7 +919,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MSProject/Base.lproj/Info.plist;
+				INFOPLIST_FILE = MSProject/Resources/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-D ALPHA";
@@ -1043,7 +1035,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MSProject/Base.lproj/Info.plist;
+				INFOPLIST_FILE = MSProject/Resources/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSWolox.MSProject.debug;
@@ -1157,7 +1149,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MSProject/Base.lproj/Info.plist;
+				INFOPLIST_FILE = MSProject/Resources/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D PRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSWolox.MSProject.debug;

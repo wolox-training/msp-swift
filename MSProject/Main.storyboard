@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N4g-Is-10W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XlR-Bq-kyZ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc-logo" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-jv-DV0">
-                                <rect key="frame" x="176.66666666666666" y="234" width="21.666666666666657" height="16"/>
+                                <rect key="frame" x="104.33333333333331" y="278" width="166.33333333333334" height="122"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed, developed and used by woloxers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-HL-K5d">
                                 <rect key="frame" x="22" y="727" width="331" height="21"/>
@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-nW-tNe" customClass="WBButton" customModule="MSProject" customModuleProvider="target">
-                                <rect key="frame" x="62.666666666666657" y="333" width="249.99999999999997" height="44"/>
+                                <rect key="frame" x="62.666666666666657" y="483" width="249.99999999999997" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="CbR-RJ-Rld"/>
                                     <constraint firstAttribute="height" constant="44" id="dem-yA-D2y"/>
@@ -52,7 +52,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginWithGoogle:" destination="N4g-Is-10W" eventType="touchUpInside" id="MXx-XJ-A2z"/>
+                                    <segue destination="jSg-AP-ecC" kind="show" id="9sI-2i-5ER"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -72,10 +72,70 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dha-ca-aoY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eq6-RX-fb5">
+                        <barButtonItem key="backBarButtonItem" title=" " id="TOz-g6-dWE"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owH-dZ-fr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-580" y="-885"/>
+            <point key="canvasLocation" x="362.39999999999998" y="-885.22167487684737"/>
+        </scene>
+        <!--LIBRARY-->
+        <scene sceneID="ZIN-b7-7QJ">
+            <objects>
+                <viewController title="LIBRARY" id="jSg-AP-ecC" customClass="WBLibraryTableViewController" customModule="MSProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o3b-He-CH6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yFL-1Z-0AE">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6bc-lS-p5I" firstAttribute="trailing" secondItem="yFL-1Z-0AE" secondAttribute="trailing" id="dlF-93-5dH"/>
+                            <constraint firstItem="yFL-1Z-0AE" firstAttribute="top" secondItem="6bc-lS-p5I" secondAttribute="top" id="f5A-Uc-ufr"/>
+                            <constraint firstItem="yFL-1Z-0AE" firstAttribute="leading" secondItem="6bc-lS-p5I" secondAttribute="leading" id="mph-ev-8Kf"/>
+                            <constraint firstItem="6bc-lS-p5I" firstAttribute="bottom" secondItem="yFL-1Z-0AE" secondAttribute="bottom" id="ndp-m5-V7W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6bc-lS-p5I"/>
+                    </view>
+                    <connections>
+                        <outlet property="libraryTableView" destination="yFL-1Z-0AE" id="Lq5-nq-Cfb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5kJ-oL-EfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1375" y="-885"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="svE-0E-UQz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XlR-Bq-kyZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jMR-xm-0bG">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.1647025697" green="0.074455625839999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N4g-Is-10W" kind="relationship" relationship="rootViewController" id="Na0-d5-Lli"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2v-tE-q1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-580" y="-885.22167487684737"/>
         </scene>
     </scenes>
     <resources>

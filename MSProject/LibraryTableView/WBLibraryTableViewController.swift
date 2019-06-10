@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WolmoCore
 
 class WBLibraryTableViewController: UIViewController {
 
@@ -25,10 +26,11 @@ class WBLibraryTableViewController: UIViewController {
         
         loadBooks()
         
-        title = "Library"
+        title = "LIBRARY".localized()
         
         let grid = UIBarButtonItem(image: UIImage(named: "grid"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(gridMode))
         navigationItem.rightBarButtonItem = grid
+        
     }
 
     /*
@@ -62,8 +64,8 @@ class WBLibraryTableViewController: UIViewController {
     // MARK: - Services
     func loadBooks() {
         libraryTableView.libraryItems = WBBookDAO.sharedInstance.getAllBooks()
-        libraryCollectionView.libraryItems = WBBookDAO.sharedInstance.getAllBooks()
         libraryTableView.libraryTableView.reloadData()
+        libraryCollectionView.libraryItems = WBBookDAO.sharedInstance.getAllBooks()
         libraryCollectionView.libraryCollectionView.reloadData()
     }
     

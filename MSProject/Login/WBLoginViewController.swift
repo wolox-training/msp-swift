@@ -10,8 +10,16 @@ import UIKit
 
 class WBLoginViewController: UIViewController {
 
+    private let loginView: WBLoginView = WBLoginView.loadFromNib()!
+    
+    override func loadView() {
+        loginView.delegate = self
+        view = loginView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +38,8 @@ class WBLoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func loginWithGoogle(_ sender: Any) {
-        navigationController?.pushViewController(WBLibraryTableViewController(), animated: true)
+        let tabBarController = WBTabBarController()
+        tabBarController.modalTransitionStyle = .flipHorizontal
+        present(tabBarController, animated: true, completion: nil)
     }
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Cxc-Pn-VBs" customClass="WBLoginView" customModule="MSProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc-inicio" translatesAutoresizingMaskIntoConstraints="NO" id="jbT-GA-cID">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc-logo" translatesAutoresizingMaskIntoConstraints="NO" id="YKo-yc-cey">
+                    <rect key="frame" x="196" y="234" width="22" height="16"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed, developed and used by woloxers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-cA-PwQ">
+                    <rect key="frame" x="41.5" y="811" width="331" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o17-PD-0pJ" customClass="WBButton" customModule="MSProject" customModuleProvider="target">
+                    <rect key="frame" x="82" y="333" width="250" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="UYW-GO-kLk"/>
+                        <constraint firstAttribute="height" constant="44" id="wot-ad-vvi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="INGRESAR CON GOOGLE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderLineColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderLineWidth">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderLineRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="loginWithGoogle:" destination="Cxc-Pn-VBs" eventType="touchUpInside" id="oyz-NI-Dh8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="o17-PD-0pJ" firstAttribute="top" secondItem="YKo-yc-cey" secondAttribute="bottom" constant="83" id="5Ka-DJ-J7b"/>
+                <constraint firstItem="vSG-7o-c1t" firstAttribute="bottom" secondItem="jbT-GA-cID" secondAttribute="bottom" id="6nI-sa-Hj2"/>
+                <constraint firstItem="jbT-GA-cID" firstAttribute="trailing" secondItem="vSG-7o-c1t" secondAttribute="trailing" id="78X-EA-7b1"/>
+                <constraint firstItem="vSG-7o-c1t" firstAttribute="bottom" secondItem="Njl-cA-PwQ" secondAttribute="bottom" constant="30" id="Pgy-sc-AqI"/>
+                <constraint firstItem="Njl-cA-PwQ" firstAttribute="centerX" secondItem="Cxc-Pn-VBs" secondAttribute="centerX" id="QYS-j5-yKi"/>
+                <constraint firstItem="o17-PD-0pJ" firstAttribute="centerX" secondItem="YKo-yc-cey" secondAttribute="centerX" id="WKM-mt-2hs"/>
+                <constraint firstItem="jbT-GA-cID" firstAttribute="leading" secondItem="vSG-7o-c1t" secondAttribute="leading" id="clY-Jv-ntq"/>
+                <constraint firstItem="jbT-GA-cID" firstAttribute="top" secondItem="Cxc-Pn-VBs" secondAttribute="top" id="e3p-Fi-NHU"/>
+                <constraint firstItem="YKo-yc-cey" firstAttribute="centerX" secondItem="Cxc-Pn-VBs" secondAttribute="centerX" id="e7K-XO-Icg"/>
+                <constraint firstItem="YKo-yc-cey" firstAttribute="width" secondItem="YKo-yc-cey" secondAttribute="height" multiplier="184:135" id="szQ-53-3o0"/>
+                <constraint firstItem="YKo-yc-cey" firstAttribute="top" secondItem="vSG-7o-c1t" secondAttribute="top" constant="190" id="vy1-oY-I4h"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vSG-7o-c1t"/>
+            <point key="canvasLocation" x="-158" y="-205"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bc-inicio" width="375" height="667"/>
+        <image name="bc-logo" width="161" height="122"/>
+    </resources>
+</document>

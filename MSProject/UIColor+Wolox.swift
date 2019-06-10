@@ -25,4 +25,12 @@ extension UIColor {
             return UIColor(red: 231, green: 245, blue: 249, alpha: 1.0)
         }
     }
+    
+    class func woloxTabBarBackgroundColor() -> UIColor {
+        if #available(iOS 11.0, *) {
+            return UIColor.init(named: "woloxTabBarBackgroundColor") ?? UIColor(red: 252, green: 254, blue: 254, alpha: 1.0)
+        } else {
+            return UIColor(red: 252, green: 252, blue: 254, alpha: 1.0)
+        }
+    }
 }

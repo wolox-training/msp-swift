@@ -21,6 +21,13 @@
 		00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */; };
 		00B761F322AAFBD800640078 /* WBBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761F222AAFBD800640078 /* WBBook.swift */; };
 		00B761F522AAFC2000640078 /* WBBookDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761F422AAFC2000640078 /* WBBookDAO.swift */; };
+		00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7620E22AE995E00640078 /* WBLibraryTableView.xib */; };
+		00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7620F22AE995E00640078 /* WBLibraryTableView.swift */; };
+		00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */; };
+		00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */; };
+		00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */; };
+		00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */; };
+		00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621B22AEA95600640078 /* WBNavigationController.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -85,6 +92,13 @@
 		00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookTableViewCell.xib; sourceTree = "<group>"; };
 		00B761F222AAFBD800640078 /* WBBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBook.swift; sourceTree = "<group>"; };
 		00B761F422AAFC2000640078 /* WBBookDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDAO.swift; sourceTree = "<group>"; };
+		00B7620E22AE995E00640078 /* WBLibraryTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBLibraryTableView.xib; sourceTree = "<group>"; };
+		00B7620F22AE995E00640078 /* WBLibraryTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLibraryTableView.swift; sourceTree = "<group>"; };
+		00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookCollectionViewCell.xib; sourceTree = "<group>"; };
+		00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryCollectionView.swift; sourceTree = "<group>"; };
+		00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLibraryCollectionView.xib; sourceTree = "<group>"; };
+		00B7621B22AEA95600640078 /* WBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNavigationController.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				00A73F9622AAD34200FC6410 /* WBButton.swift */,
+				00B7621B22AEA95600640078 /* WBNavigationController.swift */,
 			);
 			name = CustomControls;
 			sourceTree = "<group>";
@@ -178,7 +193,6 @@
 		00B761E822AAF5BA00640078 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -191,13 +205,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		00B761EC22AAF67100640078 /* Cells */ = {
+		00B761EC22AAF67100640078 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
 				00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */,
 				00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */,
 			);
-			path = Cells;
+			path = TableCells;
 			sourceTree = "<group>";
 		};
 		00B761F122AAFBB700640078 /* DAO */ = {
@@ -206,6 +220,34 @@
 				00B761F422AAFC2000640078 /* WBBookDAO.swift */,
 			);
 			name = DAO;
+			sourceTree = "<group>";
+		};
+		00B7620622AE8F7200640078 /* LibraryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
+				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
+				00B7620E22AE995E00640078 /* WBLibraryTableView.xib */,
+			);
+			path = LibraryTableView;
+			sourceTree = "<group>";
+		};
+		00B7620D22AE990700640078 /* LibraryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */,
+				00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */,
+			);
+			path = LibraryCollectionView;
+			sourceTree = "<group>";
+		};
+		00B7621A22AEA84F00640078 /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */,
+				00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */,
+			);
+			name = CollectionCells;
 			sourceTree = "<group>";
 		};
 		9D1574F81CB1B27500EA395E = {
@@ -244,8 +286,11 @@
 				9D1575101CB1B27500EA395E /* Info.plist */,
 				CEB934DC1D21992100DF75C2 /* Environment.swift */,
 				0097C7B922AAA6C40001509F /* Main.storyboard */,
+				00B7620D22AE990700640078 /* LibraryCollectionView */,
+				00B7620622AE8F7200640078 /* LibraryTableView */,
+				00B7621A22AEA84F00640078 /* CollectionCells */,
 				00B761E822AAF5BA00640078 /* ViewControllers */,
-				00B761EC22AAF67100640078 /* Cells */,
+				00B761EC22AAF67100640078 /* TableCells */,
 				00B761F122AAFBB700640078 /* DAO */,
 				00B761EB22AAF64E00640078 /* Model */,
 				0097C7BB22AAA6D50001509F /* Login */,
@@ -423,9 +468,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0097C7BA22AAA6C40001509F /* Main.storyboard in Resources */,
+				00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */,
 				00B761E722AAF55800640078 /* Colors.xcassets in Resources */,
 				9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */,
 				9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */,
+				00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */,
+				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,14 +543,18 @@
 				0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */,
 				00B761F522AAFC2000640078 /* WBBookDAO.swift in Sources */,
 				00B761F322AAFBD800640078 /* WBBook.swift in Sources */,
+				00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */,
+				00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */,
 				9D1575071CB1B27500EA395E /* ViewController.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
+				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
 				00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */,
 				E1530D9C1ED37905002A9002 /* RollbarService.swift in Sources */,
 				00B761EF22AAF97E00640078 /* WBBookTableViewCell.swift in Sources */,
 				9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */,
 				0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */,
+				00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

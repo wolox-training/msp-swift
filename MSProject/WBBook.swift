@@ -8,10 +8,15 @@
 
 import UIKit
 
-class WBBook: NSObject {
+struct WBBook: Codable {
     
-    var bookImage: UIImage?
+    var bookImageURL: String?
     var bookTitle: String?
     var bookAuthor: String?
 
+    enum CodingKeys: String, CodingKey {
+        case bookImageURL
+        case bookTitle
+        case bookAuthor
+    }
 }

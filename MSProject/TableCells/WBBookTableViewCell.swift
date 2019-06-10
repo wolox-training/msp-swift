@@ -20,13 +20,15 @@ class WBBookTableViewCell: UITableViewCell {
         
         contentView.layer.cornerRadius = 5
         contentView.backgroundColor = UIColor.white
-        self.backgroundColor = UIColor.woloxBackgroundLightColor()
+        backgroundColor = UIColor.woloxBackgroundLightColor()
+        
+        selectionStyle = .blue
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = contentView.frame.insetBy(dx: 10.0, dy: 10.0)
+        contentView.frame = contentView.frame.insetBy(dx: 20.0, dy: 5.0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

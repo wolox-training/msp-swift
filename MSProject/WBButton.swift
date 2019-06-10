@@ -14,19 +14,19 @@ class WBButton: UIButton {
     // MARK: Inspectables
     @IBInspectable var borderLineWidth: CGFloat = 1.5 {
         didSet {
-            self.layer.borderWidth = borderLineWidth
+            layer.borderWidth = borderLineWidth
         }
     }
     
     @IBInspectable var borderLineColor: UIColor = UIColor.white {
        didSet {
-            self.layer.borderColor = borderLineColor.cgColor
+            layer.borderColor = borderLineColor.cgColor
         }
     }
 
     @IBInspectable var borderLineRadius: CGFloat = 5 {
         didSet {
-            self.layer.cornerRadius = borderLineRadius
+            layer.cornerRadius = borderLineRadius
         }
     }
     

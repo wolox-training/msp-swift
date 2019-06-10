@@ -10,10 +10,14 @@ import UIKit
 
 class WBLoginViewController: UIViewController {
 
+    private let loginView: WBLoginView = WBLoginView.loadFromNib()!
+    
+    override func loadView() {
+        view = loginView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("LALALALA")
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,10 +33,5 @@ class WBLoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    // MARK: - Actions
-    @IBAction func loginWithGoogle(_ sender: Any) {
-        print("LOGIN WITH GOOGLE")
-    }
 
 }

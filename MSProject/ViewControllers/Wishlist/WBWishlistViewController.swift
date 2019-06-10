@@ -16,7 +16,7 @@ class WBWishlistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "WISHLIST".localized()
     }
     
     override func loadView() {

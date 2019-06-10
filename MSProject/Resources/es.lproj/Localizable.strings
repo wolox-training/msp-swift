@@ -1,14 +1,13 @@
 /* 
-  Localized.strings
+  Localizable.strings
   MSProject
 
   Created by Matias Spinelli on 10/06/2019.
   Copyright © 2019 Wolox. All rights reserved.
 */
 
-// Library
 "LIBRARY" = "Librería";
 "WISHLIST" = "Lista de deseos";
 "ADDNEW" = "Agregar nuevo";
-"RENTALS" = "Rental";
-"SETTINGS" = "Set";
+"RENTALS" = "Alquiler";
+"SETTINGS" = "Configuración";

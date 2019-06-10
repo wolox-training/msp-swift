@@ -29,7 +29,7 @@
 		00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */; };
 		00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */; };
 		00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621B22AEA95600640078 /* WBNavigationController.swift */; };
-		00B7622D22AED23F00640078 /* Localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localized.strings */; };
+		00B7622D22AED23F00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		00B7623C22AED71000640078 /* WBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7623B22AED71000640078 /* WBTabBarController.swift */; };
 		00B7624222AEE06400640078 /* WBWishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7624122AEE06400640078 /* WBWishlistView.swift */; };
 		00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7624322AEE06D00640078 /* WBWishlistView.xib */; };
@@ -43,6 +43,11 @@
 		00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7625722AEE29B00640078 /* WBAddNewView.swift */; };
 		00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7625922AEE2AC00640078 /* WBAddNewView.xib */; };
 		00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */; };
+		00B7626122AEECC400640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
+		00B7626222AEECC600640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
+		00B7626322AEECC600640078 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B7623322AED3F300640078 /* Info.plist */; };
+		00B7626422AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
+		00B7626522AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -116,13 +121,13 @@
 		00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLibraryCollectionView.xib; sourceTree = "<group>"; };
 		00B7621B22AEA95600640078 /* WBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNavigationController.swift; sourceTree = "<group>"; };
 		00B7623022AED24B00640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		00B7623122AED24B00640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localized.strings; sourceTree = "<group>"; };
+		00B7623122AED24B00640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00B7623222AED3F300640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		00B7623622AED4E200640078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
-		00B7623722AED4EA00640078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localized.strings; sourceTree = "<group>"; };
+		00B7623722AED4EA00640078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00B7623822AED53F00640078 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		00B7623922AED53F00640078 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
-		00B7623A22AED53F00640078 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localized.strings; sourceTree = "<group>"; };
+		00B7623A22AED53F00640078 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00B7623B22AED71000640078 /* WBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTabBarController.swift; sourceTree = "<group>"; };
 		00B7624122AEE06400640078 /* WBWishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWishlistView.swift; sourceTree = "<group>"; };
 		00B7624322AEE06D00640078 /* WBWishlistView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBWishlistView.xib; sourceTree = "<group>"; };
@@ -224,6 +229,7 @@
 			children = (
 				00A73F9622AAD34200FC6410 /* WBButton.swift */,
 				00B7621B22AEA95600640078 /* WBNavigationController.swift */,
+				00B7623B22AED71000640078 /* WBTabBarController.swift */,
 			);
 			name = CustomControls;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
 				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
 				00B7620E22AE995E00640078 /* WBLibraryTableView.xib */,
+				00B761EC22AAF67100640078 /* TableCells */,
 			);
 			path = LibraryTableView;
 			sourceTree = "<group>";
@@ -279,6 +286,7 @@
 			children = (
 				00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */,
 				00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */,
+				00B7621A22AEA84F00640078 /* CollectionCells */,
 			);
 			path = LibraryCollectionView;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 				00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */,
 			);
 			name = CollectionCells;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		00B7624022AEE04B00640078 /* Wishlist */ = {
@@ -325,11 +334,25 @@
 		00B7625622AEE26E00640078 /* AddNew */ = {
 			isa = PBXGroup;
 			children = (
+				00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */,
 				00B7625722AEE29B00640078 /* WBAddNewView.swift */,
 				00B7625922AEE2AC00640078 /* WBAddNewView.xib */,
-				00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */,
 			);
 			path = AddNew;
+			sourceTree = "<group>";
+		};
+		00B7626622AEEEA900640078 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEB934DC1D21992100DF75C2 /* Environment.swift */,
+				CEB934DE1D21A44700DF75C2 /* ConfigurationFiles */,
+				9D15750B1CB1B27500EA395E /* Assets.xcassets */,
+				00B761E622AAF55800640078 /* Colors.xcassets */,
+				00B7623322AED3F300640078 /* Info.plist */,
+				00B7622F22AED23F00640078 /* Localizable.strings */,
+				9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9D1574F81CB1B27500EA395E = {
@@ -356,27 +379,18 @@
 		9D1575031CB1B27500EA395E /* MSProject */ = {
 			isa = PBXGroup;
 			children = (
+				9D1575041CB1B27500EA395E /* AppDelegate.swift */,
 				00A73F9522AAD32500FC6410 /* CustomControls */,
 				0097C7B622AAA38D0001509F /* Extensions */,
 				E1530D9A1ED378F9002A9002 /* Services */,
-				CEB934DE1D21A44700DF75C2 /* ConfigurationFiles */,
-				9D1575041CB1B27500EA395E /* AppDelegate.swift */,
 				9D1575061CB1B27500EA395E /* ViewController.swift */,
-				9D15750B1CB1B27500EA395E /* Assets.xcassets */,
-				00B761E622AAF55800640078 /* Colors.xcassets */,
-				9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */,
-				00B7623322AED3F300640078 /* Info.plist */,
-				CEB934DC1D21992100DF75C2 /* Environment.swift */,
-				00B7620D22AE990700640078 /* LibraryCollectionView */,
 				00B7620622AE8F7200640078 /* LibraryTableView */,
-				00B7621A22AEA84F00640078 /* CollectionCells */,
+				00B7620D22AE990700640078 /* LibraryCollectionView */,
 				00B761E822AAF5BA00640078 /* ViewControllers */,
-				00B761EC22AAF67100640078 /* TableCells */,
 				00B761F122AAFBB700640078 /* DAO */,
 				00B761EB22AAF64E00640078 /* Model */,
 				0097C7BB22AAA6D50001509F /* Login */,
-				00B7622F22AED23F00640078 /* Localized.strings */,
-				00B7623B22AED71000640078 /* WBTabBarController.swift */,
+				00B7626622AEEEA900640078 /* Resources */,
 			);
 			path = MSProject;
 			sourceTree = "<group>";
@@ -502,6 +516,7 @@
 		9D1574F91CB1B27500EA395E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WB;
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Wolox;
@@ -550,6 +565,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B7626122AEECC400640078 /* Info.plist in Resources */,
 				00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */,
 				00B761E722AAF55800640078 /* Colors.xcassets in Resources */,
 				00B7624C22AEE1C700640078 /* WBRentalsView.xib in Resources */,
@@ -557,7 +573,7 @@
 				00B7625322AEE23E00640078 /* WBSettingsView.xib in Resources */,
 				00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */,
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
-				00B7622D22AED23F00640078 /* Localized.strings in Resources */,
+				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */,
 				00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */,
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
@@ -572,6 +588,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B7626422AEECCE00640078 /* Localizable.strings in Resources */,
+				00B7626222AEECC600640078 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +597,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B7626522AEECCE00640078 /* Localizable.strings in Resources */,
+				00B7626322AEECC600640078 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,14 +710,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		00B7622F22AED23F00640078 /* Localized.strings */ = {
+		00B7622F22AED23F00640078 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				00B7623122AED24B00640078 /* es */,
 				00B7623722AED4EA00640078 /* Base */,
 				00B7623A22AED53F00640078 /* en */,
 			);
-			name = Localized.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		00B7623322AED3F300640078 /* Info.plist */ = {

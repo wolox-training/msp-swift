@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  WBLoginViewController.swift
 //  MSProject
 //
 //  Created by Matias Spinelli on 07/06/2019.
@@ -8,21 +8,22 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class WBLoginViewController: UIViewController {
 
+    private let loginView: WBLoginView = WBLoginView.loadFromNib()!
+    
+    override func loadView() {
+        view = loginView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("LALALALLAA")
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

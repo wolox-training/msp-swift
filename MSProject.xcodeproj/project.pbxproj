@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */; };
-		0097C7BA22AAA6C40001509F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0097C7B922AAA6C40001509F /* Main.storyboard */; };
-		0097C7BD22AAA6E90001509F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* LoginViewController.swift */; };
+		0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */; };
 		00A73F8C22AAB4F200FC6410 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; };
 		00A73F8E22AAB4F500FC6410 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; };
 		00A73F9022AAB51200FC6410 /* Nimble.framework in Carthage */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00A73F9122AAB51200FC6410 /* Quick.framework in Carthage */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73F9622AAD34200FC6410 /* WBButton.swift */; };
+		00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B761FD22AE88AD00640078 /* WBLoginView.xib */; };
+		00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761FF22AE88FC00640078 /* WBLoginView.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -67,10 +69,12 @@
 
 /* Begin PBXFileReference section */
 		0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Wolox.swift"; sourceTree = "<group>"; };
-		0097C7B922AAA6C40001509F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0097C7BC22AAA6E90001509F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginViewController.swift; sourceTree = "<group>"; };
 		00A73F8822AAB42F00FC6410 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		00A73F8922AAB43000FC6410 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		00A73F9622AAD34200FC6410 /* WBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBButton.swift; sourceTree = "<group>"; };
+		00B761FD22AE88AD00640078 /* WBLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLoginView.xib; sourceTree = "<group>"; };
+		00B761FF22AE88FC00640078 /* WBLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginView.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,9 +152,19 @@
 		0097C7BB22AAA6D50001509F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0097C7BC22AAA6E90001509F /* LoginViewController.swift */,
+				0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */,
+				00B761FD22AE88AD00640078 /* WBLoginView.xib */,
+				00B761FF22AE88FC00640078 /* WBLoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		00A73F9522AAD32500FC6410 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				00A73F9622AAD34200FC6410 /* WBButton.swift */,
+			);
+			name = CustomControls;
 			sourceTree = "<group>";
 		};
 		9D1574F81CB1B27500EA395E = {
@@ -177,6 +191,7 @@
 		9D1575031CB1B27500EA395E /* MSProject */ = {
 			isa = PBXGroup;
 			children = (
+				00A73F9522AAD32500FC6410 /* CustomControls */,
 				0097C7B622AAA38D0001509F /* Extensions */,
 				E1530D9A1ED378F9002A9002 /* Services */,
 				CEB934DE1D21A44700DF75C2 /* ConfigurationFiles */,
@@ -186,7 +201,6 @@
 				9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */,
 				9D1575101CB1B27500EA395E /* Info.plist */,
 				CEB934DC1D21992100DF75C2 /* Environment.swift */,
-				0097C7B922AAA6C40001509F /* Main.storyboard */,
 				0097C7BB22AAA6D50001509F /* Login */,
 			);
 			path = MSProject;
@@ -361,9 +375,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0097C7BA22AAA6C40001509F /* Main.storyboard in Resources */,
 				9D15750F1CB1B27500EA395E /* LaunchScreen.storyboard in Resources */,
 				9D15750C1CB1B27500EA395E /* Assets.xcassets in Resources */,
+				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,9 +443,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0097C7BD22AAA6E90001509F /* LoginViewController.swift in Sources */,
+				0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */,
+				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
 				9D1575071CB1B27500EA395E /* ViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
+				00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */,
 				E1530D9C1ED37905002A9002 /* RollbarService.swift in Sources */,
 				9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */,
 				0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */,
@@ -558,6 +574,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -673,6 +690,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Alpha;
@@ -787,6 +805,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -900,6 +919,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Production;

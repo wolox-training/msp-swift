@@ -13,4 +13,11 @@ class WBLibraryTableView: UIView, NibLoadable {
 
     @IBOutlet weak var libraryTableView: UITableView!
     
+    func configureLibraryTableView() {
+        libraryTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
+        libraryTableView.separatorStyle = .none
+        
+        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        libraryTableView.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+    }
 }

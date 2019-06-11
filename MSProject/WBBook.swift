@@ -10,13 +10,26 @@ import UIKit
 
 struct WBBook: Codable {
     
-    var bookImageURL: String?
-    var bookTitle: String?
-    var bookAuthor: String?
-
+    let id: Int
+    let title: String
+    let author: String
+    let genre: String
+    let year: String
+    let image: String
+    
     enum CodingKeys: String, CodingKey {
-        case bookImageURL
-        case bookTitle
-        case bookAuthor
+        case id
+        case title
+        case author
+        case genre
+        case year
+        case image
     }
+}
+
+struct WBBookCellViewModel {
+    
+    var bookImageURL: String
+    var bookTitle: String
+    var bookAuthor: String
 }

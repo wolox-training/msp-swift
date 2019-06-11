@@ -1,14 +1,15 @@
 //
-//  WBBookTableViewCell.swift
+//  WBBookCollectionViewCell.swift
 //  MSProject
 //
-//  Created by Matias Spinelli on 07/06/2019.
+//  Created by Matias Spinelli on 10/06/2019.
 //  Copyright © 2019 Wolox. All rights reserved.
 //
 
 import UIKit
+import WolmoCore
 
-class WBBookTableViewCell: UITableViewCell {
+class WBBookCollectionViewCell: UICollectionViewCell, NibLoadable {
 
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
@@ -17,22 +18,8 @@ class WBBookTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contentView.layer.cornerRadius = 5
-        contentView.backgroundColor = UIColor.white
-        backgroundColor = UIColor.woloxBackgroundLightColor()
-        
-        selectionStyle = .blue
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.insetBy(dx: 20.0, dy: 5.0)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+        layer.cornerRadius = 5
+        backgroundColor = UIColor.white
     }
     
     var bookCellViewModel: WBBookCellViewModel? {
@@ -47,9 +34,9 @@ class WBBookTableViewCell: UITableViewCell {
                     if urlString.hasPrefix("https://") || urlString.hasPrefix("http://") {
                         if let url = URL(string: urlString) {
                             if let data = try? Data(contentsOf: url) {
-                                   let image: UIImage = UIImage(data: data)!
+                                let image: UIImage = UIImage(data: data)!
                                 DispatchQueue.main.async {
-                                    WBBookDAO.sharedInstance.imageCache.setObject(image, forKey: NSString(string: urlString))
+                                    WBBookDAO.sharedInstance.imageCache.setObject(image, forKey: NSString(string: (self.bookCellViewModel?.bookImageURL)!))
                                     self.bookImage.image = image
                                 }
                             }
@@ -61,5 +48,4 @@ class WBBookTableViewCell: UITableViewCell {
             bookAuthor.text = bookCellViewModel?.bookAuthor
         }
     }
-    
 }

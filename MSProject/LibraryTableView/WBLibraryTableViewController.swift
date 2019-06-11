@@ -12,8 +12,11 @@ import WolmoCore
 class WBLibraryTableViewController: UIViewController {
 
     private let libraryTableView: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
-    var libraryItems: [WBBook] = []
 
+    lazy var libraryViewModel: WBLibraryViewModel = {
+        return WBLibraryViewModel()
+    }()
+    
     override func loadView() {
         view = libraryTableView
     }
@@ -21,51 +24,44 @@ class WBLibraryTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initLibraryTableViewModel()
+        
         configureTableView()
         
-        loadBooks()
+        navigationItem.title = "LIBRARY".localized() + " Table"
         
-        title = "LIBRARY".localized() + "Table"
-        
-//        let grid = UIBarButtonItem(image: UIImage(named: "grid"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(gridMode))
-//        navigationItem.rightBarButtonItem = grid
+        // Refresh Control
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
+        refreshControl.tintColor = UIColor.woloxBackgroundColor()
+        libraryTableView.libraryTableView.refreshControl = refreshControl
         
     }
 
-    /*@objc func gridMode() {
-        
-        UIView.animate(withDuration: 0.8, animations: {
-            self.view.alpha = 0.5
-        }) { _ in
-            UIView.animate(withDuration: 0.5, animations: {
-                if self.view.isKind(of: WBLibraryTableView.self) {
-                    self.view = self.libraryCollectionView
-                    self.libraryCollectionView.libraryCollectionView.reloadData()
-                } else {
-                    self.view = self.libraryTableView
-                    self.libraryTableView.libraryTableView.reloadData()
-                }
-                self.view.alpha = 1.0
-            }, completion: nil)
-        }
-    }*/
-    
     // MARK: - Private
+    private func initLibraryTableViewModel() {
+        libraryViewModel.reloadViewClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.libraryTableView.libraryTableView.reloadData()
+            }
+        }
+        
+        libraryViewModel.loadBooks()
+    }
+    
     private func configureTableView() {
         libraryTableView.libraryTableView.delegate = self
         libraryTableView.libraryTableView.dataSource = self
         
-        libraryTableView.libraryTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
-        libraryTableView.libraryTableView.separatorStyle = .none
-        
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
-        libraryTableView.libraryTableView.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        libraryTableView.configureLibraryTableView()
     }
     
     // MARK: - Services
-    private func loadBooks() {
-        libraryItems = WBBookDAO.sharedInstance.getAllBooks()
-        libraryTableView.libraryTableView.reloadData()
+    @objc private func loadBooks() {
+        libraryViewModel.loadBooks()
+        DispatchQueue.main.async {
+            self.libraryTableView.libraryTableView.refreshControl?.endRefreshing()
+        }
     }
     
 }
@@ -74,22 +70,21 @@ class WBLibraryTableViewController: UIViewController {
 extension WBLibraryTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
+        return libraryViewModel.heightOfCells
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return libraryItems.count
+        return libraryViewModel.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: WBBookTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as! WBBookTableViewCell // swiftlint:disable:this force_cast
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as? WBBookTableViewCell else {
+            fatalError("Cell not exists")
+        }
         
-        let book: WBBook = libraryItems[indexPath.row]
-        
-        cell.bookImage.image = UIImage(named: book.bookImageURL ?? "placeholder_image")
-        cell.bookTitle.text = book.bookTitle
-        cell.bookAuthor.text = book.bookAuthor
+        let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
+        cell.bookCellViewModel = cellViewModel
         
         return cell
     }
@@ -100,8 +95,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
 extension WBLibraryTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book: WBBook = libraryItems[indexPath.row]
-        print("\(book.bookTitle ?? "") \(book.bookAuthor ?? "")")
+        libraryViewModel.selectBook(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

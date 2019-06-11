@@ -16,7 +16,7 @@ class WBAddNewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "ADDNEW".localized()
+        navigationItem.title = "ADDNEW".localized()
     }
     
     override func loadView() {

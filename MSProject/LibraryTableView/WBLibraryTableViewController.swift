@@ -12,7 +12,7 @@ import WolmoCore
 class WBLibraryTableViewController: UIViewController {
 
     private let libraryTableView: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
-    private let libraryCollectionView: WBLibraryCollectionView = WBLibraryCollectionView.loadFromNib()!
+    var libraryItems: [WBBook] = []
 
     override func loadView() {
         view = libraryTableView
@@ -21,29 +21,18 @@ class WBLibraryTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        libraryTableView.configureTableView()
-        libraryCollectionView.configureCollectionView()
+        configureTableView()
         
         loadBooks()
         
-        title = "LIBRARY".localized()
+        title = "LIBRARY".localized() + "Table"
         
-        let grid = UIBarButtonItem(image: UIImage(named: "grid"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(gridMode))
-        navigationItem.rightBarButtonItem = grid
+//        let grid = UIBarButtonItem(image: UIImage(named: "grid"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(gridMode))
+//        navigationItem.rightBarButtonItem = grid
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @objc func gridMode() {
+    /*@objc func gridMode() {
         
         UIView.animate(withDuration: 0.8, animations: {
             self.view.alpha = 0.5
@@ -59,14 +48,61 @@ class WBLibraryTableViewController: UIViewController {
                 self.view.alpha = 1.0
             }, completion: nil)
         }
+    }*/
+    
+    // MARK: - Private
+    private func configureTableView() {
+        libraryTableView.libraryTableView.delegate = self
+        libraryTableView.libraryTableView.dataSource = self
+        
+        libraryTableView.libraryTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
+        libraryTableView.libraryTableView.separatorStyle = .none
+        
+        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        libraryTableView.libraryTableView.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
     
     // MARK: - Services
-    func loadBooks() {
-        libraryTableView.libraryItems = WBBookDAO.sharedInstance.getAllBooks()
+    private func loadBooks() {
+        libraryItems = WBBookDAO.sharedInstance.getAllBooks()
         libraryTableView.libraryTableView.reloadData()
-        libraryCollectionView.libraryItems = WBBookDAO.sharedInstance.getAllBooks()
-        libraryCollectionView.libraryCollectionView.reloadData()
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension WBLibraryTableViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return libraryItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: WBBookTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as! WBBookTableViewCell // swiftlint:disable:this force_cast
+        
+        let book: WBBook = libraryItems[indexPath.row]
+        
+        cell.bookImage.image = UIImage(named: book.bookImageURL ?? "placeholder_image")
+        cell.bookTitle.text = book.bookTitle
+        cell.bookAuthor.text = book.bookAuthor
+        
+        return cell
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+extension WBLibraryTableViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book: WBBook = libraryItems[indexPath.row]
+        print("\(book.bookTitle ?? "") \(book.bookAuthor ?? "")")
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

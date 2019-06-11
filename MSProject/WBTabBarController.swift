@@ -23,9 +23,11 @@ class WBTabBarController: UITabBarController {
         libraryTabNavigationController.tabBarItem.selectedImage = UIImage(named: "ic_library active")
         libraryTabNavigationController.tabBarItem.tag = 0
         
-        let wishlistNavigationController = WBNavigationController(rootViewController: WBWishlistViewController())
+//        let wishlistNavigationController = WBNavigationController(rootViewController: WBWishlistViewController())
+        let wishlistNavigationController = WBNavigationController(rootViewController: WBLibraryCollectionViewController())
         wishlistNavigationController.tabBarItem = UITabBarItem()
-        wishlistNavigationController.tabBarItem.title = "WISHLIST".localized()
+//        wishlistNavigationController.tabBarItem.title = "WISHLIST".localized()
+        wishlistNavigationController.tabBarItem.title = "LIBRARY".localized()
         wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist")
         wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist active")
         wishlistNavigationController.tabBarItem.tag = 1
@@ -54,15 +56,5 @@ class WBTabBarController: UITabBarController {
         viewControllers = [libraryTabNavigationController, wishlistNavigationController, addnewNavigationController, rentalsNavigationController, settingsNavigationController]
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

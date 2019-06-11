@@ -47,10 +47,10 @@
 		00B7626522AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
 		00B7626C22AEF23400640078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
+		00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
-		9D1575071CB1B27500EA395E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575061CB1B27500EA395E /* ViewController.swift */; };
 		9D15751A1CB1B27500EA395E /* MSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575191CB1B27500EA395E /* MSProjectTests.swift */; };
 		9D1575251CB1B27500EA395E /* MSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575241CB1B27500EA395E /* MSProjectUITests.swift */; };
 		9D6E405A1CB1B93A008CE558 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6E40551CB1B939008CE558 /* ReactiveCocoa.framework */; };
@@ -138,11 +138,11 @@
 		00B7625722AEE29B00640078 /* WBAddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewView.swift; sourceTree = "<group>"; };
 		00B7625922AEE2AC00640078 /* WBAddNewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBAddNewView.xib; sourceTree = "<group>"; };
 		00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewViewController.swift; sourceTree = "<group>"; };
+		00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1575041CB1B27500EA395E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D1575061CB1B27500EA395E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9D15750B1CB1B27500EA395E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D15750E1CB1B27500EA395E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D1575151CB1B27500EA395E /* MSProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +281,7 @@
 		00B7620D22AE990700640078 /* LibraryCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */,
 				00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */,
 				00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */,
 				00B7621A22AEA84F00640078 /* CollectionCells */,
@@ -380,7 +381,6 @@
 				00A73F9522AAD32500FC6410 /* CustomControls */,
 				0097C7B622AAA38D0001509F /* Extensions */,
 				E1530D9A1ED378F9002A9002 /* Services */,
-				9D1575061CB1B27500EA395E /* ViewController.swift */,
 				00B7620622AE8F7200640078 /* LibraryTableView */,
 				00B7620D22AE990700640078 /* LibraryCollectionView */,
 				00B761E822AAF5BA00640078 /* ViewControllers */,
@@ -649,10 +649,10 @@
 				00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */,
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
 				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
-				9D1575071CB1B27500EA395E /* ViewController.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
+				00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,
 				00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */,

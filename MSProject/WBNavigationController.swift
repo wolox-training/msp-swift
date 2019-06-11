@@ -12,8 +12,7 @@ class WBNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+
     }
     
     override init(rootViewController: UIViewController) {
@@ -33,28 +32,12 @@ class WBNavigationController: UINavigationController {
     private func woloxBookInit() {
         navigationBar.isTranslucent = true
         navigationBar.tintColor = UIColor.white
-//        navigationBar.barStyle = .default
+        navigationBar.barStyle = .default
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
         navigationBar.backgroundColor = UIColor.woloxBackgroundLightColor()
         navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
-
-        if #available(iOS 11, *) {
-            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            navigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        }
-
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

@@ -17,7 +17,6 @@ class WBBookCollectionViewCell: UICollectionViewCell, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         layer.cornerRadius = 5
         backgroundColor = UIColor.white

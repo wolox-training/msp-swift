@@ -30,6 +30,10 @@ class WBLibraryCollectionViewController: UIViewController {
         
         navigationItem.title = "LIBRARY".localized() + " Collection"
         
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
@@ -93,8 +97,11 @@ extension WBLibraryCollectionViewController: UICollectionViewDataSource {
 extension WBLibraryCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        libraryViewModel.selectBook(at: indexPath)
+        let book = libraryViewModel.selectBook(at: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
+        let detailBookViewController = WBDetailBookViewController()
+        detailBookViewController.bookView = book
+        navigationController?.pushViewController(detailBookViewController, animated: true)
     }
     
 }

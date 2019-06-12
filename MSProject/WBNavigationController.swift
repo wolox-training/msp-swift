@@ -38,6 +38,11 @@ class WBNavigationController: UINavigationController {
         navigationBar.backgroundColor = UIColor.woloxBackgroundLightColor()
         navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
+        
+        let backImage = UIImage(named: "ic_back")
+        navigationBar.backIndicatorImage = backImage
+        navigationBar.backIndicatorTransitionMaskImage = backImage
+
     }
 
 }

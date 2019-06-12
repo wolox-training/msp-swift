@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol WBBooksProtocol {
+    func booksSucess(books: [WBBook])
+    func booksFailue(error: Error)
+}
+
 class WBBookDAO: NSObject {
     
     public static let sharedInstance = WBBookDAO()
@@ -15,29 +20,29 @@ class WBBookDAO: NSObject {
     override init() {}
 
     let imageCache = NSCache<NSString, UIImage>()
+    
+    var libraryBooks: [WBBook] = []
 
-//    func getAllBooks() -> [WBBook] {
-//        var array: [WBBook] = []
-//
-//        let bookOne = WBBook(bookImageURL: "img_book1", bookTitle: "TITLE 1", bookAuthor: "AUTHOR 1")
-//        array.append(bookOne)
-//
-//        let bookTwo = WBBook(bookImageURL: "img_book2", bookTitle: "TITLE 2", bookAuthor: "AUTHOR 2")
-//        array.append(bookTwo)
-//
-//        let bookThree = WBBook(bookImageURL: "img_book3", bookTitle: "TITLE 3", bookAuthor: "AUTHOR 3")
-//        array.append(bookThree)
-//
-//        let bookFour = WBBook(bookImageURL: "img_book4", bookTitle: "TITLE 4", bookAuthor: "AUTHOR 4")
-//        array.append(bookFour)
-//
-//        let bookFive = WBBook(bookImageURL: "img_book5", bookTitle: "TITLE 5", bookAuthor: "AUTHOR 5")
-//        array.append(bookFive)
-//
-//        let bookSix = WBBook(bookImageURL: "img_book6", bookTitle: "TITLE 6", bookAuthor: "AUTHOR 6")
-//        array.append(bookSix)
-//
-//        return array
-//    }
-
+    func getAllBooks(delegate: WBBooksProtocol) {
+        
+        if !libraryBooks.isEmpty {
+            delegate.booksSucess(books: libraryBooks)
+        }
+        
+        let sucessBooks: ([WBBook]) -> Void = { books in
+            self.libraryBooks = books
+            delegate.booksSucess(books: self.libraryBooks)
+        }
+        
+        let failureBooks: (Error) -> Void = { error in
+            delegate.booksFailue(error: error)
+        }
+        
+        WBNetworkManager.manager.fetchBooks(onSuccess: sucessBooks, onError: failureBooks)
+    }
+    
+    func sortBooks(books: [WBBook]) -> [WBBook] {
+        return books.sorted(by: { $0.id < $1.id })
+    }
+    
 }

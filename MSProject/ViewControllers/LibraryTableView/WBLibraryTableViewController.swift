@@ -17,6 +17,9 @@ class WBLibraryTableViewController: UIViewController {
         return WBLibraryViewModel()
     }()
     
+    var cellSelected: WBBookTableViewCell!
+    var rectOfCellSelected: CGRect!
+    
     override func loadView() {
         view = libraryTableView
     }
@@ -29,6 +32,17 @@ class WBLibraryTableViewController: UIViewController {
         configureTableView()
         
         navigationItem.title = "LIBRARY".localized() + " Table"
+        
+        let sort = UIBarButtonItem(image: UIImage(named: "sort"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        let search = UIBarButtonItem(image: UIImage(named: "ic_search"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [sort, search]
+
+        navigationController?.delegate = self
+        
+        // molesta tener que agregar esto en todos los vc... grrr...
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         
         // Refresh Control
         let refreshControl = UIRefreshControl()
@@ -93,10 +107,35 @@ extension WBLibraryTableViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension WBLibraryTableViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        libraryViewModel.selectBook(at: indexPath)
+        //set the selected cell and calculate the frame rect just for animation
+        cellSelected = tableView.cellForRow(at: indexPath) as? WBBookTableViewCell
+        let rectOfCell = tableView.rectForRow(at: indexPath)
+        rectOfCellSelected = tableView.convert(rectOfCell, to: tableView.superview)
+
+        let book = libraryViewModel.selectBook(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
+        let detailBookViewController = WBDetailBookViewController()
+        detailBookViewController.bookView = book
+        navigationController?.pushViewController(detailBookViewController, animated: true)
     }
     
+}
+
+extension WBLibraryTableViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        let arrengedFrame = CGRect(x: rectOfCellSelected.origin.x + cellSelected.contentView.frame.origin.x + cellSelected.bookImage.frame.origin.x,
+                                   y: rectOfCellSelected.origin.y + cellSelected.bookImage.frame.origin.y + cellSelected.contentView.frame.origin.y,
+                                   width: cellSelected.bookImage.frame.size.width,
+                                   height: cellSelected.bookImage.frame.size.height)
+        
+        switch operation {
+        case .push:
+            return Transition(isPresenting: true, originFrame: arrengedFrame, transitionImage: cellSelected.bookImage.image ?? UIImage(named: "book_noun_001_01679")!)
+        default:
+            return Transition(isPresenting: false, originFrame: arrengedFrame, transitionImage: cellSelected.bookImage.image ?? UIImage(named: "book_noun_001_01679")!)
+        }
+    }
 }

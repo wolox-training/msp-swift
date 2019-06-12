@@ -33,21 +33,39 @@ class WBLibraryViewModel {
     }
     
     func loadBooks() {
-        WBNetworkManager.manager.fetchBooks(onSuccess: { (books) in
-            self.libraryItems = books.sorted(by: { $0.id < $1.id })
-            self.cellViewModels = [] //clear array
-            for book in self.libraryItems {
-                self.cellViewModels.append(WBBookCellViewModel(bookImageURL: book.image, bookTitle: book.title, bookAuthor: book.author))
-            }
+        
+        // animation
+        // load books
+        WBBookDAO.sharedInstance.getAllBooks(delegate: self)
+    }
+    
+    func selectBook(at indexPath: IndexPath) -> WBBookCellViewModel {
+        let book = cellViewModels[indexPath.row]
+        print("\(book.bookTitle) - \(book.bookAuthor)")
+        return book
+    }
+    
+}
 
-        }) { (error) in
-            print(error)
+// MARK: - WBBooksProtocol
+extension WBLibraryViewModel: WBBooksProtocol {
+    func booksSucess(books: [WBBook]) {
+        //stop animation
+        
+        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: books)
+        self.cellViewModels = [] //clear array
+        for book in self.libraryItems {
+            self.cellViewModels.append(WBBookCellViewModel(bookId: String(book.id), bookTitle: book.title, bookAuthor: book.author, bookGenre: book.genre, bookYear: book.year, bookImageURL: book.image))
         }
+    }
+    
+    func booksFailue(error: Error) {
+        // stop animation
+        
+        print(error)
+        
+        // show alert
         
     }
     
-    func selectBook(at indexPath: IndexPath) {
-        let book = cellViewModels[indexPath.row]
-        print("\(book.bookTitle) \(book.bookAuthor)")
-    }
 }

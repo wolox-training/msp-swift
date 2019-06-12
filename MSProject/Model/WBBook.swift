@@ -29,7 +29,10 @@ struct WBBook: Codable {
 
 struct WBBookCellViewModel {
     
-    var bookImageURL: String
+    var bookId: String
     var bookTitle: String
     var bookAuthor: String
+    var bookGenre: String
+    var bookYear: String
+    var bookImageURL: String
 }

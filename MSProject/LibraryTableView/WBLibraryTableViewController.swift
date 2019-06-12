@@ -11,11 +11,11 @@ import WolmoCore
 
 class WBLibraryTableViewController: UIViewController {
 
-    private let libraryTableView: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
+    private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
     var libraryItems: [WBBook] = []
 
     override func loadView() {
-        view = libraryTableView
+        view = _view
     }
     
     override func viewDidLoad() {
@@ -52,20 +52,20 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Private
     private func configureTableView() {
-        libraryTableView.libraryTableView.delegate = self
-        libraryTableView.libraryTableView.dataSource = self
+        _view.bookTable.delegate = self
+        _view.bookTable.dataSource = self
         
-        libraryTableView.libraryTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
-        libraryTableView.libraryTableView.separatorStyle = .none
+        _view.bookTable.backgroundColor = .woloxBackgroundLightColor()
+        _view.bookTable.separatorStyle = .none
         
         let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
-        libraryTableView.libraryTableView.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
     
     // MARK: - Services
     private func loadBooks() {
         libraryItems = WBBookDAO.sharedInstance.getAllBooks()
-        libraryTableView.libraryTableView.reloadData()
+        _view.bookTable.reloadData()
     }
     
 }

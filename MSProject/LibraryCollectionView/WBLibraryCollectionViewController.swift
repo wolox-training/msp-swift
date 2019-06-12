@@ -11,11 +11,11 @@ import WolmoCore
 
 class WBLibraryCollectionViewController: UIViewController {
 
-    private let libraryCollectionView: WBLibraryCollectionView = WBLibraryCollectionView.loadFromNib()!
+    private let _view: WBLibraryCollectionView = WBLibraryCollectionView.loadFromNib()!
     var libraryItems: [WBBook] = []
     
     override func loadView() {
-        view = libraryCollectionView
+        view = _view
     }
     
     override func viewDidLoad() {
@@ -30,19 +30,19 @@ class WBLibraryCollectionViewController: UIViewController {
     
     // MARK: - Private
     private func configureCollectionView() {
-        libraryCollectionView.libraryCollectionView.delegate = self
-        libraryCollectionView.libraryCollectionView.dataSource = self
+        _view.bookCollection.delegate = self
+        _view.bookCollection.dataSource = self
         
-        libraryCollectionView.libraryCollectionView.backgroundColor = UIColor.woloxBackgroundLightColor()
+        _view.bookCollection.backgroundColor = .woloxBackgroundLightColor()
         
         let nib = UINib.init(nibName: "WBBookCollectionViewCell", bundle: nil)
-        libraryCollectionView.libraryCollectionView.register(nib, forCellWithReuseIdentifier: "WBBookCollectionViewCell")
+        _view.bookCollection.register(nib, forCellWithReuseIdentifier: "WBBookCollectionViewCell")
     }
     
     // MARK: - Services
     private func loadBooks() {
         libraryItems = WBBookDAO.sharedInstance.getAllBooks()
-        libraryCollectionView.libraryCollectionView.reloadData()
+        _view.bookCollection.reloadData()
     }
     
 }

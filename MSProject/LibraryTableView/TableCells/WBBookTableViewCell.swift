@@ -19,7 +19,7 @@ class WBBookTableViewCell: UITableViewCell {
         
         contentView.layer.cornerRadius = 5
         contentView.backgroundColor = UIColor.white
-        backgroundColor = UIColor.woloxBackgroundLightColor()
+        backgroundColor = .woloxBackgroundLightColor()
         
         selectionStyle = .blue
     }

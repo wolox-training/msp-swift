@@ -11,7 +11,7 @@ import WolmoCore
 
 class WBSettingsViewController: UIViewController {
 
-    private let settingsView: WBSettingsView = WBSettingsView.loadFromNib()!
+    private let _view: WBSettingsView = WBSettingsView.loadFromNib()!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class WBSettingsViewController: UIViewController {
     }
     
     override func loadView() {
-        view = settingsView
+        view = _view
     }
 
 }

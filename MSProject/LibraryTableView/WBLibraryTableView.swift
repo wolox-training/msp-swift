@@ -11,6 +11,6 @@ import WolmoCore
 
 class WBLibraryTableView: UIView, NibLoadable {
 
-    @IBOutlet weak var libraryTableView: UITableView!
+    @IBOutlet weak var bookTable: UITableView!
     
 }

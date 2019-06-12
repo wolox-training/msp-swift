@@ -11,7 +11,7 @@ import WolmoCore
 
 class WBRentalsViewController: UIViewController {
 
-    private let rentalsView: WBRentalsView = WBRentalsView.loadFromNib()!
+    private let _view: WBRentalsView = WBRentalsView.loadFromNib()!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class WBRentalsViewController: UIViewController {
     }
     
     override func loadView() {
-        view = rentalsView
+        view = _view
     }
 
 }

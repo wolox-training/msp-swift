@@ -35,7 +35,7 @@ class WBNavigationController: UINavigationController {
         navigationBar.barStyle = .default
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
-        navigationBar.backgroundColor = UIColor.woloxBackgroundLightColor()
+        navigationBar.backgroundColor = .woloxBackgroundLightColor()
         navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
     }

@@ -12,12 +12,12 @@ class WBLibraryViewModel {
     
     var libraryItems: [WBBook] = []
 
-    private var cellViewModels: [WBBookCellViewModel] = [WBBookCellViewModel]() {
+    private var cellViewModels: [WBBookViewModel] = [WBBookViewModel]() {
         didSet {
             self.reloadViewClosure?()
         }
     }
-
+    
     var numberOfCells: Int {
         return cellViewModels.count
     }
@@ -27,19 +27,17 @@ class WBLibraryViewModel {
     }
     
     var reloadViewClosure: (() -> Void)?
+    var showAlertClosure: ((Error) -> Void)?
 
-    func getCellViewModel(at indexPath: IndexPath) -> WBBookCellViewModel {
+    func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
         return cellViewModels[indexPath.row]
     }
     
     func loadBooks() {
-        
-        // animation
-        // load books
         WBBookDAO.sharedInstance.getAllBooks(delegate: self)
     }
     
-    func selectBook(at indexPath: IndexPath) -> WBBookCellViewModel {
+    func selectBook(at indexPath: IndexPath) -> WBBookViewModel {
         let book = cellViewModels[indexPath.row]
         print("\(book.bookTitle) - \(book.bookAuthor)")
         return book
@@ -50,22 +48,15 @@ class WBLibraryViewModel {
 // MARK: - WBBooksProtocol
 extension WBLibraryViewModel: WBBooksProtocol {
     func booksSucess(books: [WBBook]) {
-        //stop animation
-        
-        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: books)
+        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: books, by: .id)
         self.cellViewModels = [] //clear array
         for book in self.libraryItems {
-            self.cellViewModels.append(WBBookCellViewModel(bookId: String(book.id), bookTitle: book.title, bookAuthor: book.author, bookGenre: book.genre, bookYear: book.year, bookImageURL: book.image))
+            self.cellViewModels.append(WBBookViewModel(book: book))
         }
     }
     
     func booksFailue(error: Error) {
-        // stop animation
-        
-        print(error)
-        
-        // show alert
-        
+        self.showAlertClosure?(error)
     }
     
 }

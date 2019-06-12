@@ -13,6 +13,14 @@ protocol WBBooksProtocol {
     func booksFailue(error: Error)
 }
 
+enum SortMethod {
+    case id
+    case title
+    case author
+    case genre
+    case year
+}
+
 class WBBookDAO: NSObject {
     
     public static let sharedInstance = WBBookDAO()
@@ -25,10 +33,11 @@ class WBBookDAO: NSObject {
 
     func getAllBooks(delegate: WBBooksProtocol) {
         
-        if !libraryBooks.isEmpty {
+        guard libraryBooks.isEmpty else {
             delegate.booksSucess(books: libraryBooks)
+            return
         }
-        
+
         let sucessBooks: ([WBBook]) -> Void = { books in
             self.libraryBooks = books
             delegate.booksSucess(books: self.libraryBooks)
@@ -41,8 +50,31 @@ class WBBookDAO: NSObject {
         WBNetworkManager.manager.fetchBooks(onSuccess: sucessBooks, onError: failureBooks)
     }
     
-    func sortBooks(books: [WBBook]) -> [WBBook] {
-        return books.sorted(by: { $0.id < $1.id })
+    func sortBooks(books: [WBBook], by sortMethod: SortMethod) -> [WBBook] {
+        switch sortMethod {
+        case .id:
+            return books.sorted(by: { $0.id < $1.id })
+        case .title:
+            return books.sorted(by: { $0.title < $1.title })
+        case .author:
+            return books.sorted(by: { $0.author < $1.author })
+        case .genre:
+            return books.sorted(by: { $0.genre < $1.genre })
+        case .year:
+            return books.sorted(by: { $0.year < $1.year })
+        }
     }
     
+    func rentBook(book: WBBook) {
+        
+        let sucessRented: (WBRent) -> Void = { books in
+
+        }
+        
+        let failureRented: (Error) -> Void = { error in
+
+        }
+        
+        WBNetworkManager.manager.rentBook(book: book, onSuccess: sucessRented, onError: failureRented)
+    }
 }

@@ -30,4 +30,8 @@ class WBButton: UIButton {
         }
     }
     
+    // status disabled
+        // bakcground color = lightgray
+        // title color = white
+        // border line color = lightgray
 }

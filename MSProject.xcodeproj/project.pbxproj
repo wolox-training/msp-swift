@@ -54,6 +54,13 @@
 		00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7627E22B03AD300640078 /* WBDetailBookView.xib */; };
 		00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628022B03AF200640078 /* WBDetailBookViewController.swift */; };
 		00B7628322B12CD400640078 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628222B12CD400640078 /* Transition.swift */; };
+		00B7628922B161C400640078 /* TTLoadingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628622B161C300640078 /* TTLoadingHUDView.swift */; };
+		00B7628A22B161C400640078 /* TTLoadingHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628722B161C400640078 /* TTLoadingHUDView.xib */; };
+		00B7628B22B161C400640078 /* TTHUDAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628822B161C400640078 /* TTHUDAssets.xcassets */; };
+		00B7628F22B172B800640078 /* WBDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628D22B172B800640078 /* WBDetailBookTableViewCell.swift */; };
+		00B7629022B172B800640078 /* WBDetailBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628E22B172B800640078 /* WBDetailBookTableViewCell.xib */; };
+		00B7629222B1785E00640078 /* UIImageView+Wolox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629122B1785E00640078 /* UIImageView+Wolox.swift */; };
+		00B7629422B197C000640078 /* WBRent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629322B197C000640078 /* WBRent.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -112,7 +119,7 @@
 		00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryTableViewController.swift; sourceTree = "<group>"; };
 		00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookTableViewCell.swift; sourceTree = "<group>"; };
 		00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookTableViewCell.xib; sourceTree = "<group>"; };
-		00B761F222AAFBD800640078 /* WBBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WBBook.swift; path = Model/WBBook.swift; sourceTree = "<group>"; };
+		00B761F222AAFBD800640078 /* WBBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBook.swift; sourceTree = "<group>"; };
 		00B761F422AAFC2000640078 /* WBBookDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDAO.swift; sourceTree = "<group>"; };
 		00B761FD22AE88AD00640078 /* WBLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLoginView.xib; sourceTree = "<group>"; };
 		00B761FF22AE88FC00640078 /* WBLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginView.swift; sourceTree = "<group>"; };
@@ -151,6 +158,13 @@
 		00B7627E22B03AD300640078 /* WBDetailBookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookView.xib; sourceTree = "<group>"; };
 		00B7628022B03AF200640078 /* WBDetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookViewController.swift; sourceTree = "<group>"; };
 		00B7628222B12CD400640078 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		00B7628622B161C300640078 /* TTLoadingHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTLoadingHUDView.swift; sourceTree = "<group>"; };
+		00B7628722B161C400640078 /* TTLoadingHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTLoadingHUDView.xib; sourceTree = "<group>"; };
+		00B7628822B161C400640078 /* TTHUDAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TTHUDAssets.xcassets; sourceTree = "<group>"; };
+		00B7628D22B172B800640078 /* WBDetailBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookTableViewCell.swift; sourceTree = "<group>"; };
+		00B7628E22B172B800640078 /* WBDetailBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookTableViewCell.xib; sourceTree = "<group>"; };
+		00B7629122B1785E00640078 /* UIImageView+Wolox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Wolox.swift"; sourceTree = "<group>"; };
+		00B7629322B197C000640078 /* WBRent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRent.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */,
+				00B7629122B1785E00640078 /* UIImageView+Wolox.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -236,6 +251,7 @@
 		00A73F9522AAD32500FC6410 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
+				00B7628522B161B500640078 /* TTLoadingView */,
 				00A73F9622AAD34200FC6410 /* WBButton.swift */,
 				00B7621B22AEA95600640078 /* WBNavigationController.swift */,
 				00B7623B22AED71000640078 /* WBTabBarController.swift */,
@@ -263,8 +279,9 @@
 			isa = PBXGroup;
 			children = (
 				00B761F222AAFBD800640078 /* WBBook.swift */,
+				00B7629322B197C000640078 /* WBRent.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		00B761EC22AAF67100640078 /* TableCells */ = {
@@ -392,8 +409,28 @@
 				00B7628022B03AF200640078 /* WBDetailBookViewController.swift */,
 				00B7627C22B03ABF00640078 /* WBDetailBookView.swift */,
 				00B7627E22B03AD300640078 /* WBDetailBookView.xib */,
+				00B7628C22B1727B00640078 /* TableCells */,
 			);
 			path = DetailBook;
+			sourceTree = "<group>";
+		};
+		00B7628522B161B500640078 /* TTLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				00B7628822B161C400640078 /* TTHUDAssets.xcassets */,
+				00B7628622B161C300640078 /* TTLoadingHUDView.swift */,
+				00B7628722B161C400640078 /* TTLoadingHUDView.xib */,
+			);
+			path = TTLoadingView;
+			sourceTree = "<group>";
+		};
+		00B7628C22B1727B00640078 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				00B7628D22B172B800640078 /* WBDetailBookTableViewCell.swift */,
+				00B7628E22B172B800640078 /* WBDetailBookTableViewCell.xib */,
+			);
+			path = TableCells;
 			sourceTree = "<group>";
 		};
 		9D1574F81CB1B27500EA395E = {
@@ -613,7 +650,9 @@
 				00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */,
 				00B761E722AAF55800640078 /* Colors.xcassets in Resources */,
 				00B7624C22AEE1C700640078 /* WBRentalsView.xib in Resources */,
+				00B7629022B172B800640078 /* WBDetailBookTableViewCell.xib in Resources */,
 				00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */,
+				00B7628A22B161C400640078 /* TTLoadingHUDView.xib in Resources */,
 				00B7625322AEE23E00640078 /* WBSettingsView.xib in Resources */,
 				00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */,
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
@@ -621,6 +660,7 @@
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
 				00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */,
+				00B7628B22B161C400640078 /* TTHUDAssets.xcassets in Resources */,
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
@@ -695,6 +735,8 @@
 				0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */,
 				00B761F522AAFC2000640078 /* WBBookDAO.swift in Sources */,
 				00B761F322AAFBD800640078 /* WBBook.swift in Sources */,
+				00B7628922B161C400640078 /* TTLoadingHUDView.swift in Sources */,
+				00B7629422B197C000640078 /* WBRent.swift in Sources */,
 				00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */,
 				00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */,
 				00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */,
@@ -704,12 +746,14 @@
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
+				00B7629222B1785E00640078 /* UIImageView+Wolox.swift in Sources */,
 				00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */,
 				00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,
 				00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */,
 				00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */,
+				00B7628F22B172B800640078 /* WBDetailBookTableViewCell.swift in Sources */,
 				E1530D9C1ED37905002A9002 /* RollbarService.swift in Sources */,
 				00B761EF22AAF97E00640078 /* WBBookTableViewCell.swift in Sources */,
 				00B7624222AEE06400640078 /* WBWishlistView.swift in Sources */,

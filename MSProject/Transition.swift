@@ -26,7 +26,7 @@ class Transition: NSObject, UIViewControllerAnimatedTransitioning {
 	
 	func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
 		
-		let duration = transitionDuration(using: transitionContext)
+		let duration = 1.5//transitionDuration(using: transitionContext)
 		
 		let container = transitionContext.containerView
 		
@@ -51,15 +51,17 @@ class Transition: NSObject, UIViewControllerAnimatedTransitioning {
 		toView.alpha = isPresenting ? 0 : 1
 		toView.layoutIfNeeded()
 		
+        let finishedTransition: (Bool) -> Void = { (finished) in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transitionImageView.removeFromSuperview()
+            artwork.alpha = 1
+        }
+        
 		UIView.animate(withDuration: duration, animations: {
 			transitionImageView.frame = self.isPresenting ? artwork.frame : self.originFrame
 			detailView.frame = self.isPresenting ? fromView.frame : CGRect(x: toView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height)
 			detailView.alpha = self.isPresenting ? 1 : 0
-		}, completion: { (finished) in
-			transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-			transitionImageView.removeFromSuperview()
-			artwork.alpha = 1
-		})
+        }, completion: finishedTransition)
 	}
 	
 }

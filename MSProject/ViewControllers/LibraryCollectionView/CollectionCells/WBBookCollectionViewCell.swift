@@ -22,28 +22,9 @@ class WBBookCollectionViewCell: UICollectionViewCell, NibLoadable {
         backgroundColor = .white
     }
     
-    var bookCellViewModel: WBBookCellViewModel? {
+    var bookCellViewModel: WBBookViewModel? {
         didSet {
-            self.bookImage.image = UIImage(named: "book_noun_001_01679")
-            if let cachedImage = WBBookDAO.sharedInstance.imageCache.object(forKey: NSString(string: (self.bookCellViewModel?.bookImageURL)!)) {
-                DispatchQueue.main.async {
-                    self.bookImage.image = cachedImage
-                }
-            } else {
-                if let urlString = self.bookCellViewModel?.bookImageURL {
-                    if urlString.hasPrefix("https://") || urlString.hasPrefix("http://") {
-                        if let url = URL(string: urlString) {
-                            if let data = try? Data(contentsOf: url) {
-                                let image: UIImage = UIImage(data: data)!
-                                DispatchQueue.main.async {
-                                    WBBookDAO.sharedInstance.imageCache.setObject(image, forKey: NSString(string: (self.bookCellViewModel?.bookImageURL)!))
-                                    self.bookImage.image = image
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            bookImage.loadImageUsingCache(withUrl: bookCellViewModel?.bookImageURL ?? "")
             bookTitle.text = bookCellViewModel?.bookTitle
             bookAuthor.text = bookCellViewModel?.bookAuthor
         }

@@ -16,31 +16,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-To-Qs3">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="99" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m0a-60-rOS">
-                    <rect key="frame" x="20" y="92" width="73" height="108"/>
+                    <rect key="frame" x="50" y="68" width="73" height="108"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="73" id="TQc-Ak-0zV"/>
                         <constraint firstAttribute="height" constant="108" id="aVo-Hy-8xq"/>
                     </constraints>
                 </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-To-Qs3">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tSb-To-Qs3" secondAttribute="bottom" id="KVp-rQ-6Oq"/>
-                <constraint firstItem="m0a-60-rOS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="48" id="P1r-i2-Syl"/>
+                <constraint firstItem="m0a-60-rOS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="P1r-i2-Syl"/>
                 <constraint firstItem="tSb-To-Qs3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ZJv-jJ-oqy"/>
-                <constraint firstItem="m0a-60-rOS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dRx-Bn-irm"/>
+                <constraint firstItem="m0a-60-rOS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="dRx-Bn-irm"/>
                 <constraint firstItem="tSb-To-Qs3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hPA-xe-8rI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSb-To-Qs3" secondAttribute="trailing" id="yGD-sU-WY2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="bookImageView" destination="m0a-60-rOS" id="SSB-xm-hNZ"/>
-                <outlet property="detailTableView" destination="tSb-To-Qs3" id="5SD-sP-2vZ"/>
+                <outlet property="detailTable" destination="tSb-To-Qs3" id="rpt-bt-y6d"/>
             </connections>
             <point key="canvasLocation" x="71.014492753623188" y="39.508928571428569"/>
         </view>

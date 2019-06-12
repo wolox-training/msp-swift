@@ -12,11 +12,12 @@ import WolmoCore
 class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
-    var libraryItems: [WBBook] = []
 
     lazy var libraryViewModel: WBLibraryViewModel = {
         return WBLibraryViewModel()
     }()
+    
+    var libraryItems: [WBBook] = []
     
     var cellSelected: WBBookTableViewCell!
     var rectOfCellSelected: CGRect!
@@ -55,12 +56,25 @@ class WBLibraryTableViewController: UIViewController {
 
     // MARK: - Private
     private func initLibraryTableViewModel() {
+       
+        libraryViewModel.showAlertClosure = { [weak self] (error) in
+            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            DispatchQueue.main.async {
+                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(okButton)
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
         libraryViewModel.reloadViewClosure = { [weak self] () in
+            TTLoadingHUDView.sharedView.hideViewWithSuccess()
             DispatchQueue.main.async {
                 self?._view.bookTable.reloadData()
             }
         }
         
+        TTLoadingHUDView.sharedView.showLoading(inView: _view)
         libraryViewModel.loadBooks()
     }
     
@@ -73,6 +87,7 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
+        TTLoadingHUDView.sharedView.showLoading(inView: _view)
         libraryViewModel.loadBooks()
         DispatchQueue.main.async {
             self._view.bookTable.refreshControl?.endRefreshing()

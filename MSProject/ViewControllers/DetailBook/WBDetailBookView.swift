@@ -13,11 +13,13 @@ class WBDetailBookView: UIView, NibLoadable {
 
     @IBOutlet weak var bookImageView: UIImageView!
     
-    @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var detailTable: UITableView!
     
     func configureDetailTableView() {
-        detailTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
-        detailTableView.separatorStyle = .none
+        detailTable.backgroundColor = .woloxBackgroundLightColor()
+        detailTable.separatorStyle = .none
         
+        let nib = UINib.init(nibName: "WBDetailBookTableViewCell", bundle: nil)
+        detailTable.register(nib, forCellReuseIdentifier: "WBDetailBookTableViewCell")
     }
 }

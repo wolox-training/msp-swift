@@ -12,7 +12,9 @@ import WolmoCore
 
 class WBLoginView: UIView, NibLoadable {
     
+    weak var delegate: WBLoginViewController?
+    
     @IBAction func loginWithGoogle(_ sender: Any) {
-        print("Login with Google")
+        delegate?.loginWithGoogle(sender)
     }
 }

@@ -13,25 +13,33 @@ class WBLoginViewController: UIViewController {
     private let loginView: WBLoginView = WBLoginView.loadFromNib()!
     
     override func loadView() {
+        loginView.delegate = self
         view = loginView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    @IBAction func loginWithGoogle(_ sender: Any) {
+        let tabBarController = WBTabBarController()
+        tabBarController.modalTransitionStyle = .flipHorizontal
+        present(tabBarController, animated: true, completion: nil)
     }
-    */
-
 }

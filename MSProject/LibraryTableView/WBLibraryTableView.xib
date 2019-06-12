@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="hA7-fV-5nC" customClass="WBLibraryTableView" customModule="MSProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pdO-SG-7O5">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="leading" secondItem="6C8-tT-nA1" secondAttribute="leading" id="NbW-uB-MSZ"/>
+                <constraint firstItem="6C8-tT-nA1" firstAttribute="bottom" secondItem="pdO-SG-7O5" secondAttribute="bottom" id="O9U-8V-4N9"/>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="top" secondItem="6C8-tT-nA1" secondAttribute="top" id="OJ2-ig-5Pu"/>
+                <constraint firstItem="6C8-tT-nA1" firstAttribute="trailing" secondItem="pdO-SG-7O5" secondAttribute="trailing" id="mw4-xh-vyf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="6C8-tT-nA1"/>
+            <connections>
+                <outlet property="bookTable" destination="pdO-SG-7O5" id="O8B-aO-Svr"/>
+            </connections>
+            <point key="canvasLocation" x="-374" y="-123"/>
+        </view>
+    </objects>
+</document>

@@ -1,7 +1,8 @@
 disabled_rules:
   - trailing_whitespace
-  - function_body_length
   - line_length
+  - type_body_length
+  - file_length
 excluded:
   - Carthage
   - MSProjectTests

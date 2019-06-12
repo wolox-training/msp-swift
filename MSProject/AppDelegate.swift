@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if Environment.isTestTarget {
             return true
         }
@@ -31,8 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NetworkActivityLogger.shared.level = .debug
 //        NetworkActivityLogger.shared.startLogging()
         
+        let loginViewController = WBLoginViewController()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = WBLoginViewController()
+        window?.rootViewController = loginViewController
         window?.makeKeyAndVisible()
         
         return true

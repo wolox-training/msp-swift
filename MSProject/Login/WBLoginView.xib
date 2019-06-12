@@ -50,7 +50,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="loginWithGoogle:" destination="Cxc-Pn-VBs" eventType="touchUpInside" id="NUE-ck-5tG"/>
+                        <action selector="loginWithGoogle:" destination="Cxc-Pn-VBs" eventType="touchUpInside" id="oyz-NI-Dh8"/>
                     </connections>
                 </button>
             </subviews>

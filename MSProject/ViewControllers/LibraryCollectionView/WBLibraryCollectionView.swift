@@ -11,6 +11,6 @@ import WolmoCore
 
 class WBLibraryCollectionView: UIView, NibLoadable {
 
-    @IBOutlet weak var libraryCollectionView: UICollectionView!
+    @IBOutlet weak var bookCollection: UICollectionView!
 
 }

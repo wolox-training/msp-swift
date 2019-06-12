@@ -11,13 +11,13 @@ import WolmoCore
 
 class WBLibraryTableView: UIView, NibLoadable {
 
-    @IBOutlet weak var libraryTableView: UITableView!
+    @IBOutlet weak var bookTable: UITableView!
     
     func configureLibraryTableView() {
-        libraryTableView.backgroundColor = UIColor.woloxBackgroundLightColor()
-        libraryTableView.separatorStyle = .none
+        bookTable.backgroundColor = .woloxBackgroundLightColor()
+        bookTable.separatorStyle = .none
         
         let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
-        libraryTableView.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
 }

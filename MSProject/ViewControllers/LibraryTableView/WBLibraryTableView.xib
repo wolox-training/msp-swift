@@ -31,7 +31,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="6C8-tT-nA1"/>
             <connections>
-                <outlet property="libraryTableView" destination="pdO-SG-7O5" id="Hol-NK-FIb"/>
+                <outlet property="bookTable" destination="pdO-SG-7O5" id="O8B-aO-Svr"/>
             </connections>
             <point key="canvasLocation" x="-374" y="-123"/>
         </view>

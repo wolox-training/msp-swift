@@ -11,7 +11,8 @@ import WolmoCore
 
 class WBLibraryTableViewController: UIViewController {
 
-    private let libraryTableView: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
+    private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
+    var libraryItems: [WBBook] = []
 
     lazy var libraryViewModel: WBLibraryViewModel = {
         return WBLibraryViewModel()
@@ -21,7 +22,7 @@ class WBLibraryTableViewController: UIViewController {
     var rectOfCellSelected: CGRect!
     
     override func loadView() {
-        view = libraryTableView
+        view = _view
     }
     
     override func viewDidLoad() {
@@ -47,8 +48,8 @@ class WBLibraryTableViewController: UIViewController {
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
-        refreshControl.tintColor = UIColor.woloxBackgroundColor()
-        libraryTableView.libraryTableView.refreshControl = refreshControl
+        refreshControl.tintColor = .woloxBackgroundColor()
+        _view.bookTable.refreshControl = refreshControl
         
     }
 
@@ -56,7 +57,7 @@ class WBLibraryTableViewController: UIViewController {
     private func initLibraryTableViewModel() {
         libraryViewModel.reloadViewClosure = { [weak self] () in
             DispatchQueue.main.async {
-                self?.libraryTableView.libraryTableView.reloadData()
+                self?._view.bookTable.reloadData()
             }
         }
         
@@ -64,17 +65,17 @@ class WBLibraryTableViewController: UIViewController {
     }
     
     private func configureTableView() {
-        libraryTableView.libraryTableView.delegate = self
-        libraryTableView.libraryTableView.dataSource = self
+        _view.bookTable.delegate = self
+        _view.bookTable.dataSource = self
         
-        libraryTableView.configureLibraryTableView()
+        _view.configureLibraryTableView()
     }
     
     // MARK: - Services
     @objc private func loadBooks() {
         libraryViewModel.loadBooks()
         DispatchQueue.main.async {
-            self.libraryTableView.libraryTableView.refreshControl?.endRefreshing()
+            self._view.bookTable.refreshControl?.endRefreshing()
         }
     }
     

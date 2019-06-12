@@ -36,7 +36,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="libraryCollectionView" destination="pHK-7y-ZhK" id="R8B-Ce-5Xt"/>
+                <outlet property="bookCollection" destination="pHK-7y-ZhK" id="Sfi-Qo-Rfw"/>
             </connections>
             <point key="canvasLocation" x="-307" y="42"/>
         </view>

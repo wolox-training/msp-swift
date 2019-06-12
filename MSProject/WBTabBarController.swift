@@ -14,7 +14,7 @@ class WBTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.barTintColor = UIColor.woloxTabBarBackgroundColor()
+        tabBar.barTintColor = .woloxTabBarBackgroundColor()
         
         let libraryTabNavigationController = WBNavigationController(rootViewController: WBLibraryTableViewController())
         libraryTabNavigationController.tabBarItem = UITabBarItem()

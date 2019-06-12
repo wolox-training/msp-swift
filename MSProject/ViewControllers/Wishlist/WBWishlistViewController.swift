@@ -11,7 +11,7 @@ import WolmoCore
 
 class WBWishlistViewController: UIViewController {
 
-    private let wishlistView: WBWishlistView = WBWishlistView.loadFromNib()!
+    private let _view: WBWishlistView = WBWishlistView.loadFromNib()!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class WBWishlistViewController: UIViewController {
     }
     
     override func loadView() {
-        view = wishlistView
+        view = _view
     }
 
 }

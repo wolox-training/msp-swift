@@ -11,14 +11,14 @@ import WolmoCore
 
 class WBLibraryCollectionViewController: UIViewController {
 
-    private let libraryCollectionView: WBLibraryCollectionView = WBLibraryCollectionView.loadFromNib()!
-
     lazy var libraryViewModel: WBLibraryViewModel = {
         return WBLibraryViewModel()
     }()
+    private let _view: WBLibraryCollectionView = WBLibraryCollectionView.loadFromNib()!
+    var libraryItems: [WBBook] = []
     
     override func loadView() {
-        view = libraryCollectionView
+        view = _view
     }
     
     override func viewDidLoad() {
@@ -33,15 +33,15 @@ class WBLibraryCollectionViewController: UIViewController {
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
-        refreshControl.tintColor = UIColor.woloxBackgroundColor()
-        libraryCollectionView.libraryCollectionView.refreshControl = refreshControl
+        refreshControl.tintColor = .woloxBackgroundColor()
+        _view.bookCollection.refreshControl = refreshControl
     }
     
     // MARK: - Private
     private func initLibraryCollectionViewModel() {
         libraryViewModel.reloadViewClosure = { [weak self] () in
             DispatchQueue.main.async {
-                self?.libraryCollectionView.libraryCollectionView.reloadData()
+                self?._view.bookCollection.reloadData()
             }
         }
         
@@ -49,20 +49,20 @@ class WBLibraryCollectionViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        libraryCollectionView.libraryCollectionView.delegate = self
-        libraryCollectionView.libraryCollectionView.dataSource = self
+        _view.bookCollection.delegate = self
+        _view.bookCollection.dataSource = self
         
-        libraryCollectionView.libraryCollectionView.backgroundColor = UIColor.woloxBackgroundLightColor()
+        _view.bookCollection.backgroundColor = .woloxBackgroundLightColor()
         
         let nib = UINib.init(nibName: "WBBookCollectionViewCell", bundle: nil)
-        libraryCollectionView.libraryCollectionView.register(nib, forCellWithReuseIdentifier: "WBBookCollectionViewCell")
+        _view.bookCollection.register(nib, forCellWithReuseIdentifier: "WBBookCollectionViewCell")
     }
     
     // MARK: - Services
     @objc private func loadBooks() {
         libraryViewModel.loadBooks()
         DispatchQueue.main.async {
-            self.libraryCollectionView.libraryCollectionView.refreshControl?.endRefreshing()
+            self._view.bookCollection.reloadData()
         }
     }
     

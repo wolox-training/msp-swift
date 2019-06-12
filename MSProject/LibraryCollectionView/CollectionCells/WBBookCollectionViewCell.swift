@@ -19,7 +19,7 @@ class WBBookCollectionViewCell: UICollectionViewCell, NibLoadable {
         super.awakeFromNib()
         
         layer.cornerRadius = 5
-        backgroundColor = UIColor.white
+        backgroundColor = .white
     }
     
     var bookCellViewModel: WBBookCellViewModel? {

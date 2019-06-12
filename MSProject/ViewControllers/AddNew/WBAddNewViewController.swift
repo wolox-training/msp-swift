@@ -11,7 +11,7 @@ import WolmoCore
 
 class WBAddNewViewController: UIViewController {
 
-    private let addNewView: WBAddNewView = WBAddNewView.loadFromNib()!
+    private let _view: WBAddNewView = WBAddNewView.loadFromNib()!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class WBAddNewViewController: UIViewController {
     }
     
     override func loadView() {
-        view = addNewView
+        view = _view
     }
 
 }

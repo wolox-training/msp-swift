@@ -18,7 +18,7 @@ class WBButton: UIButton {
         }
     }
     
-    @IBInspectable var borderLineColor: UIColor = UIColor.white {
+    @IBInspectable var borderLineColor: UIColor = .white {
        didSet {
             layer.borderColor = borderLineColor.cgColor
         }

@@ -13,6 +13,15 @@ protocol WBBooksProtocol {
     func booksFailue(error: Error)
 }
 
+protocol WBRentProtocol {
+    func rentSucess(rent: WBRent)
+    func rentFailue(error: Error)
+}
+protocol WBCommentProtocol {
+    func commentSucess(comments: [WBComment])
+    func commentFailue(error: Error)
+}
+
 enum SortMethod {
     case id
     case title
@@ -65,16 +74,30 @@ class WBBookDAO: NSObject {
         }
     }
     
-    func rentBook(book: WBBook) {
-        
-        let sucessRented: (WBRent) -> Void = { books in
+    func rentBook(delegate: WBRentProtocol, book: WBBook) {
 
+        let sucessRented: (WBRent) -> Void = { rent in
+            delegate.rentSucess(rent: rent)
         }
         
         let failureRented: (Error) -> Void = { error in
-
+            delegate.rentFailue(error: error)
         }
         
         WBNetworkManager.manager.rentBook(book: book, onSuccess: sucessRented, onError: failureRented)
     }
+    
+    func getBookComments(delegate: WBCommentProtocol, book: WBBook) {
+        
+        let sucessComments: ([WBComment]) -> Void = { comments in
+            delegate.commentSucess(comments: comments)
+        }
+        
+        let failureComments: (Error) -> Void = { error in
+            delegate.commentFailue(error: error)
+        }
+        
+        WBNetworkManager.manager.getBookComments(book: book, onSuccess: sucessComments, onError: failureComments)
+    }
+    
 }

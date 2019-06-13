@@ -23,11 +23,9 @@ class WBTabBarController: UITabBarController {
         libraryTabNavigationController.tabBarItem.selectedImage = UIImage(named: "ic_library active")
         libraryTabNavigationController.tabBarItem.tag = 0
         
-//        let wishlistNavigationController = WBNavigationController(rootViewController: WBWishlistViewController())
-        let wishlistNavigationController = WBNavigationController(rootViewController: WBLibraryCollectionViewController())
+        let wishlistNavigationController = WBNavigationController(rootViewController: WBWishlistViewController())
         wishlistNavigationController.tabBarItem = UITabBarItem()
-//        wishlistNavigationController.tabBarItem.title = "WISHLIST".localized()
-        wishlistNavigationController.tabBarItem.title = "LIBRARY".localized()
+        wishlistNavigationController.tabBarItem.title = "WISHLIST".localized()
         wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist")
         wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist active")
         wishlistNavigationController.tabBarItem.tag = 1

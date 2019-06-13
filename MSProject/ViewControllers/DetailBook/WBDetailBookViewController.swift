@@ -12,20 +12,29 @@ import WolmoCore
 class WBDetailBookViewController: UIViewController {
 
     private let _view: WBDetailBookView = WBDetailBookView.loadFromNib()!
+    private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFromNib()!
 
     var bookView: WBBookViewModel!
+    var bookComments: [WBComment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = bookView.bookTitle
-
-        _view.bookImageView.loadImageUsingCache(withUrl: bookView.bookImageURL)
+        
+//        _view.bookImageView.loadImageUsingCache(withUrl: bookView.bookImageURL, placeholderImage: UIImage(named: "book_noun_001_01679")!)
         
         configureTableView()
+        
+        // mover al ViewModel
+        TTLoadingHUDView.sharedView.showLoading(inView: _view)
+        WBBookDAO.sharedInstance.getBookComments(delegate: self, book: bookView.book)
     }
     
     override func loadView() {
+        _detailHeaderView.bookViewModel = bookView
+        _detailHeaderView.delegate = self
+        _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
 
@@ -41,23 +50,23 @@ class WBDetailBookViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension WBDetailBookViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 264.0+10.0 //le agrego 10 porque es lo que le quita el contentview
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return bookComments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBDetailBookTableViewCell", for: indexPath) as? WBDetailBookTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBCommentsBookTableViewCell", for: indexPath) as? WBCommentsBookTableViewCell else {
             fatalError("Cell not exists")
         }
         
-        cell.delegate = self
-        cell.bookCellViewModel = bookView
-        
+        let comment = bookComments[indexPath.row]
+        cell.commentViewModel = comment
+
         return cell
     }
     
@@ -65,18 +74,58 @@ extension WBDetailBookViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension WBDetailBookViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = UITableViewAutomaticDimension
+        return height
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-// MARK: - DetailBookDelegate
 extension WBDetailBookViewController: DetailBookDelegate {
     func addToWishlist() {
         
     }
     
     func rentBook() {
-        WBBookDAO.sharedInstance.rentBook(book: bookView.book)
+        guard bookView.bookStatus == .available else {
+            let alertController = UIAlertController(title: "", message: "No puedes rentar un libro \(bookView.bookStatus.bookStatusText()). lol", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(okButton)
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        TTLoadingHUDView.sharedView.showLoading(inView: _view)
+        WBBookDAO.sharedInstance.rentBook(delegate: self, book: bookView.book)
+    }
+}
+
+extension WBDetailBookViewController: WBRentProtocol {
+    func rentSucess(rent: WBRent) {
+        TTLoadingHUDView.sharedView.hideViewWithSuccess()
+        let alertController = UIAlertController(title: "", message: "Se reservo el libro correctamente", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func rentFailue(error: Error) {
+        TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+    }
+}
+
+extension WBDetailBookViewController: WBCommentProtocol {
+    func commentSucess(comments: [WBComment]) {
+        bookComments = comments
+        TTLoadingHUDView.sharedView.hideViewWithSuccess()
+        _view.detailTable.reloadData()
+    }
+    
+    func commentFailue(error: Error) {
+        TTLoadingHUDView.sharedView.hideViewWithFailure(error)
     }
     
 }

@@ -10,16 +10,21 @@ import UIKit
 import WolmoCore
 
 class WBDetailBookView: UIView, NibLoadable {
-
-    @IBOutlet weak var bookImageView: UIImageView!
     
     @IBOutlet weak var detailTable: UITableView!
     
+    @IBOutlet weak var detailHeaderView: WBDetailBookHeaderView!
+
     func configureDetailTableView() {
-        detailTable.backgroundColor = .woloxBackgroundLightColor()
+        
+        backgroundColor = .woloxBackgroundLightColor()
+        detailTable.backgroundColor = .clear
         detailTable.separatorStyle = .none
         
-        let nib = UINib.init(nibName: "WBDetailBookTableViewCell", bundle: nil)
-        detailTable.register(nib, forCellReuseIdentifier: "WBDetailBookTableViewCell")
+        detailTable.layer.cornerRadius = 5
+        
+        let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
+        detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
+        
     }
 }

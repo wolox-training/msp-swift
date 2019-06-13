@@ -8,10 +8,34 @@
 
 import UIKit
 
-enum BookStatus {
+enum BookStatus: CaseIterable {
     case rented
     case inYourHands
     case available
+    case unknown
+    
+    init(rawValue: String) {
+        switch rawValue {
+        case "rented":
+            self = .rented
+        case "inYourHands":
+            self = .inYourHands
+        case "available":
+            self = .available
+        default:
+            self = .unknown
+        }
+    }
+    
+    func bookStatusText() -> String {
+        switch self {
+        case .available:
+            return "Available"
+        default:
+            return "Not Available"
+        }
+    }
+    
 }
 
 struct WBBook: Codable {
@@ -55,8 +79,8 @@ struct WBBookViewModel {
         return self.book.author
     }
     
-    var bookStatus: String {
-        return self.book.status
+    var bookStatus: BookStatus {
+        return BookStatus(rawValue: book.status)
     }
     
     var bookGenre: String {
@@ -69,23 +93,5 @@ struct WBBookViewModel {
     
     var bookImageURL: String {
         return self.book.imageURL
-    }
-}
-
-class DateHelper {
-    
-    static func today() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: Date())
-    }
-    
-    static func tomorrow() -> String {
-        let tomorrowDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: tomorrowDate)
     }
 }

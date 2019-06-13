@@ -30,11 +30,11 @@ class WBBookTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.insetBy(dx: 20.0, dy: 5.0)
     }
     
-    var bookCellViewModel: WBBookViewModel? {
+    var bookViewModel: WBBookViewModel? {
         didSet {
-            bookImage.loadImageUsingCache(withUrl: bookCellViewModel?.bookImageURL ?? "")
-            bookTitle.text = bookCellViewModel?.bookTitle
-            bookAuthor.text = bookCellViewModel?.bookAuthor
+            bookImage.loadImageUsingCache(withUrl: bookViewModel?.bookImageURL ?? "", placeholderImage: UIImage(named: "book_noun_001_01679")!)
+            bookTitle.text = bookViewModel?.bookTitle
+            bookAuthor.text = bookViewModel?.bookAuthor
         }
     }
     

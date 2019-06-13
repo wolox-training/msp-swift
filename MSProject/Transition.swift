@@ -39,7 +39,6 @@ class Transition: NSObject, UIViewControllerAnimatedTransitioning {
 		
 		guard let artwork = detailView.viewWithTag(99) as? UIImageView else { return }
 		artwork.image = transitionImage
-		artwork.alpha = 0
 		
 		let transitionImageView = UIImageView(frame: isPresenting ? originFrame : artwork.frame)
         transitionImageView.contentMode = .scaleAspectFit
@@ -54,7 +53,6 @@ class Transition: NSObject, UIViewControllerAnimatedTransitioning {
         let finishedTransition: (Bool) -> Void = { (finished) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             transitionImageView.removeFromSuperview()
-            artwork.alpha = 1
         }
         
 		UIView.animate(withDuration: duration, animations: {

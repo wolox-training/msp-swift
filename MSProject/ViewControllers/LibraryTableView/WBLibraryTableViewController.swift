@@ -96,12 +96,7 @@ class WBLibraryTableViewController: UIViewController {
     
 }
 
-// MARK: - UITableViewDataSource
 extension WBLibraryTableViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return libraryViewModel.heightOfCells
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return libraryViewModel.numberOfCells
@@ -114,15 +109,19 @@ extension WBLibraryTableViewController: UITableViewDataSource {
         }
         
         let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookCellViewModel = cellViewModel
+        cell.bookViewModel = cellViewModel
         
         return cell
     }
     
 }
 
-// MARK: - UITableViewDelegate
 extension WBLibraryTableViewController: UITableViewDelegate {
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return libraryViewModel.heightOfCells
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //set the selected cell and calculate the frame rect just for animation
         cellSelected = tableView.cellForRow(at: indexPath) as? WBBookTableViewCell
@@ -144,8 +143,8 @@ extension WBLibraryTableViewController: UINavigationControllerDelegate {
         
         let arrengedFrame = CGRect(x: rectOfCellSelected.origin.x + cellSelected.contentView.frame.origin.x + cellSelected.bookImage.frame.origin.x,
                                    y: rectOfCellSelected.origin.y + cellSelected.bookImage.frame.origin.y + cellSelected.contentView.frame.origin.y,
-                                   width: cellSelected.bookImage.frame.size.width,
-                                   height: cellSelected.bookImage.frame.size.height)
+                                   width: cellSelected.bookImage.frame.width,
+                                   height: cellSelected.bookImage.frame.height)
         
         switch operation {
         case .push:

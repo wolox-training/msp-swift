@@ -86,7 +86,6 @@ class WBLibraryCollectionViewController: UIViewController {
     
 }
 
-// MARK: - UICollectionViewDataSource
 extension WBLibraryCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,14 +99,13 @@ extension WBLibraryCollectionViewController: UICollectionViewDataSource {
         }
         
         let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookCellViewModel = cellViewModel
+        cell.bookViewModel = cellViewModel
         
         return cell
     }
     
 }
 
-// MARK: - UICollectionViewDelegate
 extension WBLibraryCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -120,7 +118,6 @@ extension WBLibraryCollectionViewController: UICollectionViewDelegate {
     
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
 extension WBLibraryCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

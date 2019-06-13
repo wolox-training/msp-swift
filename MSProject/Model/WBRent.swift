@@ -13,8 +13,8 @@ struct WBRent: Codable {
     let id: Int
     let from: String
     let to: String
-    let bookID: String
-    let userID: String
+    let bookID: Int
+    let userID: Int
     
     enum CodingKeys: String, CodingKey {
         case id

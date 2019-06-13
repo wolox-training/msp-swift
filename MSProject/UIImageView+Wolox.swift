@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIImageView {
-    func loadImageUsingCache(withUrl urlString: String) {
-        self.image = UIImage(named: "book_noun_001_01679")
+    func loadImageUsingCache(withUrl urlString: String, placeholderImage: UIImage) {
+        self.image = placeholderImage
         guard let url = URL(string: urlString) else {
             return
         }

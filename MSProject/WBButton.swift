@@ -30,8 +30,15 @@ class WBButton: UIButton {
         }
     }
     
-    // status disabled
-        // bakcground color = lightgray
-        // title color = white
-        // border line color = lightgray
+    // if disable the button, lost the user interaction
+    @IBInspectable var enabledButton: Bool = true {
+        didSet {
+            if self.enabledButton == false {
+                backgroundColor = .lightGray
+                setTitleColor(.white, for: UIControlState.normal)
+                borderLineColor = .lightGray
+            }
+        }
+    }
+    
 }

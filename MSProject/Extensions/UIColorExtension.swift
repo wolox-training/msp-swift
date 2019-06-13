@@ -1,5 +1,5 @@
 //
-//  UIColor+Wolox.swift
+//  UIColorExtension.swift
 //  MSProject
 //
 //  Created by Matias Spinelli on 07/06/2019.

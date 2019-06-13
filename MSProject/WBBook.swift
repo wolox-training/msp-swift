@@ -26,10 +26,3 @@ struct WBBook: Codable {
         case image
     }
 }
-
-struct WBBookCellViewModel {
-    
-    var bookImageURL: String
-    var bookTitle: String
-    var bookAuthor: String
-}

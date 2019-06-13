@@ -81,8 +81,28 @@ extension WBLibraryCollectionViewController: UICollectionViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookCellViewModel = cellViewModel
+        let book = libraryViewModel.getCellViewModel(at: indexPath)
+        cell.bookImage.image = UIImage(named: "book_noun_001_01679")
+        if let cachedImage = WBBookDAO.sharedInstance.imageCache.object(forKey: NSString(string: (book.image))) {
+            DispatchQueue.main.async {
+                cell.bookImage.image = cachedImage
+            }
+        } else {
+            let urlString = book.image
+            if urlString.hasPrefix("https://") || urlString.hasPrefix("http://") {
+                if let url = URL(string: urlString) {
+                    if let data = try? Data(contentsOf: url) {
+                        let image: UIImage = UIImage(data: data)!
+                        DispatchQueue.main.async {
+                            WBBookDAO.sharedInstance.imageCache.setObject(image, forKey: NSString(string: urlString))
+                            cell.bookImage.image = image
+                        }
+                    }
+                }
+            }
+        }
+        cell.bookTitle.text = book.title
+        cell.bookAuthor.text = book.author
         
         return cell
     }

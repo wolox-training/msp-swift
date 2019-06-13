@@ -10,16 +10,14 @@ import UIKit
 
 class WBLibraryViewModel {
     
-    var libraryItems: [WBBook] = []
-
-    private var cellViewModels: [WBBookCellViewModel] = [WBBookCellViewModel]() {
+    var libraryItems: [WBBook] = [] {
         didSet {
             self.reloadViewClosure?()
         }
     }
 
     var numberOfCells: Int {
-        return cellViewModels.count
+        return libraryItems.count
     }
     
     var heightOfCells: CGFloat {
@@ -28,26 +26,20 @@ class WBLibraryViewModel {
     
     var reloadViewClosure: (() -> Void)?
 
-    func getCellViewModel(at indexPath: IndexPath) -> WBBookCellViewModel {
-        return cellViewModels[indexPath.row]
+    func getCellViewModel(at indexPath: IndexPath) -> WBBook {
+        return libraryItems[indexPath.row]
     }
     
     func loadBooks() {
         WBNetworkManager.manager.fetchBooks(onSuccess: { (books) in
             self.libraryItems = books.sorted(by: { $0.id < $1.id })
-            self.cellViewModels = [] //clear array
-            for book in self.libraryItems {
-                self.cellViewModels.append(WBBookCellViewModel(bookImageURL: book.image, bookTitle: book.title, bookAuthor: book.author))
-            }
-
         }) { (error) in
             print(error)
         }
-        
     }
     
     func selectBook(at indexPath: IndexPath) {
-        let book = cellViewModels[indexPath.row]
-        print("\(book.bookTitle) \(book.bookAuthor)")
+        let book = libraryItems[indexPath.row]
+        print("\(book.title) \(book.author)")
     }
 }

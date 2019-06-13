@@ -36,6 +36,10 @@ enum BookStatus: CaseIterable {
         }
     }
     
+    func bookStatusAvailable() -> Bool {
+        return self == .available
+    }
+    
 }
 
 struct WBBook: Codable {

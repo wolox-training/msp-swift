@@ -67,6 +67,7 @@
 		00B762A222B29D8A00640078 /* WBDetailBookHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */; };
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
+		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -177,6 +178,7 @@
 		00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookHeaderView.swift; sourceTree = "<group>"; };
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
+		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				00B7627122AFF34200640078 /* WBLibraryViewModel.swift */,
+				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				00B7629422B197C000640078 /* WBRent.swift in Sources */,
 				00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */,
 				00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */,
+				00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */,
 				00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */,
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
 				00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */,

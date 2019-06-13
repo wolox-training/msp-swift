@@ -16,9 +16,7 @@ class WBLibraryTableViewController: UIViewController {
     lazy var libraryViewModel: WBLibraryViewModel = {
         return WBLibraryViewModel()
     }()
-    
-    var libraryItems: [WBBook] = []
-    
+        
     var cellSelected: WBBookTableViewCell!
     var rectOfCellSelected: CGRect!
     
@@ -108,8 +106,8 @@ extension WBLibraryTableViewController: UITableViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookViewModel = cellViewModel
+        let bookViewModel = libraryViewModel.getCellViewModel(at: indexPath)
+        cell.bookViewModel = bookViewModel
         
         return cell
     }

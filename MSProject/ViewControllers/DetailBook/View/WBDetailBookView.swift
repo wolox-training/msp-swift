@@ -65,6 +65,5 @@ class WBDetailBookHeaderView: UIView {
     @IBAction func rentBook(_ sender: Any) {
         delegate?.rentBook()
     }
-    
 
 }

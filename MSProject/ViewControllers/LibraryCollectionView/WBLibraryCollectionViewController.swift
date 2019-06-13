@@ -98,8 +98,8 @@ extension WBLibraryCollectionViewController: UICollectionViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let cellViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookViewModel = cellViewModel
+        let bookViewModel = libraryViewModel.getCellViewModel(at: indexPath)
+        cell.bookViewModel = bookViewModel
         
         return cell
     }

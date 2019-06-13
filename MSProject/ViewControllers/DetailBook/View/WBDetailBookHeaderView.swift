@@ -50,9 +50,7 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
             bookYear.text = bookViewModel?.bookYear
             bookGenre.text = bookViewModel?.bookGenre
             
-            if bookViewModel?.bookStatus != .available {
-                rentButton.enabledButton = false
-            }
+            rentButton.enabledButton = bookViewModel?.bookStatus.bookStatusAvailable() ?? false
         }
     }
     

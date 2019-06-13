@@ -12,14 +12,14 @@ class WBLibraryViewModel {
     
     var libraryItems: [WBBook] = []
 
-    private var cellViewModels: [WBBookViewModel] = [WBBookViewModel]() {
+    private var bookViewModels: [WBBookViewModel] = [WBBookViewModel]() {
         didSet {
             self.reloadViewClosure?()
         }
     }
     
     var numberOfCells: Int {
-        return cellViewModels.count
+        return bookViewModels.count
     }
     
     var heightOfCells: CGFloat {
@@ -30,7 +30,7 @@ class WBLibraryViewModel {
     var showAlertClosure: ((Error) -> Void)?
 
     func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
-        return cellViewModels[indexPath.row]
+        return bookViewModels[indexPath.row]
     }
     
     func loadBooks() {
@@ -38,21 +38,25 @@ class WBLibraryViewModel {
     }
     
     func selectBook(at indexPath: IndexPath) -> WBBookViewModel {
-        let book = cellViewModels[indexPath.row]
+        let book = bookViewModels[indexPath.row]
         print("\(book.bookTitle) - \(book.bookAuthor)")
         return book
     }
     
+    func sortBooks() {
+        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: self.libraryItems, by: .id)
+        self.bookViewModels = [] //clear array
+        for book in self.libraryItems {
+            self.bookViewModels.append(WBBookViewModel(book: book))
+        }
+    }
 }
 
 // MARK: - WBBooksProtocol
 extension WBLibraryViewModel: WBBooksProtocol {
     func booksSucess(books: [WBBook]) {
-        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: books, by: .id)
-        self.cellViewModels = [] //clear array
-        for book in self.libraryItems {
-            self.cellViewModels.append(WBBookViewModel(book: book))
-        }
+        self.libraryItems = books
+        sortBooks()
     }
     
     func booksFailue(error: Error) {

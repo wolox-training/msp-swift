@@ -23,7 +23,7 @@ class WBDetailBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "BOOKD_DETAIL".localized()
+        navigationItem.title = "BOOK_DETAIL".localized()
 
         configureTableView()
         
@@ -40,10 +40,20 @@ class WBDetailBookViewController: UIViewController {
     // MARK: - Private
     private func initBookDetailTableViewModel() {
     
-        bookDetailViewModel.showAlertClosure = { [weak self] (error) in
+        bookDetailViewModel.showErrorAlertClosure = { [weak self] (error) in
             TTLoadingHUDView.sharedView.hideViewWithFailure(error)
             DispatchQueue.main.async {
                 let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(okButton)
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+
+        bookDetailViewModel.showAlertClosure = { [weak self] (message) in
+            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            DispatchQueue.main.async {
+                let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 alertController.addAction(okButton)
                 self?.present(alertController, animated: true, completion: nil)
@@ -121,19 +131,6 @@ extension WBDetailBookViewController: DetailBookDelegate {
             return
         }
         TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        
-        let successRent: (WBRent) -> Void = { (rent) in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
-            let alertController = UIAlertController(title: "", message: "Se reservo el libro correctamente", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        let failureRent: (Error) -> Void = { (error) in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
-        }
-        
-        WBNetworkManager.manager.rentBook(book: bookView.book, onSuccess: successRent, onError: failureRent)
+        bookDetailViewModel.rentBook(book: bookView)
     }
 }

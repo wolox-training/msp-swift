@@ -23,6 +23,8 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     @IBOutlet weak var bookYear: UILabel!
     @IBOutlet weak var bookGenre: UILabel!
     
+    @IBOutlet weak var customBackgroundView: UIView!
+
     @IBOutlet weak var wishlistButton: WBButton!
     @IBOutlet weak var rentButton: WBButton!
     
@@ -30,9 +32,8 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        layer.cornerRadius = 5
-        backgroundColor = .white
+
+        backgroundColor = .clear
     }
     
     var bookViewModel: WBBookViewModel? {
@@ -51,6 +52,10 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
             bookGenre.text = bookViewModel?.bookGenre
             
             rentButton.enabledButton = bookViewModel?.bookStatus.bookStatusAvailable() ?? false
+            
+            customBackgroundView.layer.cornerRadius = 5
+            customBackgroundView.backgroundColor = .white
+            sendSubviewToBack(customBackgroundView)
         }
     }
     

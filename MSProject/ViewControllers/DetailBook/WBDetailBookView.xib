@@ -17,18 +17,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="99" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xNB-yC-5tt">
-                    <rect key="frame" x="41" y="68" width="73" height="108"/>
+                    <rect key="frame" x="30" y="59" width="73" height="108"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="73" id="9HW-9d-VPc"/>
                         <constraint firstAttribute="height" constant="108" id="nfB-Ps-hV9"/>
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-To-Qs3">
-                    <rect key="frame" x="10" y="328" width="394" height="534"/>
+                    <rect key="frame" x="10" y="318" width="394" height="544"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSY-Nb-r73" customClass="WBDetailBookHeaderView" customModule="MSProject" customModuleProvider="target">
-                    <rect key="frame" x="10" y="54" width="394" height="264"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="264"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="264" id="9lD-Yy-BhI"/>
@@ -38,14 +38,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FSY-Nb-r73" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="1jp-yP-AQd"/>
+                <constraint firstItem="FSY-Nb-r73" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1jp-yP-AQd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FSY-Nb-r73" secondAttribute="trailing" id="5xY-Do-IPe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tSb-To-Qs3" secondAttribute="bottom" id="KVp-rQ-6Oq"/>
-                <constraint firstItem="xNB-yC-5tt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="YZS-Ap-VXD"/>
-                <constraint firstItem="FSY-Nb-r73" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="gKp-Dy-onF"/>
+                <constraint firstItem="xNB-yC-5tt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="YZS-Ap-VXD"/>
+                <constraint firstItem="FSY-Nb-r73" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gKp-Dy-onF"/>
                 <constraint firstItem="tSb-To-Qs3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="hPA-xe-8rI"/>
                 <constraint firstItem="tSb-To-Qs3" firstAttribute="top" secondItem="FSY-Nb-r73" secondAttribute="bottom" constant="10" id="lv9-5R-oqu"/>
-                <constraint firstItem="xNB-yC-5tt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="41" id="vh1-t7-nAU"/>
-                <constraint firstAttribute="trailing" secondItem="FSY-Nb-r73" secondAttribute="trailing" constant="10" id="wGk-98-9hd"/>
+                <constraint firstItem="xNB-yC-5tt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="vh1-t7-nAU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSb-To-Qs3" secondAttribute="trailing" constant="10" id="yGD-sU-WY2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

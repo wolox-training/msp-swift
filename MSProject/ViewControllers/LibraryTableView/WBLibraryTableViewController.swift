@@ -113,7 +113,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
 extension WBLibraryTableViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return libraryViewModel.heightOfCells
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

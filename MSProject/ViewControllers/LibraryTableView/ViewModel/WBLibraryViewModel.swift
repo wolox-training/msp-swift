@@ -22,9 +22,9 @@ class WBLibraryViewModel {
         return bookViewModels.count
     }
     
-    var heightOfCells: CGFloat {
-        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
-    }
+//    var heightOfCells: CGFloat {
+//        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
+//    }
     
     var reloadViewClosure: (() -> Void)?
     var showAlertClosure: ((Error) -> Void)?

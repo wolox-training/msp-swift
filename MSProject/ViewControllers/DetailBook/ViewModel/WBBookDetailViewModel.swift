@@ -25,7 +25,8 @@ class WBBookDetailViewModel {
     }
     
     var reloadViewClosure: (() -> Void)?
-    var showAlertClosure: ((Error) -> Void)?
+    var showErrorAlertClosure: ((Error) -> Void)?
+    var showAlertClosure: ((String) -> Void)?
     
     func getCellViewModel(at indexPath: IndexPath) -> WBComment {
         return commentsViewModels[indexPath.row]
@@ -38,10 +39,23 @@ class WBBookDetailViewModel {
         }
         
         let failureComments: (Error) -> Void = { (error) in
-            self.showAlertClosure?(error)
+            self.showErrorAlertClosure?(error)
         }
         
         WBNetworkManager.manager.getBookComments(book: bookView.book, onSuccess: successComments, onError: failureComments)
     }
     
+    func rentBook(book: WBBookViewModel) {
+        
+        let successRent: (WBRent) -> Void = { (rent) in
+            self.showAlertClosure?("Se reservo el libro correctamente")
+        }
+        
+        let failureRent: (Error) -> Void = { (error) in
+            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            self.showErrorAlertClosure?(error)
+        }
+        
+        WBNetworkManager.manager.rentBook(book: book.book, onSuccess: successRent, onError: failureRent)
+    }
 }

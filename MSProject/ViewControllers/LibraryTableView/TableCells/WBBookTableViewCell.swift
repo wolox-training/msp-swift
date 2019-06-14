@@ -13,20 +13,17 @@ class WBBookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookAuthor: UILabel!
+    @IBOutlet weak var customBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contentView.layer.cornerRadius = 5
-        contentView.backgroundColor = .white
-        backgroundColor = .clear
+        customBackgroundView.layer.cornerRadius = 5
+        customBackgroundView.backgroundColor = .white
+        contentView.sendSubviewToBack(customBackgroundView)
+
+        backgroundColor = .clear        
         
         selectionStyle = .blue
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.insetBy(dx: 20.0, dy: 5.0)
     }
 }

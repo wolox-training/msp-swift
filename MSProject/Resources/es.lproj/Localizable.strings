@@ -19,7 +19,7 @@
 "ADDNEW_NAV_BAR" = "Agregar nuevo";
 "RENTALS_NAV_BAR" = "Alquiler";
 "SETTINGS_NAV_BAR" = "SETTINGS";
-"BOOKD_DETAIL" = "Configuración";
+"BOOK_DETAIL" = "Configuración";
 
 // Books
 "AVAILABLE" = "Disponible";

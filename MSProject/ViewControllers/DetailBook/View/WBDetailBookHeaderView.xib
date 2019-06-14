@@ -16,8 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beb-Ae-d51">
+                    <rect key="frame" x="10" y="5" width="394" height="254"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="gcg-Ye-Ykn"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnp-ar-r2B">
-                    <rect key="frame" x="123" y="80.5" width="261" height="18"/>
+                    <rect key="frame" x="123" y="80.5" width="271" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,19 +53,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xez-Zj-r4s">
-                    <rect key="frame" x="123" y="101.5" width="261" height="18"/>
+                    <rect key="frame" x="123" y="101.5" width="271" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-Pp-swO">
-                    <rect key="frame" x="123" y="59.5" width="261" height="18"/>
+                    <rect key="frame" x="123" y="59.5" width="271" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS7-ia-jcq">
-                    <rect key="frame" x="123" y="15" width="261" height="20.5"/>
+                    <rect key="frame" x="123" y="15" width="271" height="20.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -98,7 +103,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-u3-VSW">
-                    <rect key="frame" x="123" y="38.5" width="261" height="18"/>
+                    <rect key="frame" x="123" y="38.5" width="271" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -110,19 +115,23 @@
                 <constraint firstItem="Z6Z-HG-CWD" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2Gt-Ha-Xcy"/>
                 <constraint firstItem="WS7-ia-jcq" firstAttribute="top" secondItem="Ciy-Mx-sHW" secondAttribute="top" id="6EN-2w-NgD"/>
                 <constraint firstItem="Pnp-ar-r2B" firstAttribute="top" secondItem="zaS-Pp-swO" secondAttribute="bottom" constant="3" id="6bP-1d-W04"/>
-                <constraint firstAttribute="trailing" secondItem="WS7-ia-jcq" secondAttribute="trailing" constant="30" id="7sx-UA-aaw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="beb-Ae-d51" secondAttribute="trailing" constant="10" id="7N8-Hu-jdc"/>
+                <constraint firstAttribute="trailing" secondItem="WS7-ia-jcq" secondAttribute="trailing" constant="20" id="7sx-UA-aaw"/>
                 <constraint firstItem="zaS-Pp-swO" firstAttribute="leading" secondItem="UnN-u3-VSW" secondAttribute="leading" id="A6p-qf-ZmC"/>
                 <constraint firstItem="9de-HG-WRN" firstAttribute="top" secondItem="Ciy-Mx-sHW" secondAttribute="bottom" constant="30" id="EOM-nQ-072"/>
                 <constraint firstItem="UnN-u3-VSW" firstAttribute="top" secondItem="WS7-ia-jcq" secondAttribute="bottom" constant="3" id="KRN-sW-vW4"/>
                 <constraint firstItem="UnN-u3-VSW" firstAttribute="trailing" secondItem="WS7-ia-jcq" secondAttribute="trailing" id="NLM-gW-s1e"/>
+                <constraint firstAttribute="bottom" secondItem="beb-Ae-d51" secondAttribute="bottom" constant="5" id="PdP-fD-OwG"/>
                 <constraint firstItem="UnN-u3-VSW" firstAttribute="leading" secondItem="WS7-ia-jcq" secondAttribute="leading" id="RAn-Dn-MT3"/>
                 <constraint firstItem="Xez-Zj-r4s" firstAttribute="trailing" secondItem="Pnp-ar-r2B" secondAttribute="trailing" id="ami-HQ-F3n"/>
+                <constraint firstItem="beb-Ae-d51" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="d3o-0e-MN4"/>
                 <constraint firstItem="Ciy-Mx-sHW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="fxB-vr-Mqq"/>
                 <constraint firstItem="Xez-Zj-r4s" firstAttribute="leading" secondItem="Pnp-ar-r2B" secondAttribute="leading" id="gTH-ft-YwU"/>
                 <constraint firstItem="Xez-Zj-r4s" firstAttribute="top" secondItem="Pnp-ar-r2B" secondAttribute="bottom" constant="3" id="gWO-yX-sXB"/>
                 <constraint firstItem="zaS-Pp-swO" firstAttribute="trailing" secondItem="UnN-u3-VSW" secondAttribute="trailing" id="gmg-gf-hvj"/>
                 <constraint firstItem="Z6Z-HG-CWD" firstAttribute="top" secondItem="9de-HG-WRN" secondAttribute="bottom" constant="10" id="iXJ-eg-1De"/>
                 <constraint firstItem="zaS-Pp-swO" firstAttribute="top" secondItem="UnN-u3-VSW" secondAttribute="bottom" constant="3" id="k0e-Ei-9WJ"/>
+                <constraint firstItem="beb-Ae-d51" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="k2W-hu-0g0"/>
                 <constraint firstItem="9de-HG-WRN" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="mMu-xJ-sN3"/>
                 <constraint firstItem="Pnp-ar-r2B" firstAttribute="trailing" secondItem="zaS-Pp-swO" secondAttribute="trailing" id="p56-4h-aWK"/>
                 <constraint firstItem="WS7-ia-jcq" firstAttribute="leading" secondItem="Ciy-Mx-sHW" secondAttribute="trailing" constant="20" id="sY7-hx-4fc"/>
@@ -139,9 +148,11 @@
                 <outlet property="bookImage" destination="Ciy-Mx-sHW" id="b84-0d-Cco"/>
                 <outlet property="bookTitle" destination="WS7-ia-jcq" id="pP3-ll-Bc0"/>
                 <outlet property="bookYear" destination="Pnp-ar-r2B" id="5YA-RG-cEJ"/>
+                <outlet property="customBackgroundView" destination="beb-Ae-d51" id="Tge-mU-Y5T"/>
                 <outlet property="rentButton" destination="Z6Z-HG-CWD" id="Lv3-cv-DU5"/>
                 <outlet property="wishlistButton" destination="9de-HG-WRN" id="wXy-Tx-z7D"/>
             </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="110.49107142857143"/>
         </view>
     </objects>
 </document>

@@ -50,6 +50,7 @@
 		00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */; };
 		00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627122AFF34200640078 /* WBLibraryViewModel.swift */; };
 		00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627722B0169300640078 /* WBNetworkManager.swift */; };
+		00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627922B01AC400640078 /* UIImageViewExtension.swift */; };
 		00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627C22B03ABF00640078 /* WBDetailBookView.swift */; };
 		00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7627E22B03AD300640078 /* WBDetailBookView.xib */; };
 		00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628022B03AF200640078 /* WBDetailBookViewController.swift */; };
@@ -67,7 +68,6 @@
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
-		00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627922B01AC400640078 /* UIImageViewExtension.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -161,6 +161,7 @@
 		00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		00B7627122AFF34200640078 /* WBLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryViewModel.swift; sourceTree = "<group>"; };
 		00B7627722B0169300640078 /* WBNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNetworkManager.swift; sourceTree = "<group>"; };
+		00B7627922B01AC400640078 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		00B7627C22B03ABF00640078 /* WBDetailBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookView.swift; sourceTree = "<group>"; };
 		00B7627E22B03AD300640078 /* WBDetailBookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookView.xib; sourceTree = "<group>"; };
 		00B7628022B03AF200640078 /* WBDetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +179,6 @@
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
-		00B7627922B01AC400640078 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -637,7 +637,7 @@
 					9D1575001CB1B27500EA395E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = R82QNK3B4V;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -647,12 +647,12 @@
 					};
 					9D1575141CB1B27500EA395E = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1020;
 						TestTargetID = 9D1575001CB1B27500EA395E;
 					};
 					9D15751F1CB1B27500EA395E = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1020;
 						TestTargetID = 9D1575001CB1B27500EA395E;
 					};
 				};
@@ -953,7 +953,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -972,7 +972,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Debug;
@@ -989,7 +989,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MSProject;
 			};
 			name = Debug;
@@ -1069,7 +1069,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1088,7 +1088,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Alpha;
@@ -1105,7 +1105,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MSProject;
 			};
 			name = Alpha;
@@ -1184,7 +1184,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1203,7 +1203,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Release;
@@ -1220,7 +1220,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MSProject;
 			};
 			name = Release;
@@ -1298,7 +1298,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1317,7 +1317,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSProject.app/MSProject";
 			};
 			name = Production;
@@ -1334,7 +1334,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wolox.MSProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MSProject;
 			};
 			name = Production;

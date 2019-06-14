@@ -9,10 +9,6 @@
 import UIKit
 import Alamofire
 
-enum BookError: Error {
-    case decodeError
-}
-
 class WBNetworkManager: NSObject {
 
     public static let manager = WBNetworkManager()
@@ -21,7 +17,7 @@ class WBNetworkManager: NSObject {
 
     let userId = 5 //userID 5 ... because...
 
-    public func fetchBooks(onSuccess: @escaping ([WBBook]) -> Void, onError: @escaping (Error) -> Void) {
+    public func fetchBooks(delegate: WBBooksProtocol) {
 
         let url = URL(string: "https://swift-training-backend.herokuapp.com/books")!
 
@@ -29,16 +25,16 @@ class WBNetworkManager: NSObject {
             switch response.result {
             case .success(let value):
                 guard let JSONbooks = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
+                    delegate.booksFailue(error: BookError.decodeError)
                     return
                 }
                 guard let books = try? JSONDecoder().decode([WBBook].self, from: JSONbooks) else {
-                    onError(BookError.decodeError)
+                    delegate.booksFailue(error: BookError.decodeError)
                     return
                 }
-                onSuccess(books)
+                delegate.booksSucess(books: books)
             case .failure(let error):
-                onError(error)
+                delegate.booksFailue(error: error)
             }
         }
     }

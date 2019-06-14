@@ -47,7 +47,7 @@ class WBButton: UIButton {
                 gradient.cornerRadius = borderLineRadius
                 borderLineWidth = 0.0
                 layer.addSublayer(gradient)
-                setTitleColor(.white, for: UIControlState.normal)
+                setTitleColor(.white, for: UIControl.State.normal)
             } else {
                 gradientBackground = true
             }
@@ -68,7 +68,7 @@ class WBButton: UIButton {
                 gradient.cornerRadius = borderLineRadius
                 borderLineWidth = 0.0
                 layer.addSublayer(gradient)
-                setTitleColor(.white, for: UIControlState.normal)
+                setTitleColor(.white, for: UIControl.State.normal)
             }
         }
     }

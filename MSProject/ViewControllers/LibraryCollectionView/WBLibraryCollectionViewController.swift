@@ -32,10 +32,6 @@ class WBLibraryCollectionViewController: UIViewController {
         
         navigationItem.title = "LIBRARY".localized() + " Collection"
         
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
-        
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)

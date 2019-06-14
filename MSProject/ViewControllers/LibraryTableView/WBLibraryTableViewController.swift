@@ -33,16 +33,11 @@ class WBLibraryTableViewController: UIViewController {
         
         navigationItem.title = "LIBRARY".localized() + " Table"
         
-        let sort = UIBarButtonItem(image: UIImage(named: "sort"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
-        let search = UIBarButtonItem(image: UIImage(named: "ic_search"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        let sort = UIBarButtonItem(image: UIImage(named: "sort"), style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        let search = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItem.Style.plain, target: self, action: nil)
         navigationItem.rightBarButtonItems = [sort, search]
 
         navigationController?.delegate = self
-        
-        // molesta tener que agregar esto en todos los vc... grrr...
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
         
         // Refresh Control
         let refreshControl = UIRefreshControl()

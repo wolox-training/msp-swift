@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */; };
+		0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColorExtension.swift */; };
 		0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */; };
 		00A73F8C22AAB4F200FC6410 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; };
 		00A73F8E22AAB4F500FC6410 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; };
@@ -57,7 +57,6 @@
 		00B7628922B161C400640078 /* TTLoadingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628622B161C300640078 /* TTLoadingHUDView.swift */; };
 		00B7628A22B161C400640078 /* TTLoadingHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628722B161C400640078 /* TTLoadingHUDView.xib */; };
 		00B7628B22B161C400640078 /* TTHUDAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628822B161C400640078 /* TTHUDAssets.xcassets */; };
-		00B7629222B1785E00640078 /* UIImageView+Wolox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629122B1785E00640078 /* UIImageView+Wolox.swift */; };
 		00B7629422B197C000640078 /* WBRent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629322B197C000640078 /* WBRent.swift */; };
 		00B7629622B27DFC00640078 /* WBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629522B27DFC00640078 /* WBUser.swift */; };
 		00B7629822B27E6100640078 /* WBComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629722B27E6100640078 /* WBComment.swift */; };
@@ -68,6 +67,7 @@
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
+		00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627922B01AC400640078 /* UIImageViewExtension.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -117,7 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Wolox.swift"; sourceTree = "<group>"; };
+		0097C7B722AAA3B70001509F /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginViewController.swift; sourceTree = "<group>"; };
 		00A73F8822AAB42F00FC6410 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		00A73F8922AAB43000FC6410 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 		00B7628622B161C300640078 /* TTLoadingHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTLoadingHUDView.swift; sourceTree = "<group>"; };
 		00B7628722B161C400640078 /* TTLoadingHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTLoadingHUDView.xib; sourceTree = "<group>"; };
 		00B7628822B161C400640078 /* TTHUDAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TTHUDAssets.xcassets; sourceTree = "<group>"; };
-		00B7629122B1785E00640078 /* UIImageView+Wolox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Wolox.swift"; sourceTree = "<group>"; };
 		00B7629322B197C000640078 /* WBRent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRent.swift; sourceTree = "<group>"; };
 		00B7629522B27DFC00640078 /* WBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBUser.swift; sourceTree = "<group>"; };
 		00B7629722B27E6100640078 /* WBComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBComment.swift; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
+		00B7627922B01AC400640078 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,10 +246,10 @@
 		0097C7B622AAA38D0001509F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0097C7B722AAA3B70001509F /* UIColor+Wolox.swift */,
-				00B7629122B1785E00640078 /* UIImageView+Wolox.swift */,
+				0097C7B722AAA3B70001509F /* UIColorExtension.swift */,
+				00B7627922B01AC400640078 /* UIImageViewExtension.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0097C7BB22AAA6D50001509F /* Login */ = {
@@ -786,10 +786,10 @@
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
-				00B7629222B1785E00640078 /* UIImageView+Wolox.swift in Sources */,
 				00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */,
 				00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
+				00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,
 				00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */,
 				00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */,
@@ -806,7 +806,7 @@
 				00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */,
 				00B7624A22AEE1C000640078 /* WBRentalsView.swift in Sources */,
 				00B7623C22AED71000640078 /* WBTabBarController.swift in Sources */,
-				0097C7B822AAA3B70001509F /* UIColor+Wolox.swift in Sources */,
+				0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */,
 				00B7624622AEE08800640078 /* WBWishlistViewController.swift in Sources */,
 				00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */,
 			);

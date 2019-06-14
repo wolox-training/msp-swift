@@ -99,5 +99,4 @@ class WBBookDAO: NSObject {
         
         WBNetworkManager.manager.getBookComments(book: book, onSuccess: sucessComments, onError: failureComments)
     }
-    
 }

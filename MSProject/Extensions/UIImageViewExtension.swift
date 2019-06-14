@@ -1,5 +1,5 @@
 //
-//  UIImageView+Wolox.swift
+//  UIImageViewExtension.swift
 //  MSProject
 //
 //  Created by Matias Spinelli on 12/06/2019.

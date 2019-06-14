@@ -106,9 +106,10 @@ extension WBLibraryTableViewController: UITableViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let bookViewModel = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookViewModel = bookViewModel
-        
+        let book = libraryViewModel.getCellViewModel(at: indexPath)
+        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage(named: "book_noun_001_01679")!)
+        cell.bookTitle.text = book.bookTitle
+        cell.bookAuthor.text = book.bookAuthor
         return cell
     }
     

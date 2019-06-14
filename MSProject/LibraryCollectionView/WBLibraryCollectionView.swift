@@ -14,4 +14,3 @@ class WBLibraryCollectionView: UIView, NibLoadable {
     @IBOutlet weak var bookCollection: UICollectionView!
 
 }
-

@@ -16,7 +16,7 @@ class WBRentalsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "RENTALS".localized()
+        navigationItem.title = "RENTALS".localized()
     }
     
     override func loadView() {

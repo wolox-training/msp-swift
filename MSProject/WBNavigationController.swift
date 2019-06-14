@@ -31,7 +31,7 @@ class WBNavigationController: UINavigationController {
     
     private func woloxBookInit() {
         navigationBar.isTranslucent = true
-        navigationBar.tintColor = UIColor.white
+        navigationBar.tintColor = .white
         navigationBar.barStyle = .default
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes

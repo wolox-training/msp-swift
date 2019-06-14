@@ -32,19 +32,16 @@ class WBBookDetailViewModel {
     }
     
     func loadComments(for bookView: WBBookViewModel) {
-        WBBookDAO.sharedInstance.getBookComments(delegate: self, book: bookView.book)
-    }
-    
-}
-
-// MARK: - WBCommentProtocol
-extension WBBookDetailViewModel: WBCommentProtocol {
-    func commentSucess(comments: [WBComment]) {
-        commentsViewModels = comments
-    }
-    
-    func commentFailue(error: Error) {
-        self.showAlertClosure?(error)
+        
+        let successComments: ([WBComment]) -> Void = { (comments) in
+            self.commentsViewModels = comments
+        }
+        
+        let failureComments: (Error) -> Void = { (error) in
+            self.showAlertClosure?(error)
+        }
+        
+        WBNetworkManager.manager.getBookComments(book: bookView.book, onSuccess: successComments, onError: failureComments)
     }
     
 }

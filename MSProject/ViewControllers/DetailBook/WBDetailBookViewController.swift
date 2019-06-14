@@ -23,8 +23,8 @@ class WBDetailBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = bookView.bookTitle
-        
+        navigationItem.title = "BOOKD_DETAIL".localized()
+
         configureTableView()
         
         initBookDetailTableViewModel()
@@ -121,21 +121,19 @@ extension WBDetailBookViewController: DetailBookDelegate {
             return
         }
         TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        WBBookDAO.sharedInstance.rentBook(delegate: self, book: bookView.book)
-    }
-}
-
-// MARK: - WBRentProtocol
-extension WBDetailBookViewController: WBRentProtocol {
-    func rentSucess(rent: WBRent) {
-        TTLoadingHUDView.sharedView.hideViewWithSuccess()
-        let alertController = UIAlertController(title: "", message: "Se reservo el libro correctamente", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okButton)
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func rentFailue(error: Error) {
-        TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+        
+        let successRent: (WBRent) -> Void = { (rent) in
+            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            let alertController = UIAlertController(title: "", message: "Se reservo el libro correctamente", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        let failureRent: (Error) -> Void = { (error) in
+            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+        }
+        
+        WBNetworkManager.manager.rentBook(book: bookView.book, onSuccess: successRent, onError: failureRent)
     }
 }

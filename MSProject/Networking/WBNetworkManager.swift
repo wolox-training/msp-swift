@@ -9,6 +9,10 @@
 import UIKit
 import Alamofire
 
+enum BookError: Error {
+    case decodeError
+}
+
 class WBNetworkManager: NSObject {
 
     public static let manager = WBNetworkManager()
@@ -17,7 +21,7 @@ class WBNetworkManager: NSObject {
 
     let userId = 5 //userID 5 ... because...
 
-    public func fetchBooks(delegate: WBBooksProtocol) {
+    public func fetchBooks(onSuccess: @escaping ([WBBook]) -> Void, onError: @escaping (Error) -> Void) {
 
         let url = URL(string: "https://swift-training-backend.herokuapp.com/books")!
 
@@ -25,16 +29,16 @@ class WBNetworkManager: NSObject {
             switch response.result {
             case .success(let value):
                 guard let JSONbooks = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    delegate.booksFailue(error: BookError.decodeError)
+                    onError(BookError.decodeError)
                     return
                 }
                 guard let books = try? JSONDecoder().decode([WBBook].self, from: JSONbooks) else {
-                    delegate.booksFailue(error: BookError.decodeError)
+                    onError(BookError.decodeError)
                     return
                 }
-                delegate.booksSucess(books: books)
+                onSuccess(books)
             case .failure(let error):
-                delegate.booksFailue(error: error)
+                onError(error)
             }
         }
     }
@@ -69,8 +73,8 @@ class WBNetworkManager: NSObject {
 
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id,
-                                    "from": WBDateHelper.today(),
-                                    "to": WBDateHelper.tomorrow()]
+                                     "from": WBDateHelper.today(),
+                                     "to": WBDateHelper.tomorrow()]
         
         request(url, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
             switch response.result {

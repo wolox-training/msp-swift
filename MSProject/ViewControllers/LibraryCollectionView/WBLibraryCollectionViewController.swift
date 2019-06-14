@@ -30,7 +30,7 @@ class WBLibraryCollectionViewController: UIViewController {
 
         configureCollectionView()
         
-        navigationItem.title = "LIBRARY".localized() + " Collection"
+        navigationItem.title = "LIBRARY_NAV_BAR".localized()
         
         // Refresh Control
         let refreshControl = UIRefreshControl()

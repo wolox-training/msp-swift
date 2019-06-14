@@ -271,7 +271,7 @@
 				00B7623B22AED71000640078 /* WBTabBarController.swift */,
 				00B7628222B12CD400640078 /* Transition.swift */,
 			);
-			name = CustomControls;
+			path = CustomControls;
 			sourceTree = "<group>";
 		};
 		00B761E822AAF5BA00640078 /* ViewControllers */ = {
@@ -315,7 +315,7 @@
 			children = (
 				00B761F422AAFC2000640078 /* WBBookDAO.swift */,
 			);
-			name = DAO;
+			path = DAO;
 			sourceTree = "<group>";
 		};
 		00B7620622AE8F7200640078 /* LibraryTableView */ = {
@@ -324,6 +324,7 @@
 				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
 				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
 				00B7620E22AE995E00640078 /* WBLibraryTableView.xib */,
+				00B762A922B3F06100640078 /* ViewModel */,
 				00B761EC22AAF67100640078 /* TableCells */,
 			);
 			path = LibraryTableView;
@@ -404,15 +405,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		00B7627522B005D000640078 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				00B7627122AFF34200640078 /* WBLibraryViewModel.swift */,
-				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		00B7627622B0167400640078 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +419,7 @@
 				00B7628022B03AF200640078 /* WBDetailBookViewController.swift */,
 				00B7627C22B03ABF00640078 /* WBDetailBookView.swift */,
 				00B7627E22B03AD300640078 /* WBDetailBookView.xib */,
+				00B762AA22B3F08A00640078 /* ViewModel */,
 				00B762A022B29D5900640078 /* View */,
 				00B7628C22B1727B00640078 /* TableCells */,
 			);
@@ -469,6 +462,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		00B762A922B3F06100640078 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				00B7627122AFF34200640078 /* WBLibraryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		00B762AA22B3F08A00640078 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9D1574F81CB1B27500EA395E = {
 			isa = PBXGroup;
 			children = (
@@ -500,7 +509,6 @@
 				E1530D9A1ED378F9002A9002 /* Services */,
 				00B761E822AAF5BA00640078 /* ViewControllers */,
 				00B761F122AAFBB700640078 /* DAO */,
-				00B7627522B005D000640078 /* ViewModel */,
 				00B761EB22AAF64E00640078 /* Model */,
 				00B7627622B0167400640078 /* Networking */,
 				00B7626622AEEEA900640078 /* Resources */,

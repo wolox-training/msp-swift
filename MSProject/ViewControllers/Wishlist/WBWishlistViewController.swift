@@ -16,7 +16,7 @@ class WBWishlistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "WISHLIST".localized()
+        navigationItem.title = "WISHLIST_NAV_BAR".localized()
     }
     
     override func loadView() {

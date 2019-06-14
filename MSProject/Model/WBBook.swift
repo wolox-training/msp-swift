@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WolmoCore
 
 enum BookStatus: CaseIterable {
     case rented
@@ -30,9 +31,9 @@ enum BookStatus: CaseIterable {
     func bookStatusText() -> String {
         switch self {
         case .available:
-            return "Available"
+            return "AVAILABLE".localized()
         default:
-            return "Not Available"
+            return "NOT_AVAILABLE".localized()
         }
     }
     

@@ -34,7 +34,16 @@ class WBLibraryViewModel {
     }
     
     func loadBooks() {
-        WBBookDAO.sharedInstance.getAllBooks(delegate: self)
+        let successBooks: ([WBBook]) -> Void = { (books) in
+            self.libraryItems = books
+            self.sortBooks()
+        }
+        
+        let failureBooks: (Error) -> Void = { (error) in
+            self.showAlertClosure?(error)
+        }
+        
+        WBNetworkManager.manager.fetchBooks(onSuccess: successBooks, onError: failureBooks)
     }
     
     func selectBook(at indexPath: IndexPath) -> WBBookViewModel {
@@ -50,17 +59,4 @@ class WBLibraryViewModel {
             self.bookViewModels.append(WBBookViewModel(book: book))
         }
     }
-}
-
-// MARK: - WBBooksProtocol
-extension WBLibraryViewModel: WBBooksProtocol {
-    func booksSucess(books: [WBBook]) {
-        self.libraryItems = books
-        sortBooks()
-    }
-    
-    func booksFailue(error: Error) {
-        self.showAlertClosure?(error)
-    }
-    
 }

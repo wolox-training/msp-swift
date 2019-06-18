@@ -24,12 +24,4 @@ class WBCommentsBookTableViewCell: UITableViewCell {
         
         userImage.layer.cornerRadius = userImage.frame.size.width/2
     }
-
-    var commentViewModel: WBComment? {
-        didSet {
-            userImage.loadImageUsingCache(withUrl: commentViewModel?.user.imageURL ?? "", placeholderImage: UIImage(named: "user_male")!)
-            userName.text = commentViewModel?.user.username
-            userComment.text = commentViewModel?.content
-        }
-    }
 }

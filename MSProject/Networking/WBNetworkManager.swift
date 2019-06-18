@@ -8,38 +8,34 @@
 
 import UIKit
 import Alamofire
+import ReactiveCocoa
+import ReactiveSwift
+
+import Networking
+import Argo
+import Curry
+import Runes
+import Result
 
 enum BookError: Error {
     case decodeError
 }
 
-class WBNetworkManager: NSObject {
+var networkingConfiguration: NetworkingConfiguration {
+    var config = NetworkingConfiguration()
+    config.domainURL = "swift-training-backend.herokuapp.com"
+    return config
+}
 
-    public static let manager = WBNetworkManager()
-    
-    override init() {}
+class WBNetworkManager: AbstractRepository {
 
     let userId = 5 //userID 5 ... because...
 
-    public func fetchBooks(onSuccess: @escaping ([WBBook]) -> Void, onError: @escaping (Error) -> Void) {
-
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/books")!
-
-        request(url, method: .get).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONbooks = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let books = try? JSONDecoder().decode([WBBook].self, from: JSONbooks) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                onSuccess(books)
-            case .failure(let error):
-                onError(error)
-            }
+    // MARK: - Books
+    public func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
+        let path = "books"
+        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+            return decode(JSON).toResult()
         }
     }
     
@@ -66,61 +62,28 @@ class WBNetworkManager: NSObject {
             }
         }
     }
-    
-    public func rentBook(book: WBBook, onSuccess: @escaping (WBRent) -> Void, onError: @escaping (Error) -> Void) {
-        
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/rents")!
 
+    public func rentBook(book: WBBook) -> SignalProducer<WBRent, RepositoryError> {
+        let path = "users/\(userId)/rents"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id,
                                      "from": WBDateHelper.today(),
                                      "to": WBDateHelper.tomorrow()]
         
-        request(url, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let rent = try? JSONDecoder().decode(WBRent.self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(rent)
-            case .failure(let error):
-                onError(error)
-            }
+        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { JSON in
+            return decode(JSON).toResult()
         }
     }
-
+    
     // MARK: - Comments
-    public func getBookComments(book: WBBook, onSuccess: @escaping ([WBComment]) -> Void, onError: @escaping (Error) -> Void) {
+    public func getBookComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
+        let path = "books/\(book.id)/comments"
         
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/books/\(book.id)/comments")!
-  
-        let headers: [String: String] = commonHeaders()
-
-        request(url, method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let comments = try? JSONDecoder().decode([WBComment].self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(comments)
-            case .failure(let error):
-                onError(error)
-            }
+        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+            return decode(JSON).toResult()
         }
     }
-
+    
     public func addBookComment(comment: WBComment, onSuccess: @escaping (WBComment) -> Void, onError: @escaping (Error) -> Void) {
         
         let url = URL(string: "https://swift-training-backend.herokuapp.com/books/\(comment.book.id)/comments")!

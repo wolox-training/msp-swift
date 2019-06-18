@@ -8,6 +8,10 @@
 
 import UIKit
 
+import Argo
+import Curry
+import Runes
+
 struct WBComment: Codable {
 
     let id: Int
@@ -20,5 +24,16 @@ struct WBComment: Codable {
         case content
         case book
         case user
+    }
+}
+
+extension WBComment: Argo.Decodable {
+    
+    public static func decode(_ json: JSON) -> Decoded<WBComment> {
+        return curry(WBComment.init)
+            <^> json <| "id"
+            <*> json <| "content"
+            <*> json <| "book"
+            <*> json <| "user"
     }
 }

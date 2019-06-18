@@ -8,6 +8,10 @@
 
 import UIKit
 
+import Argo
+import Curry
+import Runes
+
 struct WBRent: Codable {
 
     let id: Int
@@ -24,4 +28,16 @@ struct WBRent: Codable {
         case userID
     }
     
+}
+
+extension WBRent: Argo.Decodable {
+    
+    public static func decode(_ json: JSON) -> Decoded<WBRent> {
+        return curry(WBRent.init)
+            <^> json <| "id"
+            <*> json <| "from"
+            <*> json <| "to"
+            <*> json <| "bookID"
+            <*> json <| "userID"
+    }
 }

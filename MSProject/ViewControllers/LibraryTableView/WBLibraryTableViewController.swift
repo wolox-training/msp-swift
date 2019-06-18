@@ -13,8 +13,8 @@ class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
 
-    lazy var libraryViewModel: WBLibraryViewModel = {
-        return WBLibraryViewModel()
+    lazy var viewModel: WBLibraryViewModel = {
+        return WBLibraryViewModel(booksRepository: WBNetworkManager(configuration: networkingConfiguration, defaultHeaders: nil))
     }()
         
     var cellSelected: WBBookTableViewCell!
@@ -27,8 +27,6 @@ class WBLibraryTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initLibraryTableViewModel()
-        
         configureTableView()
         
         navigationItem.title = "LIBRARY_NAV_BAR".localized()
@@ -39,6 +37,8 @@ class WBLibraryTableViewController: UIViewController {
 
         navigationController?.delegate = self
         
+        loadBooks()
+        
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
@@ -48,29 +48,6 @@ class WBLibraryTableViewController: UIViewController {
     }
 
     // MARK: - Private
-    private func initLibraryTableViewModel() {
-       
-        libraryViewModel.showAlertClosure = { [weak self] (error) in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
-            DispatchQueue.main.async {
-                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okButton)
-                self?.present(alertController, animated: true, completion: nil)
-            }
-        }
-        
-        libraryViewModel.reloadViewClosure = { [weak self] () in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
-            DispatchQueue.main.async {
-                self?._view.bookTable.reloadData()
-            }
-        }
-        
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        libraryViewModel.loadBooks()
-    }
-    
     private func configureTableView() {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
@@ -81,10 +58,30 @@ class WBLibraryTableViewController: UIViewController {
     // MARK: - Services
     @objc private func loadBooks() {
         TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        libraryViewModel.loadBooks()
-        DispatchQueue.main.async {
-            self._view.bookTable.refreshControl?.endRefreshing()
+        viewModel.repository.getBooks().startWithResult { [unowned self] result in
+            switch result {
+            case .success(let value):
+                self._view.bookTable.refreshControl?.endRefreshing()
+                TTLoadingHUDView.sharedView.hideViewWithSuccess()
+                self.loadTableWithBooks(books: value)
+            case .failure(let error):
+                self._view.bookTable.refreshControl?.endRefreshing()
+                TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+                self.showAlertError(error: error)
+            }
         }
+    }
+    
+    private func loadTableWithBooks(books: [WBBook]) {
+        viewModel.libraryItems = books
+        _view.bookTable.reloadData()
+    }
+    
+    private func showAlertError(error: Error) {
+        let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okButton)
+        present(alertController, animated: true, completion: nil)
     }
     
 }
@@ -92,7 +89,7 @@ class WBLibraryTableViewController: UIViewController {
 extension WBLibraryTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return libraryViewModel.numberOfCells
+        return viewModel.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,7 +98,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let book = libraryViewModel.getCellViewModel(at: indexPath)
+        let book = viewModel.getCellViewModel(at: indexPath)
         cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage(named: "book_noun_001_01679")!)
         cell.bookTitle.text = book.bookTitle
         cell.bookAuthor.text = book.bookAuthor
@@ -122,7 +119,7 @@ extension WBLibraryTableViewController: UITableViewDelegate {
         let rectOfCell = tableView.rectForRow(at: indexPath)
         rectOfCellSelected = tableView.convert(rectOfCell, to: tableView.superview)
 
-        let book = libraryViewModel.selectBook(at: indexPath)
+        let book = viewModel.selectBook(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         let detailBookViewController = WBDetailBookViewController()
         detailBookViewController.bookView = book

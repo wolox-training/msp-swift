@@ -9,11 +9,6 @@
 import UIKit
 import WolmoCore
 
-protocol DetailBookDelegate {
-    func addToWishlist()
-    func rentBook()
-}
-
 class WBDetailBookHeaderView: UIView, NibLoadable {
 
     @IBOutlet weak var bookImage: UIImageView!
@@ -27,8 +22,6 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
 
     @IBOutlet weak var wishlistButton: WBButton!
     @IBOutlet weak var rentButton: WBButton!
-    
-    var delegate: DetailBookDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,14 +51,4 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
             sendSubviewToBack(customBackgroundView)
         }
     }
-    
-    // MARK: - Actions
-    @IBAction func addToWishlist(_ sender: Any) {
-        delegate?.addToWishlist()
-    }
-    
-    @IBAction func rentBook(_ sender: Any) {
-        delegate?.rentBook()
-    }
-
 }

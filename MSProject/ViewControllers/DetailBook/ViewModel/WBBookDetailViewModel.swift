@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Networking
 
 class WBBookDetailViewModel {
 
     var commentsViewModels: [WBComment] = [WBComment]()
     
+    var bookAvailable = MutableProperty(false)
+    
     public let repository: WBNetworkManager
+    
+    lazy var rentBookAction = Action(enabledIf: bookAvailable) { [unowned self] book in
+        return self.rentBook(book: book)
+    }
+    
+    public func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+        return repository.rentBook(book: book)
+    }
     
     init(booksRepository: WBNetworkManager) {
         repository = booksRepository

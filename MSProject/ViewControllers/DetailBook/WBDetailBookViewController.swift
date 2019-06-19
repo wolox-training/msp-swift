@@ -33,44 +33,45 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.bookViewModel = bookView
+        _detailHeaderView.setBook(bookViewModel: bookView)
+        _detailHeaderView.configureUI()
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
 
     // MARK: - Private
     private func initBookDetailTableViewModel() {
-    
-//        viewModel.showErrorAlertClosure = { [weak self] (error) in
-//            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
-//            DispatchQueue.main.async {
-//                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
-//                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//                alertController.addAction(okButton)
-//                self?.present(alertController, animated: true, completion: nil)
-//            }
-//        }
 
-//        viewModel.showAlertClosure = { [weak self] (message) in
-//            TTLoadingHUDView.sharedView.hideViewWithSuccess()
-//            DispatchQueue.main.async {
-//                let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-//                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//                alertController.addAction(okButton)
-//                self?.present(alertController, animated: true, completion: nil)
-//            }
-//        }
-        
-//        viewModel.reloadViewClosure = { [weak self] () in
-//            TTLoadingHUDView.sharedView.hideViewWithSuccess()
-//            DispatchQueue.main.async {
-//                self?._view.detailTable.reloadData()
-//            }
-//        }
-        
-        _detailHeaderView.rentButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
-            self.rentBook()
+        viewModel.rentBookAction.values.observeValues { [unowned self] _ in
+            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            self.showAlertMessage(message: "Se reservo el libro correctamente")
+            self.viewModel.bookAvailable.value = false
         }
+        
+        viewModel.rentBookAction.errors.observeValues { [unowned self] error in
+            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            self.showAlertMessage(message: error.localizedDescription)
+        }
+        
+        viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
+            if isExecuting {
+                TTLoadingHUDView.sharedView.showLoading(inView: self._view)
+            }
+        }
+        
+        viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] isEnabled in
+            if isEnabled {
+                self._detailHeaderView.bookAvailable.textColor = .green
+                self._detailHeaderView.rentButton.enabledButton = true
+            } else {
+                self._detailHeaderView.bookAvailable.textColor = .red
+                self._detailHeaderView.rentButton.enabledButton = false
+            }
+        }
+
+        viewModel.bookAvailable.value = bookView.bookStatus.bookStatusAvailable()
+        
+        _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookView.book)
         
         _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
             self.addToWishlist()
@@ -96,10 +97,7 @@ class WBDetailBookViewController: UIViewController {
                 self._view.detailTable.reloadData()
             case .failure(let error):
                 TTLoadingHUDView.sharedView.hideViewWithFailure(error)
-                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okButton)
-                self.present(alertController, animated: true, completion: nil)
+                self.showAlertMessage(message: error.localizedDescription)
             }
         }
     }
@@ -149,15 +147,34 @@ extension WBDetailBookViewController {
         
     }
 
-    func rentBook() {
-        guard bookView.bookStatus == .available else {
-            let alertController = UIAlertController(title: "", message: "No puedes rentar un libro \(bookView.bookStatus.bookStatusText()). lol", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alertController.addAction(okButton)
-            present(alertController, animated: true, completion: nil)
-            return
-        }
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-//        viewModel.rentBook(book: bookView)
+//    func rentBook() {
+//        guard bookView.bookStatus == .available else {
+//            self.showAlertMessage(message: "No puedes rentar un libro \(bookView.bookStatus.bookStatusText()). lol")
+//            return
+//        }
+//        TTLoadingHUDView.sharedView.showLoading(inView: _view)
+//
+//        viewModel.repository.rentBook(book: bookView.book).startWithResult { [unowned self] result in
+//            switch result {
+//            case .success():
+//                TTLoadingHUDView.sharedView.hideViewWithSuccess()
+//                self.showAlertMessage(message: "Se reservo el libro correctamente")
+//                // CAMBIAR BOTON!!!
+//
+//            case .failure(let error):
+//                TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+//                self.showAlertMessage(message: error.localizedDescription)
+//            }
+//        }
+//    }
+}
+
+extension WBDetailBookViewController {
+    
+    private func showAlertMessage(message: String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okButton)
+        present(alertController, animated: true, completion: nil)
     }
 }

@@ -63,15 +63,15 @@ class WBNetworkManager: AbstractRepository {
         }
     }
 
-    public func rentBook(book: WBBook) -> SignalProducer<WBRent, RepositoryError> {
+    public func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
         let path = "users/\(userId)/rents"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id,
                                      "from": WBDateHelper.today(),
                                      "to": WBDateHelper.tomorrow()]
         
-        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { JSON in
-            return decode(JSON).toResult()
+        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+            Result(value: ())
         }
     }
     

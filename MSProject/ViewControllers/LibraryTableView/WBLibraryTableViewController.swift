@@ -37,8 +37,6 @@ class WBLibraryTableViewController: UIViewController {
 
         navigationController?.delegate = self
         
-        loadBooks()
-        
         // Refresh Control
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
@@ -47,6 +45,12 @@ class WBLibraryTableViewController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadBooks()
+    }
+    
     // MARK: - Private
     private func configureTableView() {
         _view.bookTable.delegate = self

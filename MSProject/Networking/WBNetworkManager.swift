@@ -32,7 +32,7 @@ class WBNetworkManager: AbstractRepository {
     let userId = 5 //userID 5 ... because...
 
     // MARK: - Books
-    public func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
+    func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "books"
         return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
             return decode(JSON).toResult()
@@ -40,7 +40,7 @@ class WBNetworkManager: AbstractRepository {
     }
     
     // MARK: - Rentals
-    public func getRentals(onSuccess: @escaping ([WBRent]) -> Void, onError: @escaping (Error) -> Void) {
+    func getRentals(onSuccess: @escaping ([WBRent]) -> Void, onError: @escaping (Error) -> Void) {
         
         let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/rents")!
         
@@ -63,7 +63,7 @@ class WBNetworkManager: AbstractRepository {
         }
     }
 
-    public func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+    func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
         let path = "users/\(userId)/rents"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id,
@@ -76,7 +76,7 @@ class WBNetworkManager: AbstractRepository {
     }
     
     // MARK: - Comments
-    public func getBookComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
+    func getBookComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
         let path = "books/\(book.id)/comments"
         
         return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
@@ -84,7 +84,7 @@ class WBNetworkManager: AbstractRepository {
         }
     }
     
-    public func addBookComment(comment: WBComment, onSuccess: @escaping (WBComment) -> Void, onError: @escaping (Error) -> Void) {
+    func addBookComment(comment: WBComment, onSuccess: @escaping (WBComment) -> Void, onError: @escaping (Error) -> Void) {
         
         let url = URL(string: "https://swift-training-backend.herokuapp.com/books/\(comment.book.id)/comments")!
         
@@ -112,7 +112,7 @@ class WBNetworkManager: AbstractRepository {
     }
     
     // MARK: - Wish
-    public func getWishes(onSuccess: @escaping ([WBWish]) -> Void, onError: @escaping (Error) -> Void) {
+    func getWishes(onSuccess: @escaping ([WBWish]) -> Void, onError: @escaping (Error) -> Void) {
         
         let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/wishes")!
         
@@ -135,7 +135,7 @@ class WBNetworkManager: AbstractRepository {
         }
     }
     
-    public func addWishBook(book: WBBook, onSuccess: @escaping (WBWish) -> Void, onError: @escaping (Error) -> Void) {
+    func addWishBook(book: WBBook, onSuccess: @escaping (WBWish) -> Void, onError: @escaping (Error) -> Void) {
         
         let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/wishes")!
         

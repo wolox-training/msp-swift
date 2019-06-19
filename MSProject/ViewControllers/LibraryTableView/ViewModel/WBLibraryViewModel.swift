@@ -20,7 +20,7 @@ class WBLibraryViewModel {
 //    private let libraryItems = MutableProperty<[WBBook]>([])
     private var bookViewModels: [WBBookViewModel] = []
     
-    public let repository: WBNetworkManager
+    let repository: WBNetworkManager
     
     init(booksRepository: WBNetworkManager) {
         repository = booksRepository

@@ -31,7 +31,7 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     
     func configureUI() {
         bookAvailable.textColor = .red
-        rentButton.enabledButton = false
+        rentButton.buttonStyle = .disabled
         customBackgroundView.layer.cornerRadius = 5
         customBackgroundView.backgroundColor = .white
         sendSubviewToBack(customBackgroundView)
@@ -45,5 +45,9 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         bookAuthor.text = bookViewModel.bookAuthor
         bookYear.text = bookViewModel.bookYear
         bookGenre.text = bookViewModel.bookGenre
+    }
+    
+    func setButtonStyle(style: WBButtonStyle, forTitle title: String) {
+        
     }
 }

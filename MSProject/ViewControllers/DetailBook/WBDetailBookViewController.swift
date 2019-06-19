@@ -35,6 +35,10 @@ class WBDetailBookViewController: UIViewController {
     override func loadView() {
         _detailHeaderView.setBook(bookViewModel: bookView)
         _detailHeaderView.configureUI()
+        
+        _detailHeaderView.rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
+        _detailHeaderView.wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
+
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
@@ -62,10 +66,10 @@ class WBDetailBookViewController: UIViewController {
         viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] isEnabled in
             if isEnabled {
                 self._detailHeaderView.bookAvailable.textColor = .green
-                self._detailHeaderView.rentButton.enabledButton = true
+                self._detailHeaderView.rentButton.buttonStyle = .filled
             } else {
                 self._detailHeaderView.bookAvailable.textColor = .red
-                self._detailHeaderView.rentButton.enabledButton = false
+                self._detailHeaderView.rentButton.buttonStyle = .disabled
             }
         }
 
@@ -169,8 +173,8 @@ extension WBDetailBookViewController {
 //    }
 }
 
+// MARK: - Alert
 extension WBDetailBookViewController {
-    
     private func showAlertMessage(message: String) {
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)

@@ -49,7 +49,9 @@ final class TTLoadingHUDView: UIView {
     
     func showLoading(inView view: UIView) {
         self.frame = view.frame
-        view.addSubview(self)
+        if !view.subviews.contains(self) {
+            view.addSubview(self)
+        }
         loadingIndicator.startAnimating()
     }
     

@@ -32,7 +32,7 @@ struct WBRent: Codable {
 
 extension WBRent: Argo.Decodable {
     
-    public static func decode(_ json: JSON) -> Decoded<WBRent> {
+    static func decode(_ json: JSON) -> Decoded<WBRent> {
         return curry(WBRent.init)
             <^> json <| "id"
             <*> json <| "from"

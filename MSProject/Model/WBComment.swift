@@ -29,7 +29,7 @@ struct WBComment: Codable {
 
 extension WBComment: Argo.Decodable {
     
-    public static func decode(_ json: JSON) -> Decoded<WBComment> {
+    static func decode(_ json: JSON) -> Decoded<WBComment> {
         return curry(WBComment.init)
             <^> json <| "id"
             <*> json <| "content"

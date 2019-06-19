@@ -27,7 +27,7 @@ struct WBUser: Codable {
 
 extension WBUser: Argo.Decodable {
     
-    public static func decode(_ json: JSON) -> Decoded<WBUser> {
+    static func decode(_ json: JSON) -> Decoded<WBUser> {
         return curry(WBUser.init)
             <^> json <| "id"
             <*> json <| "username"

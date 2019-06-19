@@ -13,18 +13,14 @@ import Networking
 
 class WBBookDetailViewModel {
 
-    var commentsViewModels: [WBComment] = [WBComment]()
+    var commentsViewModels: [WBComment] = []
     
     var bookAvailable = MutableProperty(false)
     
-    public let repository: WBNetworkManager
+    let repository: WBNetworkManager
     
     lazy var rentBookAction = Action(enabledIf: bookAvailable) { [unowned self] book in
         return self.rentBook(book: book)
-    }
-    
-    public func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
-        return repository.rentBook(book: book)
     }
     
     init(booksRepository: WBNetworkManager) {
@@ -37,5 +33,9 @@ class WBBookDetailViewModel {
     
     func getCellViewModel(at indexPath: IndexPath) -> WBComment {
         return commentsViewModels[indexPath.row]
+    }
+
+    func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+        return repository.rentBook(book: book)
     }
 }

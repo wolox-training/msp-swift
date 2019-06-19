@@ -70,7 +70,7 @@ struct WBBook: Codable {
 
 extension WBBook: Argo.Decodable {
     
-    public static func decode(_ json: JSON) -> Decoded<WBBook> {
+    static func decode(_ json: JSON) -> Decoded<WBBook> {
         return curry(WBBook.init)
             <^> json <| "id"
             <*> json <| "title"

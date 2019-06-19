@@ -17,10 +17,6 @@ import Curry
 import Runes
 import Result
 
-enum BookError: Error {
-    case decodeError
-}
-
 var networkingConfiguration: NetworkingConfiguration {
     var config = NetworkingConfiguration()
     config.domainURL = "swift-training-backend.herokuapp.com"
@@ -39,27 +35,12 @@ class WBNetworkManager: AbstractRepository {
         }
     }
     
-    // MARK: - Rentals
-    func getRentals(onSuccess: @escaping ([WBRent]) -> Void, onError: @escaping (Error) -> Void) {
+    // MARK: - User Rents
+    func getRents() -> SignalProducer<[WBRent], RepositoryError> {
+        let path = "users/\(userId)/rents"
         
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/rents")!
-        
-        request(url, method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let rents = try? JSONDecoder().decode([WBRent].self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(rents)
-            case .failure(let error):
-                onError(error)
-            }
+        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+            return decode(JSON).toResult()
         }
     }
 
@@ -75,7 +56,7 @@ class WBNetworkManager: AbstractRepository {
         }
     }
     
-    // MARK: - Comments
+    // MARK: - Book Comments
     func getBookComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
         let path = "books/\(book.id)/comments"
         
@@ -84,82 +65,37 @@ class WBNetworkManager: AbstractRepository {
         }
     }
     
-    func addBookComment(comment: WBComment, onSuccess: @escaping (WBComment) -> Void, onError: @escaping (Error) -> Void) {
-        
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/books/\(comment.book.id)/comments")!
-        
+    func addBookComment(comment: WBComment) -> SignalProducer<Void, RepositoryError> {
+        let path = "books/\(comment.book.id)/comments"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": comment.book.id,
                                      "content": comment.content]
+        
+        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+            Result(value: ())
+        }
+    }
+    
+    // MARK: - User Wishes
+    func getWishes() -> SignalProducer<[WBWish], RepositoryError> {
+        let path = "users/\(userId)/wishes"
+        
+        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
 
-        request(url, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let comment = try? JSONDecoder().decode(WBComment.self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(comment)
-            case .failure(let error):
-                onError(error)
-            }
-        }
-    }
-    
-    // MARK: - Wish
-    func getWishes(onSuccess: @escaping ([WBWish]) -> Void, onError: @escaping (Error) -> Void) {
-        
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/wishes")!
-        
-        request(url, method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let wishes = try? JSONDecoder().decode([WBWish].self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(wishes)
-            case .failure(let error):
-                onError(error)
-            }
-        }
-    }
-    
-    func addWishBook(book: WBBook, onSuccess: @escaping (WBWish) -> Void, onError: @escaping (Error) -> Void) {
-        
-        let url = URL(string: "https://swift-training-backend.herokuapp.com/users/\(userId)/wishes")!
-        
+    func addWishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+        let path = "users/\(userId)/wishes"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id]
         
-        request(url, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: commonHeaders()).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let JSONrent = try? JSONSerialization.data(withJSONObject: value, options: []) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                guard let wish = try? JSONDecoder().decode(WBWish.self, from: JSONrent) else {
-                    onError(BookError.decodeError)
-                    return
-                }
-                
-                onSuccess(wish)
-            case .failure(let error):
-                onError(error)
-            }
+        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+            Result(value: ())
         }
     }
+
+    // MARK: - Suggestions
     
     // MARK: - Private
     private func commonHeaders() -> [String: String] {

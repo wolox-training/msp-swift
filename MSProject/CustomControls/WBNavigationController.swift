@@ -32,7 +32,7 @@ class WBNavigationController: UINavigationController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
         navigationBar.backgroundColor = .woloxBackgroundLightColor()
-        navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
         
         let backImage = UIImage(named: "ic_back")
@@ -41,7 +41,7 @@ class WBNavigationController: UINavigationController {
         
         // common configuration
         if let viewController = viewControllers.first {
-            let logout = UIBarButtonItem(image: UIImage(named: "logout"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.logout))
+            let logout = UIBarButtonItem(image: UIImage(named: "logout"), style: .plain, target: self, action: #selector(self.logout))
             viewController.navigationItem.leftBarButtonItem = logout
             
             let backItem = UIBarButtonItem()

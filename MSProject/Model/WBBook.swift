@@ -13,24 +13,11 @@ import Argo
 import Curry
 import Runes
 
-enum BookStatus: CaseIterable {
+enum BookStatus: String, CaseIterable {
     case rented
     case inYourHands
     case available
     case unknown
-    
-    init(rawValue: String) {
-        switch rawValue {
-        case "rented":
-            self = .rented
-        case "inYourHands":
-            self = .inYourHands
-        case "available":
-            self = .available
-        default:
-            self = .unknown
-        }
-    }
     
     func bookStatusText() -> String {
         switch self {
@@ -41,7 +28,7 @@ enum BookStatus: CaseIterable {
         }
     }
     
-    func bookStatusAvailable() -> Bool {
+    func isBookAvailable() -> Bool {
         return self == .available
     }
     
@@ -91,30 +78,30 @@ struct WBBookViewModel {
     }
     
     var bookId: String {
-        return String(self.book.id)
+        return String(book.id)
     }
     
     var bookTitle: String {
-        return self.book.title
+        return book.title
     }
     
     var bookAuthor: String {
-        return self.book.author
+        return book.author
     }
     
     var bookStatus: BookStatus {
-        return BookStatus(rawValue: book.status)
+        return BookStatus(rawValue: book.status) ?? .unknown
     }
     
     var bookGenre: String {
-        return self.book.genre
+        return book.genre
     }
     
     var bookYear: String {
-        return self.book.year
+        return book.year
     }
     
     var bookImageURL: String {
-        return self.book.imageURL
+        return book.imageURL
     }
 }

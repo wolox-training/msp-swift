@@ -1,5 +1,5 @@
 //
-//  WBNetworkManager.swift
+//  WBBooksRepository.swift
 //  MSProject
 //
 //  Created by Matias Spinelli on 11/06/2019.
@@ -23,7 +23,9 @@ var networkingConfiguration: NetworkingConfiguration {
     return config
 }
 
-class WBNetworkManager: AbstractRepository {
+class WBBooksRepository: AbstractRepository {
+
+    let imageCache = NSCache<NSString, UIImage>()
 
     let userId = 5 //userID 5 ... because...
 

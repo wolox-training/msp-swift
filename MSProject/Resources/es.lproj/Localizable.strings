@@ -33,3 +33,5 @@
 "COMMENT_ADD_BUTTON" = "ADD A COMMENT";
 "RETURN_BOOK_BUTTON" = "RETURN BOOK";
 
+// Alert
+"RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";

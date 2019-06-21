@@ -17,13 +17,13 @@ class WBBookDetailViewModel {
     
     var bookAvailable = MutableProperty(false)
     
-    let repository: WBNetworkManager
+    let repository: WBBooksRepository
     
     lazy var rentBookAction = Action(enabledIf: bookAvailable) { [unowned self] book in
         return self.rentBook(book: book)
     }
     
-    init(booksRepository: WBNetworkManager) {
+    init(booksRepository: WBBooksRepository) {
         repository = booksRepository
     }
     

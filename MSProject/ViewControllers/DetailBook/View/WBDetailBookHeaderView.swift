@@ -37,8 +37,8 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         sendSubviewToBack(customBackgroundView)
     }
     
-    func setBook(bookViewModel: WBBookViewModel) {
-        bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage(named: "book_noun_001_01679")!)
+    func setup(with bookViewModel: WBBookViewModel) {
+        bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
         bookTitle.text = bookViewModel.bookTitle
         bookAuthor.text = bookViewModel.bookAuthor
         bookAvailable.text = bookViewModel.bookStatus.bookStatusText()

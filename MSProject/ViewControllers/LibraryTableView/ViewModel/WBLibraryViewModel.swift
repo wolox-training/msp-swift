@@ -10,19 +10,23 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 
+enum SortMethod {
+    case id
+    case title
+    case author
+    case genre
+    case year
+}
+
 class WBLibraryViewModel {
     
-    var libraryItems: [WBBook] = [] {
-        didSet {
-            sortBooks()
-        }
-    }
+    var libraryItems: [WBBook] = []
 //    private let libraryItems = MutableProperty<[WBBook]>([])
     private var bookViewModels: [WBBookViewModel] = []
     
-    let repository: WBNetworkManager
+    let repository: WBBooksRepository
     
-    init(booksRepository: WBNetworkManager) {
+    init(booksRepository: WBBooksRepository) {
         repository = booksRepository
     }
     
@@ -38,12 +42,24 @@ class WBLibraryViewModel {
         return bookViewModels[indexPath.row]
     }
     
-    // MARK: - Private
     func sortBooks() {
-        let sortedBooks = WBBookDAO.sharedInstance.sortBooks(books: self.libraryItems, by: .id)
-        self.bookViewModels = [] //clear array
-        for book in sortedBooks {
-            self.bookViewModels.append(WBBookViewModel(book: book))
+        sortBooks(books: &libraryItems, by: .id)
+        bookViewModels = libraryItems.map { WBBookViewModel(book: $0) }
+    }
+    
+    // MARK: - Private
+    private func sortBooks(books: inout [WBBook], by sortMethod: SortMethod) {
+        switch sortMethod {
+        case .id:
+            books = books.sorted(by: { $0.id < $1.id })
+        case .title:
+            books = books.sorted(by: { $0.title < $1.title })
+        case .author:
+            books = books.sorted(by: { $0.author < $1.author })
+        case .genre:
+            books = books.sorted(by: { $0.genre < $1.genre })
+        case .year:
+            books = books.sorted(by: { $0.year < $1.year })
         }
     }
 }

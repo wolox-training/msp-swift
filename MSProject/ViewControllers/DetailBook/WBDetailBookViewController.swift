@@ -10,6 +10,7 @@ import UIKit
 import WolmoCore
 import ReactiveCocoa
 import ReactiveSwift
+import MBProgressHUD
 
 class WBDetailBookViewController: UIViewController {
 
@@ -17,15 +18,20 @@ class WBDetailBookViewController: UIViewController {
     private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFromNib()!
 
     lazy var viewModel: WBBookDetailViewModel = {
-        return WBBookDetailViewModel(booksRepository: WBNetworkManager(configuration: networkingConfiguration, defaultHeaders: nil))
+        return WBBookDetailViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: nil))
     }()
     
-    var bookView: WBBookViewModel!
+    var bookViewModel: WBBookViewModel!
+    
+    convenience init(with bookViewModel: WBBookViewModel) {
+        self.init()
+        self.bookViewModel = bookViewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "BOOK_DETAIL".localized()
+        title = "BOOK_DETAIL".localized()
 
         configureTableView()
         
@@ -33,7 +39,7 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.setBook(bookViewModel: bookView)
+        _detailHeaderView.setup(with: bookViewModel)
         _detailHeaderView.configureUI()
         
         _detailHeaderView.rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
@@ -47,19 +53,19 @@ class WBDetailBookViewController: UIViewController {
     private func initBookDetailTableViewModel() {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            MBProgressHUD.hide(for: self._view, animated: true)
             self.showAlertMessage(message: "Se reservo el libro correctamente")
             self.viewModel.bookAvailable.value = false
         }
         
         viewModel.rentBookAction.errors.observeValues { [unowned self] error in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            MBProgressHUD.hide(for: self._view, animated: true)
             self.showAlertMessage(message: error.localizedDescription)
         }
         
         viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
             if isExecuting {
-                TTLoadingHUDView.sharedView.showLoading(inView: self._view)
+                MBProgressHUD.showAdded(to: self._view, animated: true)
             }
         }
         
@@ -73,9 +79,9 @@ class WBDetailBookViewController: UIViewController {
             }
         }
 
-        viewModel.bookAvailable.value = bookView.bookStatus.bookStatusAvailable()
+        viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
         
-        _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookView.book)
+        _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
         
         _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
             self.addToWishlist()
@@ -92,15 +98,15 @@ class WBDetailBookViewController: UIViewController {
     }
     
     private func loadComments() {
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        viewModel.repository.getBookComments(book: bookView.book).startWithResult { [unowned self] result in
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        viewModel.repository.getBookComments(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
-                TTLoadingHUDView.sharedView.hideViewWithSuccess()
+                MBProgressHUD.hide(for: self._view, animated: true)
                 self.viewModel.commentsViewModels = value
                 self._view.detailTable.reloadData()
             case .failure(let error):
-                TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+                MBProgressHUD.hide(for: self._view, animated: true)
                 self.showAlertMessage(message: error.localizedDescription)
             }
         }
@@ -145,40 +151,18 @@ extension WBDetailBookViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Actions
+// MARK: - Alert
 extension WBDetailBookViewController {
     func addToWishlist() {
         
     }
-
+    
 //    func rentBook() {
-//        guard bookView.bookStatus == .available else {
-//            self.showAlertMessage(message: "No puedes rentar un libro \(bookView.bookStatus.bookStatusText()). lol")
+//        guard bookViewModel.bookStatus == .available else {
+//            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))
 //            return
 //        }
-//        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-//
-//        viewModel.repository.rentBook(book: bookView.book).startWithResult { [unowned self] result in
-//            switch result {
-//            case .success():
-//                TTLoadingHUDView.sharedView.hideViewWithSuccess()
-//                self.showAlertMessage(message: "Se reservo el libro correctamente")
-//                // CAMBIAR BOTON!!!
-//
-//            case .failure(let error):
-//                TTLoadingHUDView.sharedView.hideViewWithFailure(error)
-//                self.showAlertMessage(message: error.localizedDescription)
-//            }
-//        }
+//        MBProgressHUD.showAdded(to: _view, animated: true)
+//        bookDetailViewModel.rentBook(book: bookViewModel)
 //    }
-}
-
-// MARK: - Alert
-extension WBDetailBookViewController {
-    private func showAlertMessage(message: String) {
-        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okButton)
-        present(alertController, animated: true, completion: nil)
-    }
 }

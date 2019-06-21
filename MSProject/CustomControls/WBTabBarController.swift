@@ -19,36 +19,36 @@ class WBTabBarController: UITabBarController {
         let libraryTabNavigationController = WBNavigationController(rootViewController: WBLibraryTableViewController())
         libraryTabNavigationController.tabBarItem = UITabBarItem()
         libraryTabNavigationController.tabBarItem.title = "LIBRARY".localized()
-        libraryTabNavigationController.tabBarItem.image = UIImage(named: "ic_library")
-        libraryTabNavigationController.tabBarItem.selectedImage = UIImage(named: "ic_library active")
+        libraryTabNavigationController.tabBarItem.image = UIImage.libraryImage
+        libraryTabNavigationController.tabBarItem.selectedImage = UIImage.libraryActiveImage
         libraryTabNavigationController.tabBarItem.tag = 0
         
         let wishlistNavigationController = WBNavigationController(rootViewController: WBWishlistViewController())
         wishlistNavigationController.tabBarItem = UITabBarItem()
         wishlistNavigationController.tabBarItem.title = "WISHLIST".localized()
-        wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist")
-        wishlistNavigationController.tabBarItem.image = UIImage(named: "ic_wishlist active")
+        wishlistNavigationController.tabBarItem.image = UIImage.wishlistImage
+        wishlistNavigationController.tabBarItem.image = UIImage.wishlistActiveImage
         wishlistNavigationController.tabBarItem.tag = 1
 
         let addnewNavigationController = WBNavigationController(rootViewController: WBAddNewViewController())
         addnewNavigationController.tabBarItem = UITabBarItem()
         addnewNavigationController.tabBarItem.title = "ADDNEW".localized()
-        addnewNavigationController.tabBarItem.image = UIImage(named: "ic_add new")
-        addnewNavigationController.tabBarItem.image = UIImage(named: "ic_add new active")
+        addnewNavigationController.tabBarItem.image = UIImage.addNewImage
+        addnewNavigationController.tabBarItem.image = UIImage.addNewActiveImage
         addnewNavigationController.tabBarItem.tag = 2
         
         let rentalsNavigationController = WBNavigationController(rootViewController: WBRentalsViewController())
         rentalsNavigationController.tabBarItem = UITabBarItem()
         rentalsNavigationController.tabBarItem.title = "RENTALS".localized()
-        rentalsNavigationController.tabBarItem.image = UIImage(named: "ic_myrentals")
-        rentalsNavigationController.tabBarItem.image = UIImage(named: "ic_myrentals active")
+        rentalsNavigationController.tabBarItem.image = UIImage.rentalsImage
+        rentalsNavigationController.tabBarItem.image = UIImage.rentalsActiveImage
         rentalsNavigationController.tabBarItem.tag = 3
         
         let settingsNavigationController = WBNavigationController(rootViewController: WBSettingsViewController())
         settingsNavigationController.tabBarItem = UITabBarItem()
         settingsNavigationController.tabBarItem.title = "SETTINGS".localized()
-        settingsNavigationController.tabBarItem.image = UIImage(named: "ic_settings")
-        settingsNavigationController.tabBarItem.image = UIImage(named: "ic_settings active")
+        settingsNavigationController.tabBarItem.image = UIImage.settingsImage
+        settingsNavigationController.tabBarItem.image = UIImage.settingsActiveImage
         settingsNavigationController.tabBarItem.tag = 4
         
         viewControllers = [libraryTabNavigationController, wishlistNavigationController, addnewNavigationController, rentalsNavigationController, settingsNavigationController]

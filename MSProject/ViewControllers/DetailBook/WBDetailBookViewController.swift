@@ -8,6 +8,7 @@
 
 import UIKit
 import WolmoCore
+import MBProgressHUD
 
 class WBDetailBookViewController: UIViewController {
 
@@ -18,12 +19,17 @@ class WBDetailBookViewController: UIViewController {
         return WBBookDetailViewModel()
     }()
     
-    var bookView: WBBookViewModel!
+    var bookViewModel: WBBookViewModel!
+    
+    convenience init(with bookViewModel: WBBookViewModel) {
+        self.init()
+        self.bookViewModel = bookViewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "BOOK_DETAIL".localized()
+        title = "BOOK_DETAIL".localized()
 
         configureTableView()
         
@@ -31,7 +37,8 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.bookViewModel = bookView
+        _detailHeaderView.setup(with: bookViewModel)
+        _detailHeaderView.configureUI()
         _detailHeaderView.delegate = self
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
@@ -41,34 +48,28 @@ class WBDetailBookViewController: UIViewController {
     private func initBookDetailTableViewModel() {
     
         bookDetailViewModel.showErrorAlertClosure = { [weak self] (error) in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            MBProgressHUD.hide(for: self?._view, animated: true)
             DispatchQueue.main.async {
-                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okButton)
-                self?.present(alertController, animated: true, completion: nil)
+                self?.showAlertMessage(message: error.localizedDescription)
             }
         }
 
         bookDetailViewModel.showAlertClosure = { [weak self] (message) in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            MBProgressHUD.hide(for: self?._view, animated: true)
             DispatchQueue.main.async {
-                let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okButton)
-                self?.present(alertController, animated: true, completion: nil)
+                self?.showAlertMessage(message: message)
             }
         }
         
         bookDetailViewModel.reloadViewClosure = { [weak self] () in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            MBProgressHUD.hide(for: self?._view, animated: true)
             DispatchQueue.main.async {
                 self?._view.detailTable.reloadData()
             }
         }
         
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        bookDetailViewModel.loadComments(for: bookView)
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        bookDetailViewModel.loadComments(for: bookViewModel)
     }
     
     private func configureTableView() {
@@ -123,14 +124,11 @@ extension WBDetailBookViewController: DetailBookDelegate {
     }
     
     func rentBook() {
-        guard bookView.bookStatus == .available else {
-            let alertController = UIAlertController(title: "", message: "No puedes rentar un libro \(bookView.bookStatus.bookStatusText()). lol", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alertController.addAction(okButton)
-            present(alertController, animated: true, completion: nil)
+        guard bookViewModel.bookStatus == .available else {
+            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))
             return
         }
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
-        bookDetailViewModel.rentBook(book: bookView)
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        bookDetailViewModel.rentBook(book: bookViewModel)
     }
 }

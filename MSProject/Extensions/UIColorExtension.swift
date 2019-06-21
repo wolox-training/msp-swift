@@ -11,24 +11,24 @@ import UIKit
 extension UIColor {
     
     class func woloxBackgroundColor() -> UIColor {
-        if #available(iOS 11.0, *) {
-            return UIColor.init(named: "woloxBackgroundColor") ?? UIColor(red: 0.0, green: 0.68, blue: 0.93, alpha: 1.0)
+        if #available(iOS 11.0, *), let color = UIColor(named: "woloxBackgroundColor") {
+            return color
         } else {
             return UIColor(red: 0.0, green: 0.68, blue: 0.93, alpha: 1.0)
         }
     }
     
     class func woloxBackgroundLightColor() -> UIColor {
-        if #available(iOS 11.0, *) {
-            return UIColor.init(named: "woloxBackgroundLightColor") ?? UIColor(red: 231, green: 245, blue: 249, alpha: 1.0)
+        if #available(iOS 11.0, *), let color = UIColor(named: "woloxBackgroundLightColor") {
+            return color
         } else {
             return UIColor(red: 231, green: 245, blue: 249, alpha: 1.0)
         }
     }
     
     class func woloxTabBarBackgroundColor() -> UIColor {
-        if #available(iOS 11.0, *) {
-            return UIColor.init(named: "woloxTabBarBackgroundColor") ?? UIColor(red: 252, green: 254, blue: 254, alpha: 1.0)
+        if #available(iOS 11.0, *), let color = UIColor(named: "woloxTabBarBackgroundColor") {
+            return color
         } else {
             return UIColor(red: 252, green: 252, blue: 254, alpha: 1.0)
         }

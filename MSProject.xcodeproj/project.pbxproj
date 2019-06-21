@@ -19,15 +19,10 @@
 		00B761EF22AAF97E00640078 /* WBBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */; };
 		00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */; };
 		00B761F322AAFBD800640078 /* WBBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761F222AAFBD800640078 /* WBBook.swift */; };
-		00B761F522AAFC2000640078 /* WBBookDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761F422AAFC2000640078 /* WBBookDAO.swift */; };
 		00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B761FD22AE88AD00640078 /* WBLoginView.xib */; };
 		00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B761FF22AE88FC00640078 /* WBLoginView.swift */; };
 		00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7620E22AE995E00640078 /* WBLibraryTableView.xib */; };
 		00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7620F22AE995E00640078 /* WBLibraryTableView.swift */; };
-		00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */; };
-		00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */; };
-		00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */; };
-		00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */; };
 		00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7621B22AEA95600640078 /* WBNavigationController.swift */; };
 		00B7622D22AED23F00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		00B7623C22AED71000640078 /* WBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7623B22AED71000640078 /* WBTabBarController.swift */; };
@@ -47,17 +42,12 @@
 		00B7626522AEECCE00640078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B7622F22AED23F00640078 /* Localizable.strings */; };
 		00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
 		00B7626C22AEF23400640078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
-		00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */; };
 		00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627122AFF34200640078 /* WBLibraryViewModel.swift */; };
 		00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627722B0169300640078 /* WBNetworkManager.swift */; };
 		00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627922B01AC400640078 /* UIImageViewExtension.swift */; };
 		00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627C22B03ABF00640078 /* WBDetailBookView.swift */; };
 		00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7627E22B03AD300640078 /* WBDetailBookView.xib */; };
 		00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628022B03AF200640078 /* WBDetailBookViewController.swift */; };
-		00B7628322B12CD400640078 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628222B12CD400640078 /* Transition.swift */; };
-		00B7628922B161C400640078 /* TTLoadingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7628622B161C300640078 /* TTLoadingHUDView.swift */; };
-		00B7628A22B161C400640078 /* TTLoadingHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628722B161C400640078 /* TTLoadingHUDView.xib */; };
-		00B7628B22B161C400640078 /* TTHUDAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B7628822B161C400640078 /* TTHUDAssets.xcassets */; };
 		00B7629422B197C000640078 /* WBRent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629322B197C000640078 /* WBRent.swift */; };
 		00B7629622B27DFC00640078 /* WBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629522B27DFC00640078 /* WBUser.swift */; };
 		00B7629822B27E6100640078 /* WBComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7629722B27E6100640078 /* WBComment.swift */; };
@@ -68,6 +58,8 @@
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
+		00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */; };
+		00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -127,15 +119,10 @@
 		00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookTableViewCell.swift; sourceTree = "<group>"; };
 		00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookTableViewCell.xib; sourceTree = "<group>"; };
 		00B761F222AAFBD800640078 /* WBBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBook.swift; sourceTree = "<group>"; };
-		00B761F422AAFC2000640078 /* WBBookDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDAO.swift; sourceTree = "<group>"; };
 		00B761FD22AE88AD00640078 /* WBLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLoginView.xib; sourceTree = "<group>"; };
 		00B761FF22AE88FC00640078 /* WBLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginView.swift; sourceTree = "<group>"; };
 		00B7620E22AE995E00640078 /* WBLibraryTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBLibraryTableView.xib; sourceTree = "<group>"; };
 		00B7620F22AE995E00640078 /* WBLibraryTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLibraryTableView.swift; sourceTree = "<group>"; };
-		00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WBBookCollectionViewCell.swift; path = LibraryCollectionView/CollectionCells/WBBookCollectionViewCell.swift; sourceTree = "<group>"; };
-		00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WBBookCollectionViewCell.xib; path = LibraryCollectionView/CollectionCells/WBBookCollectionViewCell.xib; sourceTree = "<group>"; };
-		00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryCollectionView.swift; sourceTree = "<group>"; };
-		00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBLibraryCollectionView.xib; sourceTree = "<group>"; };
 		00B7621B22AEA95600640078 /* WBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNavigationController.swift; sourceTree = "<group>"; };
 		00B7623022AED24B00640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		00B7623122AED24B00640078 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -158,17 +145,12 @@
 		00B7625722AEE29B00640078 /* WBAddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewView.swift; sourceTree = "<group>"; };
 		00B7625922AEE2AC00640078 /* WBAddNewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBAddNewView.xib; sourceTree = "<group>"; };
 		00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewViewController.swift; sourceTree = "<group>"; };
-		00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		00B7627122AFF34200640078 /* WBLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryViewModel.swift; sourceTree = "<group>"; };
 		00B7627722B0169300640078 /* WBNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNetworkManager.swift; sourceTree = "<group>"; };
 		00B7627922B01AC400640078 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		00B7627C22B03ABF00640078 /* WBDetailBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookView.swift; sourceTree = "<group>"; };
 		00B7627E22B03AD300640078 /* WBDetailBookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookView.xib; sourceTree = "<group>"; };
 		00B7628022B03AF200640078 /* WBDetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookViewController.swift; sourceTree = "<group>"; };
-		00B7628222B12CD400640078 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
-		00B7628622B161C300640078 /* TTLoadingHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTLoadingHUDView.swift; sourceTree = "<group>"; };
-		00B7628722B161C400640078 /* TTLoadingHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTLoadingHUDView.xib; sourceTree = "<group>"; };
-		00B7628822B161C400640078 /* TTHUDAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TTHUDAssets.xcassets; sourceTree = "<group>"; };
 		00B7629322B197C000640078 /* WBRent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRent.swift; sourceTree = "<group>"; };
 		00B7629522B27DFC00640078 /* WBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBUser.swift; sourceTree = "<group>"; };
 		00B7629722B27E6100640078 /* WBComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBComment.swift; sourceTree = "<group>"; };
@@ -179,6 +161,8 @@
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
+		00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +232,8 @@
 			children = (
 				0097C7B722AAA3B70001509F /* UIColorExtension.swift */,
 				00B7627922B01AC400640078 /* UIImageViewExtension.swift */,
+				00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */,
+				00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,11 +251,9 @@
 		00A73F9522AAD32500FC6410 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
-				00B7628522B161B500640078 /* TTLoadingView */,
 				00A73F9622AAD34200FC6410 /* WBButton.swift */,
 				00B7621B22AEA95600640078 /* WBNavigationController.swift */,
 				00B7623B22AED71000640078 /* WBTabBarController.swift */,
-				00B7628222B12CD400640078 /* Transition.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -278,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				00B7620622AE8F7200640078 /* LibraryTableView */,
-				00B7620D22AE990700640078 /* LibraryCollectionView */,
 				00B7627B22B03A8300640078 /* DetailBook */,
 				00B7625622AEE26E00640078 /* AddNew */,
 				00B7624F22AEE20E00640078 /* Settings */,
@@ -310,14 +293,6 @@
 			path = TableCells;
 			sourceTree = "<group>";
 		};
-		00B761F122AAFBB700640078 /* DAO */ = {
-			isa = PBXGroup;
-			children = (
-				00B761F422AAFC2000640078 /* WBBookDAO.swift */,
-			);
-			path = DAO;
-			sourceTree = "<group>";
-		};
 		00B7620622AE8F7200640078 /* LibraryTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,27 +303,6 @@
 				00B761EC22AAF67100640078 /* TableCells */,
 			);
 			path = LibraryTableView;
-			sourceTree = "<group>";
-		};
-		00B7620D22AE990700640078 /* LibraryCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				00B7626F22AFE46A00640078 /* WBLibraryCollectionViewController.swift */,
-				00B7621622AE9AF300640078 /* WBLibraryCollectionView.swift */,
-				00B7621822AE9CA500640078 /* WBLibraryCollectionView.xib */,
-				00B7621A22AEA84F00640078 /* CollectionCells */,
-			);
-			path = LibraryCollectionView;
-			sourceTree = "<group>";
-		};
-		00B7621A22AEA84F00640078 /* CollectionCells */ = {
-			isa = PBXGroup;
-			children = (
-				00B7621222AE9A3900640078 /* WBBookCollectionViewCell.swift */,
-				00B7621322AE9A3900640078 /* WBBookCollectionViewCell.xib */,
-			);
-			name = CollectionCells;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		00B7624022AEE04B00640078 /* Wishlist */ = {
@@ -426,16 +380,6 @@
 			path = DetailBook;
 			sourceTree = "<group>";
 		};
-		00B7628522B161B500640078 /* TTLoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				00B7628822B161C400640078 /* TTHUDAssets.xcassets */,
-				00B7628622B161C300640078 /* TTLoadingHUDView.swift */,
-				00B7628722B161C400640078 /* TTLoadingHUDView.xib */,
-			);
-			path = TTLoadingView;
-			sourceTree = "<group>";
-		};
 		00B7628C22B1727B00640078 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,7 +452,6 @@
 				00B7629922B284C000640078 /* Helper */,
 				E1530D9A1ED378F9002A9002 /* Services */,
 				00B761E822AAF5BA00640078 /* ViewControllers */,
-				00B761F122AAFBB700640078 /* DAO */,
 				00B761EB22AAF64E00640078 /* Model */,
 				00B7627622B0167400640078 /* Networking */,
 				00B7626622AEEEA900640078 /* Resources */,
@@ -692,21 +635,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B7621922AE9CA500640078 /* WBLibraryCollectionView.xib in Resources */,
 				00B761E722AAF55800640078 /* Colors.xcassets in Resources */,
 				00B7624C22AEE1C700640078 /* WBRentalsView.xib in Resources */,
 				00B7629F22B287E800640078 /* WBCommentsBookTableViewCell.xib in Resources */,
 				00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */,
 				00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */,
-				00B7628A22B161C400640078 /* TTLoadingHUDView.xib in Resources */,
 				00B7625322AEE23E00640078 /* WBSettingsView.xib in Resources */,
 				00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */,
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
 				00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */,
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
-				00B7621522AE9A3900640078 /* WBBookCollectionViewCell.xib in Resources */,
-				00B7628B22B161C400640078 /* TTHUDAssets.xcassets in Resources */,
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
@@ -777,25 +716,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B7628322B12CD400640078 /* Transition.swift in Sources */,
 				0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */,
-				00B761F522AAFC2000640078 /* WBBookDAO.swift in Sources */,
 				00B761F322AAFBD800640078 /* WBBook.swift in Sources */,
-				00B7628922B161C400640078 /* TTLoadingHUDView.swift in Sources */,
 				00B7629E22B287E800640078 /* WBCommentsBookTableViewCell.swift in Sources */,
 				00B7629422B197C000640078 /* WBRent.swift in Sources */,
 				00B7621122AE995E00640078 /* WBLibraryTableView.swift in Sources */,
 				00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */,
 				00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */,
-				00B7621422AE9A3900640078 /* WBBookCollectionViewCell.swift in Sources */,
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
 				00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */,
 				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
+				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
 				00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */,
-				00B7627022AFE46A00640078 /* WBLibraryCollectionViewController.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
 				00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,
@@ -814,9 +749,9 @@
 				00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */,
 				00B7624A22AEE1C000640078 /* WBRentalsView.swift in Sources */,
 				00B7623C22AED71000640078 /* WBTabBarController.swift in Sources */,
+				00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */,
 				0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */,
 				00B7624622AEE08800640078 /* WBWishlistViewController.swift in Sources */,
-				00B7621722AE9AF300640078 /* WBLibraryCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

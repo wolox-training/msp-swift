@@ -19,6 +19,8 @@ class WBNetworkManager: NSObject {
     
     override init() {}
 
+    let imageCache = NSCache<NSString, UIImage>()
+
     let userId = 5 //userID 5 ... because...
 
     public func fetchBooks(onSuccess: @escaping ([WBBook]) -> Void, onError: @escaping (Error) -> Void) {

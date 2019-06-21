@@ -8,23 +8,27 @@
 
 import UIKit
 
+enum SortMethod {
+    case id
+    case title
+    case author
+    case genre
+    case year
+}
+
 class WBLibraryViewModel {
     
-    var libraryItems: [WBBook] = []
+    private var libraryItems: [WBBook] = []
 
-    private var bookViewModels: [WBBookViewModel] = [WBBookViewModel]() {
+    private var bookViewModels: [WBBookViewModel] = [] {
         didSet {
-            self.reloadViewClosure?()
+            reloadViewClosure?()
         }
     }
     
     var numberOfCells: Int {
         return bookViewModels.count
     }
-    
-//    var heightOfCells: CGFloat {
-//        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
-//    }
     
     var reloadViewClosure: (() -> Void)?
     var showAlertClosure: ((Error) -> Void)?
@@ -53,10 +57,22 @@ class WBLibraryViewModel {
     }
     
     func sortBooks() {
-        self.libraryItems = WBBookDAO.sharedInstance.sortBooks(books: self.libraryItems, by: .id)
-        self.bookViewModels = [] //clear array
-        for book in self.libraryItems {
-            self.bookViewModels.append(WBBookViewModel(book: book))
+        sortBooks(books: &libraryItems, by: .id)
+        bookViewModels = libraryItems.map { WBBookViewModel(book: $0) }
+    }
+    
+    func sortBooks(books: inout [WBBook], by sortMethod: SortMethod) {
+        switch sortMethod {
+        case .id:
+            books = books.sorted(by: { $0.id < $1.id })
+        case .title:
+            books = books.sorted(by: { $0.title < $1.title })
+        case .author:
+            books = books.sorted(by: { $0.author < $1.author })
+        case .genre:
+            books = books.sorted(by: { $0.genre < $1.genre })
+        case .year:
+            books = books.sorted(by: { $0.year < $1.year })
         }
     }
 }

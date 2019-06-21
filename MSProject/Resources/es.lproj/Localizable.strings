@@ -24,3 +24,6 @@
 // Books
 "AVAILABLE" = "Disponible";
 "NOT_AVAILABLE" = "No Disponible";
+
+// Alert
+"RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";

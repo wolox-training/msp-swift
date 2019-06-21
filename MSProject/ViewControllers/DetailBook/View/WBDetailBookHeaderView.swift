@@ -36,26 +36,32 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         backgroundColor = .clear
     }
     
-    var bookViewModel: WBBookViewModel? {
-        didSet {
-            bookImage.loadImageUsingCache(withUrl: bookViewModel?.bookImageURL ?? "", placeholderImage: UIImage(named: "book_noun_001_01679")!)
-            bookTitle.text = bookViewModel?.bookTitle
-            bookAuthor.text = bookViewModel?.bookAuthor
-            if bookViewModel?.bookStatus == .available {
-                bookAvailable.textColor = .green
-            } else {
-                bookAvailable.textColor = .red
-            }
-            bookAvailable.text = bookViewModel?.bookStatus.bookStatusText()
-            bookAuthor.text = bookViewModel?.bookAuthor
-            bookYear.text = bookViewModel?.bookYear
-            bookGenre.text = bookViewModel?.bookGenre
-            
-            rentButton.enabledButton = bookViewModel?.bookStatus.bookStatusAvailable() ?? false
-            
-            customBackgroundView.layer.cornerRadius = 5
-            customBackgroundView.backgroundColor = .white
-            sendSubviewToBack(customBackgroundView)
+    func configureUI() {
+        bookAvailable.textColor = .red
+        rentButton.buttonStyle = .disabled
+        customBackgroundView.layer.cornerRadius = 5
+        customBackgroundView.backgroundColor = .white
+        sendSubviewToBack(customBackgroundView)
+    }
+    
+    func setup(with bookViewModel: WBBookViewModel) {
+        bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
+        bookTitle.text = bookViewModel.bookTitle
+        bookAuthor.text = bookViewModel.bookAuthor
+        bookAvailable.text = bookViewModel.bookStatus.bookStatusText()
+        bookAuthor.text = bookViewModel.bookAuthor
+        bookYear.text = bookViewModel.bookYear
+        bookGenre.text = bookViewModel.bookGenre
+        if bookViewModel.bookStatus == .available {
+            bookAvailable.textColor = .green
+        } else {
+            bookAvailable.textColor = .red
+        }
+        
+        if bookViewModel.bookStatus.isBookAvailable() {
+            rentButton.buttonStyle = .filled
+        } else {
+            rentButton.buttonStyle = .disabled
         }
     }
     

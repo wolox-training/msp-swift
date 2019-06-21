@@ -10,14 +10,14 @@ import UIKit
 
 extension UIImageView {
     func loadImageUsingCache(withUrl urlString: String, placeholderImage: UIImage) {
-        self.image = placeholderImage
+        image = placeholderImage
         guard let url = URL(string: urlString) else {
             return
         }
         guard urlString.hasPrefix("https://") || urlString.hasPrefix("http://") else {
             return
         }
-        if let cachedImage = WBBookDAO.sharedInstance.imageCache.object(forKey: urlString as NSString) {
+        if let cachedImage = WBNetworkManager.manager.imageCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
             return
         }
@@ -28,7 +28,7 @@ extension UIImageView {
             }
             DispatchQueue.main.async {
                 if let image = UIImage(data: data!) {
-                    WBBookDAO.sharedInstance.imageCache.setObject(image, forKey: urlString as NSString)
+                    WBNetworkManager.manager.imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
                 }
             }

@@ -8,6 +8,7 @@
 
 import UIKit
 import WolmoCore
+import MBProgressHUD
 
 class WBLibraryTableViewController: UIViewController {
 
@@ -31,13 +32,11 @@ class WBLibraryTableViewController: UIViewController {
         
         configureTableView()
         
-        navigationItem.title = "LIBRARY_NAV_BAR".localized()
+        title = "LIBRARY_NAV_BAR".localized()
         
-        let sort = UIBarButtonItem(image: UIImage(named: "sort"), style: UIBarButtonItem.Style.plain, target: self, action: nil)
-        let search = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        let sort = UIBarButtonItem(image: UIImage.sortImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        let search = UIBarButtonItem(image: UIImage.searchImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
         navigationItem.rightBarButtonItems = [sort, search]
-
-        navigationController?.delegate = self
         
         // Refresh Control
         let refreshControl = UIRefreshControl()
@@ -51,23 +50,20 @@ class WBLibraryTableViewController: UIViewController {
     private func initLibraryTableViewModel() {
        
         libraryViewModel.showAlertClosure = { [weak self] (error) in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
+            MBProgressHUD.hide(for: self?._view, animated: true)
             DispatchQueue.main.async {
-                let alertController = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okButton)
-                self?.present(alertController, animated: true, completion: nil)
+                self?.showAlertMessage(message: error.localizedDescription)
             }
         }
         
         libraryViewModel.reloadViewClosure = { [weak self] () in
-            TTLoadingHUDView.sharedView.hideViewWithSuccess()
+            MBProgressHUD.hide(for: self?._view, animated: true)
             DispatchQueue.main.async {
                 self?._view.bookTable.reloadData()
             }
         }
         
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
+        MBProgressHUD.showAdded(to: _view, animated: true)
         libraryViewModel.loadBooks()
     }
     
@@ -80,7 +76,7 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
-        TTLoadingHUDView.sharedView.showLoading(inView: _view)
+        MBProgressHUD.showAdded(to: _view, animated: true)
         libraryViewModel.loadBooks()
         DispatchQueue.main.async {
             self._view.bookTable.refreshControl?.endRefreshing()
@@ -102,7 +98,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
         }
         
         let book = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage(named: "book_noun_001_01679")!)
+        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
         cell.bookTitle.text = book.bookTitle
         cell.bookAuthor.text = book.bookAuthor
         return cell
@@ -124,27 +120,8 @@ extension WBLibraryTableViewController: UITableViewDelegate {
 
         let book = libraryViewModel.selectBook(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailBookViewController = WBDetailBookViewController()
-        detailBookViewController.bookView = book
+        let detailBookViewController = WBDetailBookViewController(with: book)
         navigationController?.pushViewController(detailBookViewController, animated: true)
     }
     
-}
-
-extension WBLibraryTableViewController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        let arrengedFrame = CGRect(x: rectOfCellSelected.origin.x + cellSelected.contentView.frame.origin.x + cellSelected.bookImage.frame.origin.x,
-                                   y: rectOfCellSelected.origin.y + cellSelected.bookImage.frame.origin.y + cellSelected.contentView.frame.origin.y,
-                                   width: cellSelected.bookImage.frame.width,
-                                   height: cellSelected.bookImage.frame.height)
-        
-        switch operation {
-        case .push:
-            return Transition(isPresenting: true, originFrame: arrengedFrame, transitionImage: cellSelected.bookImage.image ?? UIImage(named: "book_noun_001_01679")!)
-        default:
-            return Transition(isPresenting: false, originFrame: arrengedFrame, transitionImage: cellSelected.bookImage.image ?? UIImage(named: "book_noun_001_01679")!)
-        }
-    }
 }

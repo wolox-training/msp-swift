@@ -27,7 +27,7 @@ class WBCommentsBookTableViewCell: UITableViewCell {
 
     var commentViewModel: WBComment? {
         didSet {
-            userImage.loadImageUsingCache(withUrl: commentViewModel?.user.imageURL ?? "", placeholderImage: UIImage(named: "user_male")!)
+            userImage.loadImageUsingCache(withUrl: commentViewModel?.user.imageURL ?? "", placeholderImage: .placeholderUserImage)
             userName.text = commentViewModel?.user.username
             userComment.text = commentViewModel?.content
         }

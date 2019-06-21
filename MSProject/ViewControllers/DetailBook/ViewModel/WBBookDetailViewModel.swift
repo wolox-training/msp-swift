@@ -10,18 +10,14 @@ import UIKit
 
 class WBBookDetailViewModel {
 
-    private var commentsViewModels: [WBComment] = [WBComment]() {
+    private var commentsViewModels: [WBComment] = [] {
         didSet {
-            self.reloadViewClosure?()
+            reloadViewClosure?()
         }
     }
     
     var numberOfCells: Int {
         return commentsViewModels.count
-    }
-    
-    var heightOfCells: CGFloat {
-        return 90.0+10.0 //le agrego 10 porque es lo que le quita el contentview
     }
     
     var reloadViewClosure: (() -> Void)?
@@ -52,7 +48,6 @@ class WBBookDetailViewModel {
         }
         
         let failureRent: (Error) -> Void = { (error) in
-            TTLoadingHUDView.sharedView.hideViewWithFailure(error)
             self.showErrorAlertClosure?(error)
         }
         

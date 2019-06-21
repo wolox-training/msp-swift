@@ -25,8 +25,6 @@ var networkingConfiguration: NetworkingConfiguration {
 
 class WBBooksRepository: AbstractRepository {
 
-    let imageCache = NSCache<NSString, UIImage>()
-
     let userId = 5 //userID 5 ... because...
 
     // MARK: - Books

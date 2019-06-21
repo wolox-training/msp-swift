@@ -54,7 +54,7 @@ class WBDetailBookViewController: UIViewController {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
             MBProgressHUD.hide(for: self._view, animated: true)
-            self.showAlertMessage(message: "Se reservo el libro correctamente")
+            self.showAlertMessage(message: "BOOK_RENTED".localized())
             self.viewModel.bookAvailable.value = false
         }
         

@@ -35,3 +35,4 @@
 
 // Alert
 "RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";
+"BOOK_RENTED" = "Se reservo el libro correctamente";

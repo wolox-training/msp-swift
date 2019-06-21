@@ -46,8 +46,4 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         bookYear.text = bookViewModel.bookYear
         bookGenre.text = bookViewModel.bookGenre
     }
-    
-    func setButtonStyle(style: WBButtonStyle, forTitle title: String) {
-        
-    }
 }

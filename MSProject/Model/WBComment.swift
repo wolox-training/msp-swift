@@ -12,19 +12,12 @@ import Argo
 import Curry
 import Runes
 
-struct WBComment: Codable {
+struct WBComment {
 
     let id: Int
     let content: String
     let book: WBBook
     let user: WBUser
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case content
-        case book
-        case user
-    }
 }
 
 extension WBComment: Argo.Decodable {

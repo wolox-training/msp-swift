@@ -94,6 +94,9 @@ class WBDetailBookViewController: UIViewController {
         _view.detailTable.delegate = self
         _view.detailTable.dataSource = self
         
+        let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
+        _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
+        
         _view.configureDetailTableView()
     }
     

@@ -22,9 +22,5 @@ class WBDetailBookView: UIView, NibLoadable {
         detailTable.separatorStyle = .none
         
         detailTable.layer.cornerRadius = 5
-        
-        let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
-        detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
-        
     }
 }

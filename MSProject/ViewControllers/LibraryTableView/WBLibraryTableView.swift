@@ -16,8 +16,5 @@ class WBLibraryTableView: UIView, NibLoadable {
     func configureLibraryTableView() {
         bookTable.backgroundColor = .woloxBackgroundLightColor()
         bookTable.separatorStyle = .none
-        
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
-        bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
 }

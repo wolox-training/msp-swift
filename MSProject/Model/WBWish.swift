@@ -12,17 +12,11 @@ import Argo
 import Curry
 import Runes
 
-struct WBWish: Codable {
+struct WBWish {
     
     let id: Int
     let book: WBBook
     let user: WBUser
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case book
-        case user
-    }
 }
 
 extension WBWish: Argo.Decodable {

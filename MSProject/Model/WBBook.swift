@@ -34,7 +34,7 @@ enum BookStatus: String, CaseIterable {
     
 }
 
-struct WBBook: Codable {
+struct WBBook {
     
     let id: Int
     let title: String
@@ -44,15 +44,6 @@ struct WBBook: Codable {
     let year: String
     let imageURL: String
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case author
-        case status
-        case genre
-        case year
-        case imageURL = "image"
-    }
 }
 
 extension WBBook: Argo.Decodable {

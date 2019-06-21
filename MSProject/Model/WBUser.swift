@@ -12,17 +12,11 @@ import Argo
 import Curry
 import Runes
 
-struct WBUser: Codable {
+struct WBUser {
     
     let id: Int
     let username: String
     let imageURL: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case username
-        case imageURL = "image"
-    }
 }
 
 extension WBUser: Argo.Decodable {

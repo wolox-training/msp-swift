@@ -12,22 +12,13 @@ import Argo
 import Curry
 import Runes
 
-struct WBRent: Codable {
+struct WBRent {
 
     let id: Int
     let from: String
     let to: String
     let bookID: Int
     let userID: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case from
-        case to
-        case bookID
-        case userID
-    }
-    
 }
 
 extension WBRent: Argo.Decodable {

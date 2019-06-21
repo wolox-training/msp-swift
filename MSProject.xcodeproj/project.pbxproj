@@ -60,6 +60,7 @@
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
 		00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */; };
 		00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */; };
+		00FFE70D22BD4F0D00ACE412 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -205,6 +206,7 @@
 				9D6E405B1CB1B93A008CE558 /* Result.framework in Frameworks */,
 				B83388D721E93AAC00085E26 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
 				B83388D821E93AAC00085E26 /* Alamofire.framework in Frameworks */,
+				00FFE70D22BD4F0D00ACE412 /* MBProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +689,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 			);
 			name = Carthage;
 			outputPaths = (

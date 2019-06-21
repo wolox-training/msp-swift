@@ -10,11 +10,6 @@ import UIKit
 
 class WBNavigationController: UINavigationController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         woloxBookInit()
@@ -29,6 +24,7 @@ class WBNavigationController: UINavigationController {
         woloxBookInit()
     }
     
+    // MARK: - Private
     private func woloxBookInit() {
         navigationBar.isTranslucent = true
         navigationBar.tintColor = .white
@@ -36,8 +32,26 @@ class WBNavigationController: UINavigationController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
         navigationBar.backgroundColor = .woloxBackgroundLightColor()
-        navigationBar.setBackgroundImage(UIImage(named: "bc_nav bar")!.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        navigationBar.setBackgroundImage(UIImage.navBarImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
+        
+        let backImage = UIImage.backImage
+        navigationBar.backIndicatorImage = backImage
+        navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        // common configuration
+        if let viewController = viewControllers.first {
+            let logout = UIBarButtonItem(image: UIImage.logoutImage, style: .plain, target: self, action: #selector(self.logout))
+            viewController.navigationItem.leftBarButtonItem = logout
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            viewController.navigationItem.backBarButtonItem = backItem
+        }
+    }
+    
+    @objc private func logout() {
+        dismiss(animated: true, completion: nil)
     }
 
 }

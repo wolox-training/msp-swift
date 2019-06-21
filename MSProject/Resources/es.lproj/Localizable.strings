@@ -6,8 +6,24 @@
   Copyright © 2019 Wolox. All rights reserved.
 */
 
+// TabBar
 "LIBRARY" = "Librería";
 "WISHLIST" = "Lista de deseos";
 "ADDNEW" = "Agregar nuevo";
 "RENTALS" = "Alquiler";
 "SETTINGS" = "Configuración";
+
+// NavigationBar
+"LIBRARY_NAV_BAR" = "Librería";
+"WISHLIST_NAV_BAR" = "Lista de deseos";
+"ADDNEW_NAV_BAR" = "Agregar nuevo";
+"RENTALS_NAV_BAR" = "Alquiler";
+"SETTINGS_NAV_BAR" = "SETTINGS";
+"BOOK_DETAIL" = "Configuración";
+
+// Books
+"AVAILABLE" = "Disponible";
+"NOT_AVAILABLE" = "No Disponible";
+
+// Alert
+"RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";

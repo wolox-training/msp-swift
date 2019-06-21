@@ -1,13 +1,29 @@
 /* 
-  Localized.strings
+  Localizable.strings
   MSProject
 
   Created by Matias Spinelli on 10/06/2019.
   Copyright © 2019 Wolox. All rights reserved.
 */
 
+// TabBar
 "LIBRARY" = "Library";
 "WISHLIST" = "Wishlist";
 "ADDNEW" = "Add New";
 "RENTALS" = "Rentals";
 "SETTINGS" = "Settings";
+
+// NavigationBar
+"LIBRARY_NAV_BAR" = "LIBRARY";
+"WISHLIST_NAV_BAR" = "WISHLIST";
+"ADDNEW_NAV_BAR" = "SUGGEST BOOK";
+"RENTALS_NAV_BAR" = "MY RENTALS";
+"SETTINGS_NAV_BAR" = "SETTINGS";
+"BOOK_DETAIL" = "BOOK DETAIL";
+
+// Books
+"AVAILABLE" = "Available";
+"NOT_AVAILABLE" = "Not Available";
+
+// Alert
+"RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";

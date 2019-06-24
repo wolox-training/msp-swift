@@ -28,6 +28,7 @@ class WBButton: UIButton {
     @IBInspectable var borderLineColor: UIColor = .white {
        didSet {
             layer.borderColor = borderLineColor.cgColor
+            setTitleColor(borderLineColor, for: UIControl.State.normal)
         }
     }
 

@@ -26,10 +26,11 @@ var networkingConfiguration: NetworkingConfiguration {
 class WBBooksRepository: AbstractRepository {
 
     let userId = 5 //userID 5 ... because...
-
+    
     // MARK: - Books
     func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "books"
+        
         return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
             return decode(JSON).toResult()
         }

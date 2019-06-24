@@ -24,10 +24,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pdO-SG-7O5" firstAttribute="leading" secondItem="6C8-tT-nA1" secondAttribute="leading" id="NbW-uB-MSZ"/>
-                <constraint firstItem="6C8-tT-nA1" firstAttribute="bottom" secondItem="pdO-SG-7O5" secondAttribute="bottom" id="O9U-8V-4N9"/>
-                <constraint firstItem="pdO-SG-7O5" firstAttribute="top" secondItem="6C8-tT-nA1" secondAttribute="top" id="OJ2-ig-5Pu"/>
-                <constraint firstItem="6C8-tT-nA1" firstAttribute="trailing" secondItem="pdO-SG-7O5" secondAttribute="trailing" id="mw4-xh-vyf"/>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="leading" secondItem="6C8-tT-nA1" secondAttribute="leading" id="5bT-87-abg"/>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="bottom" secondItem="6C8-tT-nA1" secondAttribute="bottom" id="Bb4-On-fft"/>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="trailing" secondItem="6C8-tT-nA1" secondAttribute="trailing" id="bHM-o5-OIv"/>
+                <constraint firstItem="pdO-SG-7O5" firstAttribute="top" secondItem="6C8-tT-nA1" secondAttribute="top" id="gbb-iH-mfW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="6C8-tT-nA1"/>
             <connections>

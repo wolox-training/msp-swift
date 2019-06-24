@@ -10,34 +10,23 @@ import UIKit
 
 class WBLoginViewController: UIViewController {
 
-    private let loginView: WBLoginView = WBLoginView.loadFromNib()!
+    private let _view: WBLoginView = WBLoginView.loadFromNib()!
     
     override func loadView() {
-        loginView.delegate = self
-        view = loginView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
+        _view.loginButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
+            self.loginWithGoogle()
+        }
+
+        view = _view
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     // MARK: - Actions
-    @IBAction func loginWithGoogle(_ sender: Any) {
+    private func loginWithGoogle() {
         let tabBarController = WBTabBarController()
         tabBarController.modalTransitionStyle = .flipHorizontal
         present(tabBarController, animated: true, completion: nil)

@@ -66,6 +66,9 @@
 		00FB7B3222B943B500BFADD7 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B3122B943B500BFADD7 /* Curry.framework */; };
 		00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */; };
 		00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */; };
+		00FFE71022C11CE900ACE412 /* WBEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */; };
+		00FFE71222C11CFC00ACE412 /* WBEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */; };
+		00FFE71422C11D1D00ACE412 /* WBEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -174,6 +177,9 @@
 		00FB7B3122B943B500BFADD7 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
 		00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEmptyView.swift; sourceTree = "<group>"; };
+		00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBEmptyView.xib; sourceTree = "<group>"; };
+		00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEmptyViewController.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +291,7 @@
 				00B7624822AEE19600640078 /* Rentals */,
 				00B7624022AEE04B00640078 /* Wishlist */,
 				0097C7BB22AAA6D50001509F /* Login */,
+				00FFE70E22C11CB000ACE412 /* Empty */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,8 +311,8 @@
 		00B761EC22AAF67100640078 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */,
 				00B761EE22AAF97E00640078 /* WBBookTableViewCell.xib */,
+				00B761ED22AAF97E00640078 /* WBBookTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -314,8 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
-				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
 				00B7620E22AE995E00640078 /* WBLibraryTableView.xib */,
+				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
 				00B762A922B3F06100640078 /* ViewModel */,
 				00B761EC22AAF67100640078 /* TableCells */,
 			);
@@ -326,8 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				00B7624522AEE08800640078 /* WBWishlistViewController.swift */,
-				00B7624122AEE06400640078 /* WBWishlistView.swift */,
 				00B7624322AEE06D00640078 /* WBWishlistView.xib */,
+				00B7624122AEE06400640078 /* WBWishlistView.swift */,
 			);
 			path = Wishlist;
 			sourceTree = "<group>";
@@ -336,8 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				00B7624D22AEE1E100640078 /* WBRentalsViewController.swift */,
-				00B7624922AEE1C000640078 /* WBRentalsView.swift */,
 				00B7624B22AEE1C600640078 /* WBRentalsView.xib */,
+				00B7624922AEE1C000640078 /* WBRentalsView.swift */,
 			);
 			path = Rentals;
 			sourceTree = "<group>";
@@ -346,8 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				00B7625422AEE25000640078 /* WBSettingsViewController.swift */,
-				00B7625022AEE22C00640078 /* WBSettingsView.swift */,
 				00B7625222AEE23E00640078 /* WBSettingsView.xib */,
+				00B7625022AEE22C00640078 /* WBSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -356,8 +363,8 @@
 			isa = PBXGroup;
 			children = (
 				00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */,
-				00B7625722AEE29B00640078 /* WBAddNewView.swift */,
 				00B7625922AEE2AC00640078 /* WBAddNewView.xib */,
+				00B7625722AEE29B00640078 /* WBAddNewView.swift */,
 			);
 			path = AddNew;
 			sourceTree = "<group>";
@@ -388,8 +395,8 @@
 			isa = PBXGroup;
 			children = (
 				00B7628022B03AF200640078 /* WBDetailBookViewController.swift */,
-				00B7627C22B03ABF00640078 /* WBDetailBookView.swift */,
 				00B7627E22B03AD300640078 /* WBDetailBookView.xib */,
+				00B7627C22B03ABF00640078 /* WBDetailBookView.swift */,
 				00B762AA22B3F08A00640078 /* ViewModel */,
 				00B762A022B29D5900640078 /* View */,
 				00B7628C22B1727B00640078 /* TableCells */,
@@ -400,8 +407,8 @@
 		00B7628C22B1727B00640078 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				00B7629C22B287E800640078 /* WBCommentsBookTableViewCell.swift */,
 				00B7629D22B287E800640078 /* WBCommentsBookTableViewCell.xib */,
+				00B7629C22B287E800640078 /* WBCommentsBookTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -417,8 +424,8 @@
 		00B762A022B29D5900640078 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */,
 				00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */,
+				00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +444,16 @@
 				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		00FFE70E22C11CB000ACE412 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */,
+				00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */,
+				00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */,
+			);
+			path = Empty;
 			sourceTree = "<group>";
 		};
 		9D1574F81CB1B27500EA395E = {
@@ -671,6 +688,7 @@
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
+				00FFE71222C11CFC00ACE412 /* WBEmptyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +774,7 @@
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
 				00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */,
 				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
+				00FFE71422C11D1D00ACE412 /* WBEmptyViewController.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,
@@ -767,6 +786,7 @@
 				00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */,
 				00A73F9722AAD34200FC6410 /* WBButton.swift in Sources */,
 				00B7629622B27DFC00640078 /* WBUser.swift in Sources */,
+				00FFE71022C11CE900ACE412 /* WBEmptyView.swift in Sources */,
 				E1530D9C1ED37905002A9002 /* RollbarService.swift in Sources */,
 				00B761EF22AAF97E00640078 /* WBBookTableViewCell.swift in Sources */,
 				00B7629822B27E6100640078 /* WBComment.swift in Sources */,

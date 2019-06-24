@@ -154,7 +154,7 @@ extension WBDetailBookViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Alert
+// MARK: - Actions
 extension WBDetailBookViewController {
     func addToWishlist() {
         

@@ -23,7 +23,12 @@ class WBLibraryViewModel {
     var libraryItems: [WBBook] = []
 //    private let libraryItems = MutableProperty<[WBBook]>([])
     private var bookViewModels: [WBBookViewModel] = []
+    private var filteredBookViewModels: [WBBookViewModel] = []
+
+    var isFiltering = false
     
+    let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
+
     let repository: WBBooksRepository
     
     init(booksRepository: WBBooksRepository) {
@@ -31,20 +36,38 @@ class WBLibraryViewModel {
     }
     
     var numberOfCells: Int {
-        return bookViewModels.count
+        if isFiltering {
+            return filteredBookViewModels.count
+        } else {
+            return bookViewModels.count
+        }
     }
 
     func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
-        return bookViewModels[indexPath.row]
+        if isFiltering {
+            return filteredBookViewModels[indexPath.row]
+        } else {
+            return bookViewModels[indexPath.row]
+        }
     }
     
     func selectBook(at indexPath: IndexPath) -> WBBookViewModel {
-        return bookViewModels[indexPath.row]
+        if isFiltering {
+            return filteredBookViewModels[indexPath.row]
+        } else {
+            return bookViewModels[indexPath.row]
+        }
     }
     
     func sortBooks() {
         sortBooks(books: &libraryItems, by: .id)
         bookViewModels = libraryItems.map { WBBookViewModel(book: $0) }
+    }
+    
+    func filterBooks(with searchText: String) {
+        filteredBookViewModels = bookViewModels.filter({ (book: WBBookViewModel) -> Bool in
+            return book.bookTitle.lowercased().contains(searchText.lowercased())
+        })
     }
     
     // MARK: - Private

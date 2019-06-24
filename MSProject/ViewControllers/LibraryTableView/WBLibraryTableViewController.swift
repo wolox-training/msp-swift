@@ -8,16 +8,22 @@
 
 import UIKit
 import WolmoCore
+import ReactiveCocoa
+import ReactiveSwift
 import MBProgressHUD
 
 class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
-
+    lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
+    
     lazy var viewModel: WBLibraryViewModel = {
         return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: nil))
     }()
-    
+
+    let searchController = UISearchController(searchResultsController: nil)
+    var refreshControl: UIRefreshControl?
+
     override func loadView() {
         view = _view
     }
@@ -30,21 +36,62 @@ class WBLibraryTableViewController: UIViewController {
         title = "LIBRARY_NAV_BAR".localized()
         
         let sort = UIBarButtonItem(image: UIImage.sortImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
-        let search = UIBarButtonItem(image: UIImage.searchImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
-        navigationItem.rightBarButtonItems = [sort, search]
+        let search = UIBarButtonItem(image: UIImage.searchImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(searchBook))
+        setNavigationRightButtons([sort, search])
         
-        // Refresh Control
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
-        refreshControl.tintColor = .woloxBackgroundColor()
-        _view.bookTable.refreshControl = refreshControl
+        initRefreshControl()
         
+        // Search Control
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.autocorrectionType = .no
+        
+        searchController.searchBar.tintColor = .woloxBackgroundColor()
+        searchController.searchBar.barTintColor = .woloxBackgroundColor()
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
+  
+        emptyView.refreshButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
+            self.loadBooks()
+        }
+        
+        viewModel.state.signal.observeValues { state in
+            switch state {
+            case .loading:
+                self.view = self._view
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .error:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            default:
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+            self._view.bookTable.refreshControl?.endRefreshing()
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         loadBooks()
+    }
+    
+    // MARK: - Search
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        isFiltering()
+        viewModel.filterBooks(with: searchText)
+        _view.bookTable.reloadData()
+    }
+    
+    func isFiltering() {
+        viewModel.isFiltering = searchController.isActive && (!searchBarIsEmpty())
     }
     
     // MARK: - Private
@@ -60,19 +107,34 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
-        MBProgressHUD.showAdded(to: _view, animated: true)
+        self.viewModel.state.value = ViewState.loading
         viewModel.repository.getBooks().startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
-                self._view.bookTable.refreshControl?.endRefreshing()
-                MBProgressHUD.hide(for: self._view, animated: true)
                 self.loadTableWithBooks(books: value)
+                self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
             case .failure(let error):
-                self._view.bookTable.refreshControl?.endRefreshing()
-                MBProgressHUD.hide(for: self._view, animated: true)
                 self.showAlertMessage(message: error.localizedDescription)
+                self.viewModel.state.value = ViewState.error
             }
         }
+    }
+    
+    @objc private func searchBook() {
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            _view.bookTable.tableHeaderView = searchController.searchBar
+        }
+        searchController.searchBar.becomeFirstResponder()
+
+    }
+    
+    private func initRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
+        refreshControl?.tintColor = .woloxBackgroundColor()
+        _view.bookTable.refreshControl = refreshControl
     }
     
     private func loadTableWithBooks(books: [WBBook]) {
@@ -115,6 +177,38 @@ extension WBLibraryTableViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailBookViewController = WBDetailBookViewController(with: book)
         navigationController?.pushViewController(detailBookViewController, animated: true)
+    }
+}
+
+extension WBLibraryTableViewController: UISearchControllerDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        refreshControl = nil
+        _view.bookTable.refreshControl = nil
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        initRefreshControl()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = nil
+        } else {
+            self._view.bookTable.tableHeaderView = nil
+        }
+    }
+}
+
+extension WBLibraryTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!)
+    }
+}
+
+extension WBLibraryTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
     
 }

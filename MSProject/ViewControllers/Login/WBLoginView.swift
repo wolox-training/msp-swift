@@ -12,9 +12,6 @@ import WolmoCore
 
 class WBLoginView: UIView, NibLoadable {
     
-    weak var delegate: WBLoginViewController?
-    
-    @IBAction func loginWithGoogle(_ sender: Any) {
-        delegate?.loginWithGoogle(sender)
-    }
+    @IBOutlet weak var loginButton: WBButton!
+
 }

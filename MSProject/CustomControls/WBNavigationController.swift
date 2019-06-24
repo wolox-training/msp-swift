@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WolmoCore
 
 class WBNavigationController: UINavigationController {
 
@@ -32,6 +33,8 @@ class WBNavigationController: UINavigationController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
         navigationBar.backgroundColor = .woloxBackgroundLightColor()
+        navigationBar.barTintColor = .woloxBackgroundLightColor()
+
         navigationBar.setBackgroundImage(UIImage.navBarImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
         

@@ -70,4 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if let vc = ((window?.rootViewController?.presentedViewController as? UITabBarController)?.viewControllers?.first as? UINavigationController)?.viewControllers.first {
+            vc.restoreUserActivityState(userActivity)
+        }
+        return true
+    }
 }

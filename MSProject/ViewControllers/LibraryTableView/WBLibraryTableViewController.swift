@@ -12,6 +12,9 @@ import ReactiveCocoa
 import ReactiveSwift
 import MBProgressHUD
 
+import CoreSpotlight
+import MobileCoreServices
+
 class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
@@ -137,6 +140,16 @@ class WBLibraryTableViewController: UIViewController {
         refreshControl?.addTarget(self, action: #selector(self.loadBooks), for: .valueChanged)
         refreshControl?.tintColor = .woloxBackgroundColor()
         _view.bookTable.refreshControl = refreshControl
+    }
+    
+    // MARK: - Spotlight
+    override func restoreUserActivityState(_ activity: NSUserActivity) {
+        if activity.activityType == CSSearchableItemActionType, let info = activity.userInfo, let selectedIdentifier = info[CSSearchableItemActivityIdentifier] as? String {
+            if let book = viewModel.getBookById(id: selectedIdentifier) {
+                let detailBookViewController = WBDetailBookViewController(with: book)
+                navigationController?.pushViewController(detailBookViewController, animated: true)
+            }
+        }
     }
 }
 

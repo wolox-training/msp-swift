@@ -12,6 +12,9 @@ import ReactiveSwift
 
 import Networking
 
+import CoreSpotlight
+import MobileCoreServices
+
 enum SortMethod {
     case id
     case title
@@ -55,6 +58,7 @@ class WBLibraryViewModel {
         return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels = MutableProperty([]) }, value: { [unowned self] value in
             self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
             self.sortBooks(by: .id)
+            self.indexSearchableItems()
         })
     }
     
@@ -66,6 +70,10 @@ class WBLibraryViewModel {
         filteredBookViewModels.value = bookViewModels.value.filter({ (book: WBBookViewModel) -> Bool in
             return book.bookTitle.lowercased().contains(searchText.lowercased()) || book.bookAuthor.lowercased().contains(searchText.lowercased())
         })
+    }
+    
+    func getBookById(id: String) -> WBBookViewModel? {
+        return bookViewModels.value.first(where: { $0.bookId == id })
     }
     
     // MARK: - Private
@@ -81,6 +89,26 @@ class WBLibraryViewModel {
             books = books.sorted(by: { $0.book.genre < $1.book.genre })
         case .year:
             books = books.sorted(by: { $0.book.year < $1.book.year })
+        }
+    }
+    
+    // MARK: - Spotlight
+    func indexSearchableItems() {
+        var searchableItems = [CSSearchableItem] ()
+        
+        for book in bookViewModels.value {
+            let searchItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+            searchItemAttributeSet.title = book.bookTitle
+            searchItemAttributeSet.contentDescription = book.bookAuthor
+            
+            let searchableItem = CSSearchableItem(uniqueIdentifier: book.bookId, domainIdentifier: "bookViewModels", attributeSet: searchItemAttributeSet)
+            searchableItems.append(searchableItem)
+        }
+        
+        CSSearchableIndex.default().indexSearchableItems(searchableItems) { (error) -> Void in
+            if error != nil {
+                print(error?.localizedDescription ?? "Error")
+            }
         }
     }
 }

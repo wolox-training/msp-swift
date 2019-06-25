@@ -49,9 +49,7 @@ class WBDetailBookViewController: UIViewController {
     private func initBookDetailTableViewModel() {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
-            MBProgressHUD.hide(for: self._view, animated: true)
             self.showAlert(message: "BOOK_RENTED".localized())
-            
             // trampita para actualizar la vista segun el book view model
             if let bookViewModel = self.bookViewModel {
                 let bookRented = WBBook(id: bookViewModel.book.id,
@@ -69,13 +67,14 @@ class WBDetailBookViewController: UIViewController {
         }
         
         viewModel.rentBookAction.errors.observeValues { [unowned self] error in
-            MBProgressHUD.hide(for: self._view, animated: true)
             self.showAlert(message: error.localizedDescription)
         }
         
         viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
             if isExecuting {
                 MBProgressHUD.showAdded(to: self._view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self._view, animated: true)
             }
         }
         
@@ -109,7 +108,7 @@ class WBDetailBookViewController: UIViewController {
         MBProgressHUD.showAdded(to: _view, animated: true)
         viewModel.loadComments(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
-            case .success(_):
+            case .success:
                 self._view.detailTable.reloadData()
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)

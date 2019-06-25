@@ -63,7 +63,7 @@ class WBLibraryTableViewController: UIViewController {
         MBProgressHUD.showAdded(to: _view, animated: true)
         viewModel.loadBooks().startWithResult { [unowned self] result in
             switch result {
-            case .success(_):
+            case .success:
                 self._view.bookTable.reloadData()
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)

@@ -10,9 +10,7 @@ import UIKit
 import WolmoCore
 
 extension UIViewController {
-    func showAlertMessage(message: String) {
-        presentAlert(ErrorAlertViewModel(title: "", message: message, dismissButtonTitle: "OK", dismissAction: { (_) in
-            
-        }))
+    func showAlert(message: String) {
+        presentAlert(ErrorAlertViewModel(title: "", message: message, dismissButtonTitle: "OK"))
     }
 }

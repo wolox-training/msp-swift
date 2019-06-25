@@ -18,7 +18,7 @@ class WBLibraryTableViewController: UIViewController {
     lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
     
     lazy var viewModel: WBLibraryViewModel = {
-        return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: nil))
+        return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
 
     let searchController = UISearchController(searchResultsController: nil)
@@ -62,6 +62,9 @@ class WBLibraryTableViewController: UIViewController {
             case .loading:
                 self.view = self._view
                 MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .value:
+                self._view.bookTable.reloadData()
+                MBProgressHUD.hide(for: self._view, animated: true)
             case .error:
                 self.view = self.emptyView
                 MBProgressHUD.hide(for: self._view, animated: true)
@@ -107,19 +110,18 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
-        self.viewModel.state.value = ViewState.loading
-        viewModel.repository.getBooks().startWithResult { [unowned self] result in
+        viewModel.state.value = ViewState.loading
+        viewModel.loadBooks().startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
-                self.loadTableWithBooks(books: value)
                 self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
             case .failure(let error):
-                self.showAlertMessage(message: error.localizedDescription)
+                self.showAlert(message: error.localizedDescription)
                 self.viewModel.state.value = ViewState.error
             }
         }
     }
-    
+            
     @objc private func searchBook() {
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -136,12 +138,6 @@ class WBLibraryTableViewController: UIViewController {
         refreshControl?.tintColor = .woloxBackgroundColor()
         _view.bookTable.refreshControl = refreshControl
     }
-    
-    private func loadTableWithBooks(books: [WBBook]) {
-        viewModel.libraryItems = books
-        viewModel.sortBooks()
-        _view.bookTable.reloadData()
-    }
 }
 
 extension WBLibraryTableViewController: UITableViewDataSource {
@@ -157,10 +153,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
         }
         
         let book = viewModel.getCellViewModel(at: indexPath)
-        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
-
-        cell.bookTitle.text = book.bookTitle
-        cell.bookAuthor.text = book.bookAuthor
+        cell.setup(with: book)
         return cell
     }
     
@@ -173,7 +166,7 @@ extension WBLibraryTableViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book = viewModel.selectBook(at: indexPath)
+        let book = viewModel.getCellViewModel(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         let detailBookViewController = WBDetailBookViewController(with: book)
         navigationController?.pushViewController(detailBookViewController, animated: true)

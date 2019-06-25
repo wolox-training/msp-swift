@@ -10,6 +10,8 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 
+import Networking
+
 enum SortMethod {
     case id
     case title
@@ -20,12 +22,10 @@ enum SortMethod {
 
 class WBLibraryViewModel {
     
-    var libraryItems: [WBBook] = []
-//    private let libraryItems = MutableProperty<[WBBook]>([])
-    private var bookViewModels: [WBBookViewModel] = []
-    private var filteredBookViewModels: [WBBookViewModel] = []
-
+    private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
+
+    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     
     let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
 
@@ -37,52 +37,50 @@ class WBLibraryViewModel {
     
     var numberOfCells: Int {
         if isFiltering {
-            return filteredBookViewModels.count
+            return filteredBookViewModels.value.count
         } else {
-            return bookViewModels.count
+            return bookViewModels.value.count
         }
     }
 
     func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
         if isFiltering {
-            return filteredBookViewModels[indexPath.row]
+            return filteredBookViewModels.value[indexPath.row]
         } else {
-            return bookViewModels[indexPath.row]
+            return bookViewModels.value[indexPath.row]
         }
     }
     
-    func selectBook(at indexPath: IndexPath) -> WBBookViewModel {
-        if isFiltering {
-            return filteredBookViewModels[indexPath.row]
-        } else {
-            return bookViewModels[indexPath.row]
-        }
+    func loadBooks() -> SignalProducer<[WBBook], RepositoryError> {
+        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels = MutableProperty([]) }, value: { [unowned self] value in
+            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
+            self.sortBooks(by: .id)
+        })
     }
     
-    func sortBooks() {
-        sortBooks(books: &libraryItems, by: .id)
-        bookViewModels = libraryItems.map { WBBookViewModel(book: $0) }
+    func sortBooks(by: SortMethod) {
+        sortBooks(books: &bookViewModels.value, by: .id)
     }
     
     func filterBooks(with searchText: String) {
-        filteredBookViewModels = bookViewModels.filter({ (book: WBBookViewModel) -> Bool in
-            return book.bookTitle.lowercased().contains(searchText.lowercased())
+        filteredBookViewModels.value = bookViewModels.value.filter({ (book: WBBookViewModel) -> Bool in
+            return book.bookTitle.lowercased().contains(searchText.lowercased()) || book.bookAuthor.lowercased().contains(searchText.lowercased())
         })
     }
     
     // MARK: - Private
-    private func sortBooks(books: inout [WBBook], by sortMethod: SortMethod) {
+    private func sortBooks(books: inout [WBBookViewModel], by sortMethod: SortMethod) {
         switch sortMethod {
         case .id:
-            books = books.sorted(by: { $0.id < $1.id })
+            books = books.sorted(by: { $0.book.id < $1.book.id })
         case .title:
-            books = books.sorted(by: { $0.title < $1.title })
+            books = books.sorted(by: { $0.book.title < $1.book.title })
         case .author:
-            books = books.sorted(by: { $0.author < $1.author })
+            books = books.sorted(by: { $0.book.author < $1.book.author })
         case .genre:
-            books = books.sorted(by: { $0.genre < $1.genre })
+            books = books.sorted(by: { $0.book.genre < $1.book.genre })
         case .year:
-            books = books.sorted(by: { $0.year < $1.year })
+            books = books.sorted(by: { $0.book.year < $1.book.year })
         }
     }
 }

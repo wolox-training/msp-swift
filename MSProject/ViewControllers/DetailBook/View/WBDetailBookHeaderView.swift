@@ -46,10 +46,10 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         bookYear.text = bookViewModel.bookYear
         bookGenre.text = bookViewModel.bookGenre
         if bookViewModel.bookStatus.isBookAvailable() {
-            bookAvailable.textColor = .green
+            bookAvailable.textColor = .woloxGreenColor
             rentButton.buttonStyle = .filled
         } else {
-            bookAvailable.textColor = .red
+            bookAvailable.textColor = .woloxRedColor
             rentButton.buttonStyle = .disabled
         }
     }

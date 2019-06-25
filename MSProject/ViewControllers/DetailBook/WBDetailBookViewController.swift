@@ -18,7 +18,7 @@ class WBDetailBookViewController: UIViewController {
     private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFromNib()!
 
     lazy var viewModel: WBBookDetailViewModel = {
-        return WBBookDetailViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: nil))
+        return WBBookDetailViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
     
     var bookViewModel: WBBookViewModel!
@@ -39,12 +39,8 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.setup(with: bookViewModel)
         _detailHeaderView.configureUI()
-        
-        _detailHeaderView.rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
-        _detailHeaderView.wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
-
+        _detailHeaderView.setup(with: bookViewModel)
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
@@ -54,13 +50,27 @@ class WBDetailBookViewController: UIViewController {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
             MBProgressHUD.hide(for: self._view, animated: true)
-            self.showAlertMessage(message: "BOOK_RENTED".localized())
+            self.showAlert(message: "BOOK_RENTED".localized())
+            
+            // trampita para actualizar la vista segun el book view model
+            if let bookViewModel = self.bookViewModel {
+                let bookRented = WBBook(id: bookViewModel.book.id,
+                                        title: bookViewModel.book.title,
+                                        author: bookViewModel.book.author,
+                                        status: BookStatus.rented.rawValue,
+                                        genre: bookViewModel.book.genre,
+                                        year: bookViewModel.book.year,
+                                        imageURL: bookViewModel.book.imageURL)
+                self.bookViewModel = WBBookViewModel(book: bookRented)
+                self._detailHeaderView.setup(with: self.bookViewModel)
+            }
+
             self.viewModel.bookAvailable.value = false
         }
         
         viewModel.rentBookAction.errors.observeValues { [unowned self] error in
             MBProgressHUD.hide(for: self._view, animated: true)
-            self.showAlertMessage(message: error.localizedDescription)
+            self.showAlert(message: error.localizedDescription)
         }
         
         viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
@@ -69,21 +79,16 @@ class WBDetailBookViewController: UIViewController {
             }
         }
         
-        viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] isEnabled in
-            if isEnabled {
-                self._detailHeaderView.bookAvailable.textColor = .green
-                self._detailHeaderView.rentButton.buttonStyle = .filled
-            } else {
-                self._detailHeaderView.bookAvailable.textColor = .red
-                self._detailHeaderView.rentButton.buttonStyle = .disabled
-            }
+        viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] _ in
+            self._detailHeaderView.setup(with: self.bookViewModel)
         }
 
         viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
         
         _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
         
-        _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside).observeValues { _ in
+        _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside)
+            .observeValues { _ in
             self.addToWishlist()
         }
         
@@ -102,16 +107,14 @@ class WBDetailBookViewController: UIViewController {
     
     private func loadComments() {
         MBProgressHUD.showAdded(to: _view, animated: true)
-        viewModel.repository.getBookComments(book: bookViewModel.book).startWithResult { [unowned self] result in
+        viewModel.loadComments(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
-            case .success(let value):
-                MBProgressHUD.hide(for: self._view, animated: true)
-                self.viewModel.commentsViewModels = value
+            case .success(_):
                 self._view.detailTable.reloadData()
             case .failure(let error):
-                MBProgressHUD.hide(for: self._view, animated: true)
-                self.showAlertMessage(message: error.localizedDescription)
+                self.showAlert(message: error.localizedDescription)
             }
+            MBProgressHUD.hide(for: self._view, animated: true)
         }
     }
 }
@@ -134,9 +137,7 @@ extension WBDetailBookViewController: UITableViewDataSource {
         }
         
         let comment = viewModel.getCellViewModel(at: indexPath)
-        cell.userImage.loadImageUsingCache(withUrl: comment.user.imageURL, placeholderImage: UIImage(named: "user_male")!)
-        cell.userName.text = comment.user.username
-        cell.userComment.text = comment.content
+        cell.setup(with: comment)
         return cell
     }
     

@@ -13,8 +13,8 @@ import Networking
 
 class WBBookDetailViewModel {
 
-    var commentsViewModels: [WBComment] = []
-    
+    private var commentsViewModels: MutableProperty<[WBComment]> = MutableProperty([])
+
     var bookAvailable = MutableProperty(false)
     
     let repository: WBBooksRepository
@@ -27,15 +27,21 @@ class WBBookDetailViewModel {
         repository = booksRepository
     }
     
+    // MARK: - TableView
     var numberOfCells: Int {
-        return commentsViewModels.count
+        return commentsViewModels.value.count
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> WBComment {
-        return commentsViewModels[indexPath.row]
+        return commentsViewModels.value[indexPath.row]
     }
 
+    // MARK: - Repository
     func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
         return repository.rentBook(book: book)
+    }
+    
+    func loadComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
+        return self.repository.getBookComments(book: book).on(failed: { [unowned self] _ in self.commentsViewModels = MutableProperty([]) }, value: { [unowned self] value in self.commentsViewModels.value = value })
     }
 }

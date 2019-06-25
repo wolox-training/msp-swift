@@ -15,7 +15,7 @@ class WBLibraryTableViewController: UIViewController {
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
 
     lazy var viewModel: WBLibraryViewModel = {
-        return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: nil))
+        return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
     
     override func loadView() {
@@ -61,24 +61,16 @@ class WBLibraryTableViewController: UIViewController {
     // MARK: - Services
     @objc private func loadBooks() {
         MBProgressHUD.showAdded(to: _view, animated: true)
-        viewModel.repository.getBooks().startWithResult { [unowned self] result in
+        viewModel.loadBooks().startWithResult { [unowned self] result in
             switch result {
-            case .success(let value):
-                self._view.bookTable.refreshControl?.endRefreshing()
-                MBProgressHUD.hide(for: self._view, animated: true)
-                self.loadTableWithBooks(books: value)
+            case .success(_):
+                self._view.bookTable.reloadData()
             case .failure(let error):
-                self._view.bookTable.refreshControl?.endRefreshing()
-                MBProgressHUD.hide(for: self._view, animated: true)
-                self.showAlertMessage(message: error.localizedDescription)
+                self.showAlert(message: error.localizedDescription)
             }
+            self._view.bookTable.refreshControl?.endRefreshing()
+            MBProgressHUD.hide(for: self._view, animated: true)
         }
-    }
-    
-    private func loadTableWithBooks(books: [WBBook]) {
-        viewModel.libraryItems = books
-        viewModel.sortBooks()
-        _view.bookTable.reloadData()
     }
 }
 
@@ -95,10 +87,7 @@ extension WBLibraryTableViewController: UITableViewDataSource {
         }
         
         let book = viewModel.getCellViewModel(at: indexPath)
-        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
-
-        cell.bookTitle.text = book.bookTitle
-        cell.bookAuthor.text = book.bookAuthor
+        cell.setup(with: book)
         return cell
     }
     
@@ -111,7 +100,7 @@ extension WBLibraryTableViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book = viewModel.selectBook(at: indexPath)
+        let book = viewModel.getCellViewModel(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         let detailBookViewController = WBDetailBookViewController(with: book)
         navigationController?.pushViewController(detailBookViewController, animated: true)

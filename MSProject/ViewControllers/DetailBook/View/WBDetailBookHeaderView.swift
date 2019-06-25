@@ -11,14 +11,14 @@ import WolmoCore
 
 class WBDetailBookHeaderView: UIView, NibLoadable {
 
-    @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var bookTitle: UILabel!
-    @IBOutlet weak var bookAvailable: UILabel!
-    @IBOutlet weak var bookAuthor: UILabel!
-    @IBOutlet weak var bookYear: UILabel!
-    @IBOutlet weak var bookGenre: UILabel!
+    @IBOutlet private weak var bookImage: UIImageView!
+    @IBOutlet private weak var bookTitle: UILabel!
+    @IBOutlet private weak var bookAvailable: UILabel!
+    @IBOutlet private weak var bookAuthor: UILabel!
+    @IBOutlet private weak var bookYear: UILabel!
+    @IBOutlet private weak var bookGenre: UILabel!
     
-    @IBOutlet weak var customBackgroundView: UIView!
+    @IBOutlet private weak var customBackgroundView: UIView!
 
     @IBOutlet weak var wishlistButton: WBButton!
     @IBOutlet weak var rentButton: WBButton!
@@ -30,13 +30,13 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     }
     
     func configureUI() {
-        bookAvailable.textColor = .red
-        rentButton.buttonStyle = .disabled
+        rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
+        wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
         customBackgroundView.layer.cornerRadius = 5
         customBackgroundView.backgroundColor = .white
         sendSubviewToBack(customBackgroundView)
     }
-    
+
     func setup(with bookViewModel: WBBookViewModel) {
         bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
         bookTitle.text = bookViewModel.bookTitle
@@ -45,5 +45,12 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         bookAuthor.text = bookViewModel.bookAuthor
         bookYear.text = bookViewModel.bookYear
         bookGenre.text = bookViewModel.bookGenre
+        if bookViewModel.bookStatus.isBookAvailable() {
+            bookAvailable.textColor = .green
+            rentButton.buttonStyle = .filled
+        } else {
+            bookAvailable.textColor = .red
+            rentButton.buttonStyle = .disabled
+        }
     }
 }

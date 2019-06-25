@@ -30,7 +30,8 @@ class WBBooksRepository: AbstractRepository {
     // MARK: - Books
     func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "books"
-        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+        
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
             return decode(JSON).toResult()
         }
     }
@@ -39,7 +40,7 @@ class WBBooksRepository: AbstractRepository {
     func getRents() -> SignalProducer<[WBRent], RepositoryError> {
         let path = "users/\(userId)/rents"
         
-        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
             return decode(JSON).toResult()
         }
     }
@@ -51,7 +52,7 @@ class WBBooksRepository: AbstractRepository {
                                      "from": WBDateHelper.today(),
                                      "to": WBDateHelper.tomorrow()]
         
-        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+        return performRequest(method: .post, path: path, parameters: params) { _ in
             Result(value: ())
         }
     }
@@ -60,7 +61,7 @@ class WBBooksRepository: AbstractRepository {
     func getBookComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
         let path = "books/\(book.id)/comments"
         
-        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
             return decode(JSON).toResult()
         }
     }
@@ -71,7 +72,7 @@ class WBBooksRepository: AbstractRepository {
                                      "bookID": comment.book.id,
                                      "content": comment.content]
         
-        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+        return performRequest(method: .post, path: path, parameters: params) { _ in
             Result(value: ())
         }
     }
@@ -80,7 +81,7 @@ class WBBooksRepository: AbstractRepository {
     func getWishes() -> SignalProducer<[WBWish], RepositoryError> {
         let path = "users/\(userId)/wishes"
         
-        return performRequest(method: .get, path: path, parameters: nil, headers: commonHeaders()) { JSON in
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
             return decode(JSON).toResult()
         }
     }
@@ -90,7 +91,7 @@ class WBBooksRepository: AbstractRepository {
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id]
         
-        return performRequest(method: .post, path: path, parameters: params, headers: commonHeaders()) { _ in
+        return performRequest(method: .post, path: path, parameters: params) { _ in
             Result(value: ())
         }
     }
@@ -98,7 +99,7 @@ class WBBooksRepository: AbstractRepository {
     // MARK: - Suggestions
     
     // MARK: - Private
-    private func commonHeaders() -> [String: String] {
+    class func commonHeaders() -> [String: String] {
         return ["Content-Type": "application/json",
                 "Accept": "application/json"]
     }

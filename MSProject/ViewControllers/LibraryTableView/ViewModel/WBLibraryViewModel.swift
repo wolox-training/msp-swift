@@ -39,7 +39,7 @@ class WBLibraryViewModel {
     }
     
     func loadBooks() -> SignalProducer<[WBBook], RepositoryError> {
-        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels = MutableProperty([]) }, value: { [unowned self] value in
+        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels.value = [] }, value: { [unowned self] value in
             self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
             self.sortBooks(by: .id)
         })

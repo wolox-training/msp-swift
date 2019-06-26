@@ -50,19 +50,8 @@ class WBDetailBookViewController: UIViewController {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
             self.showAlert(message: "BOOK_RENTED".localized())
-            // trampita para actualizar la vista segun el book view model
-            if let bookViewModel = self.bookViewModel {
-                let bookRented = WBBook(id: bookViewModel.book.id,
-                                        title: bookViewModel.book.title,
-                                        author: bookViewModel.book.author,
-                                        status: BookStatus.rented.rawValue,
-                                        genre: bookViewModel.book.genre,
-                                        year: bookViewModel.book.year,
-                                        imageURL: bookViewModel.book.imageURL)
-                self.bookViewModel = WBBookViewModel(book: bookRented)
-                self._detailHeaderView.setup(with: self.bookViewModel)
-            }
-
+            self.bookViewModel.rented = true
+            self._detailHeaderView.setup(with: self.bookViewModel)
             self.viewModel.bookAvailable.value = false
         }
         

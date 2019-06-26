@@ -81,6 +81,9 @@ struct WBBookViewModel {
     }
     
     var bookStatus: BookStatus {
+        if rented == true {
+            return .rented
+        }
         return BookStatus(rawValue: book.status) ?? .unknown
     }
     
@@ -95,4 +98,8 @@ struct WBBookViewModel {
     var bookImageURL: String {
         return book.imageURL
     }
+    
+    var wished: Bool = false
+    var rented: Bool = false
+    
 }

@@ -19,7 +19,8 @@ class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
     lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
-    
+    lazy private var searchView: WBSearchView = WBSearchView.loadFromNib()!
+
     lazy var viewModel: WBLibraryViewModel = {
         return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
@@ -71,7 +72,8 @@ class WBLibraryTableViewController: UIViewController {
             case .error:
                 self.view = self.emptyView
                 MBProgressHUD.hide(for: self._view, animated: true)
-            default:
+            case .empty:
+                self.view = self.emptyView
                 MBProgressHUD.hide(for: self._view, animated: true)
             }
             self._view.bookTable.refreshControl?.endRefreshing()
@@ -97,6 +99,16 @@ class WBLibraryTableViewController: UIViewController {
     }
     
     func isFiltering() {
+        if searchBarIsEmpty() {
+            if !_view.subviews.contains(searchView) {
+                searchView.frame = _view.frame
+                _view.addSubview(searchView)
+            }
+        } else {
+            if _view.subviews.contains(searchView) {
+                searchView.removeFromSuperview()
+            }
+        }
         viewModel.isFiltering = searchController.isActive && (!searchBarIsEmpty())
     }
     
@@ -123,6 +135,9 @@ class WBLibraryTableViewController: UIViewController {
                 self.viewModel.state.value = ViewState.error
             }
         }
+//        viewModel.bookViewModels.signal.observeValues { (_) in
+//            self._view.bookTable.reloadData()
+//        }
     }
             
     @objc private func searchBook() {
@@ -147,6 +162,7 @@ class WBLibraryTableViewController: UIViewController {
         if activity.activityType == CSSearchableItemActionType, let info = activity.userInfo, let selectedIdentifier = info[CSSearchableItemActivityIdentifier] as? String {
             if let book = viewModel.getBookById(id: selectedIdentifier) {
                 let detailBookViewController = WBDetailBookViewController(with: book)
+                navigationController?.popToRootViewController(animated: true)
                 navigationController?.pushViewController(detailBookViewController, animated: true)
             }
         }
@@ -198,6 +214,9 @@ extension WBLibraryTableViewController: UISearchControllerDelegate {
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
+        if _view.subviews.contains(searchView) {
+            searchView.removeFromSuperview()
+        }
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = nil
         } else {

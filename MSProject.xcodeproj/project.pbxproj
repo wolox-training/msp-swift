@@ -58,6 +58,8 @@
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
+		00E4A52322C3AF9C00B04CA5 /* WBSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A52222C3AF9C00B04CA5 /* WBSearchView.xib */; };
+		00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */; };
 		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
 		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
@@ -68,7 +70,6 @@
 		00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */; };
 		00FFE71022C11CE900ACE412 /* WBEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */; };
 		00FFE71222C11CFC00ACE412 /* WBEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */; };
-		00FFE71422C11D1D00ACE412 /* WBEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -170,6 +171,8 @@
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
+		00E4A52222C3AF9C00B04CA5 /* WBSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchView.xib; sourceTree = "<group>"; };
+		00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSearchView.swift; sourceTree = "<group>"; };
 		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
 		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
@@ -179,7 +182,6 @@
 		00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEmptyView.swift; sourceTree = "<group>"; };
 		00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBEmptyView.xib; sourceTree = "<group>"; };
-		00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEmptyViewController.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
 		0CCF002D219208180061050C /* WolmoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoCore.framework; path = Carthage/Build/iOS/WolmoCore.framework; sourceTree = "<group>"; };
 		9D1575011CB1B27500EA395E /* MSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +294,7 @@
 				00B7624022AEE04B00640078 /* Wishlist */,
 				0097C7BB22AAA6D50001509F /* Login */,
 				00FFE70E22C11CB000ACE412 /* Empty */,
+				00E4A52122C3AE6700B04CA5 /* Search */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -446,10 +449,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		00E4A52122C3AE6700B04CA5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				00E4A52222C3AF9C00B04CA5 /* WBSearchView.xib */,
+				00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		00FFE70E22C11CB000ACE412 /* Empty */ = {
 			isa = PBXGroup;
 			children = (
-				00FFE71322C11D1D00ACE412 /* WBEmptyViewController.swift */,
 				00FFE71122C11CFC00ACE412 /* WBEmptyView.xib */,
 				00FFE70F22C11CE900ACE412 /* WBEmptyView.swift */,
 			);
@@ -685,6 +696,7 @@
 				00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */,
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
+				00E4A52322C3AF9C00B04CA5 /* WBSearchView.xib in Resources */,
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
@@ -774,8 +786,8 @@
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
 				00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */,
 				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
-				00FFE71422C11D1D00ACE412 /* WBEmptyViewController.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
+				00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,

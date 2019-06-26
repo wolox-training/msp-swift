@@ -86,7 +86,7 @@ class WBBooksRepository: AbstractRepository {
         }
     }
 
-    func addWishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+    func wishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
         let path = "users/\(userId)/wishes"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id]

@@ -52,5 +52,10 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
             bookAvailable.textColor = .woloxRedColor
             rentButton.buttonStyle = .disabled
         }
+        if bookViewModel.wished {
+            wishlistButton.setTitle("WISHLIST_REMOVE_BUTTON".localized(), for: .normal)
+        } else {
+            wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
+        }
     }
 }

@@ -50,19 +50,8 @@ class WBDetailBookViewController: UIViewController {
 
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
             self.showAlert(message: "BOOK_RENTED".localized())
-            // trampita para actualizar la vista segun el book view model
-            if let bookViewModel = self.bookViewModel {
-                let bookRented = WBBook(id: bookViewModel.book.id,
-                                        title: bookViewModel.book.title,
-                                        author: bookViewModel.book.author,
-                                        status: BookStatus.rented.rawValue,
-                                        genre: bookViewModel.book.genre,
-                                        year: bookViewModel.book.year,
-                                        imageURL: bookViewModel.book.imageURL)
-                self.bookViewModel = WBBookViewModel(book: bookRented)
-                self._detailHeaderView.setup(with: self.bookViewModel)
-            }
-
+            self.bookViewModel.rented = true
+            self._detailHeaderView.setup(with: self.bookViewModel)
             self.viewModel.bookAvailable.value = false
         }
         
@@ -88,7 +77,20 @@ class WBDetailBookViewController: UIViewController {
         
         _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
-            self.addToWishlist()
+            
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+
+                self.viewModel.wishBook(book: self.bookViewModel.book).startWithResult { [unowned self] result in
+                    switch result {
+                    case .success:
+                        self.bookViewModel.wished = true
+                        self._detailHeaderView.setup(with: self.bookViewModel)
+                    case .failure(let error):
+                        self.showAlert(message: error.localizedDescription)
+                    }
+                    MBProgressHUD.hide(for: self._view, animated: true)
+                }
+                
         }
         
         loadComments()
@@ -156,10 +158,6 @@ extension WBDetailBookViewController: UITableViewDelegate {
 
 // MARK: - Actions
 extension WBDetailBookViewController {
-    func addToWishlist() {
-        
-    }
-    
 //    func rentBook() {
 //        guard bookViewModel.bookStatus == .available else {
 //            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))

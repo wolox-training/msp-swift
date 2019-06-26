@@ -41,6 +41,10 @@ class WBBookDetailViewModel {
         return repository.rentBook(book: book)
     }
     
+    func wishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+        return repository.wishBook(book: book)
+    }
+    
     func loadComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
         return self.repository.getBookComments(book: book).on(failed: { [unowned self] _ in self.commentsViewModels = MutableProperty([]) }, value: { [unowned self] value in self.commentsViewModels.value = value })
     }

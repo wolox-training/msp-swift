@@ -28,7 +28,7 @@ class WBLibraryViewModel {
     private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
 
-    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
+    var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     
     let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
 
@@ -38,6 +38,7 @@ class WBLibraryViewModel {
         repository = booksRepository
     }
     
+    // MARK: - TableView
     var numberOfCells: Int {
         if isFiltering {
             return filteredBookViewModels.value.count
@@ -54,14 +55,7 @@ class WBLibraryViewModel {
         }
     }
     
-    func loadBooks() -> SignalProducer<[WBBook], RepositoryError> {
-        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels = MutableProperty([]) }, value: { [unowned self] value in
-            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
-            self.sortBooks(by: .id)
-            self.indexSearchableItems()
-        })
-    }
-    
+    // MARK: - Public
     func sortBooks(by: SortMethod) {
         sortBooks(books: &bookViewModels.value, by: .id)
     }
@@ -74,6 +68,39 @@ class WBLibraryViewModel {
     
     func getBookById(id: String) -> WBBookViewModel? {
         return bookViewModels.value.first(where: { $0.bookId == id })
+    }
+    
+    // MARK: - Repository
+    func loadBooks() -> SignalProducer<[WBBook], RepositoryError> {
+        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels = MutableProperty([]) }, value: { [unowned self] value in
+            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
+            self.sortBooks(by: .id)
+            self.loadRents()
+            self.loadWishes()
+            self.indexSearchableItems()
+        })
+    }
+    
+    func loadRents() {
+        self.repository.getRents().startWithResult { [unowned self] result in
+            switch result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func loadWishes() {
+        self.repository.getWishes().startWithResult { [unowned self] result in
+            switch result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: - Private
@@ -93,7 +120,7 @@ class WBLibraryViewModel {
     }
     
     // MARK: - Spotlight
-    func indexSearchableItems() {
+    private func indexSearchableItems() {
         var searchableItems = [CSSearchableItem] ()
         
         for book in bookViewModels.value {

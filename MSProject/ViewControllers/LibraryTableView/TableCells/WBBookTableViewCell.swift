@@ -15,6 +15,9 @@ class WBBookTableViewCell: UITableViewCell {
     @IBOutlet private weak var bookAuthor: UILabel!
     @IBOutlet private weak var customBackgroundView: UIView!
     
+    @IBOutlet weak var bookWishedImage: UIImageView!
+    @IBOutlet weak var bookRentedImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -32,5 +35,7 @@ class WBBookTableViewCell: UITableViewCell {
         
         bookTitle.text = bookViewModel.bookTitle
         bookAuthor.text = bookViewModel.bookAuthor
+        bookWishedImage.isHidden = !bookViewModel.wished
+        bookRentedImage.isHidden = !bookViewModel.rented
     }
 }

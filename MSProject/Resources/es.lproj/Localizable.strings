@@ -27,7 +27,7 @@
 
 // Button
 "WISHLIST_ADD_BUTTON" = "ADD TO WISHLIST";
-"WISHLIT_REMOVE_BUTTON" = "REMOVE FROM WISHLIST";
+"WISHLIST_REMOVE_BUTTON" = "REMOVE FROM WISHLIST";
 "RENT_BOOK_BUTTON" = "RENT";
 "SUBMIT_BUTTON" = "SUBMIT";
 "COMMENT_ADD_BUTTON" = "ADD A COMMENT";
@@ -36,3 +36,7 @@
 // Alert
 "RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";
 "BOOK_RENTED" = "Se reservo el libro correctamente";
+
+// Search
+"SEARCH_TITLE" = "Search in Wbooks";
+"SEARCH_DESCRIPTION" = "Find your favorite writers and books!";

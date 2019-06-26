@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf0-qr-nNY">
+                        <rect key="frame" x="20" y="5" width="280" height="99.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-Gh-iyh">
                         <rect key="frame" x="90" y="15" width="200" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -31,10 +35,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf0-qr-nNY">
-                        <rect key="frame" x="20" y="5" width="280" height="99.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-rW-HWN">
                         <rect key="frame" x="30" y="15" width="40" height="60"/>
                         <constraints>
@@ -42,7 +42,20 @@
                             <constraint firstAttribute="height" constant="60" id="1Ah-G6-4RG"/>
                         </constraints>
                     </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoE-dI-HVJ">
+                        <rect key="frame" x="250" y="5" width="50" height="25"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_wishlist active" translatesAutoresizingMaskIntoConstraints="NO" id="WcE-cy-xTr">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_myrentals active" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-vs-hCo">
+                                <rect key="frame" x="25" y="0.0" width="25" height="25"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yts-5j-1Zz"/>
+                    </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="sf0-qr-nNY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0LC-9Q-aga"/>
                     <constraint firstItem="R0k-pW-WF4" firstAttribute="trailing" secondItem="eAA-Gh-iyh" secondAttribute="trailing" id="6GB-Bf-6Vy"/>
@@ -55,19 +68,28 @@
                     <constraint firstAttribute="trailing" secondItem="eAA-Gh-iyh" secondAttribute="trailing" constant="30" id="aqi-fP-9vB"/>
                     <constraint firstItem="sf0-qr-nNY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="bYp-HF-W5Q"/>
                     <constraint firstAttribute="trailing" secondItem="sf0-qr-nNY" secondAttribute="trailing" constant="20" id="dn9-Mz-tb9"/>
+                    <constraint firstItem="WoE-dI-HVJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gUT-Sq-z5G"/>
                     <constraint firstItem="Vdm-rW-HWN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="gfx-NN-LZU"/>
+                    <constraint firstAttribute="trailing" secondItem="WoE-dI-HVJ" secondAttribute="trailing" constant="20" id="jUo-1d-hPi"/>
                     <constraint firstItem="R0k-pW-WF4" firstAttribute="top" secondItem="eAA-Gh-iyh" secondAttribute="bottom" constant="3" id="lKe-Zj-CKE"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vdm-rW-HWN" secondAttribute="bottom" constant="15" id="tBo-vK-SNr"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bookAuthor" destination="R0k-pW-WF4" id="dbm-gs-3Nn"/>
                 <outlet property="bookImage" destination="Vdm-rW-HWN" id="FbE-UD-Ssy"/>
+                <outlet property="bookRentedImage" destination="jtr-vs-hCo" id="CRv-v7-Zdn"/>
                 <outlet property="bookTitle" destination="eAA-Gh-iyh" id="a6w-2v-ZGy"/>
+                <outlet property="bookWishedImage" destination="WcE-cy-xTr" id="kHR-xa-AhR"/>
                 <outlet property="customBackgroundView" destination="sf0-qr-nNY" id="IpL-8t-zYE"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="178.125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_myrentals active" width="25" height="25"/>
+        <image name="ic_wishlist active" width="25" height="25"/>
+    </resources>
 </document>

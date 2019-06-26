@@ -78,6 +78,7 @@ class WBLibraryViewModel {
             self.indexSearchableItems()
         })
     }
+    
     func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
         return self.repository.getRents().on(failed: { _ in  }, value: { [unowned self] value in
             

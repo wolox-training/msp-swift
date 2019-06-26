@@ -60,6 +60,8 @@
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
 		00E4A52322C3AF9C00B04CA5 /* WBSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A52222C3AF9C00B04CA5 /* WBSearchView.xib */; };
 		00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */; };
+		00E4A52922C4057500B04CA5 /* WBRentalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52822C4057500B04CA5 /* WBRentalsViewModel.swift */; };
+		00E4A52B22C40B3200B04CA5 /* WBWishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52A22C40B3200B04CA5 /* WBWishlistViewModel.swift */; };
 		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
 		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
@@ -173,6 +175,8 @@
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
 		00E4A52222C3AF9C00B04CA5 /* WBSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchView.xib; sourceTree = "<group>"; };
 		00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSearchView.swift; sourceTree = "<group>"; };
+		00E4A52822C4057500B04CA5 /* WBRentalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRentalsViewModel.swift; sourceTree = "<group>"; };
+		00E4A52A22C40B3200B04CA5 /* WBWishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWishlistViewModel.swift; sourceTree = "<group>"; };
 		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
 		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				00B7624522AEE08800640078 /* WBWishlistViewController.swift */,
 				00B7624322AEE06D00640078 /* WBWishlistView.xib */,
 				00B7624122AEE06400640078 /* WBWishlistView.swift */,
+				00E4A52A22C40B3200B04CA5 /* WBWishlistViewModel.swift */,
 			);
 			path = Wishlist;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				00B7624D22AEE1E100640078 /* WBRentalsViewController.swift */,
 				00B7624B22AEE1C600640078 /* WBRentalsView.xib */,
 				00B7624922AEE1C000640078 /* WBRentalsView.swift */,
+				00E4A52822C4057500B04CA5 /* WBRentalsViewModel.swift */,
 			);
 			path = Rentals;
 			sourceTree = "<group>";
@@ -808,12 +814,14 @@
 				9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */,
 				00B7625122AEE22C00640078 /* WBSettingsView.swift in Sources */,
 				00B762A222B29D8A00640078 /* WBDetailBookHeaderView.swift in Sources */,
+				00E4A52B22C40B3200B04CA5 /* WBWishlistViewModel.swift in Sources */,
 				00B7628122B03AF200640078 /* WBDetailBookViewController.swift in Sources */,
 				00B7624A22AEE1C000640078 /* WBRentalsView.swift in Sources */,
 				00B7623C22AED71000640078 /* WBTabBarController.swift in Sources */,
 				00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */,
 				0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */,
 				00B7624622AEE08800640078 /* WBWishlistViewController.swift in Sources */,
+				00E4A52922C4057500B04CA5 /* WBRentalsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,6 +48,7 @@ class WBDetailBookViewController: UIViewController {
     // MARK: - Private
     private func initBookDetailTableViewModel() {
 
+        // Rent Book
         viewModel.rentBookAction.values.observeValues { [unowned self] _ in
             self.showAlert(message: "BOOK_RENTED".localized())
             self.bookViewModel.rented = true
@@ -74,10 +75,16 @@ class WBDetailBookViewController: UIViewController {
         viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
         
         _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
-        
+
+        // Wish Book
         _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
             
+                guard !self.bookViewModel.wished else {
+                    self.showAlert(message: "Unwish not implemented yet...")
+                    return
+                }
+                
                 MBProgressHUD.showAdded(to: self._view, animated: true)
 
                 self.viewModel.wishBook(book: self.bookViewModel.book).startWithResult { [unowned self] result in
@@ -90,7 +97,6 @@ class WBDetailBookViewController: UIViewController {
                     }
                     MBProgressHUD.hide(for: self._view, animated: true)
                 }
-                
         }
         
         loadComments()

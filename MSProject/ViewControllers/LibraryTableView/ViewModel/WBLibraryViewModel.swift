@@ -28,7 +28,7 @@ class WBLibraryViewModel {
     private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
 
-    var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
+    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     
     let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
 
@@ -75,32 +75,23 @@ class WBLibraryViewModel {
         return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels.value = [] }, value: { [unowned self] value in
             self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
             self.sortBooks(by: .id)
-            self.loadRents()
-            self.loadWishes()
             self.indexSearchableItems()
         })
     }
-    
-    func loadRents() {
-        self.repository.getRents().startWithResult { [unowned self] result in
-            switch result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
+        return self.repository.getRents().on(failed: { _ in  }, value: { [unowned self] value in
+            
+            let rentedBooks = value.map { $0.book!.id }
+            self.bookViewModels.value.forEach { $0.rented =  rentedBooks.contains($0.book.id) ? true : false }
+        })
     }
 
-    func loadWishes() {
-        self.repository.getWishes().startWithResult { [unowned self] result in
-            switch result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func loadWishes() -> SignalProducer<[WBWish], RepositoryError> {
+        return self.repository.getWishes().on(failed: { _ in  }, value: { [unowned self] value in
+            
+            let whisedBooks = value.map { $0.book.id }
+            self.bookViewModels.value.forEach { $0.wished =  whisedBooks.contains($0.book.id) ? true : false }
+        })
     }
     
     // MARK: - Private

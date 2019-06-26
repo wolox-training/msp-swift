@@ -30,8 +30,6 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     }
     
     func configureUI() {
-        rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
-        wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
         customBackgroundView.layer.cornerRadius = 5
         customBackgroundView.backgroundColor = .white
         sendSubviewToBack(customBackgroundView)
@@ -45,17 +43,27 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         bookAuthor.text = bookViewModel.bookAuthor
         bookYear.text = bookViewModel.bookYear
         bookGenre.text = bookViewModel.bookGenre
-        if bookViewModel.bookStatus.isBookAvailable() {
-            bookAvailable.textColor = .woloxGreenColor
-            rentButton.buttonStyle = .filled
-        } else {
-            bookAvailable.textColor = .woloxRedColor
-            rentButton.buttonStyle = .disabled
-        }
+       
+        // esto se esta volviendo un quilombo... O.o
         if bookViewModel.wished {
             wishlistButton.setTitle("WISHLIST_REMOVE_BUTTON".localized(), for: .normal)
         } else {
             wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
+        }
+        
+        if bookViewModel.rented {
+            rentButton.setTitle("RETURN_BOOK_BUTTON".localized(), for: .normal)
+            rentButton.buttonStyle = .filled
+            bookAvailable.text = ""
+        } else {
+            if bookViewModel.bookStatus.isBookAvailable() {
+                bookAvailable.textColor = .woloxGreenColor
+                rentButton.buttonStyle = .filled
+            } else {
+                bookAvailable.textColor = .woloxRedColor
+                rentButton.buttonStyle = .disabled
+            }
+            rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
         }
     }
 }

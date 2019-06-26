@@ -43,7 +43,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoE-dI-HVJ">
-                        <rect key="frame" x="250" y="5" width="50" height="25"/>
+                        <rect key="frame" x="248" y="7" width="50" height="25"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_wishlist active" translatesAutoresizingMaskIntoConstraints="NO" id="WcE-cy-xTr">
                                 <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -68,9 +68,9 @@
                     <constraint firstAttribute="trailing" secondItem="eAA-Gh-iyh" secondAttribute="trailing" constant="30" id="aqi-fP-9vB"/>
                     <constraint firstItem="sf0-qr-nNY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="bYp-HF-W5Q"/>
                     <constraint firstAttribute="trailing" secondItem="sf0-qr-nNY" secondAttribute="trailing" constant="20" id="dn9-Mz-tb9"/>
-                    <constraint firstItem="WoE-dI-HVJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gUT-Sq-z5G"/>
+                    <constraint firstItem="WoE-dI-HVJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="gUT-Sq-z5G"/>
                     <constraint firstItem="Vdm-rW-HWN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="gfx-NN-LZU"/>
-                    <constraint firstAttribute="trailing" secondItem="WoE-dI-HVJ" secondAttribute="trailing" constant="20" id="jUo-1d-hPi"/>
+                    <constraint firstAttribute="trailing" secondItem="WoE-dI-HVJ" secondAttribute="trailing" constant="22" id="jUo-1d-hPi"/>
                     <constraint firstItem="R0k-pW-WF4" firstAttribute="top" secondItem="eAA-Gh-iyh" secondAttribute="bottom" constant="3" id="lKe-Zj-CKE"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vdm-rW-HWN" secondAttribute="bottom" constant="15" id="tBo-vK-SNr"/>
                 </constraints>

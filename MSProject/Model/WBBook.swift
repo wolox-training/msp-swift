@@ -60,8 +60,8 @@ extension WBBook: Argo.Decodable {
     }
 }
 
-struct WBBookViewModel {
-    
+class WBBookViewModel: NSObject {
+
     let book: WBBook
     
     init(book: WBBook) {
@@ -101,5 +101,4 @@ struct WBBookViewModel {
     
     var wished: Bool = false
     var rented: Bool = false
-    
 }

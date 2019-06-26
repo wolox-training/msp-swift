@@ -130,16 +130,33 @@ class WBLibraryTableViewController: UIViewController {
             switch result {
             case .success(let value):
                 self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
+                self.loadRentsAndWishes()
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
                 self.viewModel.state.value = ViewState.error
             }
         }
-//        viewModel.bookViewModels.signal.observeValues { (_) in
-//            self._view.bookTable.reloadData()
-//        }
     }
-            
+    
+    private func loadRentsAndWishes() {
+        viewModel.loadRents().startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.bookTable.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        viewModel.loadWishes().startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.bookTable.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     @objc private func searchBook() {
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController

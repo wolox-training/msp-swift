@@ -46,6 +46,6 @@ class WBBookDetailViewModel {
     }
     
     func loadComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
-        return self.repository.getBookComments(book: book).on(failed: { [unowned self] _ in self.commentsViewModels = MutableProperty([]) }, value: { [unowned self] value in self.commentsViewModels.value = value })
+        return self.repository.getBookComments(book: book).on(failed: { [unowned self] _ in self.commentsViewModels.value = [] }, value: { [unowned self] value in self.commentsViewModels.value = value })
     }
 }

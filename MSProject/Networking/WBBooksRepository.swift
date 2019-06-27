@@ -96,8 +96,24 @@ class WBBooksRepository: AbstractRepository {
         }
     }
 
-    // MARK: - Suggestions
+    // MARK: - User Suggestions
+    func getSuggestions(book: WBBook) -> SignalProducer<[WBBook], RepositoryError> {
+        let path = "suggestions"
+        
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
     
+    // MARK: - Book Suggestions
+    func getBookSuggestions(book: WBBook) -> SignalProducer<[WBBook], RepositoryError> {
+        let path = "books/\(book.id)/suggestions"
+        
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
+
     // MARK: - Private
     class func commonHeaders() -> [String: String] {
         return ["Content-Type": "application/json",

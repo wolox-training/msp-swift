@@ -10,7 +10,6 @@ import UIKit
 
 extension UIImageView {
     func loadImageUsingCache(withUrl urlString: String, placeholderImage: UIImage) {
-        let imageCache = NSCache<NSString, UIImage>()
 
         image = placeholderImage
         guard let url = URL(string: urlString) else {
@@ -19,7 +18,7 @@ extension UIImageView {
         guard urlString.hasPrefix("https://") || urlString.hasPrefix("http://") else {
             return
         }
-        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+        if let cachedImage = WBBooksManager.sharedIntance.imageCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
             return
         }
@@ -30,7 +29,7 @@ extension UIImageView {
             }
             DispatchQueue.main.async {
                 if let image = UIImage(data: data!) {
-                    imageCache.setObject(image, forKey: urlString as NSString)
+                    WBBooksManager.sharedIntance.imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
                 }
             }

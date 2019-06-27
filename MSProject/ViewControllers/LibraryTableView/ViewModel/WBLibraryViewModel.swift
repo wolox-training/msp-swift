@@ -12,9 +12,6 @@ import ReactiveSwift
 
 import Networking
 
-import CoreSpotlight
-import MobileCoreServices
-
 enum SortMethod {
     case id
     case title
@@ -28,7 +25,7 @@ class WBLibraryViewModel {
     private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
 
-    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
+//    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     
     let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
 
@@ -43,7 +40,7 @@ class WBLibraryViewModel {
         if isFiltering {
             return filteredBookViewModels.value.count
         } else {
-            return bookViewModels.value.count
+            return WBBooksManager.sharedIntance.bookViewModels.value.count
         }
     }
 
@@ -51,83 +48,44 @@ class WBLibraryViewModel {
         if isFiltering {
             return filteredBookViewModels.value[indexPath.row]
         } else {
-            return bookViewModels.value[indexPath.row]
+            return WBBooksManager.sharedIntance.bookViewModels.value[indexPath.row]
         }
     }
     
     // MARK: - Public
-    func sortBooks(by: SortMethod) {
-        sortBooks(books: &bookViewModels.value, by: .id)
-    }
-    
     func filterBooks(with searchText: String) {
-        filteredBookViewModels.value = bookViewModels.value.filter({ (book: WBBookViewModel) -> Bool in
+        filteredBookViewModels.value = WBBooksManager.sharedIntance.bookViewModels.value.filter({ (book: WBBookViewModel) -> Bool in
             return book.bookTitle.lowercased().contains(searchText.lowercased()) || book.bookAuthor.lowercased().contains(searchText.lowercased())
         })
     }
     
     func getBookById(id: String) -> WBBookViewModel? {
-        return bookViewModels.value.first(where: { $0.bookId == id })
+        return WBBooksManager.sharedIntance.bookViewModels.value.first(where: { $0.bookId == id })
     }
     
     // MARK: - Repository
     func loadBooks() -> SignalProducer<[WBBook], RepositoryError> {
-        return self.repository.getBooks().on(failed: { [unowned self] _ in self.bookViewModels.value = [] }, value: { [unowned self] value in
-            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
-            self.sortBooks(by: .id)
-            self.indexSearchableItems()
+        return self.repository.getBooks().on(failed: { _ in WBBooksManager.sharedIntance.bookViewModels.value = [] }, value: { value in
+            WBBooksManager.sharedIntance.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0) })
+            WBBooksManager.sharedIntance.sortBooks(by: .id)
+            WBBooksManager.sharedIntance.indexSearchableItems()
         })
     }
     
     func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
-        return self.repository.getRents().on(failed: { _ in  }, value: { [unowned self] value in
+        return self.repository.getRents().on(failed: { _ in  }, value: { value in
             
             let rentedBooks = value.map { $0.book!.id }
-            self.bookViewModels.value.forEach { $0.rented =  rentedBooks.contains($0.book.id) ? true : false }
+            WBBooksManager.sharedIntance.bookViewModels.value.forEach { $0.rented =  rentedBooks.contains($0.book.id) ? true : false }
         })
     }
 
     func loadWishes() -> SignalProducer<[WBWish], RepositoryError> {
-        return self.repository.getWishes().on(failed: { _ in  }, value: { [unowned self] value in
+        return self.repository.getWishes().on(failed: { _ in  }, value: { value in
             
             let whisedBooks = value.map { $0.book.id }
-            self.bookViewModels.value.forEach { $0.wished =  whisedBooks.contains($0.book.id) ? true : false }
+            WBBooksManager.sharedIntance.bookViewModels.value.forEach { $0.wished =  whisedBooks.contains($0.book.id) ? true : false }
         })
     }
-    
-    // MARK: - Private
-    private func sortBooks(books: inout [WBBookViewModel], by sortMethod: SortMethod) {
-        switch sortMethod {
-        case .id:
-            books = books.sorted(by: { $0.book.id < $1.book.id })
-        case .title:
-            books = books.sorted(by: { $0.book.title < $1.book.title })
-        case .author:
-            books = books.sorted(by: { $0.book.author < $1.book.author })
-        case .genre:
-            books = books.sorted(by: { $0.book.genre < $1.book.genre })
-        case .year:
-            books = books.sorted(by: { $0.book.year < $1.book.year })
-        }
-    }
-    
-    // MARK: - Spotlight
-    private func indexSearchableItems() {
-        var searchableItems = [CSSearchableItem] ()
-        
-        for book in bookViewModels.value {
-            let searchItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-            searchItemAttributeSet.title = book.bookTitle
-            searchItemAttributeSet.contentDescription = book.bookAuthor
-            
-            let searchableItem = CSSearchableItem(uniqueIdentifier: book.bookId, domainIdentifier: "bookViewModels", attributeSet: searchItemAttributeSet)
-            searchableItems.append(searchableItem)
-        }
-        
-        CSSearchableIndex.default().indexSearchableItems(searchableItems) { (error) -> Void in
-            if error != nil {
-                print(error?.localizedDescription ?? "Error")
-            }
-        }
-    }
+
 }

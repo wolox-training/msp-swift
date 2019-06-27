@@ -14,8 +14,6 @@ import Networking
 
 class WBRentalsViewModel {
 
-    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
-
     let repository: WBBooksRepository
     
     init(booksRepository: WBBooksRepository) {
@@ -24,18 +22,10 @@ class WBRentalsViewModel {
     
     // MARK: - TableView
     var numberOfCells: Int {
-        return bookViewModels.value.count
+        return WBBooksManager.sharedIntance.rentedBooks.value.count
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
-        return bookViewModels.value[indexPath.row]
-    }
-    
-    // MARK: - Repository
-    func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
-        return self.repository.getRents().on(failed: { [unowned self] _ in self.bookViewModels.value = [] }, value: { [unowned self] value in
-            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0.book!) })
-            self.bookViewModels.value.forEach { $0.rented = true }
-        })
+        return WBBooksManager.sharedIntance.rentedBooks.value[indexPath.row]
     }
 }

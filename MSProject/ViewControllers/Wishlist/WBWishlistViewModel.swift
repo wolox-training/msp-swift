@@ -14,8 +14,6 @@ import Networking
 
 class WBWishlistViewModel {
     
-    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
-    
     let repository: WBBooksRepository
     
     init(booksRepository: WBBooksRepository) {
@@ -24,18 +22,10 @@ class WBWishlistViewModel {
     
     // MARK: - TableView
     var numberOfCells: Int {
-        return bookViewModels.value.count
+        return WBBooksManager.sharedIntance.wishedBooks.value.count
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> WBBookViewModel {
-        return bookViewModels.value[indexPath.row]
-    }
-    
-    // MARK: - Repository
-    func loadWishes() -> SignalProducer<[WBWish], RepositoryError> {
-        return self.repository.getWishes().on(failed: { [unowned self] _ in self.bookViewModels.value = [] }, value: { [unowned self] value in
-            self.bookViewModels = MutableProperty(value.map { WBBookViewModel(book: $0.book) })
-            self.bookViewModels.value.forEach { $0.wished = true }
-        })
+        return WBBooksManager.sharedIntance.wishedBooks.value[indexPath.row]
     }
 }

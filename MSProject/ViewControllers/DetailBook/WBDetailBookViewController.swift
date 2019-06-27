@@ -100,6 +100,7 @@ class WBDetailBookViewController: UIViewController {
         }
         
         loadComments()
+        loadSuggestions()
     }
     
     private func configureTableView() {
@@ -108,6 +109,8 @@ class WBDetailBookViewController: UIViewController {
         
         let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
         _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
+        let suggestionNib = UINib.init(nibName: "WBSuggestionsTableViewCell", bundle: nil)
+        _view.detailTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
         
         _view.configureDetailTableView()
     }
@@ -124,28 +127,51 @@ class WBDetailBookViewController: UIViewController {
             MBProgressHUD.hide(for: self._view, animated: true)
         }
     }
+    
+    private func loadSuggestions() {
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        viewModel.loadSuggestions(book: bookViewModel.book).startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.detailTable.reloadData()
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+            MBProgressHUD.hide(for: self._view, animated: true)
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
 extension WBDetailBookViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCells
+        return viewModel.numberOfCells(for: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBCommentsBookTableViewCell", for: indexPath) as? WBCommentsBookTableViewCell else {
-            fatalError("Cell not exists")
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBSuggestionsTableViewCell", for: indexPath) as? WBSuggestionsTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let suggestions = viewModel.getSuggestionsBookViewModel()
+            cell.setup(with: suggestions)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBCommentsBookTableViewCell", for: indexPath) as? WBCommentsBookTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let comment = viewModel.getCommentViewModel(at: indexPath)
+            cell.setup(with: comment)
+            return cell
         }
-        
-        let comment = viewModel.getCellViewModel(at: indexPath)
-        cell.setup(with: comment)
-        return cell
     }
     
 }

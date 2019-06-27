@@ -17,14 +17,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-To-Qs3">
-                    <rect key="frame" x="10" y="318" width="394" height="544"/>
+                    <rect key="frame" x="20" y="338" width="374" height="524"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSY-Nb-r73" customClass="WBDetailBookHeaderView" customModule="MSProject" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="264"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="284"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="264" id="9lD-Yy-BhI"/>
+                        <constraint firstAttribute="height" constant="284" id="9lD-Yy-BhI"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="7eO-He-FRo"/>
                 </view>
@@ -35,9 +35,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FSY-Nb-r73" secondAttribute="trailing" id="5xY-Do-IPe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tSb-To-Qs3" secondAttribute="bottom" id="KVp-rQ-6Oq"/>
                 <constraint firstItem="FSY-Nb-r73" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gKp-Dy-onF"/>
-                <constraint firstItem="tSb-To-Qs3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="hPA-xe-8rI"/>
+                <constraint firstItem="tSb-To-Qs3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="hPA-xe-8rI"/>
                 <constraint firstItem="tSb-To-Qs3" firstAttribute="top" secondItem="FSY-Nb-r73" secondAttribute="bottom" constant="10" id="lv9-5R-oqu"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSb-To-Qs3" secondAttribute="trailing" constant="10" id="yGD-sU-WY2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSb-To-Qs3" secondAttribute="trailing" constant="20" id="yGD-sU-WY2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>

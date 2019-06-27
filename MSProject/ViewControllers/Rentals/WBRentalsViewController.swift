@@ -45,16 +45,7 @@ class WBRentalsViewController: UIViewController {
     }
     
     private func loadRents() {
-        MBProgressHUD.showAdded(to: self._view, animated: true)
-        viewModel.loadRents().startWithResult { [unowned self] result in
-            switch result {
-            case .success:
-                self._view.bookTable.reloadData()
-            case .failure(let error):
-                self.showAlert(message: error.localizedDescription)
-            }
-            MBProgressHUD.hide(for: self._view, animated: true)
-        }
+        self._view.bookTable.reloadData()
     }
 }
 

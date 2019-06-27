@@ -40,3 +40,6 @@
 // Search
 "SEARCH_TITLE" = "Search in Wbooks";
 "SEARCH_DESCRIPTION" = "Find your favorite writers and books!";
+
+// Suggestions
+"SUGGESTIONS" = "Suggestions";

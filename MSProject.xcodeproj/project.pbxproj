@@ -62,6 +62,11 @@
 		00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */; };
 		00E4A52922C4057500B04CA5 /* WBRentalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52822C4057500B04CA5 /* WBRentalsViewModel.swift */; };
 		00E4A52B22C40B3200B04CA5 /* WBWishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52A22C40B3200B04CA5 /* WBWishlistViewModel.swift */; };
+		00E4A52D22C5042000B04CA5 /* WBBooksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52C22C5042000B04CA5 /* WBBooksManager.swift */; };
+		00E4A53022C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A52E22C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift */; };
+		00E4A53122C5171C00B04CA5 /* WBSuggestionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A52F22C5171C00B04CA5 /* WBSuggestionsTableViewCell.xib */; };
+		00E4A53422C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A53222C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift */; };
+		00E4A53522C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A53322C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib */; };
 		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
 		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
@@ -177,6 +182,11 @@
 		00E4A52422C3AFC100B04CA5 /* WBSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSearchView.swift; sourceTree = "<group>"; };
 		00E4A52822C4057500B04CA5 /* WBRentalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRentalsViewModel.swift; sourceTree = "<group>"; };
 		00E4A52A22C40B3200B04CA5 /* WBWishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWishlistViewModel.swift; sourceTree = "<group>"; };
+		00E4A52C22C5042000B04CA5 /* WBBooksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBooksManager.swift; sourceTree = "<group>"; };
+		00E4A52E22C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSuggestionsTableViewCell.swift; sourceTree = "<group>"; };
+		00E4A52F22C5171C00B04CA5 /* WBSuggestionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSuggestionsTableViewCell.xib; sourceTree = "<group>"; };
+		00E4A53222C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSuggestionBookImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		00E4A53322C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSuggestionBookImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
 		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
@@ -396,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				00B7627722B0169300640078 /* WBBooksRepository.swift */,
+				00E4A52C22C5042000B04CA5 /* WBBooksManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -418,6 +429,10 @@
 			children = (
 				00B7629D22B287E800640078 /* WBCommentsBookTableViewCell.xib */,
 				00B7629C22B287E800640078 /* WBCommentsBookTableViewCell.swift */,
+				00E4A52F22C5171C00B04CA5 /* WBSuggestionsTableViewCell.xib */,
+				00E4A52E22C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift */,
+				00E4A53322C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib */,
+				00E4A53222C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -699,6 +714,7 @@
 				00B7625322AEE23E00640078 /* WBSettingsView.xib in Resources */,
 				00B7625A22AEE2AC00640078 /* WBAddNewView.xib in Resources */,
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
+				00E4A53522C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib in Resources */,
 				00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */,
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
@@ -706,6 +722,7 @@
 				00B7621022AE995E00640078 /* WBLibraryTableView.xib in Resources */,
 				00B761F022AAF97E00640078 /* WBBookTableViewCell.xib in Resources */,
 				00B761FE22AE88AD00640078 /* WBLoginView.xib in Resources */,
+				00E4A53122C5171C00B04CA5 /* WBSuggestionsTableViewCell.xib in Resources */,
 				00FFE71222C11CFC00ACE412 /* WBEmptyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,10 +807,12 @@
 				00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */,
 				00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */,
 				00B7625C22AEE2BC00640078 /* WBAddNewViewController.swift in Sources */,
+				00E4A52D22C5042000B04CA5 /* WBBooksManager.swift in Sources */,
 				00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */,
 				00B7620022AE88FC00640078 /* WBLoginView.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */,
+				00E4A53422C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
@@ -811,6 +830,7 @@
 				00B762A622B2D01800640078 /* WBWish.swift in Sources */,
 				00B7624222AEE06400640078 /* WBWishlistView.swift in Sources */,
 				00B7629B22B284D000640078 /* WBDateHelper.swift in Sources */,
+				00E4A53022C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift in Sources */,
 				9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */,
 				00B7625122AEE22C00640078 /* WBSettingsView.swift in Sources */,
 				00B762A222B29D8A00640078 /* WBDetailBookHeaderView.swift in Sources */,

@@ -125,7 +125,7 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
-        guard !WBBooksManager.sharedIntance.needsReload.value && WBBooksManager.sharedIntance.bookViewModels.value.isEmpty else {
+        guard WBBooksManager.sharedIntance.needsReload.value || WBBooksManager.sharedIntance.bookViewModels.value.isEmpty else {
             _view.bookTable.refreshControl?.endRefreshing()
             _view.bookTable.reloadData()
             return
@@ -137,6 +137,7 @@ class WBLibraryTableViewController: UIViewController {
             case .success(let value):
                 self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
                 self.loadRentsAndWishes()
+                WBBooksManager.sharedIntance.needsReload.value = false
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
                 self.viewModel.state.value = ViewState.error

@@ -31,7 +31,7 @@ class WBBooksManager {
         return MutableProperty(bookViewModels.value.filter { $0.wished == true})
     }
     
-    var needsReload = MutableProperty(false)
+    var needsReload = MutableProperty(true)
     
     // MARK: - Public
     func sortBooks(by: SortMethod) {

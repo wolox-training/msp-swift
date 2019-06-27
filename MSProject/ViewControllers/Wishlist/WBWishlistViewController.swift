@@ -25,6 +25,7 @@ class WBWishlistViewController: UIViewController {
 
         configureTableView()
         loadWishes()
+        loadSuggestions()
 
         title = "WISHLIST_NAV_BAR".localized()
     }
@@ -47,23 +48,49 @@ class WBWishlistViewController: UIViewController {
     private func loadWishes() {
         self._view.bookTable.reloadData()
     }
+    
+    private func loadSuggestions() {
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        viewModel.loadSuggestions().startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.bookTable.reloadData()
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+            MBProgressHUD.hide(for: self._view, animated: true)
+        }
+    }
 }
 
 extension WBWishlistViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCells
+        return viewModel.numberOfCells(for: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as? WBBookTableViewCell else {
-            fatalError("Cell not exists")
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as? WBBookTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let book = viewModel.getCellViewModel(at: indexPath)
+            cell.setup(with: book)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBSuggestionsTableViewCell", for: indexPath) as? WBSuggestionsTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let suggestions = viewModel.getSuggestionsBookViewModel()
+            cell.setup(with: suggestions)
+            return cell
         }
-        
-        let book = viewModel.getCellViewModel(at: indexPath)
-        cell.setup(with: book)
-        return cell
     }
     
 }

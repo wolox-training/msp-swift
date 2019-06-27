@@ -97,7 +97,7 @@ class WBBooksRepository: AbstractRepository {
     }
 
     // MARK: - User Suggestions
-    func getSuggestions(book: WBBook) -> SignalProducer<[WBBook], RepositoryError> {
+    func getSuggestions() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "suggestions"
         
         return performRequest(method: .get, path: path, parameters: nil) { JSON in

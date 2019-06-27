@@ -31,8 +31,9 @@ class WBDetailBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "BOOK_DETAIL".localized()
-
+        title = "BOOK_DETAIL_NAV_BAR".localized()
+        setBackButtonEmpty()
+        
         configureTableView()
         
         initBookDetailTableViewModel()
@@ -74,12 +75,18 @@ class WBDetailBookViewController: UIViewController {
 
         viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
         
-        _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
+        _detailHeaderView.rentButton?.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
 
         // Wish Book
-        _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside)
+        _detailHeaderView.wishlistButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
             
+                guard !self.bookViewModel.rented else {
+                    let commentBookViewController = WBCommentViewController(with: self.bookViewModel)
+                    self.navigationController?.pushViewController(commentBookViewController, animated: true)
+                    return
+                }
+
                 guard !self.bookViewModel.wished else {
                     self.showAlert(message: "Unwish not implemented yet...")
                     return

@@ -38,7 +38,8 @@ class WBLibraryTableViewController: UIViewController {
         configureTableView()
         
         title = "LIBRARY_NAV_BAR".localized()
-        
+        setBackButtonEmpty()
+
         let sort = UIBarButtonItem(image: UIImage.sortImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
         let search = UIBarButtonItem(image: UIImage.searchImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(searchBook))
         setNavigationRightButtons([sort, search])

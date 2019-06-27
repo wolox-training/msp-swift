@@ -23,6 +23,8 @@ enum BookStatus: String, CaseIterable {
         switch self {
         case .available:
             return "AVAILABLE".localized()
+        case .inYourHands:
+            return "IN_YOUR_HANDS".localized()
         default:
             return "NOT_AVAILABLE".localized()
         }
@@ -82,7 +84,7 @@ class WBBookViewModel: NSObject {
     
     var bookStatus: BookStatus {
         if rented == true {
-            return .rented
+            return .inYourHands
         }
         return BookStatus(rawValue: book.status) ?? .unknown
     }

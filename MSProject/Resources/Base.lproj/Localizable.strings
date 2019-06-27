@@ -19,11 +19,13 @@
 "ADDNEW_NAV_BAR" = "SUGGEST BOOK";
 "RENTALS_NAV_BAR" = "MY RENTALS";
 "SETTINGS_NAV_BAR" = "SETTINGS";
-"BOOK_DETAIL" = "BOOK DETAIL";
+"BOOK_DETAIL_NAV_BAR" = "BOOK DETAIL";
+"COMMENT_NAV_BAR" = "COMMENT";
 
 // Books
 "AVAILABLE" = "Available";
 "NOT_AVAILABLE" = "Not Available";
+"IN_YOUR_HANDS" = "In Your Hands";
 
 // Button
 "WISHLIST_ADD_BUTTON" = "ADD TO WISHLIST";
@@ -43,3 +45,6 @@
 
 // Suggestions
 "SUGGESTIONS" = "Suggestions";
+
+// Comment
+"" = "Write your comment here…";

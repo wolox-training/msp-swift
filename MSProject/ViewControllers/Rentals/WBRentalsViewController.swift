@@ -28,6 +28,7 @@ class WBRentalsViewController: UIViewController {
         loadSuggestions()
 
         title = "RENTALS_NAV_BAR".localized()
+        setBackButtonEmpty()
     }
     
     override func loadView() {

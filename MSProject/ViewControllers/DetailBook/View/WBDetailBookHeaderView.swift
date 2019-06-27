@@ -20,13 +20,17 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     
     @IBOutlet private weak var customBackgroundView: UIView!
 
-    @IBOutlet weak var wishlistButton: WBButton!
-    @IBOutlet weak var rentButton: WBButton!
+    @IBOutlet weak var wishlistButton: WBButton?
+    @IBOutlet weak var rentButton: WBButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
         backgroundColor = .clear
+    }
+    
+    static func loadFrom(nibName: String) -> WBDetailBookHeaderView? {
+        return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? WBDetailBookHeaderView
     }
     
     func configureUI() {
@@ -46,24 +50,26 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
        
         // esto se esta volviendo un quilombo... O.o
         if bookViewModel.wished {
-            wishlistButton.setTitle("WISHLIST_REMOVE_BUTTON".localized(), for: .normal)
+            wishlistButton?.setTitle("WISHLIST_REMOVE_BUTTON".localized(), for: .normal)
         } else {
-            wishlistButton.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
+            wishlistButton?.setTitle("WISHLIST_ADD_BUTTON".localized(), for: .normal)
         }
         
         if bookViewModel.rented {
-            rentButton.setTitle("RETURN_BOOK_BUTTON".localized(), for: .normal)
-            rentButton.buttonStyle = .filled
-            bookAvailable.text = ""
+            rentButton?.setTitle("RETURN_BOOK_BUTTON".localized(), for: .normal)
+            wishlistButton?.setTitle("COMMENT_ADD_BUTTON".localized(), for: .normal)
+
+            bookAvailable.textColor = .woloxBackgroundColor()
+            rentButton?.buttonStyle = .filled
         } else {
             if bookViewModel.bookStatus.isBookAvailable() {
                 bookAvailable.textColor = .woloxGreenColor
-                rentButton.buttonStyle = .filled
+                rentButton?.buttonStyle = .filled
             } else {
                 bookAvailable.textColor = .woloxRedColor
-                rentButton.buttonStyle = .disabled
+                rentButton?.buttonStyle = .disabled
             }
-            rentButton.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
+            rentButton?.setTitle("RENT_BOOK_BUTTON".localized(), for: .normal)
         }
     }
 }

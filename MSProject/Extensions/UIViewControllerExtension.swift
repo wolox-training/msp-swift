@@ -13,4 +13,10 @@ extension UIViewController {
     func showAlert(message: String) {
         presentAlert(ErrorAlertViewModel(title: "", message: message, dismissButtonTitle: "OK"))
     }
+    
+    func setBackButtonEmpty() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+    }
 }

@@ -28,6 +28,7 @@ class WBWishlistViewController: UIViewController {
         loadSuggestions()
 
         title = "WISHLIST_NAV_BAR".localized()
+        setBackButtonEmpty()
     }
     
     override func loadView() {

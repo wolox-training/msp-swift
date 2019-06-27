@@ -19,11 +19,13 @@
 "ADDNEW_NAV_BAR" = "Agregar nuevo";
 "RENTALS_NAV_BAR" = "Alquiler";
 "SETTINGS_NAV_BAR" = "SETTINGS";
-"BOOK_DETAIL" = "Configuración";
+"BOOK_DETAIL_NAV_BAR" = "BOOK DETAIL";
+"COMMENT_NAV_BAR" = "COMMENT";
 
 // Books
 "AVAILABLE" = "Disponible";
 "NOT_AVAILABLE" = "No Disponible";
+"IN_YOUR_HANDS" = "In Your Hands";
 
 // Button
 "WISHLIST_ADD_BUTTON" = "ADD TO WISHLIST";

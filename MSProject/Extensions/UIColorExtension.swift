@@ -41,4 +41,5 @@ extension UIColor {
     public static var woloxGreenColor: UIColor {
         return UIColor(red: 0.65, green: 0.8, blue: 0.22, alpha: 1)
     }
+    
 }

@@ -25,8 +25,6 @@ class WBLibraryViewModel {
     private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
 
-//    private var bookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
-    
     let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
 
     let repository: WBBooksRepository
@@ -74,9 +72,15 @@ class WBLibraryViewModel {
     
     func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
         return self.repository.getRents().on(failed: { _ in  }, value: { value in
-            
-            let rentedBooks = value.map { $0.book!.id }
-            WBBooksManager.sharedIntance.bookViewModels.value.forEach { $0.rented =  rentedBooks.contains($0.book.id) ? true : false }
+            for rent in value {
+                WBBooksManager.sharedIntance.bookViewModels.value.forEach {
+                    if $0.book.id == rent.book!.id {
+                        $0.rented = true
+                        $0.rentedDateTo = rent.to
+                        $0.rentedDateFrom = rent.from
+                    }
+                }
+            }
         })
     }
 

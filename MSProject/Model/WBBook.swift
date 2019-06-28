@@ -103,4 +103,8 @@ class WBBookViewModel: NSObject {
     
     var wished: Bool = false
     var rented: Bool = false
+    
+    var rentedDateFrom: String?
+    var rentedDateTo: String?
+     
 }

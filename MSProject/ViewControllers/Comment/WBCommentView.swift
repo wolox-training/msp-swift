@@ -24,6 +24,8 @@ class WBCommentView: UIView, NibLoadable {
         commentTextView.layer.borderWidth = 1.0
         commentTextView.delegate = self
         
+        commentPlaceholder.text = "WRITE_COMMENT_PLACEHOLDER".localized()
+        
         submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
         submitButton.buttonStyle = .filled
     }

@@ -37,6 +37,8 @@
 
 // Alert
 "RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";
+"RETURN_BOOK_NOT_IMPLEMENTED" = "return book not implemented yet...";
+"REMOVE_FROM_WISHLIST_NOT_IMPLEMENTED" = "Unwish not implemented yet...";
 "BOOK_RENTED" = "Se reservo el libro correctamente";
 
 // Search
@@ -47,4 +49,4 @@
 "SUGGESTIONS" = "Suggestions";
 
 // Comment
-"" = "Write your comment here…";
+"WRITE_COMMENT_PLACEHOLDER" = "Write your comment here...";

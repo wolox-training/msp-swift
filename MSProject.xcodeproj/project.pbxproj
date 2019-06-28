@@ -460,8 +460,8 @@
 			isa = PBXGroup;
 			children = (
 				00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */,
-				00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */,
 				00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */,
+				00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

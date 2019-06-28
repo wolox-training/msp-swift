@@ -50,33 +50,33 @@ class WBDetailBookViewController: UIViewController {
     private func initBookDetailTableViewModel() {
 
         // Rent Book
-        viewModel.rentBookAction.values.observeValues { [unowned self] _ in
-            self.showAlert(message: "BOOK_RENTED".localized())
-            self.bookViewModel.rented = true
-            self._detailHeaderView.setup(with: self.bookViewModel)
-            self.viewModel.bookAvailable.value = false
-        }
-        
-        viewModel.rentBookAction.errors.observeValues { [unowned self] error in
-            self.showAlert(message: error.localizedDescription)
-        }
-        
-        viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
-            if isExecuting {
+        _detailHeaderView.rentButton?.reactive.controlEvents(.touchUpInside)
+            .observeValues { _ in
+                guard !self.bookViewModel.rented else {
+                    self.showAlert(message: "RETURN_BOOK_NOT_IMPLEMENTED".localized())
+                    return
+                }
+                
+                guard self.bookViewModel.bookStatus == .available else {
+                    self.showAlert(message: "RENT_NOT_AVAILABLE".localized(withArguments: self.bookViewModel.bookStatus.bookStatusText()))
+                    return
+                }
+                
                 MBProgressHUD.showAdded(to: self._view, animated: true)
-            } else {
-                MBProgressHUD.hide(for: self._view, animated: true)
-            }
+                
+                self.viewModel.rentBook(book: self.bookViewModel.book).startWithResult { [unowned self] result in
+                    switch result {
+                    case .success:
+                        self.showAlert(message: "BOOK_RENTED".localized())
+                        self.bookViewModel.rented = true
+                        self._detailHeaderView.setup(with: self.bookViewModel)
+                    case .failure(let error):
+                        self.showAlert(message: error.localizedDescription)
+                    }
+                    MBProgressHUD.hide(for: self._view, animated: true)
+                }
         }
         
-        viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] _ in
-            self._detailHeaderView.setup(with: self.bookViewModel)
-        }
-
-        viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
-        
-        _detailHeaderView.rentButton?.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
-
         // Wish Book
         _detailHeaderView.wishlistButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
@@ -88,7 +88,7 @@ class WBDetailBookViewController: UIViewController {
                 }
 
                 guard !self.bookViewModel.wished else {
-                    self.showAlert(message: "Unwish not implemented yet...")
+                    self.showAlert(message: "REMOVE_FROM_WISHLIST_NOT_IMPLEMENTED".localized())
                     return
                 }
                 
@@ -107,7 +107,6 @@ class WBDetailBookViewController: UIViewController {
         }
         
         loadComments()
-        loadSuggestions()
     }
     
     private func configureTableView() {
@@ -126,17 +125,15 @@ class WBDetailBookViewController: UIViewController {
         MBProgressHUD.showAdded(to: _view, animated: true)
         viewModel.loadComments(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
-            case .success:
-                self._view.detailTable.reloadData()
+            case .success: break
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
             }
-            MBProgressHUD.hide(for: self._view, animated: true)
+            self.loadSuggestions()
         }
     }
     
     private func loadSuggestions() {
-        MBProgressHUD.showAdded(to: _view, animated: true)
         viewModel.loadSuggestions(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
             case .success:
@@ -193,16 +190,4 @@ extension WBDetailBookViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-// MARK: - Actions
-extension WBDetailBookViewController {
-//    func rentBook() {
-//        guard bookViewModel.bookStatus == .available else {
-//            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))
-//            return
-//        }
-//        MBProgressHUD.showAdded(to: _view, animated: true)
-//        bookDetailViewModel.rentBook(book: bookViewModel)
-//    }
 }

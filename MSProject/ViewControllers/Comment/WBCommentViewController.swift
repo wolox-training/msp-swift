@@ -8,12 +8,17 @@
 
 import UIKit
 import WolmoCore
+import MBProgressHUD
 
 class WBCommentViewController: UIViewController {
 
     private let _view: WBCommentView = WBCommentView.loadFromNib()!
     private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFrom(nibName: "WBBookHeaderView")!
 
+    lazy var viewModel: WBCommentViewModel = {
+        return WBCommentViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
+    }()
+    
     var bookViewModel: WBBookViewModel!
     
     convenience init(with bookViewModel: WBBookViewModel) {
@@ -25,6 +30,22 @@ class WBCommentViewController: UIViewController {
         super.viewDidLoad()
         
         title = "COMMENT_NAV_BAR".localized()
+        
+        _view.submitButton?.reactive.controlEvents(.touchUpInside)
+            .observeValues { _ in
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+                
+                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).startWithResult { [unowned self] result in
+                    switch result {
+                    case .success:
+                        WBBooksManager.sharedIntance.needsReload.value = true
+                        self.navigationController?.popToRootViewController(animated: true)
+                    case .failure(let error):
+                        self.showAlert(message: error.localizedDescription)
+                    }
+                    MBProgressHUD.hide(for: self._view, animated: true)
+                }
+        }
     }
     
     override func loadView() {

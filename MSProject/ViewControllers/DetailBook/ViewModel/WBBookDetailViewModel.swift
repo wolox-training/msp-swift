@@ -30,7 +30,7 @@ class WBBookDetailViewModel {
     
     // MARK: - TableView
     var numberOfSections: Int {
-        return 1 + (suggestionsBookViewModels.value.isEmpty ? 0 : 1)
+        return 2
     }
     
     func numberOfCells(for section: Int) -> Int {

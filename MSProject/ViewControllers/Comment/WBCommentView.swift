@@ -21,7 +21,7 @@ class WBCommentView: UIView, NibLoadable {
         backgroundColor = .woloxBackgroundLightColor()
         
         commentTextView.layer.borderColor = UIColor.lightGray.cgColor
-        commentTextView.layer.borderWidth = 2.0
+        commentTextView.layer.borderWidth = 1.0
         commentTextView.delegate = self
         
         submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
@@ -38,5 +38,13 @@ extension WBCommentView: UITextViewDelegate {
         if textView.text.isEmpty {
             commentPlaceholder.isHidden = false
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text as NSString).rangeOfCharacter(from: CharacterSet.newlines).location == NSNotFound {
+            return true
+        }
+        textView.resignFirstResponder()
+        return false
     }
 }

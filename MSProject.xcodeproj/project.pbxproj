@@ -71,6 +71,7 @@
 		00E4A53B22C540D100B04CA5 /* WBCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A53A22C540D100B04CA5 /* WBCommentView.xib */; };
 		00E4A53D22C540DC00B04CA5 /* WBCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A53C22C540DC00B04CA5 /* WBCommentView.swift */; };
 		00E4A53F22C555F100B04CA5 /* WBBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */; };
+		00E4A54122C6519400B04CA5 /* WBCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A54022C6519400B04CA5 /* WBCommentViewModel.swift */; };
 		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
 		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
@@ -195,6 +196,7 @@
 		00E4A53A22C540D100B04CA5 /* WBCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBCommentView.xib; sourceTree = "<group>"; };
 		00E4A53C22C540DC00B04CA5 /* WBCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCommentView.swift; sourceTree = "<group>"; };
 		00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookHeaderView.xib; sourceTree = "<group>"; };
+		00E4A54022C6519400B04CA5 /* WBCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCommentViewModel.swift; sourceTree = "<group>"; };
 		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
 		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				00E4A53722C540BB00B04CA5 /* WBCommentViewController.swift */,
 				00E4A53A22C540D100B04CA5 /* WBCommentView.xib */,
 				00E4A53C22C540DC00B04CA5 /* WBCommentView.swift */,
+				00E4A54022C6519400B04CA5 /* WBCommentViewModel.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				00FFE71022C11CE900ACE412 /* WBEmptyView.swift in Sources */,
 				E1530D9C1ED37905002A9002 /* RollbarService.swift in Sources */,
 				00B761EF22AAF97E00640078 /* WBBookTableViewCell.swift in Sources */,
+				00E4A54122C6519400B04CA5 /* WBCommentViewModel.swift in Sources */,
 				00B7629822B27E6100640078 /* WBComment.swift in Sources */,
 				00B762A622B2D01800640078 /* WBWish.swift in Sources */,
 				00B7624222AEE06400640078 /* WBWishlistView.swift in Sources */,

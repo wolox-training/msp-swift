@@ -66,11 +66,11 @@ class WBBooksRepository: AbstractRepository {
         }
     }
     
-    func addBookComment(comment: WBComment) -> SignalProducer<Void, RepositoryError> {
-        let path = "books/\(comment.book.id)/comments"
+    func addBookComment(book: WBBook, comment: String) -> SignalProducer<Void, RepositoryError> {
+        let path = "books/\(book.id)/comments"
         let params: [String: Any] = ["userID": userId,
-                                     "bookID": comment.book.id,
-                                     "content": comment.content]
+                                     "bookID": book.id,
+                                     "content": comment]
         
         return performRequest(method: .post, path: path, parameters: params) { _ in
             Result(value: ())

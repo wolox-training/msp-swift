@@ -7,50 +7,41 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Networking
 
 class WBBookDetailViewModel {
 
-    private var commentsViewModels: [WBComment] = [] {
-        didSet {
-            reloadViewClosure?()
-        }
+    private var commentsViewModels: MutableProperty<[WBComment]> = MutableProperty([])
+
+    var bookAvailable = MutableProperty(false)
+    
+    let repository: WBBooksRepository
+    
+    lazy var rentBookAction = Action(enabledIf: bookAvailable) { [unowned self] book in
+        return self.rentBook(book: book)
     }
     
+    init(booksRepository: WBBooksRepository) {
+        repository = booksRepository
+    }
+    
+    // MARK: - TableView
     var numberOfCells: Int {
-        return commentsViewModels.count
+        return commentsViewModels.value.count
     }
-    
-    var reloadViewClosure: (() -> Void)?
-    var showErrorAlertClosure: ((Error) -> Void)?
-    var showAlertClosure: ((String) -> Void)?
     
     func getCellViewModel(at indexPath: IndexPath) -> WBComment {
-        return commentsViewModels[indexPath.row]
+        return commentsViewModels.value[indexPath.row]
+    }
+
+    // MARK: - Repository
+    func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+        return repository.rentBook(book: book)
     }
     
-    func loadComments(for bookView: WBBookViewModel) {
-        
-        let successComments: ([WBComment]) -> Void = { (comments) in
-            self.commentsViewModels = comments
-        }
-        
-        let failureComments: (Error) -> Void = { (error) in
-            self.showErrorAlertClosure?(error)
-        }
-        
-        WBNetworkManager.manager.getBookComments(book: bookView.book, onSuccess: successComments, onError: failureComments)
-    }
-    
-    func rentBook(book: WBBookViewModel) {
-        
-        let successRent: (WBRent) -> Void = { (rent) in
-            self.showAlertClosure?("Se reservo el libro correctamente")
-        }
-        
-        let failureRent: (Error) -> Void = { (error) in
-            self.showErrorAlertClosure?(error)
-        }
-        
-        WBNetworkManager.manager.rentBook(book: book.book, onSuccess: successRent, onError: failureRent)
+    func loadComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {
+        return self.repository.getBookComments(book: book).on(failed: { [unowned self] _ in self.commentsViewModels.value = [] }, value: { [unowned self] value in self.commentsViewModels.value = value })
     }
 }

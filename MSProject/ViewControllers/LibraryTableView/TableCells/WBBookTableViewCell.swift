@@ -10,10 +10,10 @@ import UIKit
 
 class WBBookTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var bookTitle: UILabel!
-    @IBOutlet weak var bookAuthor: UILabel!
-    @IBOutlet weak var customBackgroundView: UIView!
+    @IBOutlet private weak var bookImage: UIImageView!
+    @IBOutlet private weak var bookTitle: UILabel!
+    @IBOutlet private weak var bookAuthor: UILabel!
+    @IBOutlet private weak var customBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +25,12 @@ class WBBookTableViewCell: UITableViewCell {
         backgroundColor = .clear        
         
         selectionStyle = .blue
+    }
+    
+    func setup(with bookViewModel: WBBookViewModel) {
+        bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
+        
+        bookTitle.text = bookViewModel.bookTitle
+        bookAuthor.text = bookViewModel.bookAuthor
     }
 }

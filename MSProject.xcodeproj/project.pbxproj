@@ -43,7 +43,7 @@
 		00B7626B22AEF23400640078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750D1CB1B27500EA395E /* LaunchScreen.storyboard */; };
 		00B7626C22AEF23400640078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D15750B1CB1B27500EA395E /* Assets.xcassets */; };
 		00B7627222AFF34200640078 /* WBLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627122AFF34200640078 /* WBLibraryViewModel.swift */; };
-		00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627722B0169300640078 /* WBNetworkManager.swift */; };
+		00B7627822B0169300640078 /* WBBooksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627722B0169300640078 /* WBBooksRepository.swift */; };
 		00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627922B01AC400640078 /* UIImageViewExtension.swift */; };
 		00B7627D22B03ABF00640078 /* WBDetailBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7627C22B03ABF00640078 /* WBDetailBookView.swift */; };
 		00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B7627E22B03AD300640078 /* WBDetailBookView.xib */; };
@@ -58,9 +58,14 @@
 		00B762A422B29D9800640078 /* WBDetailBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */; };
 		00B762A622B2D01800640078 /* WBWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A522B2D01800640078 /* WBWish.swift */; };
 		00B762A822B2DC8400640078 /* WBBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */; };
+		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
+		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
+		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
+		00FB7B2E22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */; };
+		00FB7B3022B943AB00BFADD7 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2F22B943AB00BFADD7 /* Argo.framework */; };
+		00FB7B3222B943B500BFADD7 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B3122B943B500BFADD7 /* Curry.framework */; };
 		00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */; };
 		00FFE70C22BD2EC400ACE412 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */; };
-		00FFE70D22BD4F0D00ACE412 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF0029219208080061050C /* WolmoReactiveCore.framework */; };
 		0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCF002D219208180061050C /* WolmoCore.framework */; };
 		9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1575041CB1B27500EA395E /* AppDelegate.swift */; };
@@ -147,7 +152,7 @@
 		00B7625922AEE2AC00640078 /* WBAddNewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBAddNewView.xib; sourceTree = "<group>"; };
 		00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewViewController.swift; sourceTree = "<group>"; };
 		00B7627122AFF34200640078 /* WBLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLibraryViewModel.swift; sourceTree = "<group>"; };
-		00B7627722B0169300640078 /* WBNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNetworkManager.swift; sourceTree = "<group>"; };
+		00B7627722B0169300640078 /* WBBooksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBooksRepository.swift; sourceTree = "<group>"; };
 		00B7627922B01AC400640078 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		00B7627C22B03ABF00640078 /* WBDetailBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookView.swift; sourceTree = "<group>"; };
 		00B7627E22B03AD300640078 /* WBDetailBookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookView.xib; sourceTree = "<group>"; };
@@ -162,6 +167,11 @@
 		00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookHeaderView.xib; sourceTree = "<group>"; };
 		00B762A522B2D01800640078 /* WBWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWish.swift; sourceTree = "<group>"; };
 		00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBookDetailViewModel.swift; sourceTree = "<group>"; };
+		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
+		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
+		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
+		00FB7B2F22B943AB00BFADD7 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		00FB7B3122B943B500BFADD7 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
 		00FFE70922BD1F8F00ACE412 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		00FFE70B22BD2EC400ACE412 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0CCF0029219208080061050C /* WolmoReactiveCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WolmoReactiveCore.framework; path = Carthage/Build/iOS/WolmoReactiveCore.framework; sourceTree = "<group>"; };
@@ -200,13 +210,18 @@
 				E1530D9E1ED382EA002A9002 /* SystemConfiguration.framework in Frameworks */,
 				E1530D991ED378F2002A9002 /* Rollbar.framework in Frameworks */,
 				CED934891E8466A60017CF96 /* ReactiveSwift.framework in Frameworks */,
-				0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */,
 				0CCF002E219208180061050C /* WolmoCore.framework in Frameworks */,
 				9D6E405A1CB1B93A008CE558 /* ReactiveCocoa.framework in Frameworks */,
 				9D6E405B1CB1B93A008CE558 /* Result.framework in Frameworks */,
 				B83388D721E93AAC00085E26 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
 				B83388D821E93AAC00085E26 /* Alamofire.framework in Frameworks */,
-				00FFE70D22BD4F0D00ACE412 /* MBProgressHUD.framework in Frameworks */,
+				00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */,
+				00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */,
+				00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */,
+				0CCF002A219208080061050C /* WolmoReactiveCore.framework in Frameworks */,
+				00FB7B2E22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework in Frameworks */,
+				00FB7B3022B943AB00BFADD7 /* Argo.framework in Frameworks */,
+				00FB7B3222B943B500BFADD7 /* Curry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +379,7 @@
 		00B7627622B0167400640078 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				00B7627722B0169300640078 /* WBNetworkManager.swift */,
+				00B7627722B0169300640078 /* WBBooksRepository.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -482,6 +497,11 @@
 		9D6E405F1CB1BA21008CE558 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00FB7B3122B943B500BFADD7 /* Curry.framework */,
+				00FB7B2F22B943AB00BFADD7 /* Argo.framework */,
+				00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */,
+				00FB7B2B22B9421300BFADD7 /* Runes.framework */,
+				00FB7B2922B941F600BFADD7 /* Networking.framework */,
 				00A73F8922AAB43000FC6410 /* Nimble.framework */,
 				00A73F8822AAB42F00FC6410 /* Quick.framework */,
 				B83388D021E93AAC00085E26 /* Alamofire.framework */,
@@ -687,9 +707,16 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WolmoReactiveCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Networking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Wormholy.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Curry.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Argo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Runes.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -733,7 +760,7 @@
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,
 				00B7621C22AEA95600640078 /* WBNavigationController.swift in Sources */,
-				00B7627822B0169300640078 /* WBNetworkManager.swift in Sources */,
+				00B7627822B0169300640078 /* WBBooksRepository.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
 				00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,

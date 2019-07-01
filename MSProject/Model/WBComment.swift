@@ -8,17 +8,25 @@
 
 import UIKit
 
-struct WBComment: Codable {
+import Argo
+import Curry
+import Runes
+
+struct WBComment {
 
     let id: Int
     let content: String
     let book: WBBook
     let user: WBUser
+}
+
+extension WBComment: Argo.Decodable {
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case content
-        case book
-        case user
+    static func decode(_ json: JSON) -> Decoded<WBComment> {
+        return curry(WBComment.init)
+            <^> json <| "id"
+            <*> json <| "content"
+            <*> json <| "book"
+            <*> json <| "user"
     }
 }

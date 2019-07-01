@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import WolmoCore
 
 extension UIViewController {
-    func showAlertMessage(message: String) {
-        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okButton)
-        present(alertController, animated: true, completion: nil)
+    func showAlert(message: String) {
+        presentAlert(ErrorAlertViewModel(title: "", message: message, dismissButtonTitle: "OK"))
     }
 }

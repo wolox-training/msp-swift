@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import AlamofireNetworkActivityLogger
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          *
          */
         
-//        NetworkActivityLogger.shared.level = .debug
-//        NetworkActivityLogger.shared.startLogging()
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
         
         let loginViewController = WBLoginViewController()
         

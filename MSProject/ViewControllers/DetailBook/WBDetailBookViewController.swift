@@ -8,6 +8,8 @@
 
 import UIKit
 import WolmoCore
+import ReactiveCocoa
+import ReactiveSwift
 import MBProgressHUD
 
 class WBDetailBookViewController: UIViewController {
@@ -15,8 +17,8 @@ class WBDetailBookViewController: UIViewController {
     private let _view: WBDetailBookView = WBDetailBookView.loadFromNib()!
     private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFromNib()!
 
-    lazy var bookDetailViewModel: WBBookDetailViewModel = {
-        return WBBookDetailViewModel()
+    lazy var viewModel: WBBookDetailViewModel = {
+        return WBBookDetailViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
     
     var bookViewModel: WBBookViewModel!
@@ -37,46 +39,71 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.setup(with: bookViewModel)
         _detailHeaderView.configureUI()
-        _detailHeaderView.delegate = self
+        _detailHeaderView.setup(with: bookViewModel)
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
 
     // MARK: - Private
     private func initBookDetailTableViewModel() {
-    
-        bookDetailViewModel.showErrorAlertClosure = { [weak self] (error) in
-            MBProgressHUD.hide(for: self?._view, animated: true)
-            DispatchQueue.main.async {
-                self?.showAlertMessage(message: error.localizedDescription)
+
+        viewModel.rentBookAction.values.observeValues { [unowned self] _ in
+            self.showAlert(message: "BOOK_RENTED".localized())
+            self.bookViewModel.rented = true
+            self._detailHeaderView.setup(with: self.bookViewModel)
+            self.viewModel.bookAvailable.value = false
+        }
+        
+        viewModel.rentBookAction.errors.observeValues { [unowned self] error in
+            self.showAlert(message: error.localizedDescription)
+        }
+        
+        viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
+            if isExecuting {
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self._view, animated: true)
             }
+        }
+        
+        viewModel.rentBookAction.isEnabled.signal.observeValues { [unowned self] _ in
+            self._detailHeaderView.setup(with: self.bookViewModel)
         }
 
-        bookDetailViewModel.showAlertClosure = { [weak self] (message) in
-            MBProgressHUD.hide(for: self?._view, animated: true)
-            DispatchQueue.main.async {
-                self?.showAlertMessage(message: message)
-            }
+        viewModel.bookAvailable.value = bookViewModel.bookStatus.isBookAvailable()
+        
+        _detailHeaderView.rentButton.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel.book)
+        
+        _detailHeaderView.wishlistButton.reactive.controlEvents(.touchUpInside)
+            .observeValues { _ in
+            self.addToWishlist()
         }
         
-        bookDetailViewModel.reloadViewClosure = { [weak self] () in
-            MBProgressHUD.hide(for: self?._view, animated: true)
-            DispatchQueue.main.async {
-                self?._view.detailTable.reloadData()
-            }
-        }
-        
-        MBProgressHUD.showAdded(to: _view, animated: true)
-        bookDetailViewModel.loadComments(for: bookViewModel)
+        loadComments()
     }
     
     private func configureTableView() {
         _view.detailTable.delegate = self
         _view.detailTable.dataSource = self
         
+        let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
+        _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
+        
         _view.configureDetailTableView()
+    }
+    
+    private func loadComments() {
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        viewModel.loadComments(book: bookViewModel.book).startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.detailTable.reloadData()
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+            MBProgressHUD.hide(for: self._view, animated: true)
+        }
     }
 }
 
@@ -88,7 +115,7 @@ extension WBDetailBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookDetailViewModel.numberOfCells
+        return viewModel.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,9 +124,8 @@ extension WBDetailBookViewController: UITableViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let comment = bookDetailViewModel.getCellViewModel(at: indexPath)
-        cell.commentViewModel = comment
-
+        let comment = viewModel.getCellViewModel(at: indexPath)
+        cell.setup(with: comment)
         return cell
     }
     
@@ -117,18 +143,18 @@ extension WBDetailBookViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - DetailBookDelegate
-extension WBDetailBookViewController: DetailBookDelegate {
+// MARK: - Alert
+extension WBDetailBookViewController {
     func addToWishlist() {
         
     }
     
-    func rentBook() {
-        guard bookViewModel.bookStatus == .available else {
-            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))
-            return
-        }
-        MBProgressHUD.showAdded(to: _view, animated: true)
-        bookDetailViewModel.rentBook(book: bookViewModel)
-    }
+//    func rentBook() {
+//        guard bookViewModel.bookStatus == .available else {
+//            showAlertMessage(message: "RENT_NOT_AVAILABLE".localized(withArguments: bookViewModel.bookStatus.bookStatusText()))
+//            return
+//        }
+//        MBProgressHUD.showAdded(to: _view, animated: true)
+//        bookDetailViewModel.rentBook(book: bookViewModel)
+//    }
 }

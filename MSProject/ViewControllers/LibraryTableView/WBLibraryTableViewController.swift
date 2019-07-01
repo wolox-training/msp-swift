@@ -14,12 +14,9 @@ class WBLibraryTableViewController: UIViewController {
 
     private let _view: WBLibraryTableView = WBLibraryTableView.loadFromNib()!
 
-    lazy var libraryViewModel: WBLibraryViewModel = {
-        return WBLibraryViewModel()
+    lazy var viewModel: WBLibraryViewModel = {
+        return WBLibraryViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
-        
-    var cellSelected: WBBookTableViewCell!
-    var rectOfCellSelected: CGRect!
     
     override func loadView() {
         view = _view
@@ -28,8 +25,6 @@ class WBLibraryTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initLibraryTableViewModel()
-        
         configureTableView()
         
         title = "LIBRARY_NAV_BAR".localized()
@@ -46,30 +41,19 @@ class WBLibraryTableViewController: UIViewController {
         
     }
 
-    // MARK: - Private
-    private func initLibraryTableViewModel() {
-       
-        libraryViewModel.showAlertClosure = { [weak self] (error) in
-            MBProgressHUD.hide(for: self?._view, animated: true)
-            DispatchQueue.main.async {
-                self?.showAlertMessage(message: error.localizedDescription)
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        libraryViewModel.reloadViewClosure = { [weak self] () in
-            MBProgressHUD.hide(for: self?._view, animated: true)
-            DispatchQueue.main.async {
-                self?._view.bookTable.reloadData()
-            }
-        }
-        
-        MBProgressHUD.showAdded(to: _view, animated: true)
-        libraryViewModel.loadBooks()
+        loadBooks()
     }
     
+    // MARK: - Private
     private func configureTableView() {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
+        
+        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
         
         _view.configureLibraryTableView()
     }
@@ -77,18 +61,23 @@ class WBLibraryTableViewController: UIViewController {
     // MARK: - Services
     @objc private func loadBooks() {
         MBProgressHUD.showAdded(to: _view, animated: true)
-        libraryViewModel.loadBooks()
-        DispatchQueue.main.async {
+        viewModel.loadBooks().startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.bookTable.reloadData()
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
             self._view.bookTable.refreshControl?.endRefreshing()
+            MBProgressHUD.hide(for: self._view, animated: true)
         }
     }
-    
 }
 
 extension WBLibraryTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return libraryViewModel.numberOfCells
+        return viewModel.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,10 +86,8 @@ extension WBLibraryTableViewController: UITableViewDataSource {
             fatalError("Cell not exists")
         }
         
-        let book = libraryViewModel.getCellViewModel(at: indexPath)
-        cell.bookImage.loadImageUsingCache(withUrl: book.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
-        cell.bookTitle.text = book.bookTitle
-        cell.bookAuthor.text = book.bookAuthor
+        let book = viewModel.getCellViewModel(at: indexPath)
+        cell.setup(with: book)
         return cell
     }
     
@@ -113,12 +100,7 @@ extension WBLibraryTableViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //set the selected cell and calculate the frame rect just for animation
-        cellSelected = tableView.cellForRow(at: indexPath) as? WBBookTableViewCell
-        let rectOfCell = tableView.rectForRow(at: indexPath)
-        rectOfCellSelected = tableView.convert(rectOfCell, to: tableView.superview)
-
-        let book = libraryViewModel.selectBook(at: indexPath)
+        let book = viewModel.getCellViewModel(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         let detailBookViewController = WBDetailBookViewController(with: book)
         navigationController?.pushViewController(detailBookViewController, animated: true)

@@ -9,6 +9,10 @@
 import UIKit
 import WolmoCore
 
+import Argo
+import Curry
+import Runes
+
 enum BookStatus: String, CaseIterable {
     case rented
     case inYourHands
@@ -30,7 +34,7 @@ enum BookStatus: String, CaseIterable {
     
 }
 
-struct WBBook: Codable {
+struct WBBook {
     
     let id: Int
     let title: String
@@ -40,14 +44,19 @@ struct WBBook: Codable {
     let year: String
     let imageURL: String
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case author
-        case status
-        case genre
-        case year
-        case imageURL = "image"
+}
+
+extension WBBook: Argo.Decodable {
+    
+    static func decode(_ json: JSON) -> Decoded<WBBook> {
+        return curry(WBBook.init)
+            <^> json <| "id"
+            <*> json <| "title"
+            <*> json <| "author"
+            <*> json <| "status"
+            <*> json <| "genre"
+            <*> json <| "year"
+            <*> json <| "image"
     }
 }
 
@@ -72,6 +81,9 @@ struct WBBookViewModel {
     }
     
     var bookStatus: BookStatus {
+        if rented == true {
+            return .rented
+        }
         return BookStatus(rawValue: book.status) ?? .unknown
     }
     
@@ -86,4 +98,8 @@ struct WBBookViewModel {
     var bookImageURL: String {
         return book.imageURL
     }
+    
+    var wished: Bool = false
+    var rented: Bool = false
+    
 }

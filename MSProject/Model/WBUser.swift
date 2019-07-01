@@ -8,15 +8,23 @@
 
 import UIKit
 
-struct WBUser: Codable {
+import Argo
+import Curry
+import Runes
+
+struct WBUser {
     
     let id: Int
     let username: String
     let imageURL: String
+}
+
+extension WBUser: Argo.Decodable {
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case username
-        case imageURL = "image"
+    static func decode(_ json: JSON) -> Decoded<WBUser> {
+        return curry(WBUser.init)
+            <^> json <| "id"
+            <*> json <| "username"
+            <*> json <| "image"
     }
 }

@@ -8,15 +8,23 @@
 
 import UIKit
 
-struct WBWish: Codable {
+import Argo
+import Curry
+import Runes
+
+struct WBWish {
     
     let id: Int
     let book: WBBook
     let user: WBUser
+}
+
+extension WBWish: Argo.Decodable {
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case book
-        case user
+    static func decode(_ json: JSON) -> Decoded<WBWish> {
+        return curry(WBWish.init)
+            <^> json <| "id"
+            <*> json <| "book"
+            <*> json <| "user"
     }
 }

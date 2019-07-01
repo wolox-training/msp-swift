@@ -72,6 +72,7 @@
 		00E4A53D22C540DC00B04CA5 /* WBCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A53C22C540DC00B04CA5 /* WBCommentView.swift */; };
 		00E4A53F22C555F100B04CA5 /* WBBookHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */; };
 		00E4A54122C6519400B04CA5 /* WBCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A54022C6519400B04CA5 /* WBCommentViewModel.swift */; };
+		00E4A54422C6999100B04CA5 /* WBAddNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A54322C6999100B04CA5 /* WBAddNewViewModel.swift */; };
 		00ED464622B425D300D1C6FF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED9348A1E8466CE0017CF96 /* MBProgressHUD.framework */; };
 		00FB7B2A22B941F600BFADD7 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2922B941F600BFADD7 /* Networking.framework */; };
 		00FB7B2C22B9421400BFADD7 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB7B2B22B9421300BFADD7 /* Runes.framework */; };
@@ -197,6 +198,7 @@
 		00E4A53C22C540DC00B04CA5 /* WBCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCommentView.swift; sourceTree = "<group>"; };
 		00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBBookHeaderView.xib; sourceTree = "<group>"; };
 		00E4A54022C6519400B04CA5 /* WBCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCommentViewModel.swift; sourceTree = "<group>"; };
+		00E4A54322C6999100B04CA5 /* WBAddNewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAddNewViewModel.swift; sourceTree = "<group>"; };
 		00FB7B2922B941F600BFADD7 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Networking.framework; path = Carthage/Build/iOS/Networking.framework; sourceTree = "<group>"; };
 		00FB7B2B22B9421300BFADD7 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		00FB7B2D22B943A200BFADD7 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				00B7625B22AEE2BC00640078 /* WBAddNewViewController.swift */,
 				00B7625922AEE2AC00640078 /* WBAddNewView.xib */,
 				00B7625722AEE29B00640078 /* WBAddNewView.swift */,
+				00E4A54322C6999100B04CA5 /* WBAddNewViewModel.swift */,
 			);
 			path = AddNew;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				00B7624222AEE06400640078 /* WBWishlistView.swift in Sources */,
 				00B7629B22B284D000640078 /* WBDateHelper.swift in Sources */,
 				00E4A53022C5171C00B04CA5 /* WBSuggestionsTableViewCell.swift in Sources */,
+				00E4A54422C6999100B04CA5 /* WBAddNewViewModel.swift in Sources */,
 				9D1575051CB1B27500EA395E /* AppDelegate.swift in Sources */,
 				00B7625122AEE22C00640078 /* WBSettingsView.swift in Sources */,
 				00B762A222B29D8A00640078 /* WBDetailBookHeaderView.swift in Sources */,

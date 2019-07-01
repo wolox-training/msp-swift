@@ -15,8 +15,117 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WBAddNewView" customModule="MSProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOK-EA-Gv9">
+                    <rect key="frame" x="20" y="64" width="374" height="778"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbV-Jq-rhW">
+                            <rect key="frame" x="26" y="26" width="96" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="96" id="5f6-F0-wlV"/>
+                                <constraint firstAttribute="height" constant="96" id="fow-xK-KbI"/>
+                            </constraints>
+                            <state key="normal" image="ic_add photo"/>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDB-v8-usU">
+                            <rect key="frame" x="26" y="203" width="322" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zrj-Ym-z6b">
+                            <rect key="frame" x="26" y="253" width="322" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uZk-rj-fLl">
+                            <rect key="frame" x="26" y="153" width="322" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlf-h7-Yo2" customClass="WBButton" customModule="MSProject" customModuleProvider="target">
+                            <rect key="frame" x="62" y="419" width="250" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="aSY-MY-1Sb"/>
+                                <constraint firstAttribute="width" constant="250" id="ujG-9l-Ogm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="SUBMIT">
+                                <color key="titleColor" red="0.0" green="0.68000000719999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderLineColor">
+                                    <color key="value" red="0.0" green="0.68000000719999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderLineWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderLineRadius">
+                                    <real key="value" value="22"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfM-jt-36P">
+                            <rect key="frame" x="26" y="303" width="322" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3iC-qo-Sp3">
+                            <rect key="frame" x="26" y="353" width="322" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="AbV-Jq-rhW" firstAttribute="leading" secondItem="LOK-EA-Gv9" secondAttribute="leading" constant="26" id="11R-FL-Krg"/>
+                        <constraint firstItem="uZk-rj-fLl" firstAttribute="leading" secondItem="LOK-EA-Gv9" secondAttribute="leading" constant="26" id="2KX-Th-WDU"/>
+                        <constraint firstItem="3iC-qo-Sp3" firstAttribute="trailing" secondItem="KfM-jt-36P" secondAttribute="trailing" id="8vA-ry-aqR"/>
+                        <constraint firstItem="pDB-v8-usU" firstAttribute="trailing" secondItem="uZk-rj-fLl" secondAttribute="trailing" id="Cq0-gU-d5t"/>
+                        <constraint firstItem="dlf-h7-Yo2" firstAttribute="centerX" secondItem="LOK-EA-Gv9" secondAttribute="centerX" id="GhL-zu-OgA"/>
+                        <constraint firstItem="pDB-v8-usU" firstAttribute="leading" secondItem="uZk-rj-fLl" secondAttribute="leading" id="HE2-40-hqE"/>
+                        <constraint firstItem="KfM-jt-36P" firstAttribute="leading" secondItem="zrj-Ym-z6b" secondAttribute="leading" id="Hwv-81-50b"/>
+                        <constraint firstItem="uZk-rj-fLl" firstAttribute="top" secondItem="AbV-Jq-rhW" secondAttribute="bottom" constant="31" id="Lpy-a0-iNy"/>
+                        <constraint firstItem="dlf-h7-Yo2" firstAttribute="top" secondItem="3iC-qo-Sp3" secondAttribute="bottom" constant="36" id="NJC-CW-SpU"/>
+                        <constraint firstItem="zrj-Ym-z6b" firstAttribute="top" secondItem="pDB-v8-usU" secondAttribute="bottom" constant="20" id="PLQ-zA-ZLD"/>
+                        <constraint firstItem="zrj-Ym-z6b" firstAttribute="trailing" secondItem="pDB-v8-usU" secondAttribute="trailing" id="TRi-9D-9QE"/>
+                        <constraint firstAttribute="trailing" secondItem="uZk-rj-fLl" secondAttribute="trailing" constant="26" id="YHZ-PF-0is"/>
+                        <constraint firstItem="KfM-jt-36P" firstAttribute="trailing" secondItem="zrj-Ym-z6b" secondAttribute="trailing" id="Yyx-LI-gAN"/>
+                        <constraint firstItem="KfM-jt-36P" firstAttribute="top" secondItem="zrj-Ym-z6b" secondAttribute="bottom" constant="20" id="fbi-xh-dc6"/>
+                        <constraint firstItem="AbV-Jq-rhW" firstAttribute="top" secondItem="LOK-EA-Gv9" secondAttribute="top" constant="26" id="nyc-Qd-bP8"/>
+                        <constraint firstItem="3iC-qo-Sp3" firstAttribute="leading" secondItem="KfM-jt-36P" secondAttribute="leading" id="odS-SM-rc0"/>
+                        <constraint firstItem="3iC-qo-Sp3" firstAttribute="top" secondItem="KfM-jt-36P" secondAttribute="bottom" constant="20" id="ooL-oc-tp6"/>
+                        <constraint firstItem="pDB-v8-usU" firstAttribute="top" secondItem="uZk-rj-fLl" secondAttribute="bottom" constant="20" id="srs-tj-XpI"/>
+                        <constraint firstItem="zrj-Ym-z6b" firstAttribute="leading" secondItem="pDB-v8-usU" secondAttribute="leading" id="t6B-cs-bPD"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LOK-EA-Gv9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="R94-JN-H5D"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LOK-EA-Gv9" secondAttribute="bottom" constant="20" id="fjI-1a-Efe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LOK-EA-Gv9" secondAttribute="trailing" constant="20" id="fzj-mu-Bsp"/>
+                <constraint firstItem="LOK-EA-Gv9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="zAb-BI-cq6"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addImageButton" destination="AbV-Jq-rhW" id="Kkp-l8-Pbf"/>
+                <outlet property="authorTextField" destination="pDB-v8-usU" id="9ia-yj-M2H"/>
+                <outlet property="customBackgroundView" destination="LOK-EA-Gv9" id="0sb-Tz-UP7"/>
+                <outlet property="descriptionTextField" destination="3iC-qo-Sp3" id="PrH-ah-UrR"/>
+                <outlet property="nameTextField" destination="uZk-rj-fLl" id="ywB-Ck-aKg"/>
+                <outlet property="submitButton" destination="dlf-h7-Yo2" id="JxT-Zv-oa9"/>
+                <outlet property="topicTextField" destination="KfM-jt-36P" id="mf6-QW-cq0"/>
+                <outlet property="yearTextField" destination="zrj-Ym-z6b" id="2SK-5B-cXd"/>
+            </connections>
+            <point key="canvasLocation" x="50.724637681159422" y="39.508928571428569"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_add photo" width="96" height="96"/>
+    </resources>
 </document>

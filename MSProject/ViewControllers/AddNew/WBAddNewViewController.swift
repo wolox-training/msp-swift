@@ -20,6 +20,7 @@ class WBAddNewViewController: UIViewController {
     }
     
     override func loadView() {
+        _view.configureDetailTableView()
         view = _view
     }
 

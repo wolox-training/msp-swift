@@ -36,10 +36,9 @@ class WBBooksRepository: AbstractRepository {
         }
     }
     
-    func addBooks(book: WBBook) -> SignalProducer<[WBBook], RepositoryError> {
+    func addBook(book: WBBook) -> SignalProducer<WBBook, RepositoryError> {
         let path = "books"
-        let params: [String: Any] = ["id": book.id,
-                                     "title": book.title,
+        let params: [String: Any] = ["title": book.title,
                                      "author": book.author,
                                      "status": book.status,
                                      "genre": book.genre,

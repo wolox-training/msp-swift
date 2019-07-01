@@ -50,3 +50,10 @@
 
 // Comment
 "WRITE_COMMENT_PLACEHOLDER" = "Write your comment here...";
+
+// Add New Book
+"NAME_BOOK_PLACEHOLDER" = "Book's name";
+"AUTHOR_PLACEHOLDER" = "Author";
+"YEAR_PLACEHOLDER" = "Year";
+"TOPIC_PLACEHOLDER" = "Topic";
+"DESCRIPTION_PLACEHOLDER" = "Description";

@@ -32,5 +32,37 @@ class WBAddNewView: UIView, NibLoadable {
 
         submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
         submitButton.buttonStyle = .filled
+        
+        nameTextField.placeholder = "NAME_BOOK_PLACEHOLDER".localized()
+        authorTextField.placeholder = "AUTHOR_PLACEHOLDER".localized()
+        yearTextField.placeholder = "YEAR_PLACEHOLDER".localized()
+        topicTextField.placeholder = "TOPIC_PLACEHOLDER".localized()
+        descriptionTextField.placeholder = "DESCRIPTION_PLACEHOLDER".localized()
+        
+        nameTextField.delegate = self
+        authorTextField.delegate = self
+        yearTextField.delegate = self
+        topicTextField.delegate = self
+        descriptionTextField.delegate = self
+        
+        nameTextField.returnKeyType = .next
+        authorTextField.returnKeyType = .next
+        yearTextField.returnKeyType = .next
+        topicTextField.returnKeyType = .next
+        descriptionTextField.returnKeyType = .done
+
+    }
+}
+
+extension WBAddNewView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder?
+        if nextResponder != nil {
+            nextResponder?.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

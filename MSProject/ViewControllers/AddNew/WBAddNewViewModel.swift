@@ -20,9 +20,9 @@ class WBAddNewViewModel: NSObject {
     }
     
     // MARK: - Repository
-    func addBookComment(book: WBBook, comment: String) -> SignalProducer<Void, RepositoryError> {
+    func addBook(book: WBBook) -> SignalProducer<WBBook, RepositoryError> {
         WBBooksManager.sharedIntance.needsReload.value = true
-        return repository.addBookComment(book: book, comment: comment)
+        return repository.addBook(book: book)
     }
     
 }

@@ -25,7 +25,7 @@ class WBLibraryViewModel {
     private var filteredBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
     var isFiltering = false
 
-    let state: MutableProperty<ViewState> = MutableProperty(ViewState.loading)
+    let state: MutableProperty<ViewState> = MutableProperty(.loading)
 
     let repository: WBBooksRepository
     

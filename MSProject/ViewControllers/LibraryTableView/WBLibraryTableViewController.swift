@@ -77,7 +77,6 @@ class WBLibraryTableViewController: UIViewController {
                 self.view = self.emptyView
                 MBProgressHUD.hide(for: self._view, animated: true)
             }
-            self._view.bookTable.refreshControl?.endRefreshing()
         }
 
     }
@@ -89,17 +88,17 @@ class WBLibraryTableViewController: UIViewController {
     }
     
     // MARK: - Search
-    func searchBarIsEmpty() -> Bool {
+    private func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    func filterContentForSearchText(_ searchText: String) {
-        isFiltering()
+    private func filterContentForSearchText(_ searchText: String) {
+        updateSearchView()
         viewModel.filterBooks(with: searchText)
         _view.bookTable.reloadData()
     }
     
-    func isFiltering() {
+    private func updateSearchView() {
         if searchBarIsEmpty() {
             if !_view.subviews.contains(searchView) {
                 searchView.frame = _view.frame
@@ -172,7 +171,6 @@ class WBLibraryTableViewController: UIViewController {
             _view.bookTable.tableHeaderView = searchController.searchBar
         }
         searchController.searchBar.becomeFirstResponder()
-
     }
     
     private func initRefreshControl() {

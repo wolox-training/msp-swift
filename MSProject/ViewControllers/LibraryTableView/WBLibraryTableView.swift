@@ -11,10 +11,11 @@ import WolmoCore
 
 class WBLibraryTableView: UIView, NibLoadable {
 
-    @IBOutlet weak var bookTable: UITableView!
-    
-    func configureLibraryTableView() {
-        bookTable.backgroundColor = .woloxBackgroundLightColor()
-        bookTable.separatorStyle = .none
+    @IBOutlet weak var bookTable: UITableView! {
+        didSet {
+            bookTable.backgroundColor = .woloxBackgroundLightColor()
+            bookTable.separatorStyle = .none
+        }
     }
+    
 }

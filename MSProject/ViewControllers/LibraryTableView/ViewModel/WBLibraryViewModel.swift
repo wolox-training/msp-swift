@@ -58,7 +58,7 @@ class WBLibraryViewModel {
     }
     
     func getBookById(id: String) -> WBBookViewModel? {
-        return WBBooksManager.sharedIntance.bookViewModels.value.first(where: { $0.bookId == id })
+        return WBBooksManager.sharedIntance.bookViewModels.value.first { $0.bookId == id }
     }
     
     // MARK: - Repository

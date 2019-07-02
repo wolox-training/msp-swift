@@ -99,11 +99,9 @@ class WBLibraryTableViewController: UIViewController {
     }
     
     private func updateSearchView() {
-        if searchBarIsEmpty() {
-            if !_view.subviews.contains(searchView) {
-                searchView.frame = _view.frame
-                _view.addSubview(searchView)
-            }
+        if searchBarIsEmpty() && !_view.subviews.contains(searchView) {
+            searchView.frame = _view.frame
+            _view.addSubview(searchView)
         } else {
             if _view.subviews.contains(searchView) {
                 searchView.removeFromSuperview()
@@ -119,8 +117,6 @@ class WBLibraryTableViewController: UIViewController {
         
         let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
-        
-        _view.configureLibraryTableView()
     }
     
     // MARK: - Services

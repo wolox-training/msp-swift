@@ -42,8 +42,6 @@ class WBWishlistViewController: UIViewController {
         
         let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
-        
-        _view.configureLibraryTableView()
     }
     
     private func loadWishes() {

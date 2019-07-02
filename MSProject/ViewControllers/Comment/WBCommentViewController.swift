@@ -49,10 +49,8 @@ class WBCommentViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.configureUI()
         _detailHeaderView.setup(with: bookViewModel)
         _view.detailHeaderView.addSubview(_detailHeaderView)
-        _view.configureDetailTableView()
         view = _view
     }
 

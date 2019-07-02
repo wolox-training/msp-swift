@@ -11,16 +11,19 @@ import WolmoCore
 
 class WBDetailBookView: UIView, NibLoadable {
     
-    @IBOutlet weak var detailTable: UITableView!
+    @IBOutlet weak var detailTable: UITableView! {
+        didSet {
+            detailTable.backgroundColor = .clear
+            detailTable.separatorStyle = .none
+            detailTable.layer.cornerRadius = 5
+        }
+    }
     
     @IBOutlet weak var detailHeaderView: WBDetailBookHeaderView!
 
-    func configureDetailTableView() {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
         backgroundColor = .woloxBackgroundLightColor()
-        detailTable.backgroundColor = .clear
-        detailTable.separatorStyle = .none
-        
-        detailTable.layer.cornerRadius = 5
     }
 }

@@ -12,22 +12,29 @@ import WolmoCore
 class WBCommentView: UIView, NibLoadable {
     
     @IBOutlet weak var detailHeaderView: WBDetailBookHeaderView!
-    @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var commentPlaceholder: UILabel!
-    @IBOutlet weak var submitButton: WBButton!
+    @IBOutlet weak var commentTextView: UITextView! {
+        didSet {
+            commentTextView.layer.borderColor = UIColor.lightGray.cgColor
+            commentTextView.layer.borderWidth = 1.0            
+            commentTextView.delegate = self
+        }
+    }
+    @IBOutlet weak var commentPlaceholder: UILabel! {
+        didSet {
+            commentPlaceholder.text = "WRITE_COMMENT_PLACEHOLDER".localized()
+        }
+    }
+    @IBOutlet weak var submitButton: WBButton! {
+        didSet {
+            submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
+            submitButton.buttonStyle = .filled
+        }
+    }
     
-    func configureDetailTableView() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         backgroundColor = .woloxBackgroundLightColor()
-        
-        commentTextView.layer.borderColor = UIColor.lightGray.cgColor
-        commentTextView.layer.borderWidth = 1.0
-        commentTextView.delegate = self
-        
-        commentPlaceholder.text = "WRITE_COMMENT_PLACEHOLDER".localized()
-        
-        submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
-        submitButton.buttonStyle = .filled
     }
 }
 

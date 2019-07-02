@@ -11,6 +11,8 @@ import WolmoCore
 
 class WBAddNewView: UIView, NibLoadable {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var addImageButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -64,6 +66,14 @@ class WBAddNewView: UIView, NibLoadable {
 }
 
 extension WBAddNewView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - (textField.superview?.superview?.frame.origin.y ?? 0)), animated: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint.zero, animated: true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder?
@@ -72,6 +82,6 @@ extension WBAddNewView: UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
         }
-        return true
+        return false
     }
 }

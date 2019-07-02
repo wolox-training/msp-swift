@@ -22,9 +22,8 @@ class WBAddNewViewController: UIViewController {
     
     var bookTitle = MutableProperty("")
     var bookAuthor = MutableProperty("")
-    var bookGenre = MutableProperty("")
     var bookYear = MutableProperty("")
-    var bookImageURL = MutableProperty("")
+    var bookGenre = MutableProperty("")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,42 +60,23 @@ class WBAddNewViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
         }
        
-        _view.nameTextField.reactive.text <~ self.bookTitle
-        _view.nameTextField.reactive.textValues.observeValues { (text) in
-            self.bookTitle.value = text
-        }
+        bookTitle <~ _view.nameTextField.reactive.continuousTextValues
+        bookAuthor <~ _view.authorTextField.reactive.continuousTextValues
+        bookYear <~ _view.yearTextField.reactive.continuousTextValues
+        bookGenre <~ _view.topicTextField.reactive.continuousTextValues
 
-        _view.authorTextField.reactive.text <~ self.bookAuthor
-        _view.authorTextField
-            .reactive.textValues.observeValues { (text) in
-            self.bookAuthor.value = text
-        }
-        
-        _view.yearTextField.reactive.text <~ self.bookYear
-        _view.yearTextField
-            .reactive.textValues.observeValues { (text) in
-            self.bookYear.value = text
-        }
-        
-        _view.topicTextField.reactive.text <~ self.bookGenre
-        _view.topicTextField
-            .reactive.textValues.observeValues { (text) in
-            self.bookGenre.value = text
-        }
-        
         _view.submitButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
+                
                 MBProgressHUD.showAdded(to: self._view, animated: true)
-                
+
                 let book = WBBook(id: 0, title: self.bookTitle.value, author: self.bookAuthor.value, status: BookStatus.available.rawValue, genre: self.bookGenre.value, year: self.bookYear.value, imageURL: "")
-                
+
                 self.viewModel.addBook(book: book).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
                         WBBooksManager.sharedIntance.needsReload.value = true
-
-                        // RECARGAR LA VISTA VACIA (?
-                        
+                        self._view.reloadViewAsEmpty()
                     case .failure(let error):
                         self.showAlert(message: error.localizedDescription)
                     }

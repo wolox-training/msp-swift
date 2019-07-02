@@ -52,6 +52,15 @@ class WBAddNewView: UIView, NibLoadable {
         descriptionTextField.returnKeyType = .done
 
     }
+    
+    func reloadViewAsEmpty() {
+        addImageButton.setImage(UIImage.addPhotoImage, for: .normal)
+        nameTextField.text = ""
+        authorTextField.text = ""
+        yearTextField.text = ""
+        topicTextField.text = ""
+        descriptionTextField.text = ""
+    }
 }
 
 extension WBAddNewView: UITextFieldDelegate {

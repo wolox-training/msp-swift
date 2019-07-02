@@ -8,6 +8,8 @@
 
 import UIKit
 import WolmoCore
+import ReactiveCocoa
+import ReactiveSwift
 import MBProgressHUD
 
 class WBCommentViewController: UIViewController {
@@ -21,6 +23,8 @@ class WBCommentViewController: UIViewController {
     
     var bookViewModel: WBBookViewModel!
     
+    var bookComment = MutableProperty("")
+
     convenience init(with bookViewModel: WBBookViewModel) {
         self.init()
         self.bookViewModel = bookViewModel
@@ -33,9 +37,10 @@ class WBCommentViewController: UIViewController {
         
         _view.submitButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
+
                 MBProgressHUD.showAdded(to: self._view, animated: true)
-                
-                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).startWithResult { [unowned self] result in
+
+                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self.bookComment.value).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
                         WBBooksManager.sharedIntance.needsReload.value = true
@@ -46,6 +51,9 @@ class WBCommentViewController: UIViewController {
                     MBProgressHUD.hide(for: self._view, animated: true)
                 }
         }
+        
+        bookComment <~ _view.commentTextView.reactive.continuousTextValues
+        
     }
     
     override func loadView() {

@@ -83,7 +83,7 @@ class WBBookViewModel: NSObject {
     }
     
     var bookStatus: BookStatus {
-        if rented == true {
+        if rented {
             return .inYourHands
         }
         return BookStatus(rawValue: book.status) ?? .unknown

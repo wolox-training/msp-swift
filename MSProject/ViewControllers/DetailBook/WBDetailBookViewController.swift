@@ -40,7 +40,6 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.configureUI()
         _detailHeaderView.setup(with: bookViewModel)
         _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
@@ -94,7 +93,7 @@ class WBDetailBookViewController: UIViewController {
                 
                 MBProgressHUD.showAdded(to: self._view, animated: true)
 
-                self.viewModel.wishBook(book: self.bookViewModel.book).startWithResult { [unowned self] result in
+                self.viewModel.wishBook(book: self.bookViewModel.book).take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
                         self.bookViewModel.wished = true
@@ -117,8 +116,6 @@ class WBDetailBookViewController: UIViewController {
         _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
         let suggestionNib = UINib.init(nibName: "WBSuggestionsTableViewCell", bundle: nil)
         _view.detailTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
-        
-        _view.configureDetailTableView()
     }
     
     private func loadComments() {

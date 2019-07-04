@@ -18,7 +18,12 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
     @IBOutlet private weak var bookYear: UILabel!
     @IBOutlet private weak var bookGenre: UILabel!
     
-    @IBOutlet private weak var customBackgroundView: UIView!
+    @IBOutlet private weak var customBackgroundView: UIView! {
+        didSet {
+            customBackgroundView.layer.cornerRadius = 5
+            customBackgroundView.backgroundColor = .white
+        }
+    }
 
     @IBOutlet weak var wishlistButton: WBButton?
     @IBOutlet weak var rentButton: WBButton?
@@ -33,12 +38,6 @@ class WBDetailBookHeaderView: UIView, NibLoadable {
         return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? WBDetailBookHeaderView
     }
     
-    func configureUI() {
-        customBackgroundView.layer.cornerRadius = 5
-        customBackgroundView.backgroundColor = .white
-        sendSubviewToBack(customBackgroundView)
-    }
-
     func setup(with bookViewModel: WBBookViewModel) {
         bookImage.loadImageUsingCache(withUrl: bookViewModel.bookImageURL, placeholderImage: UIImage.placeholderBookImage)
         bookTitle.text = bookViewModel.bookTitle

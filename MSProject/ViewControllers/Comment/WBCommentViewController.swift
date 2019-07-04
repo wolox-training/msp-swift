@@ -8,6 +8,8 @@
 
 import UIKit
 import WolmoCore
+import ReactiveCocoa
+import ReactiveSwift
 import MBProgressHUD
 
 class WBCommentViewController: UIViewController {
@@ -35,7 +37,7 @@ class WBCommentViewController: UIViewController {
             .observeValues { _ in
                 MBProgressHUD.showAdded(to: self._view, animated: true)
                 
-                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).startWithResult { [unowned self] result in
+                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
                         WBBooksManager.sharedIntance.needsReload.value = true

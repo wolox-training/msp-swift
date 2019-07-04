@@ -40,8 +40,10 @@ class WBWishlistViewController: UIViewController {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
         
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        let suggestionNib = UINib(nibName: "WBSuggestionsTableViewCell", bundle: nil)
+        _view.bookTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
     }
     
     private func loadWishes() {
@@ -50,7 +52,7 @@ class WBWishlistViewController: UIViewController {
     
     private func loadSuggestions() {
         MBProgressHUD.showAdded(to: _view, animated: true)
-        viewModel.loadSuggestions().startWithResult { [unowned self] result in
+        viewModel.loadSuggestions().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()

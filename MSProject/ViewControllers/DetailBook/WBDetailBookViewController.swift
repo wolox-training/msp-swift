@@ -75,7 +75,7 @@ class WBDetailBookViewController: UIViewController {
                     MBProgressHUD.hide(for: self._view, animated: true)
                 }
         }
-        
+
         // Wish Book
         _detailHeaderView.wishlistButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
@@ -105,28 +105,32 @@ class WBDetailBookViewController: UIViewController {
                 }
         }
         
+        // merge
+        
+
         loadComments()
+        loadSuggestions()
     }
     
     private func configureTableView() {
         _view.detailTable.delegate = self
         _view.detailTable.dataSource = self
         
-        let commentBookNib = UINib.init(nibName: "WBCommentsBookTableViewCell", bundle: nil)
+        let commentBookNib = UINib(nibName: "WBCommentsBookTableViewCell", bundle: nil)
         _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
-        let suggestionNib = UINib.init(nibName: "WBSuggestionsTableViewCell", bundle: nil)
+        let suggestionNib = UINib(nibName: "WBSuggestionsTableViewCell", bundle: nil)
         _view.detailTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
     }
     
     private func loadComments() {
-        MBProgressHUD.showAdded(to: _view, animated: true)
+//        MBProgressHUD.showAdded(to: _view, animated: true)
         viewModel.loadComments(book: bookViewModel.book).startWithResult { [unowned self] result in
             switch result {
-            case .success: break
+            case .success:
+                self._view.detailTable.reloadData()
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
             }
-            self.loadSuggestions()
         }
     }
     
@@ -138,7 +142,7 @@ class WBDetailBookViewController: UIViewController {
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
             }
-            MBProgressHUD.hide(for: self._view, animated: true)
+//            MBProgressHUD.hide(for: self._view, animated: true)
         }
     }
     

@@ -115,7 +115,7 @@ class WBLibraryTableViewController: UIViewController {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
         
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
     
@@ -128,7 +128,7 @@ class WBLibraryTableViewController: UIViewController {
         }
         
         viewModel.state.value = ViewState.loading
-        viewModel.loadBooks().startWithResult { [unowned self] result in
+        viewModel.loadBooks().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
                 self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
@@ -142,7 +142,7 @@ class WBLibraryTableViewController: UIViewController {
     }
     
     private func loadRentsAndWishes() {
-        viewModel.loadRents().startWithResult { [unowned self] result in
+        viewModel.loadRents().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()
@@ -150,7 +150,7 @@ class WBLibraryTableViewController: UIViewController {
                 print(error)
             }
         }
-        viewModel.loadWishes().startWithResult { [unowned self] result in
+        viewModel.loadWishes().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()

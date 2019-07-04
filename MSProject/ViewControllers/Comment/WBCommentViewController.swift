@@ -31,7 +31,7 @@ class WBCommentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "COMMENT_NAV_BAR".localized()
+        navigationItem.title = "COMMENT_NAV_BAR".localized()
         
         _view.submitButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in

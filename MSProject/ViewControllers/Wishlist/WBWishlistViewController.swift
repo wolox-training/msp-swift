@@ -27,7 +27,7 @@ class WBWishlistViewController: UIViewController {
         loadWishes()
         loadSuggestions()
 
-        title = "WISHLIST_NAV_BAR".localized()
+        navigationItem.title = "WISHLIST_NAV_BAR".localized()
         setBackButtonEmpty()
     }
     

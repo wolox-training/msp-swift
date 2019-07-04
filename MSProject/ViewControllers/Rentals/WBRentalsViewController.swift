@@ -27,7 +27,7 @@ class WBRentalsViewController: UIViewController {
         loadRents()
         loadSuggestions()
 
-        title = "RENTALS_NAV_BAR".localized()
+        navigationItem.title = "RENTALS_NAV_BAR".localized()
         setBackButtonEmpty()
     }
     

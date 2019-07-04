@@ -8,8 +8,8 @@
 
 // TabBar
 "LIBRARY" = "Librería";
-"WISHLIST" = "Lista de deseos";
-"ADDNEW" = "Agregar nuevo";
+"WISHLIST" = "Wishlist";
+"ADDNEW" = "Nuevo";
 "RENTALS" = "Alquiler";
 "SETTINGS" = "Configuración";
 

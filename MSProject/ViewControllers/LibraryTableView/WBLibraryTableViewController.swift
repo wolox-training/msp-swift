@@ -37,7 +37,7 @@ class WBLibraryTableViewController: UIViewController {
 
         configureTableView()
         
-        title = "LIBRARY_NAV_BAR".localized()
+        navigationItem.title = "LIBRARY_NAV_BAR".localized()
         setBackButtonEmpty()
 
         let sort = UIBarButtonItem(image: UIImage.sortImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)

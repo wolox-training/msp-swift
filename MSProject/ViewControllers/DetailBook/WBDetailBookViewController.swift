@@ -31,7 +31,7 @@ class WBDetailBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "BOOK_DETAIL_NAV_BAR".localized()
+        navigationItem.title = "BOOK_DETAIL_NAV_BAR".localized()
         setBackButtonEmpty()
         
         configureTableView()

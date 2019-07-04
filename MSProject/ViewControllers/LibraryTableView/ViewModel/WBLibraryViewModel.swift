@@ -72,8 +72,8 @@ class WBLibraryViewModel {
     
     func loadRents() -> SignalProducer<[WBRent], RepositoryError> {
         return self.repository.getRents().on(failed: { _ in  }, value: { value in
-            for rent in value {
-                WBBooksManager.sharedIntance.bookViewModels.value.forEach {
+            
+            value.forEach { rent in            WBBooksManager.sharedIntance.bookViewModels.value.forEach {
                     if $0.book.id == rent.book!.id {
                         $0.rented = true
                         $0.rentedDateTo = rent.to

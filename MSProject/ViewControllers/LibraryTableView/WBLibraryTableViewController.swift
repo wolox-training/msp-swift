@@ -121,7 +121,7 @@ class WBLibraryTableViewController: UIViewController {
     
     // MARK: - Services
     @objc private func loadBooks() {
-        guard WBBooksManager.sharedIntance.needsReload.value || WBBooksManager.sharedIntance.bookViewModels.value.isEmpty else {
+        guard WBBooksManager.sharedIntance.needsReload.value else {
             _view.bookTable.refreshControl?.endRefreshing()
             _view.bookTable.reloadData()
             return

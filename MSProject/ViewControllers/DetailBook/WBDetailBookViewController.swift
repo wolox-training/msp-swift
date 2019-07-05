@@ -15,7 +15,6 @@ import MBProgressHUD
 class WBDetailBookViewController: UIViewController {
 
     private let _view: WBDetailBookView = WBDetailBookView.loadFromNib()!
-    private let _detailHeaderView: WBDetailBookHeaderView = WBDetailBookHeaderView.loadFromNib()!
 
     lazy var viewModel: WBBookDetailViewModel = {
         return WBBookDetailViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
@@ -40,71 +39,66 @@ class WBDetailBookViewController: UIViewController {
     }
     
     override func loadView() {
-        _detailHeaderView.setup(with: bookViewModel)
-        _view.detailHeaderView.addSubview(_detailHeaderView)
         view = _view
     }
 
     // MARK: - Private
     private func initBookDetailTableViewModel() {
-
-        // Rent Book
-        _detailHeaderView.rentButton?.reactive.controlEvents(.touchUpInside)
-            .observeValues { _ in
-                guard !self.bookViewModel.rented else {
-                    self.showAlert(message: "RETURN_BOOK_NOT_IMPLEMENTED".localized())
-                    return
-                }
-                
-                guard self.bookViewModel.bookStatus == .available else {
-                    self.showAlert(message: "RENT_NOT_AVAILABLE".localized(withArguments: self.bookViewModel.bookStatus.bookStatusText()))
-                    return
-                }
-                
-                MBProgressHUD.showAdded(to: self._view, animated: true)
-                
-                self.viewModel.rentBook(book: self.bookViewModel.book).startWithResult { [unowned self] result in
-                    switch result {
-                    case .success:
-                        self.showAlert(message: "BOOK_RENTED".localized())
-                        self.bookViewModel.rented = true
-                        self._detailHeaderView.setup(with: self.bookViewModel)
-                    case .failure(let error):
-                        self.showAlert(message: error.localizedDescription)
-                    }
-                    MBProgressHUD.hide(for: self._view, animated: true)
-                }
-        }
-
-        // Wish Book
-        _detailHeaderView.wishlistButton?.reactive.controlEvents(.touchUpInside)
-            .observeValues { _ in
-            
-                guard !self.bookViewModel.rented else {
-                    let commentBookViewController = WBCommentViewController(with: self.bookViewModel)
-                    self.navigationController?.pushViewController(commentBookViewController, animated: true)
-                    return
-                }
-
-                guard !self.bookViewModel.wished else {
-                    self.showAlert(message: "REMOVE_FROM_WISHLIST_NOT_IMPLEMENTED".localized())
-                    return
-                }
-                
-                MBProgressHUD.showAdded(to: self._view, animated: true)
-
-                self.viewModel.wishBook(book: self.bookViewModel.book).take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
-                    switch result {
-                    case .success:
-                        self.bookViewModel.wished = true
-                        self._detailHeaderView.setup(with: self.bookViewModel)
-                    case .failure(let error):
-                        self.showAlert(message: error.localizedDescription)
-                    }
-                    MBProgressHUD.hide(for: self._view, animated: true)
-                }
+        
+        // Rent Action Book
+        viewModel.rentBookAction.values.observeValues { [unowned self] _ in
+            self.showAlert(message: "BOOK_RENTED".localized())
+            self.bookViewModel.rented = true
+            self._view.detailTable.reloadData()
         }
         
+        viewModel.rentBookAction.errors.observeValues { [unowned self] error in
+            guard !self.bookViewModel.rented else {
+                self.showAlert(message: "RETURN_BOOK_NOT_IMPLEMENTED".localized())
+                return
+            }
+            guard self.bookViewModel.bookStatus == .available else {
+                self.showAlert(message: "RENT_NOT_AVAILABLE".localized(withArguments: self.bookViewModel.bookStatus.bookStatusText()))
+                return
+            }
+            self.showAlert(message: error.localizedDescription)
+        }
+        
+        viewModel.rentBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
+            if isExecuting {
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+
+        // Wish Action Book
+        viewModel.wishBookAction.values.observeValues { [unowned self] _ in
+            self.bookViewModel.wished = true
+            self._view.detailTable.reloadData()
+        }
+        
+        viewModel.wishBookAction.errors.observeValues { [unowned self] error in
+            guard !self.bookViewModel.rented else {
+                let commentBookViewController = WBCommentViewController(with: self.bookViewModel)
+                self.navigationController?.pushViewController(commentBookViewController, animated: true)
+                return
+            }
+            guard !self.bookViewModel.wished else {
+                self.showAlert(message: "REMOVE_FROM_WISHLIST_NOT_IMPLEMENTED".localized())
+                return
+            }
+            self.showAlert(message: error.localizedDescription)
+        }
+        
+        viewModel.wishBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
+            if isExecuting {
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+
         // merge
         
 
@@ -115,6 +109,10 @@ class WBDetailBookViewController: UIViewController {
     private func configureTableView() {
         _view.detailTable.delegate = self
         _view.detailTable.dataSource = self
+        _view.detailTable.estimatedSectionHeaderHeight = 25
+
+        let detailNib = UINib(nibName: "WBDetailBookTableViewCell", bundle: nil)
+        _view.detailTable.register(detailNib, forCellReuseIdentifier: "WBDetailBookTableViewCell")
         
         let commentBookNib = UINib(nibName: "WBCommentsBookTableViewCell", bundle: nil)
         _view.detailTable.register(commentBookNib, forCellReuseIdentifier: "WBCommentsBookTableViewCell")
@@ -156,11 +154,22 @@ extension WBDetailBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCells(for: section)
+        return viewModel.numberOfCells(for: BookDetailSections(rawValue: section)!)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+
+        switch BookDetailSections(rawValue: indexPath.section)! {
+        case .bookDetail:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBDetailBookTableViewCell", for: indexPath) as? WBDetailBookTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            cell.setup(with: bookViewModel)
+            cell.rentButton?.reactive.pressed = CocoaAction(viewModel.rentBookAction, input: bookViewModel)
+            cell.wishlistButton?.reactive.pressed = CocoaAction(viewModel.wishBookAction, input: bookViewModel)
+            return cell
+        case .suggestions:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBSuggestionsTableViewCell", for: indexPath) as? WBSuggestionsTableViewCell else {
                 fatalError("Cell not exists")
             }
@@ -168,7 +177,7 @@ extension WBDetailBookViewController: UITableViewDataSource {
             let suggestions = viewModel.getSuggestionsBookViewModel()
             cell.setup(with: suggestions)
             return cell
-        } else {
+        case .comments:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBCommentsBookTableViewCell", for: indexPath) as? WBCommentsBookTableViewCell else {
                 fatalError("Cell not exists")
             }
@@ -178,7 +187,6 @@ extension WBDetailBookViewController: UITableViewDataSource {
             return cell
         }
     }
-    
 }
 
 // MARK: - UITableViewDelegate

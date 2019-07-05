@@ -11,6 +11,12 @@ import ReactiveCocoa
 import ReactiveSwift
 import Networking
 
+enum BookDetailSections: Int, CaseIterable {
+    case bookDetail
+    case suggestions
+    case comments
+}
+
 class WBBookDetailViewModel {
 
     private var commentsViewModels: MutableProperty<[WBComment]> = MutableProperty([])
@@ -18,19 +24,38 @@ class WBBookDetailViewModel {
     
     let repository: WBBooksRepository
     
+    lazy var rentBookAction = Action<(WBBookViewModel), Void, RepositoryError> { [unowned self] bookViewModel in
+        
+        if bookViewModel.rented || bookViewModel.bookStatus != .available {
+            return SignalProducer(error: RepositoryError.invalidURL)
+        }
+        return self.rentBook(bookViewModel: bookViewModel)
+    }
+
+    lazy var wishBookAction = Action<(WBBookViewModel), Void, RepositoryError> { [unowned self] bookViewModel in
+        
+        if bookViewModel.rented || bookViewModel.wished {
+            return SignalProducer(error: RepositoryError.invalidURL)
+        }
+        return self.wishBook(bookViewModel: bookViewModel)
+    }
+    
     init(booksRepository: WBBooksRepository) {
         repository = booksRepository
     }
     
     // MARK: - TableView
     var numberOfSections: Int {
-        return 2
+        return BookDetailSections.allCases.count
     }
     
-    func numberOfCells(for section: Int) -> Int {
-        if section == 0 {
+    func numberOfCells(for section: BookDetailSections) -> Int {
+        switch section {
+        case .bookDetail:
+            return 1
+        case .suggestions:
             return suggestionsBookViewModels.value.isEmpty ? 0 : 1
-        } else {
+        case .comments:
             return commentsViewModels.value.count
         }
     }
@@ -44,14 +69,14 @@ class WBBookDetailViewModel {
     }
 
     // MARK: - Repository
-    func rentBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+    func rentBook(bookViewModel: WBBookViewModel) -> SignalProducer<Void, RepositoryError> {
         WBBooksManager.sharedIntance.needsReload.value = true
-        return repository.rentBook(book: book)
+        return repository.rentBook(book: bookViewModel.book)
     }
     
-    func wishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+    func wishBook(bookViewModel: WBBookViewModel) -> SignalProducer<Void, RepositoryError> {
         WBBooksManager.sharedIntance.needsReload.value = true
-        return repository.wishBook(book: book)
+        return repository.wishBook(book: bookViewModel.book)
     }
     
     func loadComments(book: WBBook) -> SignalProducer<[WBComment], RepositoryError> {

@@ -18,18 +18,41 @@ public enum ViewState {
 
 class WBEmptyView: UIView, NibLoadable {
     
-    @IBOutlet weak var sadImage: UIImageView!
-    @IBOutlet weak var refreshButton: WBButton!
+    @IBOutlet weak var sadImage: UIImageView! {
+        didSet {
+            sadImage.image = sadImage.image?.withRenderingMode(.alwaysTemplate)
+            sadImage.tintColor = .woloxBackgroundColor()
+        }
+    }
+    
+    @IBOutlet weak var emptyTitleLabel: UILabel!
+    
+    @IBOutlet weak var emptyTitleDescription: UILabel!
+    
+    @IBOutlet weak var refreshButton: WBButton! {
+        didSet {
+            refreshButton.borderLineColor = .woloxBackgroundColor()
+            refreshButton.buttonStyle = .bordered
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = .white
-        refreshButton.borderLineColor = .woloxBackgroundColor()
-        refreshButton.buttonStyle = .bordered
-    
-        sadImage.image = sadImage.image?.withRenderingMode(.alwaysTemplate)
-        sadImage.tintColor = .woloxBackgroundColor()
+        emptyTitleLabel.text = ""
+        emptyTitleDescription.text = ""
     }
     
+    func configureEmptyWishlist() {
+        
+        sadImage.image = UIImage.wishlistActiveImage
+        refreshButton.isHidden = true
+    }
+    
+    func configureEmptyRents() {
+        
+        sadImage.image = UIImage.rentalsActiveImage
+        refreshButton.isHidden = true
+    }
 }

@@ -16,6 +16,8 @@ class WBRentalsViewModel {
 
     private var suggestionsBookViewModels: MutableProperty<[WBBookViewModel]> = MutableProperty([])
 
+    let state: MutableProperty<ViewState> = MutableProperty(.loading)
+
     let repository: WBBooksRepository
     
     init(booksRepository: WBBooksRepository) {

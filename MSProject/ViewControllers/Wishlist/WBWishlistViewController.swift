@@ -16,6 +16,8 @@ class WBWishlistViewController: UIViewController {
 
     private let _view: WBWishlistView = WBWishlistView.loadFromNib()!
 
+    lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
+
     lazy var viewModel: WBWishlistViewModel = {
         return WBWishlistViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
@@ -29,9 +31,31 @@ class WBWishlistViewController: UIViewController {
 
         navigationItem.title = "WISHLIST_NAV_BAR".localized()
         setBackButtonEmpty()
+        
+        viewModel.state.signal.observeValues { state in
+            switch state {
+            case .loading:
+                self.view = self._view
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .value:
+                self._view.bookTable.reloadData()
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .error:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .empty:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+        
+        WBBooksManager.sharedIntance.wishedBooks.signal.observeValues { (wishedBooks) in
+            self.viewModel.state.value = wishedBooks.isEmpty ? .empty : .value
+        }
     }
     
     override func loadView() {
+        emptyView.configureEmptyWishlist()
         view = _view
     }
 

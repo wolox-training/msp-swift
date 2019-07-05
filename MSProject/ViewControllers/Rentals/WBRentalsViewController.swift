@@ -16,6 +16,8 @@ class WBRentalsViewController: UIViewController {
 
     private let _view: WBRentalsView = WBRentalsView.loadFromNib()!
 
+    lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
+
     lazy var viewModel: WBRentalsViewModel = {
         return WBRentalsViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
@@ -29,9 +31,32 @@ class WBRentalsViewController: UIViewController {
 
         navigationItem.title = "RENTALS_NAV_BAR".localized()
         setBackButtonEmpty()
+        
+        viewModel.state.signal.observeValues { state in
+            switch state {
+            case .loading:
+                self.view = self._view
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .value:
+                self._view.bookTable.reloadData()
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .error:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .empty:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+        
+        WBBooksManager.sharedIntance.rentedBooks.signal.observeValues { (rentedBooks) in
+            self.viewModel.state.value = rentedBooks.isEmpty ? .empty : .value
+        }
+        
     }
     
     override func loadView() {
+        emptyView.configureEmptyRents()
         view = _view
     }
     

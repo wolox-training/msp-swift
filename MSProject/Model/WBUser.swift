@@ -16,7 +16,7 @@ struct WBUser {
     
     let id: Int
     let username: String
-    let imageURL: String
+    let imageURL: String?
 }
 
 extension WBUser: Argo.Decodable {
@@ -25,6 +25,6 @@ extension WBUser: Argo.Decodable {
         return curry(WBUser.init)
             <^> json <| "id"
             <*> json <| "username"
-            <*> json <| "image"
+            <*> json <|? "image"
     }
 }

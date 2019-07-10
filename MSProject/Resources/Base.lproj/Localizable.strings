@@ -50,3 +50,12 @@
 
 // Comment
 "WRITE_COMMENT_PLACEHOLDER" = "Write your comment here...";
+
+// WishList
+"WISHLIST_EMPTY_TITLE" = "Your Wihslist is empty";
+"WISHLIST_EMPTY_DESCRIPTION" = "Go and wish some books";
+
+// Rents
+"RENTS_EMPTY" = "Your rent list is empty";
+"RENTS_EMPTY_DESCRIPTION" = "Go and rent some books";
+

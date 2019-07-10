@@ -41,17 +41,21 @@ class WBEmptyView: UIView, NibLoadable {
         
         backgroundColor = .white
         emptyTitleLabel.text = ""
+        emptyTitleLabel.textColor = .woloxBackgroundColor()
         emptyTitleDescription.text = ""
+        emptyTitleDescription.textColor = .woloxBackgroundColor()
     }
     
     func configureEmptyWishlist() {
-        
+        emptyTitleLabel.text = "WISHLIST_EMPTY_TITLE".localized()
+        emptyTitleDescription.text = "WISHLIST_EMPTY_DESCRIPTION".localized()
         sadImage.image = UIImage.wishlistActiveImage
         refreshButton.isHidden = true
     }
     
     func configureEmptyRents() {
-        
+        emptyTitleLabel.text = "RENTS_EMPTY".localized()
+        emptyTitleDescription.text = "RENTS_EMPTY_DESCRIPTION".localized()
         sadImage.image = UIImage.rentalsActiveImage
         refreshButton.isHidden = true
     }

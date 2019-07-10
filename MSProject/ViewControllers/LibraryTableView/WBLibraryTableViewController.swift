@@ -127,16 +127,16 @@ class WBLibraryTableViewController: UIViewController {
             return
         }
         
-        viewModel.state.value = ViewState.loading
+        viewModel.state.value = .loading
         viewModel.loadBooks().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
-                self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
+                self.viewModel.state.value = value.isEmpty ? .empty : .value
                 self.loadRentsAndWishes()
                 WBBooksManager.sharedIntance.needsReload.value = false
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
-                self.viewModel.state.value = ViewState.error
+                self.viewModel.state.value = .error
             }
         }
     }

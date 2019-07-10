@@ -49,9 +49,8 @@ class WBWishlistViewController: UIViewController {
             }
         }
         
-        WBBooksManager.sharedIntance.wishedBooks.signal.observeValues { (wishedBooks) in
-            self.viewModel.state.value = wishedBooks.isEmpty ? .empty : .value
-        }
+        self.viewModel.state.value = WBBooksManager.sharedIntance.wishedBooks.value.isEmpty ? .empty : .value
+
     }
     
     override func loadView() {

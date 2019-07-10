@@ -49,10 +49,7 @@ class WBRentalsViewController: UIViewController {
             }
         }
         
-        WBBooksManager.sharedIntance.rentedBooks.signal.observeValues { (rentedBooks) in
-            self.viewModel.state.value = rentedBooks.isEmpty ? .empty : .value
-        }
-        
+        self.viewModel.state.value = WBBooksManager.sharedIntance.rentedBooks.value.isEmpty ? .empty : .value
     }
     
     override func loadView() {

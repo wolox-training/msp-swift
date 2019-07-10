@@ -28,7 +28,7 @@ class WBAddNewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "ADDNEW_NAV_BAR".localized()
+        navigationItem.title = "ADDNEW_NAV_BAR".localized()
         
         _view.addImageButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
@@ -83,6 +83,7 @@ class WBAddNewViewController: UIViewController {
                     MBProgressHUD.hide(for: self._view, animated: true)
                 }
         }
+
     }
     
     override func loadView() {

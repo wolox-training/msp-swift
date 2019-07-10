@@ -31,7 +31,7 @@ class WBSuggestionsTableViewCell: UITableViewCell {
         collectionViewFlowControl.itemSize = CGSize(width: 55, height: 70)
         collectionView.collectionViewLayout = collectionViewFlowControl
         
-        let nib = UINib.init(nibName: "WBSuggestionBookImageCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "WBSuggestionBookImageCollectionViewCell", bundle: nil)
        collectionView.register(nib, forCellWithReuseIdentifier: "WBSuggestionBookImageCollectionViewCell")
     }
     

@@ -37,7 +37,7 @@ class WBLibraryTableViewController: UIViewController {
 
         configureTableView()
         
-        title = "LIBRARY_NAV_BAR".localized()
+        navigationItem.title = "LIBRARY_NAV_BAR".localized()
         setBackButtonEmpty()
 
         let sort = UIBarButtonItem(image: UIImage.sortImage, style: UIBarButtonItem.Style.plain, target: self, action: nil)
@@ -115,7 +115,7 @@ class WBLibraryTableViewController: UIViewController {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
         
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
     }
     
@@ -127,22 +127,22 @@ class WBLibraryTableViewController: UIViewController {
             return
         }
         
-        viewModel.state.value = ViewState.loading
-        viewModel.loadBooks().startWithResult { [unowned self] result in
+        viewModel.state.value = .loading
+        viewModel.loadBooks().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success(let value):
-                self.viewModel.state.value = value.isEmpty ? ViewState.empty : ViewState.value
+                self.viewModel.state.value = value.isEmpty ? .empty : .value
                 self.loadRentsAndWishes()
                 WBBooksManager.sharedIntance.needsReload.value = false
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
-                self.viewModel.state.value = ViewState.error
+                self.viewModel.state.value = .error
             }
         }
     }
     
     private func loadRentsAndWishes() {
-        viewModel.loadRents().startWithResult { [unowned self] result in
+        viewModel.loadRents().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()
@@ -150,7 +150,7 @@ class WBLibraryTableViewController: UIViewController {
                 print(error)
             }
         }
-        viewModel.loadWishes().startWithResult { [unowned self] result in
+        viewModel.loadWishes().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()

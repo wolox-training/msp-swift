@@ -55,6 +55,9 @@ class WBLibraryViewModel {
         filteredBookViewModels.value = WBBooksManager.sharedIntance.bookViewModels.value.filter({ (book: WBBookViewModel) -> Bool in
             return book.bookTitle.lowercased().contains(searchText.lowercased()) || book.bookAuthor.lowercased().contains(searchText.lowercased())
         })
+//        if filteredBookViewModels.value.isEmpty {
+//            state.value = .empty
+//        }
     }
     
     func getBookById(id: String) -> WBBookViewModel? {

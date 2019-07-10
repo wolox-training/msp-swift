@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColorExtension.swift */; };
 		0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */; };
+		00A096A922CF9B8C0051A969 /* WBDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A096A722CF9B8C0051A969 /* WBDetailBookTableViewCell.swift */; };
+		00A096AA22CF9B8C0051A969 /* WBDetailBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A096A822CF9B8C0051A969 /* WBDetailBookTableViewCell.xib */; };
 		00A73F8C22AAB4F200FC6410 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8822AAB42F00FC6410 /* Quick.framework */; };
 		00A73F8E22AAB4F500FC6410 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; };
 		00A73F9022AAB51200FC6410 /* Nimble.framework in Carthage */ = {isa = PBXBuildFile; fileRef = 00A73F8922AAB43000FC6410 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -134,6 +136,8 @@
 /* Begin PBXFileReference section */
 		0097C7B722AAA3B70001509F /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginViewController.swift; sourceTree = "<group>"; };
+		00A096A722CF9B8C0051A969 /* WBDetailBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookTableViewCell.swift; sourceTree = "<group>"; };
+		00A096A822CF9B8C0051A969 /* WBDetailBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBDetailBookTableViewCell.xib; sourceTree = "<group>"; };
 		00A73F8822AAB42F00FC6410 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		00A73F8922AAB43000FC6410 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		00A73F9622AAD34200FC6410 /* WBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBButton.swift; sourceTree = "<group>"; };
@@ -353,7 +357,7 @@
 				00B761E922AAF5FA00640078 /* WBLibraryTableViewController.swift */,
 				00B7620E22AE995E00640078 /* WBLibraryTableView.xib */,
 				00B7620F22AE995E00640078 /* WBLibraryTableView.swift */,
-				00B762A922B3F06100640078 /* ViewModel */,
+				00B7627122AFF34200640078 /* WBLibraryViewModel.swift */,
 				00B761EC22AAF67100640078 /* TableCells */,
 			);
 			path = LibraryTableView;
@@ -431,7 +435,7 @@
 				00B7628022B03AF200640078 /* WBDetailBookViewController.swift */,
 				00B7627E22B03AD300640078 /* WBDetailBookView.xib */,
 				00B7627C22B03ABF00640078 /* WBDetailBookView.swift */,
-				00B762AA22B3F08A00640078 /* ViewModel */,
+				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
 				00B762A022B29D5900640078 /* View */,
 				00B7628C22B1727B00640078 /* TableCells */,
 			);
@@ -465,24 +469,10 @@
 				00B762A322B29D9800640078 /* WBDetailBookHeaderView.xib */,
 				00E4A53E22C555F100B04CA5 /* WBBookHeaderView.xib */,
 				00B762A122B29D8A00640078 /* WBDetailBookHeaderView.swift */,
+				00A096A722CF9B8C0051A969 /* WBDetailBookTableViewCell.swift */,
+				00A096A822CF9B8C0051A969 /* WBDetailBookTableViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		00B762A922B3F06100640078 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				00B7627122AFF34200640078 /* WBLibraryViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		00B762AA22B3F08A00640078 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				00B762A722B2DC8400640078 /* WBBookDetailViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		00E4A52122C3AE6700B04CA5 /* Search */ = {
@@ -743,6 +733,7 @@
 				00B7624422AEE06D00640078 /* WBWishlistView.xib in Resources */,
 				00E4A53522C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.xib in Resources */,
 				00B7627F22B03AD300640078 /* WBDetailBookView.xib in Resources */,
+				00A096AA22CF9B8C0051A969 /* WBDetailBookTableViewCell.xib in Resources */,
 				00B7622D22AED23F00640078 /* Localizable.strings in Resources */,
 				00B7626C22AEF23400640078 /* Assets.xcassets in Resources */,
 				00E4A52322C3AF9C00B04CA5 /* WBSearchView.xib in Resources */,
@@ -841,6 +832,7 @@
 				00E4A53822C540BB00B04CA5 /* WBCommentViewController.swift in Sources */,
 				00B761EA22AAF5FA00640078 /* WBLibraryTableViewController.swift in Sources */,
 				00E4A52522C3AFC100B04CA5 /* WBSearchView.swift in Sources */,
+				00A096A922CF9B8C0051A969 /* WBDetailBookTableViewCell.swift in Sources */,
 				00E4A53422C51BBD00B04CA5 /* WBSuggestionBookImageCollectionViewCell.swift in Sources */,
 				CEB934DD1D21992100DF75C2 /* Environment.swift in Sources */,
 				00FFE70A22BD1F8F00ACE412 /* UIImageExtension.swift in Sources */,

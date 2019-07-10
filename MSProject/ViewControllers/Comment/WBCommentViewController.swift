@@ -33,14 +33,14 @@ class WBCommentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "COMMENT_NAV_BAR".localized()
+        navigationItem.title = "COMMENT_NAV_BAR".localized()
         
         _view.submitButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
 
                 MBProgressHUD.showAdded(to: self._view, animated: true)
 
-                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self.bookComment.value).startWithResult { [unowned self] result in
+                self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
                         WBBooksManager.sharedIntance.needsReload.value = true

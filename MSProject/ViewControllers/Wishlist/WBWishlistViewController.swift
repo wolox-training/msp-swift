@@ -16,6 +16,8 @@ class WBWishlistViewController: UIViewController {
 
     private let _view: WBWishlistView = WBWishlistView.loadFromNib()!
 
+    lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
+
     lazy var viewModel: WBWishlistViewModel = {
         return WBWishlistViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
     }()
@@ -27,11 +29,32 @@ class WBWishlistViewController: UIViewController {
         loadWishes()
         loadSuggestions()
 
-        title = "WISHLIST_NAV_BAR".localized()
+        navigationItem.title = "WISHLIST_NAV_BAR".localized()
         setBackButtonEmpty()
+        
+        viewModel.state.signal.observeValues { state in
+            switch state {
+            case .loading:
+                self.view = self._view
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .value:
+                self._view.bookTable.reloadData()
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .error:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .empty:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+        
+        self.viewModel.state.value = WBBooksManager.sharedIntance.wishedBooks.value.isEmpty ? .empty : .value
+
     }
     
     override func loadView() {
+        emptyView.configureEmptyWishlist()
         view = _view
     }
 
@@ -40,8 +63,10 @@ class WBWishlistViewController: UIViewController {
         _view.bookTable.delegate = self
         _view.bookTable.dataSource = self
         
-        let nib = UINib.init(nibName: "WBBookTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "WBBookTableViewCell", bundle: nil)
         _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        let suggestionNib = UINib(nibName: "WBSuggestionsTableViewCell", bundle: nil)
+        _view.bookTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
     }
     
     private func loadWishes() {
@@ -50,7 +75,7 @@ class WBWishlistViewController: UIViewController {
     
     private func loadSuggestions() {
         MBProgressHUD.showAdded(to: _view, animated: true)
-        viewModel.loadSuggestions().startWithResult { [unowned self] result in
+        viewModel.loadSuggestions().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
             switch result {
             case .success:
                 self._view.bookTable.reloadData()

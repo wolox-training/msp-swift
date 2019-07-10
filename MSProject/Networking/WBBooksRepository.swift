@@ -25,7 +25,7 @@ var networkingConfiguration: NetworkingConfiguration {
 
 class WBBooksRepository: AbstractRepository {
 
-    let userId = 13 //userID 5 ... because...
+    let userId = 8 //userID 5 ... because...
     
     // MARK: - Books
     func getBooks() -> SignalProducer<[WBBook], RepositoryError> {

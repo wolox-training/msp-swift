@@ -15,44 +15,66 @@ class WBAddNewView: UIView, NibLoadable {
     
     @IBOutlet weak var addImageButton: UIButton!
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var authorTextField: UITextField!
-    @IBOutlet weak var yearTextField: UITextField!
-    @IBOutlet weak var topicTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField! {
+        didSet {
+            nameTextField.placeholder = "NAME_BOOK_PLACEHOLDER".localized()
+            nameTextField.delegate = self
+            nameTextField.returnKeyType = .next
+        }
+    }
     
-    @IBOutlet weak var submitButton: WBButton!
+    @IBOutlet weak var authorTextField: UITextField! {
+        didSet {
+            authorTextField.placeholder = "AUTHOR_PLACEHOLDER".localized()
+            authorTextField.delegate = self
+            authorTextField.returnKeyType = .next
+        }
+    }
     
-    @IBOutlet private weak var customBackgroundView: UIView!
+    @IBOutlet weak var yearTextField: UITextField! {
+        didSet {
+            yearTextField.placeholder = "YEAR_PLACEHOLDER".localized()
+            yearTextField.delegate = self
+            yearTextField.returnKeyType = .next
+        }
+    }
+    
+    @IBOutlet weak var topicTextField: UITextField! {
+        didSet {
+            topicTextField.placeholder = "TOPIC_PLACEHOLDER".localized()
+            topicTextField.delegate = self
+            topicTextField.returnKeyType = .next
+        }
+    }
+    
+    @IBOutlet weak var descriptionTextField: UITextField! {
+        didSet {
+            descriptionTextField.placeholder = "DESCRIPTION_PLACEHOLDER".localized()
+            descriptionTextField.delegate = self
+            descriptionTextField.returnKeyType = .done
+        }
+    }
+    
+    @IBOutlet weak var submitButton: WBButton! {
+        didSet {
+            submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
+            submitButton.buttonStyle = .filled
+        }
+    }
+    
+    @IBOutlet private weak var customBackgroundView: UIView! {
+        didSet {
+            customBackgroundView.layer.cornerRadius = 5
+            customBackgroundView.backgroundColor = .white
+        }
+    }
 
     func configureDetailTableView() {
         
         backgroundColor = .woloxBackgroundLightColor()
         
-        customBackgroundView.layer.cornerRadius = 5
-        customBackgroundView.backgroundColor = .white
-
-        submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
-        submitButton.buttonStyle = .filled
-        
-        nameTextField.placeholder = "NAME_BOOK_PLACEHOLDER".localized()
-        authorTextField.placeholder = "AUTHOR_PLACEHOLDER".localized()
-        yearTextField.placeholder = "YEAR_PLACEHOLDER".localized()
-        topicTextField.placeholder = "TOPIC_PLACEHOLDER".localized()
-        descriptionTextField.placeholder = "DESCRIPTION_PLACEHOLDER".localized()
-        
-        nameTextField.delegate = self
-        authorTextField.delegate = self
-        yearTextField.delegate = self
-        topicTextField.delegate = self
-        descriptionTextField.delegate = self
-        
-        nameTextField.returnKeyType = .next
-        authorTextField.returnKeyType = .next
-        yearTextField.returnKeyType = .next
-        topicTextField.returnKeyType = .next
-        descriptionTextField.returnKeyType = .done
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func reloadViewAsEmpty() {
@@ -63,17 +85,27 @@ class WBAddNewView: UIView, NibLoadable {
         topicTextField.text = ""
         descriptionTextField.text = ""
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        var userInfo = notification.userInfo!
+        if let keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var contentInset: UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = keyboardFrame.size.height
+            scrollView.contentInset = contentInset
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+    }
+    
 }
 
 extension WBAddNewView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - (textField.superview?.superview?.frame.origin.y ?? 0)), animated: true)
+        scrollView.scrollRectToVisible(textField.frame, animated: true)
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint.zero, animated: true)
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder?

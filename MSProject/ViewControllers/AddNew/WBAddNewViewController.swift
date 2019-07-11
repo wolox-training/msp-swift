@@ -65,27 +65,45 @@ class WBAddNewViewController: UIViewController {
         bookYear <~ _view.yearTextField.reactive.continuousTextValues
         bookGenre <~ _view.topicTextField.reactive.continuousTextValues
 
-        _view.submitButton?.reactive.controlEvents(.touchUpInside)
-            .observeValues { _ in
-                
-                MBProgressHUD.showAdded(to: self._view, animated: true)
-
-                let book = WBBook(id: 0, title: self.bookTitle.value, author: self.bookAuthor.value, status: BookStatus.available.rawValue, genre: self.bookGenre.value, year: self.bookYear.value, imageURL: "")
-
-                self.viewModel.addBook(book: book).startWithResult { [unowned self] result in
-                    switch result {
-                    case .success:
-                        WBBooksManager.sharedIntance.needsReload.value = true
-                        self._view.reloadViewAsEmpty()
-                    case .failure(let error):
-                        self.showAlert(message: error.localizedDescription)
-                    }
-                    MBProgressHUD.hide(for: self._view, animated: true)
-                }
+        // Add Action Book
+        viewModel.addBookAction.values.observeValues { [unowned self] _ in
+            WBBooksManager.sharedIntance.needsReload.value = true
+            self._view.reloadViewAsEmpty()
         }
+        
+        viewModel.addBookAction.errors.observeValues { [unowned self] error in
+            self.showAlert(message: error.localizedDescription)
+        }
+        
+        viewModel.addBookAction.isExecuting.signal.observeValues { [unowned self] isExecuting in
+            if isExecuting {
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+        
+        let book = WBBook(id: 0, title: self.bookTitle.value, author: self.bookAuthor.value, status: BookStatus.available.rawValue, genre: self.bookGenre.value, year: self.bookYear.value, imageURL: "")
 
+        _view.submitButton?.reactive.pressed = CocoaAction(viewModel.addBookAction, input: book)
+        
+//        _view.submitButton?.reactive.controlEvents(.touchUpInside)
+//            .observeValues { _ in
+//
+//                MBProgressHUD.showAdded(to: self._view, animated: true)
+//                self.viewModel.addBook(book: book).startWithResult { [unowned self] result in
+//                    switch result {
+//                    case .success:
+//                        WBBooksManager.sharedIntance.needsReload.value = true
+//                        self._view.reloadViewAsEmpty()
+//                    case .failure(let error):
+//                        self.showAlert(message: error.localizedDescription)
+//                    }
+//                    MBProgressHUD.hide(for: self._view, animated: true)
+//                }
+//        }
     }
-    
+
     override func loadView() {
         _view.configureDetailTableView()
         view = _view

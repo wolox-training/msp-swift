@@ -15,6 +15,15 @@ class WBAddNewViewModel: NSObject {
 
     let repository: WBBooksRepository
     
+    lazy var addBookAction = Action<(WBBook), WBBook, RepositoryError> { [unowned self] book in
+
+        if book.title == "" || book.author == "" || book.genre == "" || book.year == "" {
+            return SignalProducer(error: RepositoryError.invalidURL)
+        }
+        
+        return self.addBook(book: book)
+    }
+    
     init(booksRepository: WBBooksRepository) {
         repository = booksRepository
     }

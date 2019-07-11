@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000775A722D7B40000C565BF /* WBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000775A622D7B40000C565BF /* WBTextField.swift */; };
 		0097C7B822AAA3B70001509F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7B722AAA3B70001509F /* UIColorExtension.swift */; };
 		0097C7BD22AAA6E90001509F /* WBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */; };
 		00A096A922CF9B8C0051A969 /* WBDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A096A722CF9B8C0051A969 /* WBDetailBookTableViewCell.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		000775A622D7B40000C565BF /* WBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTextField.swift; sourceTree = "<group>"; };
 		0097C7B722AAA3B70001509F /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0097C7BC22AAA6E90001509F /* WBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLoginViewController.swift; sourceTree = "<group>"; };
 		00A096A722CF9B8C0051A969 /* WBDetailBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDetailBookTableViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				00A73F9622AAD34200FC6410 /* WBButton.swift */,
 				00B7621B22AEA95600640078 /* WBNavigationController.swift */,
 				00B7623B22AED71000640078 /* WBTabBarController.swift */,
+				000775A622D7B40000C565BF /* WBTextField.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				00B7627822B0169300640078 /* WBBooksRepository.swift in Sources */,
 				00E4A53D22C540DC00B04CA5 /* WBCommentView.swift in Sources */,
 				00B7624E22AEE1E100640078 /* WBRentalsViewController.swift in Sources */,
+				000775A722D7B40000C565BF /* WBTextField.swift in Sources */,
 				00B7627A22B01AC400640078 /* UIImageViewExtension.swift in Sources */,
 				00B7625522AEE25000640078 /* WBSettingsViewController.swift in Sources */,
 				00B7625822AEE29B00640078 /* WBAddNewView.swift in Sources */,

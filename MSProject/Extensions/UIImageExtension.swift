@@ -77,5 +77,8 @@ extension UIImage {
     public static var placeholderUserImage: UIImage {
         return UIImage(named: "user_male")!
     }
-    
+
+    public static var addPhotoImage: UIImage {
+        return UIImage(named: "ic_add photo")!
+    }
 }

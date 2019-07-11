@@ -24,10 +24,24 @@ class WBCommentView: UIView, NibLoadable {
             commentPlaceholder.text = "WRITE_COMMENT_PLACEHOLDER".localized()
         }
     }
+    
     @IBOutlet weak var submitButton: WBButton! {
         didSet {
             submitButton.setTitle("SUBMIT_BUTTON".localized(), for: .normal)
             submitButton.buttonStyle = .filled
+        }
+    }
+    
+    @IBOutlet private weak var customBackgroundView: UIView! {
+        didSet {
+            customBackgroundView.backgroundColor = .clear
+        }
+    }
+    
+    @IBOutlet weak var commentBackgroundView: UIView! {
+        didSet {
+            commentBackgroundView.layer.cornerRadius = 5
+            commentBackgroundView.backgroundColor = .white
         }
     }
     

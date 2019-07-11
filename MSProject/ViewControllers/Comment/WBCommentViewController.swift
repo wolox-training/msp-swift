@@ -23,6 +23,8 @@ class WBCommentViewController: UIViewController {
     
     var bookViewModel: WBBookViewModel!
     
+    var bookComment = MutableProperty("")
+
     convenience init(with bookViewModel: WBBookViewModel) {
         self.init()
         self.bookViewModel = bookViewModel
@@ -35,8 +37,9 @@ class WBCommentViewController: UIViewController {
         
         _view.submitButton?.reactive.controlEvents(.touchUpInside)
             .observeValues { _ in
+
                 MBProgressHUD.showAdded(to: self._view, animated: true)
-                
+
                 self.viewModel.addBookComment(book: self.bookViewModel.book, comment: self._view.commentTextView.text).take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
                     switch result {
                     case .success:
@@ -48,6 +51,9 @@ class WBCommentViewController: UIViewController {
                     MBProgressHUD.hide(for: self._view, animated: true)
                 }
         }
+        
+        bookComment <~ _view.commentTextView.reactive.continuousTextValues
+        
     }
     
     override func loadView() {

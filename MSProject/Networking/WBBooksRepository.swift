@@ -30,8 +30,22 @@ class WBBooksRepository: AbstractRepository {
     // MARK: - Books
     func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "books"
-        
+
         return performRequest(method: .get, path: path, parameters: nil) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
+    
+    func addBook(book: WBBook) -> SignalProducer<WBBook, RepositoryError> {
+        let path = "books"
+        let params: [String: Any] = ["title": book.title,
+                                     "author": book.author,
+                                     "status": book.status,
+                                     "genre": book.genre,
+                                     "year": book.year,
+                                     "image": book.imageURL]
+        
+        return performRequest(method: .post, path: path, parameters: params) { JSON in
             return decode(JSON).toResult()
         }
     }

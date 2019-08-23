@@ -15,8 +15,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WBRentalsView" customModule="MSProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ucm-e6-T7D">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ucm-e6-T7D" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0Nf-jB-xzp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ucm-e6-T7D" secondAttribute="bottom" id="21R-0o-Qhb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ucm-e6-T7D" secondAttribute="trailing" id="L95-Hb-ucz"/>
+                <constraint firstItem="ucm-e6-T7D" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tgV-ox-yEU"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bookTable" destination="ucm-e6-T7D" id="MS9-9Y-Q9w"/>
+            </connections>
         </view>
     </objects>
 </document>

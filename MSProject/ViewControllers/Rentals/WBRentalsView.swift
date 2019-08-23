@@ -11,4 +11,11 @@ import WolmoCore
 
 class WBRentalsView: UIView, NibLoadable {
 
+    @IBOutlet weak var bookTable: UITableView! {
+        didSet {
+            bookTable.backgroundColor = .woloxBackgroundLightColor()
+            bookTable.separatorStyle = .none
+        }
+    }
+
 }

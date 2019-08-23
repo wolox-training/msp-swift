@@ -25,8 +25,8 @@ var networkingConfiguration: NetworkingConfiguration {
 
 class WBBooksRepository: AbstractRepository {
 
-    let userId = 5 //userID 5 ... because...
-
+    let userId = 8 //userID 5 ... because...
+    
     // MARK: - Books
     func getBooks() -> SignalProducer<[WBBook], RepositoryError> {
         let path = "books"
@@ -66,11 +66,11 @@ class WBBooksRepository: AbstractRepository {
         }
     }
     
-    func addBookComment(comment: WBComment) -> SignalProducer<Void, RepositoryError> {
-        let path = "books/\(comment.book.id)/comments"
+    func addBookComment(book: WBBook, comment: String) -> SignalProducer<Void, RepositoryError> {
+        let path = "books/\(book.id)/comments"
         let params: [String: Any] = ["userID": userId,
-                                     "bookID": comment.book.id,
-                                     "content": comment.content]
+                                     "bookID": book.id,
+                                     "content": comment]
         
         return performRequest(method: .post, path: path, parameters: params) { _ in
             Result(value: ())
@@ -86,7 +86,7 @@ class WBBooksRepository: AbstractRepository {
         }
     }
 
-    func addWishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
+    func wishBook(book: WBBook) -> SignalProducer<Void, RepositoryError> {
         let path = "users/\(userId)/wishes"
         let params: [String: Any] = ["userID": userId,
                                      "bookID": book.id]
@@ -96,8 +96,24 @@ class WBBooksRepository: AbstractRepository {
         }
     }
 
-    // MARK: - Suggestions
+    // MARK: - User Suggestions
+    func getSuggestions() -> SignalProducer<[WBBook], RepositoryError> {
+        let path = "suggestions"
+        
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
     
+    // MARK: - Book Suggestions
+    func getBookSuggestions(book: WBBook) -> SignalProducer<[WBBook], RepositoryError> {
+        let path = "books/\(book.id)/suggestions"
+        
+        return performRequest(method: .get, path: path, parameters: nil) { JSON in
+            return decode(JSON).toResult()
+        }
+    }
+
     // MARK: - Private
     class func commonHeaders() -> [String: String] {
         return ["Content-Type": "application/json",

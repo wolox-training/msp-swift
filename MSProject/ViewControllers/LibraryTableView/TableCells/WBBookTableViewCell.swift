@@ -13,14 +13,18 @@ class WBBookTableViewCell: UITableViewCell {
     @IBOutlet private weak var bookImage: UIImageView!
     @IBOutlet private weak var bookTitle: UILabel!
     @IBOutlet private weak var bookAuthor: UILabel!
-    @IBOutlet private weak var customBackgroundView: UIView!
+    @IBOutlet private weak var customBackgroundView: UIView! {
+        didSet {
+            customBackgroundView.layer.cornerRadius = 5
+            customBackgroundView.backgroundColor = .white
+        }
+    }
+    
+    @IBOutlet weak var bookWishedImage: UIImageView!
+    @IBOutlet weak var bookRentedImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        customBackgroundView.layer.cornerRadius = 5
-        customBackgroundView.backgroundColor = .white
-        contentView.sendSubviewToBack(customBackgroundView)
 
         backgroundColor = .clear        
         
@@ -32,5 +36,7 @@ class WBBookTableViewCell: UITableViewCell {
         
         bookTitle.text = bookViewModel.bookTitle
         bookAuthor.text = bookViewModel.bookAuthor
+        bookWishedImage.isHidden = !bookViewModel.wished
+        bookRentedImage.isHidden = !bookViewModel.rented
     }
 }

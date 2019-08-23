@@ -49,9 +49,6 @@
                             <real key="value" value="22"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="loginWithGoogle:" destination="Cxc-Pn-VBs" eventType="touchUpInside" id="oyz-NI-Dh8"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,6 +68,9 @@
                 <constraint firstItem="YKo-yc-cey" firstAttribute="top" secondItem="vSG-7o-c1t" secondAttribute="top" constant="190" id="vy1-oY-I4h"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vSG-7o-c1t"/>
+            <connections>
+                <outlet property="loginButton" destination="o17-PD-0pJ" id="lKe-3Z-TKb"/>
+            </connections>
             <point key="canvasLocation" x="-159.42028985507247" y="-205.58035714285714"/>
         </view>
     </objects>

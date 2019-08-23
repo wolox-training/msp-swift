@@ -8,19 +8,127 @@
 
 import UIKit
 import WolmoCore
+import ReactiveCocoa
+import ReactiveSwift
+import MBProgressHUD
 
 class WBWishlistViewController: UIViewController {
 
     private let _view: WBWishlistView = WBWishlistView.loadFromNib()!
 
+    lazy private var emptyView: WBEmptyView = WBEmptyView.loadFromNib()!
+
+    lazy var viewModel: WBWishlistViewModel = {
+        return WBWishlistViewModel(booksRepository: WBBooksRepository(configuration: networkingConfiguration, defaultHeaders: WBBooksRepository.commonHeaders()))
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "WISHLIST_NAV_BAR".localized()
+        configureTableView()
+        loadWishes()
+        loadSuggestions()
+
+        navigationItem.title = "WISHLIST_NAV_BAR".localized()
+        setBackButtonEmpty()
+        
+        viewModel.state.signal.observeValues { state in
+            switch state {
+            case .loading:
+                self.view = self._view
+                MBProgressHUD.showAdded(to: self._view, animated: true)
+            case .value:
+                self._view.bookTable.reloadData()
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .error:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            case .empty:
+                self.view = self.emptyView
+                MBProgressHUD.hide(for: self._view, animated: true)
+            }
+        }
+        
+        self.viewModel.state.value = WBBooksManager.sharedIntance.wishedBooks.value.isEmpty ? .empty : .value
+
     }
     
     override func loadView() {
+        emptyView.configureEmptyWishlist()
         view = _view
     }
 
+    // MARK: - Private
+    private func configureTableView() {
+        _view.bookTable.delegate = self
+        _view.bookTable.dataSource = self
+        
+        let nib = UINib(nibName: "WBBookTableViewCell", bundle: nil)
+        _view.bookTable.register(nib, forCellReuseIdentifier: "WBBookTableViewCell")
+        let suggestionNib = UINib(nibName: "WBSuggestionsTableViewCell", bundle: nil)
+        _view.bookTable.register(suggestionNib, forCellReuseIdentifier: "WBSuggestionsTableViewCell")
+    }
+    
+    private func loadWishes() {
+        self._view.bookTable.reloadData()
+    }
+    
+    private func loadSuggestions() {
+        MBProgressHUD.showAdded(to: _view, animated: true)
+        viewModel.loadSuggestions().take(during: self.reactive.lifetime).startWithResult { [unowned self] result in
+            switch result {
+            case .success:
+                self._view.bookTable.reloadData()
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+            MBProgressHUD.hide(for: self._view, animated: true)
+        }
+    }
+}
+
+extension WBWishlistViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfCells(for: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBBookTableViewCell", for: indexPath) as? WBBookTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let book = viewModel.getCellViewModel(at: indexPath)
+            cell.setup(with: book)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WBSuggestionsTableViewCell", for: indexPath) as? WBSuggestionsTableViewCell else {
+                fatalError("Cell not exists")
+            }
+            
+            let suggestions = viewModel.getSuggestionsBookViewModel()
+            cell.setup(with: suggestions)
+            return cell
+        }
+    }
+    
+}
+
+extension WBWishlistViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book = viewModel.getCellViewModel(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailBookViewController = WBDetailBookViewController(with: book)
+        navigationController?.pushViewController(detailBookViewController, animated: true)
+    }
 }

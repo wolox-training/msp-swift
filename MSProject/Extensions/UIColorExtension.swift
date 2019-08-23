@@ -33,4 +33,13 @@ extension UIColor {
             return UIColor(red: 252, green: 252, blue: 254, alpha: 1.0)
         }
     }
+    
+    public static var woloxRedColor: UIColor {
+        return UIColor(red: 0.82, green: 0.01, blue: 0.11, alpha: 1)
+    }
+
+    public static var woloxGreenColor: UIColor {
+        return UIColor(red: 0.65, green: 0.8, blue: 0.22, alpha: 1)
+    }
+    
 }

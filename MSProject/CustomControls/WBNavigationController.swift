@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WolmoCore
 
 class WBNavigationController: UINavigationController {
 
@@ -32,6 +33,8 @@ class WBNavigationController: UINavigationController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.titleTextAttributes = textAttributes
         navigationBar.backgroundColor = .woloxBackgroundLightColor()
+        navigationBar.barTintColor = .woloxBackgroundLightColor()
+
         navigationBar.setBackgroundImage(UIImage.navBarImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .default)
         navigationBar.shadowImage = UIImage()
         
@@ -43,10 +46,6 @@ class WBNavigationController: UINavigationController {
         if let viewController = viewControllers.first {
             let logout = UIBarButtonItem(image: UIImage.logoutImage, style: .plain, target: self, action: #selector(self.logout))
             viewController.navigationItem.leftBarButtonItem = logout
-            
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            viewController.navigationItem.backBarButtonItem = backItem
         }
     }
     

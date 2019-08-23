@@ -23,6 +23,8 @@ enum BookStatus: String, CaseIterable {
         switch self {
         case .available:
             return "AVAILABLE".localized()
+        case .inYourHands:
+            return "IN_YOUR_HANDS".localized()
         default:
             return "NOT_AVAILABLE".localized()
         }
@@ -60,8 +62,8 @@ extension WBBook: Argo.Decodable {
     }
 }
 
-struct WBBookViewModel {
-    
+class WBBookViewModel: NSObject {
+
     let book: WBBook
     
     init(book: WBBook) {
@@ -81,8 +83,8 @@ struct WBBookViewModel {
     }
     
     var bookStatus: BookStatus {
-        if rented == true {
-            return .rented
+        if rented {
+            return .inYourHands
         }
         return BookStatus(rawValue: book.status) ?? .unknown
     }
@@ -102,4 +104,7 @@ struct WBBookViewModel {
     var wished: Bool = false
     var rented: Bool = false
     
+    var rentedDateFrom: String?
+    var rentedDateTo: String?
+     
 }

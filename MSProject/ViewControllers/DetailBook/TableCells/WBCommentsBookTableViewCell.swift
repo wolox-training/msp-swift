@@ -10,7 +10,11 @@ import UIKit
 
 class WBCommentsBookTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView! {
+        didSet {
+            userImage.layer.cornerRadius = userImage.frame.size.width/2
+        }
+    }
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userComment: UILabel!
 
@@ -21,12 +25,10 @@ class WBCommentsBookTableViewCell: UITableViewCell {
         backgroundColor = .clear
         
         selectionStyle = .blue
-        
-        userImage.layer.cornerRadius = userImage.frame.size.width/2
     }
     
     func setup(with comment: WBComment) {
-        userImage.loadImageUsingCache(withUrl: comment.user.imageURL, placeholderImage: UIImage(named: "user_male")!)
+        userImage.loadImageUsingCache(withUrl: comment.user.imageURL ?? "", placeholderImage: UIImage(named: "user_male")!)
         userName.text = comment.user.username
         userComment.text = comment.content
     }

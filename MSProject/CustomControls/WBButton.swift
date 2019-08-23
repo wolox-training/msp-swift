@@ -28,6 +28,7 @@ class WBButton: UIButton {
     @IBInspectable var borderLineColor: UIColor = .white {
        didSet {
             layer.borderColor = borderLineColor.cgColor
+            setTitleColor(borderLineColor, for: UIControl.State.normal)
         }
     }
 
@@ -77,7 +78,7 @@ class WBButton: UIButton {
         gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.cornerRadius = borderLineRadius
         borderLineWidth = 0.0
-        layer.addSublayer(gradient)
+        layer.insertSublayer(gradient, at: 0)
         setTitleColor(.white, for: UIControl.State.normal)
     }
 }

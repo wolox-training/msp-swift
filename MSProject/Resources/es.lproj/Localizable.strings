@@ -8,8 +8,8 @@
 
 // TabBar
 "LIBRARY" = "Librería";
-"WISHLIST" = "Lista de deseos";
-"ADDNEW" = "Agregar nuevo";
+"WISHLIST" = "Wishlist";
+"ADDNEW" = "Nuevo";
 "RENTALS" = "Alquiler";
 "SETTINGS" = "Configuración";
 
@@ -19,15 +19,17 @@
 "ADDNEW_NAV_BAR" = "Agregar nuevo";
 "RENTALS_NAV_BAR" = "Alquiler";
 "SETTINGS_NAV_BAR" = "SETTINGS";
-"BOOK_DETAIL" = "Configuración";
+"BOOK_DETAIL_NAV_BAR" = "BOOK DETAIL";
+"COMMENT_NAV_BAR" = "COMMENT";
 
 // Books
 "AVAILABLE" = "Disponible";
 "NOT_AVAILABLE" = "No Disponible";
+"IN_YOUR_HANDS" = "In Your Hands";
 
 // Button
 "WISHLIST_ADD_BUTTON" = "ADD TO WISHLIST";
-"WISHLIT_REMOVE_BUTTON" = "REMOVE FROM WISHLIST";
+"WISHLIST_REMOVE_BUTTON" = "REMOVE FROM WISHLIST";
 "RENT_BOOK_BUTTON" = "RENT";
 "SUBMIT_BUTTON" = "SUBMIT";
 "COMMENT_ADD_BUTTON" = "ADD A COMMENT";
@@ -35,4 +37,24 @@
 
 // Alert
 "RENT_NOT_AVAILABLE" = "No puedes rentar un libro %@. lol";
+"RETURN_BOOK_NOT_IMPLEMENTED" = "return book not implemented yet...";
+"REMOVE_FROM_WISHLIST_NOT_IMPLEMENTED" = "Unwish not implemented yet...";
 "BOOK_RENTED" = "Se reservo el libro correctamente";
+
+// Search
+"SEARCH_TITLE" = "Search in Wbooks";
+"SEARCH_DESCRIPTION" = "Find your favorite writers and books!";
+
+// Suggestions
+"SUGGESTIONS" = "Suggestions";
+
+// Comment
+"WRITE_COMMENT_PLACEHOLDER" = "Write your comment here...";
+
+// WishList
+"WISHLIST_EMPTY_TITLE" = "Your Wihslist is empty";
+"WISHLIST_EMPTY_DESCRIPTION" = "Go and wish some books";
+
+// Rents
+"RENTS_EMPTY" = "Your rent list is empty";
+"RENTS_EMPTY_DESCRIPTION" = "Go and rent some books";

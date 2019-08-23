@@ -16,7 +16,7 @@ class WBSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "SETTINGS_NAV_BAR".localized()
+        navigationItem.title = "SETTINGS_NAV_BAR".localized()
     }
     
     override func loadView() {

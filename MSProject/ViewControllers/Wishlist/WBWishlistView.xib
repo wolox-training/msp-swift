@@ -15,8 +15,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WBWishlistView" customModule="MSProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-Qe-7TZ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IdN-Qe-7TZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Hal-Qg-j3Q"/>
+                <constraint firstItem="IdN-Qe-7TZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RBH-BF-8Ml"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IdN-Qe-7TZ" secondAttribute="trailing" id="XvK-2r-qWC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IdN-Qe-7TZ" secondAttribute="bottom" id="dj8-Wt-C9s"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bookTable" destination="IdN-Qe-7TZ" id="TZw-rL-0km"/>
+            </connections>
         </view>
     </objects>
 </document>

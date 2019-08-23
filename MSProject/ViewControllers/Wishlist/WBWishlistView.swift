@@ -11,4 +11,10 @@ import WolmoCore
 
 class WBWishlistView: UIView, NibLoadable {
 
+    @IBOutlet weak var bookTable: UITableView! {
+        didSet {
+            bookTable.backgroundColor = .woloxBackgroundLightColor()
+            bookTable.separatorStyle = .none
+        }
+    }
 }

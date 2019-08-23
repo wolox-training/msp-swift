@@ -71,7 +71,7 @@ extension UIImage {
     }
 
     public static var placeholderBookImage: UIImage {
-        return UIImage(named: "book_noun_001_01679")!
+        return UIImage(named: "book_placeholder")!
     }
 
     public static var placeholderUserImage: UIImage {

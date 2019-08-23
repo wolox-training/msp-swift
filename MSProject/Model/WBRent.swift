@@ -17,8 +17,10 @@ struct WBRent {
     let id: Int
     let from: String
     let to: String
-    let bookID: Int
-    let userID: Int
+    let bookID: Int?
+    let book: WBBook?
+    let userID: Int?
+    let user: WBUser?
 }
 
 extension WBRent: Argo.Decodable {
@@ -28,7 +30,9 @@ extension WBRent: Argo.Decodable {
             <^> json <| "id"
             <*> json <| "from"
             <*> json <| "to"
-            <*> json <| "bookID"
-            <*> json <| "userID"
+            <*> json <|? "bookID"
+            <*> json <|? "book"
+            <*> json <|? "userID"
+            <*> json <|? "user"
     }
 }
